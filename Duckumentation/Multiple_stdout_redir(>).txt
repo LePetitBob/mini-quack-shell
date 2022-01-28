@@ -1,0 +1,12 @@
+Pretty simple one, of you add multiple times the "> *file*" sigil, it will
+redirect the output to the last file called this way : 
+
+---------------------------------------------------------------
+|
+|	$> cat 4.c > outfile > /dev/stdout > outfile2
+|	$> cat outfile
+|	$> cat outfile2
+|		->	4
+|
+---------------------------------------------------------------
+

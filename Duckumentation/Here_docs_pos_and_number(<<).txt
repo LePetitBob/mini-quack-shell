@@ -32,7 +32,7 @@ No matter the number nor the position, the behavior is always the same.
 The here_doc can be placed anywhere, including after a separator : 
 
 -----------------------------------------------------------------------------
-|													  {1}
+|										   {1}
 |	$> cat 4.c > outfile ; << coucou cat outfile      
 |
 |	heredoc> Kenobi
@@ -43,7 +43,7 @@ The here_doc can be placed anywhere, including after a separator :
 -----------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------
-|													  {1}
+|										    {1}
 |	$> cat 4.c > outfile && << coucou cat outfile      
 |
 |	heredoc> Kenobi

@@ -3,33 +3,29 @@ their name without the extension. "1" in  1.c, "2" in 2.c, and so on.
 
 --------------------------------------------------
 |	
-|	$> < 1.c < 2.c cat < 3.c 
-|	
-|	->	1
-|		2
-|		3
-|	
-|--------------------------------------------------
-|	
-|	$> cat 1.c < 2.c < 3.c
+|	$> cat 1.c < 2.c < 3.c 
 |	
 |	->	1
 |	
 |--------------------------------------------------
 |	
-|	$> cat 5.c < 2.c < 6.c 
+|	$> < 1.c < 2.c cat < 3.c
 |	
-|	->	5
+|	->	3
 |	
 |--------------------------------------------------
 |	
-|	$> < 4.c < 2.c cat < 6.c
+|	$> < 5.c cat < 2.c < 6.c 
 |	
-|	->	4
-|		2
-|		6
+|	->	6
+|	
+|--------------------------------------------------
+|	
+|	$> < 4.c < 2.c < 6.c cat
+|	
+|	->	6
 |	
 --------------------------------------------------
 
-If cat is in first position, it only prints the content in the file right after the function call.
-Else, every redirection "appends" in their order of appearance.
+The file used as STDIN is the last that has been redirected, except if cat is the first command,
+then it is the one right after on the right.
