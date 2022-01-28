@@ -1,0 +1,35 @@
+For testing purpose, I created 6 files (1.c, 2.c, ... 6.c) containing
+their name without the extension. "1" in  1.c, "2" in 2.c, and so on.
+
+--------------------------------------------------
+|	
+|	$> < 1.c < 2.c cat < 3.c 
+|	
+|	->	1
+|		2
+|		3
+|	
+|--------------------------------------------------
+|	
+|	$> cat 1.c < 2.c < 3.c
+|	
+|	->	1
+|	
+|--------------------------------------------------
+|	
+|	$> cat 5.c < 2.c < 6.c 
+|	
+|	->	5
+|	
+|--------------------------------------------------
+|	
+|	$> < 4.c < 2.c cat < 6.c
+|	
+|	->	4
+|		2
+|		6
+|	
+--------------------------------------------------
+
+If cat is in first position, it only prints the content in the file right after the function call.
+Else, every redirection "appends" in their order of appearance.

@@ -1,0 +1,54 @@
+In case of Here_doc, the limiter is needed before lauching any function.
+If multiple Here_docs are present, they must be resolved one at a time, in their order
+of appearance :
+
+-----------------------------------------------------------------------------
+|					{1}					{2}			{3}
+|	$> sleep 20 << dodo | sleep 45 << grododo << gigadodo        
+|
+|	pipe heredoc> dodo			{1}
+|	pipe heredoc> gigadodo
+|	pipe heredoc> q
+|	pipe heredoc> w
+|	pipe heredoc> e
+|	pipe heredoc> r
+|	pipe heredoc> grododo		{2}
+|	pipe heredoc> gigadodo		{3}
+|	
+|	*********************************************************
+|	*	  	  											 	*
+|	*		launching sleeps normally, both at the same	 	*
+|	*	 	time, as if there never was any here_doc 	 	*
+|	*	  	  	==> sleep 20 | sleep 45					 	*
+|	*	  	  											 	*
+|	*********************************************************
+|	
+-----------------------------------------------------------------------------
+
+No matter the number nor the position, the behavior is always the same.
+
+
+
+The here_doc can be placed anywhere, including after a separator : 
+
+-----------------------------------------------------------------------------
+|													  {1}
+|	$> cat 4.c > outfile ; << coucou cat outfile      
+|
+|	heredoc> Kenobi
+|	heredoc> coucou			{1}
+|
+|	->	4
+|
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+|													  {1}
+|	$> cat 4.c > outfile && << coucou cat outfile      
+|
+|	heredoc> Kenobi
+|	heredoc> coucou			{1}
+|
+|	->	4
+|
+-----------------------------------------------------------------------------
