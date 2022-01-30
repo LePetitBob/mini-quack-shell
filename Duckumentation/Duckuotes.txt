@@ -1,0 +1,51 @@
+Basically, explained by the examples below, all quotes are considered
+close when they meet the same type of quote. you can add as many as you want,
+and everything between the first quote (simple or double) will be treated as
+a string.
+
+
+|----------------------------------------------------------------
+|
+|		bash-5.0$ echo "'"caca"'"
+|		->	'caca'
+|		
+|		This setup is considered like ( "'"     coucou     "'" ), so echo
+|		closes the quotes as soone as he meets another of the same type
+|
+|----------------------------------------------------------------
+|                      12    21
+|		bash-5.0$ echo "'caca'"
+|		->	'caca'
+|		
+|		Just as the previous example confirmed, the quotes are going 
+|		by pair as soon as another of the same type appears and are not
+|		closed by trimming from both end of the string. 1 to 1 contains 2 to 2
+|
+|----------------------------------------------------------------
+|
+|	 				   1123    3244
+|		bash-5.0$ echo ""'"caca"'""
+|		->	"caca"
+|			3    3
+|
+|		Same here : The simple quotes are the delimiters, so the double
+|		quotes are printed.	11 is pointless, so removed, same as 44, that leaves 22 that contains 33
+|		so 22 is the delimiter of the string and 33 is just printed
+|
+|----------------------------------------------------------------
+|		
+|					   1234    4321
+|		bash-5.0$ echo ""'"caca"'""
+|		->	"caca"
+|
+|----------------------------------------------------------------
+|
+|					   1123    3244
+|		bash-5.0$ echo '''"caca"'''
+|		->	"caca"
+|		
+|		No matterthe type of quote you use first, here again, 11 is closed as soon
+|		as it's opened and 44 did just as well. That leaves 22 and everything that
+|		it contains.
+|		
+|----------------------------------------------------------------
