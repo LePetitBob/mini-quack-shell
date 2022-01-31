@@ -1,4 +1,14 @@
 0_parsing av
+{
+	get ac av env
+	check files given after "<" ">" ">>"
+		open files depending on "<" ">" ">>"
+	separate each cmd into a linked list (each cmd has a struct)
+	use access on all the cmds found
+}
 1_here_doc
+{
+	for each "<<"
+}
 2_redirection
 3_send_Vincent
