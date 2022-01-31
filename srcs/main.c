@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/30 17:27:57 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/01/31 17:02:32 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av, char **envp)
 {
 	char	*term;
 	int		exit_shell;
+	t_env	env;
 
 	(void)av;
 	exit_shell = 1;
@@ -34,25 +35,28 @@ int	main(int ac, char **av, char **envp)
 		write(2, "Usage :\nThe programm requires no argument\ni.e. : $> ./minishell\n", 64);
 		return (0);
 	}
-	while (exit_shell > 0)
+	get_env(envp, &env);
+	while (1)
 	{
 		term = readline("mini-quack-shell$ ");
 		if (term && !strcmp(term, "exit"))
-			exit_shell = 0;
+			ft_exit();
+			// ft_exit(&exit_shell, &env);
 		if (term && !strcmp(term, "pwd"))
 			ft_pwd(envp);
 		if (term && !strcmp(term, "env"))
-			ft_env(envp);
+			ft_env(&env);
 		if (term && !strncmp(term, "cd ", 3))
 			ft_cd(term + 3, envp);
-		if (term && !strncmp(term, "echo -n ", 8))
-			ft_echo(-1, term + 8);
-		else if (term && !strncmp(term, "echo ", 5))
-			ft_echo(1, term + 5);
-		if (term)
-			free(term);
-		else
-			exit_shell = 0;
+		// if (term && !strncmp(term, "echo", 5))
+		// 	ft_echo(term + 5);
+		// if (term && !strncmp(term, "export", 6)))
+		// 	ft_export_disp(&env);
+
+		//TODO	if (check avec access)
+		//TODO		exec
+
+		free(term);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/30 17:18:01 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/01/31 14:00:49 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,54 @@ void	ft_free(char **s)
 		free(s[i]);
 		i++;
 	}
-	free(s[i]);
+	// free(s[i]);
+}
+
+int		ft_strchar(char c, char s)
+{
+	if (c == s)
+		return (1);
+	return (-1);
+}
+
+int		ft_size_w(const char *str, int i, char c)
+{
+	int	j;
+
+	j = 0;
+	while (ft_strchar(str[i], c) && str[i] != '\0')
+	{
+		i++;
+		j++;
+	}
+	return (j);
+}
+
+char	**ft_split(char const *str, char c)
+{
+	char	**splt;
+	int		i;
+	int		j;
+	int		k;
+
+	if (!str)
+		return (NULL);
+	k = 0;
+	i = 0;
+	if (!(splt = malloc(sizeof(char *) * 3)))
+		return (0);
+	while (i < 2 && str[0] != 0)
+	{
+		j = 0;
+		while (ft_strchar(str[k], c) != -1 && str[k] != 0)
+			k++;
+		if (!(splt[i] = malloc(sizeof(char) * (ft_size_w(str, k, c) + 1))))
+			return (0);
+		while (ft_strchar(str[k], c) == -1 && str[k] != 0)
+			splt[i][j++] = str[k++];
+		splt[i][j] = '\0';
+		i++;
+	}
+	splt[i] = 0;
+	return (splt);
 }

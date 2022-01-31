@@ -6,7 +6,7 @@
 #    By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:44:46 by vduriez           #+#    #+#              #
-#    Updated: 2022/01/30 17:27:35 by vduriez          ###   ########.fr        #
+#    Updated: 2022/01/31 15:52:06 by vduriez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRCS =	srcs/main.c					\
 		srcs/echo.c					\
 		srcs/env.c					\
 		srcs/cd.c					\
+		srcs/exit.c					\
+		srcs/create_cl.c			\
 		srcs/ft_utils_tmp.c
 
 OBJ = $(SRCS:.c=.o)
@@ -40,7 +42,7 @@ $(NAME):	$(INCLUDES) $(OBJ)
 fsanitize:	$(FSANITIZE)
 
 $(FSANITIZE):	$(INCLUDES) $(OBJ)
-		$(CC) $(FLAGS) $(FSANITIZE) $(OBJ) -o $(NAME)
+		$(CC) $(FLAGS) $(FSANITIZE) $(OBJ) -o $(NAME) -lreadline
 clean:
 		rm -rf $(OBJ)
 

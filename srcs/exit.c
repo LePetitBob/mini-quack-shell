@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 16:44:30 by vduriez          ###   ########.fr       */
+/*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
+/*   Updated: 2022/01/31 14:14:47 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ducklinclude/mini-quack-shell.h"
 
-void	ft_pwd(void)
+void	ft_clear(t_env *env)
 {
-	char	*path;
+	t_env_var	*tmp;
+	t_env_var	*index;
 
-	path = malloc(255 + 1);
-	path[255] = 0;
-	getcwd(path, 255);
-	printf("%s\n", path);
-	free(path);
+	if (env->first)
+	{
+		index = env->first;
+		while (index)
+		{
+			tmp = index;
+			index = index->next;
+			free(tmp);
+		}
+	}
+}
+
+void	ft_exit(int	*exit_shell, t_env *env)
+{
+	exit_shell = 0;
+	ft_clear(env);
 }

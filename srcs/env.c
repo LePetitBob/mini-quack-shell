@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/30 17:43:23 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/01/31 16:02:10 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,37 @@
 //TODO		After each command that do so (cd changes PWD and OLDPWD, modifying
 //TODO		env variables, ...) --> chained list for env will be needed
 
-void	ft_env(char **envp)
+void	ft_env(t_env *env)
 {
-	int	i;
+	t_env_var	*tmp;
 
-	i = -1;
-	while (envp[++i])
-		printf("%s\n", envp[i]);
+	tmp = env->first;
+	while (tmp)
+	{
+		printf("%s=%s\n", tmp->name, tmp->value);
+		tmp = tmp->next;
+	}
+}
+
+void	get_env(char **envp, t_env *env)
+{
+	int		i;
+	int		j;
+	char	**env_split;
+
+	i = 0;
+	env_split = malloc(sizeof(char *) * 2);
+	env->first = NULL;
+	while (envp[i])
+	{
+		j = 0;
+		while (envp[i][j] != '=')
+			j++;
+		env_split[0] = strndup(envp[i], j);
+		env_split[1] = strdup(envp[i] + j + 1);
+		ft_addlast(env, env_split[0], env_split[1]);
+		free(env_split[0]);
+		free(env_split[1]);
+		i++;
+	}
 }
