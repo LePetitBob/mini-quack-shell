@@ -3,6 +3,11 @@ close when they meet the same type of quote. you can add as many as you want,
 and everything between the first quote (simple or double) will be treated as
 a string.
 
+Simple quotes prevent the string from considering meta characters (echo '$HOME'
+will print $HOME and mot the value of env->HOME)
+The same rules apply to double quotes except for the dollar sign, that will still
+count as an environment variable.
+
 
 |----------------------------------------------------------------
 |
@@ -28,15 +33,10 @@ a string.
 |		->	"caca"
 |			3    3
 |
-|		Same here : The simple quotes are the delimiters, so the double
-|		quotes are printed.	11 is pointless, so removed, same as 44, that leaves 22 that contains 33
-|		so 22 is the delimiter of the string and 33 is just printed
-|
-|----------------------------------------------------------------
-|		
-|					   1234    4321
-|		bash-5.0$ echo ""'"caca"'""
-|		->	"caca"
+|		Same here : 11 is pointless, so removed, same for 44. The simple quotes 22
+|		are the delimiters, so the double quotes are printed.
+|		That leaves 22 that contains 33 so 22, as the delimiter of the string isn't printed
+|		and 33 is part of the text echo will write
 |
 |----------------------------------------------------------------
 |

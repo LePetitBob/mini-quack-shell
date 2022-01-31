@@ -10,3 +10,5 @@ redirect the output to the last file called this way :
 |
 ---------------------------------------------------------------
 
+If there are >> (append), even if they're mixed up with >, only the last
+one will count.
