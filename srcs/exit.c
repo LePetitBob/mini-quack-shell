@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 14:14:47 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/01/31 18:55:03 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void	ft_clear(t_env *env)
 	}
 }
 
-void	ft_exit(int	*exit_shell, t_env *env)
+void	ft_exit(t_env *env, char *err)
 {
-	exit_shell = 0;
 	ft_clear(env);
+	rl_clear_history();
+	exit(ft_atoi(err));
 }

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 17:02:32 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/01/31 18:53:19 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ int	main(int ac, char **av, char **envp)
 	while (1)
 	{
 		term = readline("mini-quack-shell$ ");
+		add_history(term);
+		// rl_clear_history();
+		//TODO move rl_clear_history to ft_exit
 		if (term && !strcmp(term, "exit"))
-			ft_exit();
-			// ft_exit(&exit_shell, &env);
+			ft_exit(term + 5);
+		if (term && !strcmp(term, "exit"))
+			ft_exit(term + 5);
 		if (term && !strcmp(term, "pwd"))
 			ft_pwd(envp);
 		if (term && !strcmp(term, "env"))
@@ -55,7 +59,6 @@ int	main(int ac, char **av, char **envp)
 
 		//TODO	if (check avec access)
 		//TODO		exec
-
 		free(term);
 	}
 	return (0);
