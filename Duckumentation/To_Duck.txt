@@ -1,0 +1,12 @@
+Vincent :
+
+
+------------------------
+
+Albe :
+
+KO-Finish doc of pre-thinking
+KO-Start main with parsing
+KO-add resolution to main
+KO-add here_doc to main
+KO-add redirection to main
