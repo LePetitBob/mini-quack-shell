@@ -6,7 +6,7 @@
 #    By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:44:46 by vduriez           #+#    #+#              #
-#    Updated: 2022/01/31 15:52:06 by vduriez          ###   ########.fr        #
+#    Updated: 2022/02/01 15:05:46 by vduriez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,11 @@ INCLUDES = ducklinclude/mini-quack-shell.h
 FSANITIZE = -fsanitize=address -fsanitize=undefined -g3
 
 SRCS =	srcs/main.c					\
-		srcs/pwd.c					\
-		srcs/echo.c					\
-		srcs/env.c					\
-		srcs/cd.c					\
-		srcs/exit.c					\
+		srcs/builtins/pwd.c			\
+		srcs/builtins/echo.c		\
+		srcs/builtins/env.c			\
+		srcs/builtins/cd.c			\
+		srcs/builtins/exit.c		\
 		srcs/create_cl.c			\
 		srcs/ft_utils_tmp.c
 
