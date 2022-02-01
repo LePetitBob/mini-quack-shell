@@ -8,7 +8,7 @@
 }
 1_resolution
 {
-	if no space, fuse
+	if no space in "'$ -> fuse
 	for each ' "
 		find the next one
 	for $(PATH)
@@ -29,5 +29,14 @@
 2_redirection
 {
 	"<" && ">" ">>"
+	for each "<" open file with "O_RDONLY"
+		add fd[0] = file
+	for each ">" open file with "O_WRONLY | O_TRUNC"
+		add fd[1] = file
+	for each ">>" open files with "O_WRONLY | O_APPEND"
+		add fd[1] = file
 }
 3_send_Vincent
+{
+	send pointer to first element of the list
+}

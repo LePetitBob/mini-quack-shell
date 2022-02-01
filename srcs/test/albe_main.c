@@ -5,12 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2022/02/01 17:19:05 by amarini-          #+#    #+#             */
 /*   Updated: 2022/02/01 18:49:55 by amarini-         ###   ########.fr       */
+=======
+/*   Created: 2022/02/01 15:54:38 by amarini-          #+#    #+#             */
+/*   Updated: 2022/02/01 17:15:29 by amarini-         ###   ########.fr       */
+>>>>>>> dbd86f1b035a441e5cfd8e0cd02f4f60693f6a56
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -75,10 +81,41 @@ int	main_manager(char *str, char *env[])
 	}
 	ft_print_tab(args);
 	return (EXIT_SUCCESS);
+=======
+#include <stdio.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+int	error(void)
+{
+	write(STDERR_FILENO, "error :D\n", 9);
+	return (EXIT_FAILURE);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (1);
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (1);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (1);
+	return (0);
+>>>>>>> dbd86f1b035a441e5cfd8e0cd02f4f60693f6a56
 }
 
 int	main(int ac, char **av, char *env[])
 {
+<<<<<<< HEAD
 	char	*str;
 
 	(void)ac;
@@ -92,3 +129,31 @@ int	main(int ac, char **av, char *env[])
 	}
 	return (EXIT_SUCCESS);
 }
+=======
+	char	*args;
+
+	while (1)
+	{
+		args = readline("mini-quack-shell$ ");
+		if (ft_strcmp(args, "exit") == 0)
+			return (EXIT_SUCCESS);
+		
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	main_manager(char *str, char *env[])
+{
+	int		i;
+	char	**args;
+
+	i = 0;
+	args = ft_split()
+	//parsing
+	//resolution
+	//here_doc
+	//redirection
+	//send
+	return (EXIT_SUCCESS);
+}
+>>>>>>> dbd86f1b035a441e5cfd8e0cd02f4f60693f6a56
