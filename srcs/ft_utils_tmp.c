@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 14:00:49 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:18:12 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	ft_free(char **s)
 		free(s[i]);
 		i++;
 	}
-	// free(s[i]);
 }
 
 int		ft_strchar(char c, char s)
@@ -115,4 +114,20 @@ char	**ft_split(char const *str, char c)
 	}
 	splt[i] = 0;
 	return (splt);
+}
+
+int	is_num(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] < 48 || (s[i] > 57 && s[i] < 65) ||
+					(s[i] > 90 && s[i] < 97) ||
+					s[i] > 122)
+			return (0);
+		i++;
+	}
+	return (1);
 }

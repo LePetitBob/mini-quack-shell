@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini-quack-shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 14:12:14 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:21:47 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_cd(char *newpath, char **envp);
 void	ft_echo(char **s);
 void	ft_env(t_env *env);
 void	get_env(char **envp, t_env *env);
-void	ft_exit(int	*exit_shell, t_env *env);
+void	ft_exit(char *err, t_env *env);
 //?			Builtins
 
 //			CL
@@ -51,6 +51,7 @@ void		ft_rmlast(t_env *env);
 //			CL
 
 void	ft_free(char **s);
+int		is_num(char *s);
 
 
 //!				TO REMOVE WHEN LIBFT IMPLANTED
