@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 14:14:47 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:02:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "../../ducklinclude/mini-quack-shell.h"
 
 void	ft_clear(t_env *env)
 {
@@ -29,8 +29,19 @@ void	ft_clear(t_env *env)
 	}
 }
 
-void	ft_exit(int	*exit_shell, t_env *env)
+void	ft_exit(char *err, t_env *env)
 {
-	exit_shell = 0;
+	int	errno;
+
+	rl_clear_history();
 	ft_clear(env);
+	errno = 1;
+	if (is_num(err))
+		errno = ft_atoi(err);
+	else
+	{
+		write(2, "mini-quack-shell: exit: one numeric argument required\n", 54);
+		exit(1);
+	}
+	exit(errno);
 }

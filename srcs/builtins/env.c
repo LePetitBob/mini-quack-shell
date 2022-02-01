@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 16:02:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:02:52 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "../../ducklinclude/mini-quack-shell.h"
 
 //TODO		Env doesnt update itself, we have to adjust it manually.
 //TODO		After each command that do so (cd changes PWD and OLDPWD, modifying

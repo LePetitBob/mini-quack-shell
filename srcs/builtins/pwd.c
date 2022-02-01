@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/30 17:21:47 by vduriez          ###   ########.fr       */
+/*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
+/*   Updated: 2022/02/01 15:03:35 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "../../ducklinclude/mini-quack-shell.h"
 
-void	ft_cd(char *path, char **envp)
+void	ft_pwd(void)
 {
-	chdir(path);
+	char	*path;
+
+	path = malloc(255 + 1);
+	path[255] = 0;
+	getcwd(path, 255);
+	printf("%s\n", path);
+	free(path);
 }
