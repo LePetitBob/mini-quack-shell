@@ -1,0 +1,3 @@
+[submodule "libft_duck"]
+	path = libft_duck
+	url = git@github.com:Bee-Have/libft_duck.git
