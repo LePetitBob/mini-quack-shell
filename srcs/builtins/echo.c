@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 15:02:46 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:12:38 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_echo(char **s)
 	int	nl;
 
 	nl = 1;
-	if (!strncmp("-n", s[1], 2))
+	if (s[1] && !strncmp("-n", s[1], 2))
 	{
 		i = 2;
 		while (s[1][i] == 'n')
@@ -26,11 +26,13 @@ void	ft_echo(char **s)
 		if (!s[1][i])
 			nl = 0;
 	}
-	i = 2;
-	if (nl == 1)
-		i--;
+	i = 1;
+	if (nl == 0)
+		i++;
 	while (s[i])
 	{
+		if ((nl == 0 && i != 2) || (nl == 1 &&i != 1))
+			printf(" ");
 		printf("%s", s[i]);
 		i++;
 	}

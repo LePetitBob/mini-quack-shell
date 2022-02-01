@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 15:02:57 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:16:56 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,28 @@ void	ft_clear(t_env *env)
 	}
 }
 
-void	ft_exit(char *err, t_env *env)
+void	ft_exit(char **err, t_env *env)
 {
 	int	errno;
+	int	i;
 
 	rl_clear_history();
 	ft_clear(env);
-	errno = 1;
-	if (is_num(err))
-		errno = ft_atoi(err);
-	else
+	errno = EXIT_SUCCESS;
+	i = 0;
+	if (err[1] && is_num(err[1]))
+		errno = ft_atoi(err[1]);
+	else if (err[1])
 	{
-		write(2, "mini-quack-shell: exit: one numeric argument required\n", 54);
-		exit(1);
+		write(2, "mini-quack-shell: exit: numeric argument required\n", 50);
+		exit(2);
+	}
+	while (err[i])
+		i++;
+	if (i >= 2)
+	{
+		write(2, "too many arguments\n", 19);
+		exit(EXIT_FAILURE);
 	}
 	exit(errno);
 }

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 14:46:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:23:07 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_cd(char *newpath, char **envp);
 void	ft_echo(char **s);
 void	ft_env(t_env *env);
 void	get_env(char **envp, t_env *env);
-void	ft_exit(char *err, t_env *env);
+void	ft_exit(char **err, t_env *env);
 //?			Builtins
 
 //			CL
@@ -51,6 +51,7 @@ void		ft_rmfirst(t_env *env);
 void		ft_rmlast(t_env *env);
 //			CL
 
+void	ft_exec(char **cmd, char **envp);
 void	ft_free(char **s);
 int		is_num(char *s);
 
@@ -60,6 +61,8 @@ int		ft_strlen(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 char	**ft_split(char const *str, char c);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_atoi(const char *str);
 //!				TO REMOVE WHEN LIBFT IMPLANTED
 
 #endif

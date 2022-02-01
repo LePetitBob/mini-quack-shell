@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 19:51:38 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:23:01 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,32 @@ int		ft_size_w(const char *str, int i, char c)
 	return (j);
 }
 
+int		ft_count_word(const char *str, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] != 0)
+	{
+		if (ft_strchar(str[i], c) != -1)
+			i++;
+		else
+		{
+			count++;
+			while (ft_strchar(str[i], c) == -1 && str[i] != 0)
+			{
+				i++;
+			}
+		}
+	}
+	return (count);
+}
+
 char	**ft_split(char const *str, char c)
 {
-	char	**splt;
+	char	**splited;
 	int		i;
 	int		j;
 	int		k;
@@ -98,22 +121,22 @@ char	**ft_split(char const *str, char c)
 		return (NULL);
 	k = 0;
 	i = 0;
-	if (!(splt = malloc(sizeof(char *) * 3)))
+	if (!(splited = malloc(sizeof(char *) * (ft_count_word(str, c) + 1))))
 		return (0);
-	while (i < 2 && str[0] != 0)
+	while (i < ft_count_word(str, c) && str[0] != 0)
 	{
 		j = 0;
 		while (ft_strchar(str[k], c) != -1 && str[k] != 0)
 			k++;
-		if (!(splt[i] = malloc(sizeof(char) * (ft_size_w(str, k, c) + 1))))
+		if (!(splited[i] = malloc(sizeof(char) * (ft_size_w(str, k, c) + 1))))
 			return (0);
 		while (ft_strchar(str[k], c) == -1 && str[k] != 0)
-			splt[i][j++] = str[k++];
-		splt[i][j] = '\0';
+			splited[i][j++] = str[k++];
+		splited[i][j] = '\0';
 		i++;
 	}
-	splt[i] = 0;
-	return (splt);
+	splited[i] = 0;
+	return (splited);
 }
 
 int	is_num(char *s)
@@ -130,4 +153,58 @@ int	is_num(char *s)
 		i++;
 	}
 	return (1);
+}
+
+int	ft_atoi(const char *str)
+{
+	int i;
+	int signe;
+	int somme;
+
+	i = 0;
+	signe = 1;
+	somme = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
+			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
+	{
+		i++;
+		signe = -1;
+	}
+	while (str[i] > 47 && str[i] < 58)
+	{
+		somme = 10 * somme + (str[i] - 48);
+		i++;
+	}
+	return (somme * signe);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*s3;
+	int		i;
+	int		j;
+
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	if (!(s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (NULL);
+	while (s1[i])
+	{
+		s3[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		s3[i] = s2[j];
+		i++;
+		j++;
+	}
+	s3[i] = 0;
+	return (s3);
 }
