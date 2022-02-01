@@ -1,11 +1,16 @@
 Change this into what i need to send you
 
-typedef_struct s_cmds
+typedef_struct s_cmd_var
 {
-	char	*cmd;
-	char	**flags;
+	char	**cmd;
+		// cmd[0] = cmd
+		// cmd[ect] = flags ect
 
-	int		infile;
-	int		outfile;
-	struct s_cmds	*next;
-}
+	int			fd[2];
+	t_cmd_var	*next;
+}			t_cmd_var;
+
+typedef struct s_cmds
+{
+	t_cmds	*first;
+}			t_cmds;
