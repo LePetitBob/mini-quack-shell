@@ -6,6 +6,14 @@
 	separate each cmd into a linked list (each cmd has a struct)
 	use access on all the cmds found
 }
+1_resolution
+{
+	if no space, fuse
+	for each ' "
+		find the next one
+	for $(PATH)
+		get path in env (just like cmd)
+}
 1_here_doc
 {
 	for each "<<"
@@ -15,9 +23,11 @@
 			++i
 		if i = max
 			return (char **) with everything from stdin
+	for each "<<" pipe(pipehd[2])
+	put 
 }
 2_redirection
 {
-	
+	"<" && ">" ">>"
 }
 3_send_Vincent

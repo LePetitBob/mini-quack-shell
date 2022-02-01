@@ -1,0 +1,10 @@
+
+typedef_struct s_cmds
+{
+	char	*cmd;
+	char	**flags;
+
+	int		infile;
+	int		outfile;
+	struct s_cmds	*next;
+}
