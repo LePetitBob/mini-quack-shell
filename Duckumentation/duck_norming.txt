@@ -1,0 +1,16 @@
+
+	Directories = snake_sase
+	srcs_files = snake_case
+	srcs_headers = snake_case
+
+	functions = snake_case
+	variables = snake_case
+
+	defines = UPPERCASE
+	errno = ERNO_UPPERCASE
+
+	struct = snake_case
+	typedef = snake_case
+
+	git branches = camelCase
+	git commits msg = gitmoji -commit msg
