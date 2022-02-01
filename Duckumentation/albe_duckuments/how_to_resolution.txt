@@ -1,0 +1,28 @@
+if find " || '
+
+find one '
+if after that there is another '
+	delete the first two you find
+
+int i;
+int j;
+while (str[i] != '\0')
+{
+	j = 0;
+	if (str[i] == '\'')
+	{
+		j = i + 1;
+		while(str[j] != '\0')
+		{
+			if (str[j] == '\'')
+			{
+				erase str[i];
+				erase str[j];
+				--i;
+				break;
+			}
+			++j;
+		}
+	}
+	++i;
+}
