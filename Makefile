@@ -6,7 +6,7 @@
 #    By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:44:46 by vduriez           #+#    #+#              #
-#    Updated: 2022/02/01 17:23:37 by vduriez          ###   ########.fr        #
+#    Updated: 2022/02/01 21:26:59 by vduriez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,11 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = minishell
 
+NAME_FSAN = minishell_fsanitize
+
 INCLUDES = ducklinclude/mini-quack-shell.h
 
-FSANITIZE = -fsanitize=address -fsanitize=undefined -g3
+FSANITIZE = -fsanitize=address -fsanitize=address -g3
 
 SRCS =	srcs/main.c					\
 		srcs/builtins/pwd.c			\
@@ -40,15 +42,15 @@ all:		$(NAME)
 $(NAME):	$(INCLUDES) $(OBJ)
 		$(CC) $(FLAGS) $(OBJ) -o $(NAME) -lreadline
 
-fsanitize:	$(FSANITIZE)
+fsan:	$(NAME_FSAN)
 
-$(FSANITIZE):	$(INCLUDES) $(OBJ)
-		$(CC) $(FLAGS) $(FSANITIZE) $(OBJ) -o $(NAME) -lreadline
+$(NAME_FSAN):	$(INCLUDES) $(OBJ)
+		$(CC) $(FLAGS) $(FSANITIZE) $(OBJ) -o $(NAME_FSAN) -lreadline
 clean:
 		rm -rf $(OBJ)
 
 fclean: clean
-		rm -rf $(NAME)
+		rm -rf $(NAME) $(NAME_FSAN)
 
 re: fclean all
 

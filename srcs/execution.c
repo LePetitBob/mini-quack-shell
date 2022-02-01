@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 17:32:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 18:28:58 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void	ft_exec(char **cmd, char **envp)
 	}
 	printf("%s: command not found\n", cmd[0]);
 	ft_free(tmp_paths);
+	exit(EXIT_FAILURE);
 }

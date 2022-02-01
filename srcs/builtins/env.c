@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 15:02:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 18:47:44 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void	get_env(char **envp, t_env *env)
 		free(env_split[1]);
 		i++;
 	}
+	free(env_split);
 }

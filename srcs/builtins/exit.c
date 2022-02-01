@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 17:16:56 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 18:58:14 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_clear(t_env *env)
 		{
 			tmp = index;
 			index = index->next;
+			free(tmp->name);
+			free(tmp->value);
 			free(tmp);
 		}
 	}
@@ -43,6 +45,7 @@ void	ft_exit(char **err, t_env *env)
 	else if (err[1])
 	{
 		write(2, "mini-quack-shell: exit: numeric argument required\n", 50);
+		ft_free(err);
 		exit(2);
 	}
 	while (err[i])
@@ -50,7 +53,9 @@ void	ft_exit(char **err, t_env *env)
 	if (i >= 2)
 	{
 		write(2, "too many arguments\n", 19);
+		ft_free(err);
 		exit(EXIT_FAILURE);
 	}
+	ft_free(err);
 	exit(errno);
 }

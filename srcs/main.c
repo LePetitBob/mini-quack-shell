@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 17:28:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/01 21:25:10 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av, char **envp)
 	char	*term;
 	char	**cmd;
 	int		exit_shell;
+	pid_t	pid;
 	t_env	env;
 
 	(void)av;
@@ -41,25 +42,37 @@ int	main(int ac, char **av, char **envp)
 	{
 		term = readline("mini-quack-shell$ ");
 		add_history(term);
-		cmd = ft_split(term, ' ');
-		if (term && !strcmp(cmd[0], "exit"))
+		if(!term)
 		{
-			ft_exit(cmd, &env);
+			ft_clear(&env);
+			exit(0);
+		}
+		if (term[0] != '\0')
+		{
+			cmd = ft_split(term, ' ');
+			if (!strcmp(cmd[0], "exit"))
+				ft_exit(cmd, &env);
+			pid = fork();
+			if (!pid)
+			{
+				if (env.first)
+					ft_clear(&env);
+				if (!strcmp(cmd[0], "pwd"))
+					ft_pwd(cmd);
+				// else if (term && !strcmp(cmd[0], "env"))
+				// 	ft_env(&env);
+				else if (!strncmp(cmd[0], "echo", 5))
+					ft_echo(cmd);
+				// else if (term && !strncmp(cmd[0], "export", 6)))
+				// 	ft_export_disp(&env);
+				else if (strncmp(cmd[0], "cd", 2))
+					ft_exec(cmd, envp);
+			}
+			waitpid(pid, NULL, 0);
+			if (!strncmp(cmd[0], "cd", 2))
+				ft_cd(cmd, envp);
 			ft_free(cmd);
 		}
-		else if (term && !strcmp(cmd[0], "pwd"))
-			ft_pwd();
-		// if (term && !strcmp(term, "env"))
-		// 	ft_env(&env);
-		else if (term && !strncmp(cmd[0], "cd ", 3))
-			ft_cd(term + 3, envp);
-		else if (term && !strncmp(cmd[0], "echo", 5))
-			ft_echo(cmd);
-		// if (term && !strncmp(term, "export", 6)))
-		// 	ft_export_disp(&env);
-		else if (term)
-			ft_exec(cmd, envp);
-		ft_free(cmd);
 		free(term);
 	}
 	return (0);
