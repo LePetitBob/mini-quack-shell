@@ -9,6 +9,15 @@
 1_here_doc
 {
 	for each "<<"
+		add "limiter" to (char **)
+		read from stdin
+		each time you find limiter[i]
+			++i
+		if i = max
+			return (char **) with everything from stdin
 }
 2_redirection
+{
+	
+}
 3_send_Vincent
