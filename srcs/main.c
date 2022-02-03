@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 21:25:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/03 18:27:27 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,10 @@ int	main(int ac, char **av, char **envp)
 	t_env	env;
 
 	(void)av;
+	(void)ac;
 	exit_shell = 1;
-	if (ac != 1)
-	{
-		write(2, "Usage :\nThe programm requires no argument\ni.e. : $> ./minishell\n", 64);
-		return (0);
-	}
 	get_env(envp, &env);
+	//TODO 			if (!env) -> create PWD=le pwd, _=usr/bin/env, SHLVL=1
 	while (1)
 	{
 		term = readline("mini-quack-shell$ ");
@@ -50,30 +47,40 @@ int	main(int ac, char **av, char **envp)
 		if (term[0] != '\0')
 		{
 			cmd = ft_split(term, ' ');
+			free(term);
 			if (!strcmp(cmd[0], "exit"))
 				ft_exit(cmd, &env);
-			pid = fork();
-			if (!pid)
+			else
 			{
-				if (env.first)
-					ft_clear(&env);
 				if (!strcmp(cmd[0], "pwd"))
 					ft_pwd(cmd);
-				// else if (term && !strcmp(cmd[0], "env"))
-				// 	ft_env(&env);
-				else if (!strncmp(cmd[0], "echo", 5))
+				else if (term && !strcmp(cmd[0], "env"))
+					ft_env(&env);
+				else if (!strcmp(cmd[0], "echo"))
 					ft_echo(cmd);
-				// else if (term && !strncmp(cmd[0], "export", 6)))
-				// 	ft_export_disp(&env);
-				else if (strncmp(cmd[0], "cd", 2))
-					ft_exec(cmd, envp);
+				else if (term && !strcmp(cmd[0], "export"))
+					ft_export(&env, cmd);
+				else if (term && !strcmp(cmd[0], "unset"))
+					ft_unset(&env, cmd);
+				else if (!strcmp(cmd[1], "cd"))
+					ft_cd(cmd, envp);
+				else
+				{
+					pid = fork();
+					if (!pid)
+					{
+						if (env.first)
+							ft_clear(&env);
+						//TODO if (not_builtin) --> exec
+						ft_exec(cmd, envp);
+					}
+					waitpid(pid, NULL, 0);
+				}
 			}
-			waitpid(pid, NULL, 0);
-			if (!strncmp(cmd[0], "cd", 2))
-				ft_cd(cmd, envp);
 			ft_free(cmd);
 		}
-		free(term);
+		else
+			free(term);
 	}
 	return (0);
 }

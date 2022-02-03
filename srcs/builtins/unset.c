@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/02 17:09:13 by vduriez          ###   ########.fr       */
+/*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
+/*   Updated: 2022/02/03 18:25:20 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ducklinclude/mini-quack-shell.h"
 
-void	ft_pwd(char **cmd)
+void	ft_unset(t_env *env, char **name)
 {
-	char	*path;
+	t_env_var	*tmp;
+	int			i;
+	int			j;
+	int			k;
+	char		*var;
 
-	// path = malloc(255 + 1);
-	// path[255] = 0;
-	// getcwd(path, 255);
-	path = getcwd(NULL, 0);
-	printf("%s\n", path);
-	free(path);
+	i = 0;
+	while (name[i])
+	{
+		if (format_ok(name[i]))
+		{
+			if (existing_name(env, name[i]))
+				ft_rmvar(env, var);
+		}
+		i++;
+	}
 }

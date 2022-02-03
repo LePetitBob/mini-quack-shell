@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 17:23:01 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/03 13:47:43 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,27 @@ char	*ft_strdup(const char *s1)
 	return (res);
 }
 
+char	*ft_strndup(const char *s1, size_t n)
+{
+	int		i;
+	int		j;
+	char	*res;
+
+	i = 0;
+	j = 0;
+	while (s1[i] && i < n)
+		i++;
+	if (!(res = malloc(sizeof(char) * i + 1)))
+		return (NULL);
+	while (j < i)
+	{
+		res[j] = s1[j];
+		j++;
+	}
+	res[j] = '\0';
+	return (res);
+}
+
 void	ft_free(char **s)
 {
 	int	i;
@@ -65,6 +86,7 @@ void	ft_free(char **s)
 		free(s[i]);
 		i++;
 	}
+	free(s[i]);
 }
 
 int		ft_strchar(char c, char s)
@@ -146,9 +168,7 @@ int	is_num(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] < 48 || (s[i] > 57 && s[i] < 65) ||
-					(s[i] > 90 && s[i] < 97) ||
-					s[i] > 122)
+		if (s[i] < 48 || s[i] > 57)
 			return (0);
 		i++;
 	}

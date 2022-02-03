@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 18:54:45 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:09:18 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,4 @@ void	ft_echo(char **s)
 	}
 	if (nl ==1)
 		printf("\n");
-	ft_free(s);
-	exit(EXIT_SUCCESS);
 }
