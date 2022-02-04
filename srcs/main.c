@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/03 18:27:27 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/04 17:35:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int	main(int ac, char **av, char **envp)
 			{
 				if (!strcmp(cmd[0], "pwd"))
 					ft_pwd(cmd);
-				else if (term && !strcmp(cmd[0], "env"))
+				else if (!strcmp(cmd[0], "env"))
 					ft_env(&env);
 				else if (!strcmp(cmd[0], "echo"))
 					ft_echo(cmd);
-				else if (term && !strcmp(cmd[0], "export"))
+				else if (!strcmp(cmd[0], "export"))
 					ft_export(&env, cmd);
-				else if (term && !strcmp(cmd[0], "unset"))
+				else if (!strcmp(cmd[0], "unset"))
 					ft_unset(&env, cmd);
-				else if (!strcmp(cmd[1], "cd"))
+				else if (!strcmp(cmd[0], "cd"))
 					ft_cd(cmd, envp);
 				else
 				{
