@@ -49,3 +49,20 @@ count as an environment variable.
 |		it contains.
 |		
 |----------------------------------------------------------------
+|
+|		bash-5.0$ echo "ech""o" lol
+|		->	lol
+|		
+|		(same behavior with '')
+|		if the quotes are beside each other (NO SPACE) then the system will fuse them
+|		into one string : "ech""w" -> "echw"
+|		if the command exists, it will execute it
+|		
+|----------------------------------------------------------------
+|
+|		bash-5.0$ echo "ech" "o" lol
+|		->	error ect...
+|		
+|		if the quote have a space in between, the two strings will not fuse.
+|		
+|----------------------------------------------------------------
