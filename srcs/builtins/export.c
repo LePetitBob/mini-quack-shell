@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/04 16:26:19 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/07 17:13:33 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	existing_name(t_env *env, char *name)
 	tmp = env->first;
 	while (tmp)
 	{
-		if (!strcmp(tmp->name, name))
+		if (!ft_strcmp(tmp->name, name))
 			return (1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-int	format_export_ok(char *var)
+int	format_export_ok(char *var, int *err)
 {
 	int		i;
 	int		j;
@@ -49,6 +49,7 @@ int	format_export_ok(char *var)
 		write(2, name, ft_strlen(name));
 		write(2, "`: not a valid identifier\n", 26);
 		free(name);
+		*err = 1;
 		return (0);
 	}
 	return (1);
@@ -59,7 +60,7 @@ void	replace_var(t_env *env, char *name, char *value)
 	t_env_var	*tmp;
 
 	tmp = env->first;
-	while (strcmp(tmp->name, name))
+	while (ft_strcmp(tmp->name, name))
 		tmp = tmp->next;
 	free(tmp->value);
 	if (value)
@@ -75,7 +76,7 @@ void	add_env_var(t_env *env, char **var)
 		replace_var(env, var[0], var[1]);
 		return ;
 	}
-	if (strcmp(var[1], ""))
+	if (ft_strcmp(var[1], ""))
 		ft_addlast(env, var[0], var[1]);
 	else
 		ft_addlast(env, var[0], "");
@@ -83,57 +84,31 @@ void	add_env_var(t_env *env, char **var)
 
 void	ft_export(t_env *env, char **cmd)
 {
-	int		i;
-	int		j;
+	int		i[3];
 	char	*var[2];
 
-	i = 0;
-	while (cmd[i])
+	i[0] = 0;		 //TODO 		norm function to init i ?
+	i[2] = 0;		 //TODO 		 (actually 26 lines)
+	while (cmd[i[0]])
 	{
-		if (format_export_ok(cmd[i]))
+		if (format_export_ok(cmd[i[0]], &i[2]))
 		{
-			j = 0;
-			while (cmd[i][j] && cmd[i][j] != '=')
-				j++;
-			if (cmd[i][j] && cmd[i][j] == '=')
+			i[1] = 0;
+			while (cmd[i[0]][i[1]] && cmd[i[0]][i[1]] != '=')
+				i[1]++;
+			if (cmd[i[0]][i[1]] && cmd[i[0]][i[1]] == '=')
 			{
-				var[0] = ft_strndup(cmd[i], j);
-				if (!cmd[i][j + 1])
+				var[0] = ft_strndup(cmd[i[0]], i[1]);
+				if (!cmd[i[0]][i[1] + 1])
 					var[1] = ft_strdup("");
 				else
-					var[1] = ft_strdup(cmd[i] + j + 1);
+					var[1] = ft_strdup(cmd[i[0]] + i[1] + 1);
 				add_env_var(env, var);
 				free(var[0]);
 				free(var[1]);
 			}
 		}
-		i++;
+		i[0]++;
 	}
-	// int		i;
-	// int		j;
-	// int		k;
-
-	// i = 1;
-	// while (cmd[i])
-	// {
-	// 	j = 0;
-	// 	k = 0;
-	// 	while (cmd[i][k] != '=' && cmd[i][k])
-	// 		k++;
-	// 	while ((cmd[i][j] && ((cmd[i][j] > 64 && ((cmd[i][j] < 91)
-	// 		|| (cmd[i][j] > 96 && cmd[i][j] < 123) || (cmd[i][j] > 46
-	// 		&& cmd[i][j] < 58))) || cmd[i][j] == '_')) && i < k)
-	// 		j++;
-	// 	if (cmd[i][j] && cmd[i][j] != '=')
-	// 	{
-	// 		write(2, "mini-quack-shell: '", 19);
-	// 		write(2, strncpy(cmd[i]), ft_strlen(cmd[i]));
-	// 		write(2, "': not a valid identifier\n", 26);
-	// 	}
-	// 	else if (format_ok(cmd[i]))
-	// 	{
-	// 		add_env_var(env, cmd[i]);
-	// 	}
-	// 	i++;
-	// }
+	//! g_exit_status (i[2]);
 }

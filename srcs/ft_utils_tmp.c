@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/03 13:47:43 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/07 16:37:07 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,4 +227,22 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	s3[i] = 0;
 	return (s3);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (1);
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (1);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (1);
+	return (0);
 }

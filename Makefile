@@ -6,7 +6,7 @@
 #    By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:44:46 by vduriez           #+#    #+#              #
-#    Updated: 2022/02/03 18:25:32 by vduriez          ###   ########.fr        #
+#    Updated: 2022/02/07 17:11:38 by vduriez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS =	srcs/main.c					\
 		srcs/builtins/exit.c		\
 		srcs/builtins/export.c		\
 		srcs/builtins/unset.c		\
+		srcs/ft_builtins.c			\
 		srcs/create_cl.c			\
 		srcs/execution.c			\
 		srcs/ft_utils_tmp.c

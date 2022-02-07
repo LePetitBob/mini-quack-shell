@@ -6,11 +6,20 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/02 18:42:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/07 17:14:29 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ducklinclude/mini-quack-shell.h"
+
+int	is_builtin(char *cmd)
+{
+	if (!ft_strcmp(cmd, "cd") || !ft_strcmp(cmd, "pwd")
+		|| !ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset")
+		|| !ft_strcmp(cmd, "exit") || !ft_strcmp(cmd, "env"))
+		return (1);
+	return (0);
+}
 
 void	ft_exec(char **cmd, char **envp)
 {

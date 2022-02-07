@@ -6,13 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/04 16:27:39 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/04 18:43:29 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ducklinclude/mini-quack-shell.h"
 
-int	format_unset_ok(char *var)
+int	format_unset_ok(char *var, int *err)
 {
 	int		i;
 	int		j;
@@ -31,6 +31,7 @@ int	format_unset_ok(char *var)
 		write(2, "mini-quack-shell: `", 19);
 		write(2, var, ft_strlen(var));
 		write(2, "`: not a valid identifier\n", 26);
+		*err = 1;
 		return (0);
 	}
 	return (1);
@@ -40,16 +41,18 @@ void	ft_unset(t_env *env, char **name)
 {
 	int			i;
 	int			j;
+	int			err;
 	char		*var;
 
 	i = 1;
+	err = 0;
 	while (name[i])
 	{
 		j = 0;
 		while (name[i][j] && name[i][j] != '=')
 			j++;
 		var = ft_strndup(name[i], j);
-		if (format_unset_ok(var))
+		if (format_unset_ok(var, &err))
 		{
 			if (existing_name(env, var))
 				ft_rmvar(env, var);
@@ -57,4 +60,5 @@ void	ft_unset(t_env *env, char **name)
 		free(var);
 		i++;
 	}
+	//! return (err);
 }
