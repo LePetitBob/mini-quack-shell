@@ -1,16 +1,44 @@
 Change this into what i need to send you
 
-typedef_struct s_cmd_var
+OLD :
 {
-	char	**cmd;
-		// cmd[0] = cmd
-		// cmd[ect] = flags ect
+	typedef_struct s_cmd_var
+	{
+		char	**cmd = NULL;
+			// cmd[0] = cmd
+			// cmd[ect] = flags ect
 
-	int			fd[2];
-	t_cmd_var	*next;
-}			t_cmd_var;
+		char		*infile = NULL;
+		char		*outfile = NULL;
+		t_cmd_var	*next = NULL;
+	}			t_cmd_var;
 
-typedef struct s_cmds
+	typedef struct s_cmds
+	{
+		t_cmds	*first;
+	}			t_cmds;
+}
+
+NEW :
 {
-	t_cmds	*first;
-}			t_cmds;
+	typedef struct	s_token
+	{
+		char	*str;
+		int		type;
+
+		t_token	*next;
+		t_token	*prev;
+	}			t_token;
+
+	typedef struct	s_cmd
+	{
+		t_token	*arg;
+		t_token	*redir;
+
+		int		fd_in;
+		int		fd_out;
+
+		t_cmd	*next;
+		t_cmd	*prev;
+	}			t_cmd;
+}
