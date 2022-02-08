@@ -36,6 +36,7 @@
 			set type to LIMITER
 		else (str[i] == word) [command]
 			set type to WORD
+		//add access to check if FD
 	}
 	check if all token exist
 }
