@@ -1,67 +1,89 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/01/29 15:44:46 by vduriez           #+#    #+#              #
-#    Updated: 2022/02/08 11:35:00 by vduriez          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
+NAME = minishell
+ALBE = a_minishell
+VINC = v_minishell
 
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-FLAGS = -Wall -Wextra -Werror
+DEBUG =
+ifdef DEBUG
+CFLAGS += -fsanitize=address -fsanitize=address -g3
+endif
 
-NAME = minishell
+SRCS_DIR = $(shell dinf srcs -type d)
+OBJS_DIR = objs
+INC_DIR = ./ducklinclude/
+LIBFT_DIR = ./libft_duck
 
-NAME_FSAN = minishell_fsanitize
+LIBS = -L$(LIBFT_DIR) -lft -lreadline
+INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
-INCLUDES = ducklinclude/mini-quack-shell.h
+vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
-FSANITIZE = -fsanitize=address -fsanitize=address -g3
-
-SRCS =	srcs/main_Xec.c					\
-		srcs/builtins/pwd.c			\
-		srcs/builtins/echo.c		\
-		srcs/builtins/env.c			\
-		srcs/builtins/cd.c			\
-		srcs/builtins/exit.c		\
-		srcs/builtins/export.c		\
-		srcs/builtins/unset.c		\
-		srcs/ft_builtins.c			\
-		srcs/create_cl.c			\
-		srcs/execution.c			\
+SRCS = srcs/main_Xec.c \
+		srcs/builtins/pwd.c \
+		srcs/builtins/echo.c \
+		srcs/builtins/env.c \
+		srcs/builtins/cd.c \
+		srcs/builtins/exit.c \
+		srcs/builtins/export.c \
+		srcs/builtins/unset.c \
+		srcs/ft_builtins.c \
+		srcs/create_cl.c \
+		srcs/execution.c \
 		srcs/ft_utils_tmp.c
 
-OBJ = $(SRCS:.c=.o)
+A_SRCS = albe_main.c
 
-OBJ_BONUS = $(SRCS_BONUS:.c=.o)
+V_SRCS = main_Xec.c \
+		builtins/pwd.c \
+		builtins/echo.c \
+		builtins/env.c \
+		builtins/cd.c \
+		builtins/exit.c \
+		builtins/export.c \
+		builtins/unset.c \
+		ft_builtins.c \
+		create_cl.c \
+		execution.c \
+		ft_utils_tmp.c
 
-all:		$(NAME)
 
-$(NAME):	$(INCLUDES) $(OBJ)
-		make -C libft_duck/
-		$(CC) $(FLAGS) libft_duck/libft.a $(OBJ) -o $(NAME) -lreadline
+OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
+A_OBJS = $(addprefix $(OBJS_DIR)/,$(A_SRCS:.c=.o))
+V_OBJS = $(addprefix $(OBJS_DIR)/,$(V_SRCS:.c=.o))
 
-fsan:	$(NAME_FSAN)
+all: $(LIBFT_DIR)/libft.a $(NAME)
 
-$(NAME_FSAN):	$(INCLUDES) $(OBJ)
-		$(CC) $(FLAGS) $(FSANITIZE) $(OBJ) -o $(NAME_FSAN) -lreadline
+albe:$(LIBFT_DIR)/libft.a $(ALBE)
+
+vinc:$(LIBFT_DIR)/libft.a $(VINC)
+
+$(LIBFT_DIR)/libft.a:
+	make -C $(LIBFT_DIR) all
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $(NAME) $(LIBS)
+
+$(ALBE): $(A_OBJS)
+	$(CC) $(CFLAGS) $^ -o $(ALBE) $(LIBS)
+
+$(VINC): $(V_OBJS)
+	$(CC) $(CFLAGS) $^ -o $(VINC) $(LIBS)
+
+$(OBJS_DIR)/%.o: %.c
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 clean:
-		make -C libft_duck/ clean
-		rm -rf $(OBJ)
-
-sanclean:
-		make -C libft_duck/ clean
-		rm -rf $(NAME_FSAN)
+		rm -rf $(OBJS)
 
 fclean: clean
-		make -C libft_duck/ fclean
 		rm -rf $(NAME) $(NAME_FSAN)
+
+cleanall: fclean
+	make-C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY : all clean fclean re bonus
+.PHONY : all clean fclean re
