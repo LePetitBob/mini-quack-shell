@@ -1,42 +1,98 @@
-0_parsing av
+0_Get_Str
 {
-	get ac av env
-	check files given after "<" ">" ">>"
-		open files depending on "<" ">" ">>"
-	separate each cmd into a linked list (each cmd has a struct)
-	use access on all the cmds found
+	in main :
+	while (1)
+		readline(str);
+	send (char *) to split function
 }
-1_resolution
+1_Split_Str
 {
-	if no space in "'$ -> fuse
-	for each ' "
-		find the next one
-	for $(PATH)
-		get path in env (just like cmd)
+	split str with ' ' '|' '<' '<<' '>' '>>'
+	!!!WARNING
+		if " || '
+			skip split until next " || '
+	send (char **) to tokenize function
 }
-1_here_doc
+2_Tokenize
 {
-	for each "<<"
-		add "limiter" to (char **)
-		read from stdin
-		each time you find limiter[i]
-			++i
-		if i = max
-			return (char **) with everything from stdin
-	for each "<<" pipe(pipehd[2])
-	put 
+	with enum
+	while (str[i])
+	{
+		create t_token
+			set str[i] to (char *) of token;
+		if (str[i] == pipe)
+			set type to PIPE
+		else if (str[i] == RIN) [<]
+			set type to RIN
+		else if (str[i] == ROUT) [>]
+			set type to ROUT
+		else if (str[i] == DROUT) [>>]
+			set type to DROUT
+		else if (token->prev == RIN ROUT DROUT)
+			set type to FD
+		else if (str[i] == HERE_DOC) [<<]
+			set type to HERE_DOC
+		else if (token->prev == HERE_DOC)
+			set type to LIMITER
+		else (str[i] == word) [command]
+			set type to WORD
+	}
+	check if all token exist
 }
-2_redirection
+3_Expand
 {
-	"<" && ">" ">>"
-	for each "<" open file with "O_RDONLY"
-		add fd[0] = file
-	for each ">" open file with "O_WRONLY | O_TRUNC"
-		add fd[1] = file
-	for each ">>" open files with "O_WRONLY | O_APPEND"
-		add fd[1] = file
+	while (token->next)
+	{
+		if (token->str has (' ") || token->str has $)
+		{
+			split token->str with (" ')
+				[ex: (a$a"b"'c d')->(a$a)(b)(c d)]
+				[ex: (a$a"b'c d'")->(a$a)(b'c d')]
+				if ' && spaces in the middle
+					[ex: 'c b']
+					transform whitespaces to *-1
+						[ex: ' '= ' ' * -1]
+			for each new str
+			{
+				if ($)
+					call function to get var
+					if $ is NULL, put NULL
+			}
+			join all strs together
+			{
+				split again with whitespaces
+				for each str
+				{
+					create token
+					if negative whitespaces, convert them
+					assign str to token
+					set type to word
+				}
+			}
+			link new tokens to list of tokens
+		}
+	}
 }
-3_send_Vincent
+4_Commands
 {
-	send pointer to first element of the list
+	for each t_token
+		if (t_token->type == WORD)
+		{
+			create new t_cmd
+			set t_token to t_cmd->arg
+			(unlink t_token from linked list)
+			while (t_token->next == RIN | ROUT | DROUT | HERE_DOC)
+			{
+				set type of t_token->next->next to t_token->next
+					[ex: type-FD -> type-DROUT]
+					[ex: type-WORD -> type-HERE_DOC]
+				del t_token->next (the RIN | ROUT | DROUT)
+				if (t_cmd->redir != NULL)
+					t_cmd->redir = t_token
+				else
+					assign t_token to last t_cmd->redir t_token
+			}
+		}
+		if (t_token->type == PIPE)
+			del struct
 }

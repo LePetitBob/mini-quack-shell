@@ -26,3 +26,31 @@ while (str[i] != '\0')
 	}
 	++i;
 }
+
+
+
+while (str[i] != '\0')
+{
+	j = 0;
+	if (str[i] == '\'')
+	{
+		while (str[i + j] != '\0' && str[i + j] != '\'')
+			++j;
+		if (str[i + j] == '\'')
+		{
+			tmp = ft_del_one(str, i + j);
+			free(str);
+			str = ft_strdup(tmp);
+			free(tmp);
+			tmp = ft_del_one(str, i);
+			free(str);
+			str = ft_strdup(tmp);
+			i += (i - j);
+			break ;
+		}
+	}
+	else if (str[i] == '\"')
+	{
+		same same
+	}
+}
