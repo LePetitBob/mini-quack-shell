@@ -6,13 +6,26 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:12:35 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/08 11:29:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ducklinclude/mini-quack-shell.h"
 
-void	ft_builtins(char **cmd, t_env *env, char **envp)
+// typedef struct s_btn
+// {
+// 	char	*cmd;
+// 	void	(*ft)(char **, t_env *);
+// }t_btn;
+
+// static const t_btn	g_btntab[] =
+// {
+// 	{"exit", &ft_exit},
+// 	{"pwd", &ft_pwd},
+// 	{NULL, NULL}
+// };
+
+void	ft_builtins(char **cmd, t_env *env)
 {
 	pid_t	pid;
 

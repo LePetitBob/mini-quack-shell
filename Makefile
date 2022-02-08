@@ -6,7 +6,7 @@
 #    By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 15:44:46 by vduriez           #+#    #+#              #
-#    Updated: 2022/02/07 17:11:38 by vduriez          ###   ########.fr        #
+#    Updated: 2022/02/08 11:35:00 by vduriez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INCLUDES = ducklinclude/mini-quack-shell.h
 
 FSANITIZE = -fsanitize=address -fsanitize=address -g3
 
-SRCS =	srcs/main.c					\
+SRCS =	srcs/main_Xec.c					\
 		srcs/builtins/pwd.c			\
 		srcs/builtins/echo.c		\
 		srcs/builtins/env.c			\
@@ -43,19 +43,23 @@ OBJ_BONUS = $(SRCS_BONUS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(INCLUDES) $(OBJ)
-		$(CC) $(FLAGS) $(OBJ) -o $(NAME) -lreadline
+		make -C libft_duck/
+		$(CC) $(FLAGS) libft_duck/libft.a $(OBJ) -o $(NAME) -lreadline
 
 fsan:	$(NAME_FSAN)
 
 $(NAME_FSAN):	$(INCLUDES) $(OBJ)
 		$(CC) $(FLAGS) $(FSANITIZE) $(OBJ) -o $(NAME_FSAN) -lreadline
 clean:
+		make -C libft_duck/ clean
 		rm -rf $(OBJ)
 
 sanclean:
+		make -C libft_duck/ clean
 		rm -rf $(NAME_FSAN)
 
 fclean: clean
+		make -C libft_duck/ fclean
 		rm -rf $(NAME) $(NAME_FSAN)
 
 re: fclean all

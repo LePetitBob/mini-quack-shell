@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:16:58 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/08 11:47:13 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,35 @@ int	main(int ac, char **av, char **envp)
 		{
 			cmd = ft_split(term, ' ');
 			free(term);
-			//?BACKUP BELOW
-			if (is_builtin(cmd[0]))
-				ft_builtins(cmd, &env, envp);
+			if (!ft_strcmp(cmd[0], "exit"))
+				ft_exit(cmd, &env);
 			else
 			{
-				pid = fork();
-				if (!pid)
+				if (!ft_strcmp(cmd[0], "pwd"))
+					ft_pwd(cmd);
+				else if (!ft_strcmp(cmd[0], "env"))
+					ft_env(&env);
+				else if (!ft_strcmp(cmd[0], "echo"))
+					ft_echo(cmd);
+				else if (!ft_strcmp(cmd[0], "export"))
+					ft_export(&env, cmd);
+				else if (!ft_strcmp(cmd[0], "unset"))
+					ft_unset(&env, cmd);
+				else if (!ft_strcmp(cmd[0], "cd"))
+					ft_cd(cmd, &env);
+				else
 				{
-					if (env.first)
-						ft_clear(&env);
-					//TODO if (not_builtin) --> exec
-					ft_exec(cmd, envp);
+					pid = fork();
+					if (!pid)
+					{
+						if (env.first)
+							ft_clear(&env);
+						//TODO if (not_builtin) --> exec
+						ft_exec(cmd, envp);
+					}
+					waitpid(pid, NULL, 0);
 				}
-				waitpid(pid, NULL, 0);
 			}
-			//?BACKUP BELOW
 			ft_free(cmd);
 		}
 		else
@@ -60,33 +73,3 @@ int	main(int ac, char **av, char **envp)
 	return (0);
 }
 
-
-			//? if (!ft_strcmp(cmd[0], "exit"))
-			//? 	ft_exit(cmd, &env);
-			//? else
-			//? {
-			//? 	if (!ft_strcmp(cmd[0], "pwd"))
-			//? 		ft_pwd(cmd);
-			//? 	else if (!ft_strcmp(cmd[0], "env"))
-			//? 		ft_env(&env);
-			//? 	else if (!ft_strcmp(cmd[0], "echo"))
-			//? 		ft_echo(cmd);
-			//? 	else if (!ft_strcmp(cmd[0], "export"))
-			//? 		ft_export(&env, cmd);
-			//? 	else if (!ft_strcmp(cmd[0], "unset"))
-			//? 		ft_unset(&env, cmd);
-			//? 	else if (!ft_strcmp(cmd[0], "cd"))
-			//? 		ft_cd(cmd, &env);
-			//? 	else
-			//? 	{
-			//? 		pid = fork();
-			//? 		if (!pid)
-			//? 		{
-			//? 			if (env.first)
-			//? 				ft_clear(&env);
-			//? 			//TODO if (not_builtin) --> exec
-			//? 			ft_exec(cmd, envp);
-			//? 		}
-			//? 		waitpid(pid, NULL, 0);
-			//? 	}
-			//? }
