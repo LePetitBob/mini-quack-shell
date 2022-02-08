@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 15:02:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/02 14:43:16 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //TODO		Env doesnt update itself, we have to adjust it manually.
 //TODO		After each command that do so (cd changes PWD and OLDPWD, modifying
-//TODO		env variables, ...) --> chained list for env will be needed
+//TODO		env variables, ...)
 
 void	ft_env(t_env *env)
 {
@@ -49,4 +49,5 @@ void	get_env(char **envp, t_env *env)
 		free(env_split[1]);
 		i++;
 	}
+	free(env_split);
 }

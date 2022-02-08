@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:15:17 by vduriez           #+#    #+#             */
-/*   Updated: 2022/01/31 14:22:50 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/07 17:12:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,22 @@ void	ft_rmfirst(t_env *env)
 	free(tmp);
 }
 
-void	ft_rmlast(t_env *env)
+void	ft_rmvar(t_env *env, char *var_name)
 {
 	t_env_var	*tmp;
 	t_env_var	*tmp2;
 
 	tmp = env->first;
-	while (tmp->next)
+	while (tmp->next && ft_strcmp(tmp->next->name, var_name))
 		tmp = tmp->next;
+	if (!tmp)
+		return ;
 	tmp2 = tmp->next;
-	tmp->next = NULL;
+	if (tmp->next->next)
+		tmp->next = tmp->next->next;
+	else
+		tmp->next = NULL;
+	free(tmp2->name);
+	free(tmp2->value);
 	free(tmp2);
 }

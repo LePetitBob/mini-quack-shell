@@ -1,0 +1,23 @@
+Some builtins respond differently to pipes.
+If there are pipes, they will only be used in a fork
+
+|----------------------------------------------------------------------------
+|
+|	bash-5.0$ exit | exit
+|	bash-5.0$ 
+|
+|----------------------------------------------------------------------------
+|
+|	bash-5.0$ pwd
+|	/mnt/nfs/homes/vduriez/Desktop/minishell/mini-quack-shell
+|	bash-5.0$ cd .. | cd ..
+|	bash-5.0$ pwd
+|	/mnt/nfs/homes/vduriez/Desktop/minishell/mini-quack-shell
+|
+|----------------------------------------------------------------------------
+
+It appears to be working like this for :
+- cd
+- exit
+- export
+- unset
