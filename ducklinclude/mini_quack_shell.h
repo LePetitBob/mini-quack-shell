@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/08 12:45:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:04:19 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <errno.h>
+
+# define WORD 0
+# define PIPE 1
+# define FD 2
+# define LIMITER 3
+# define RIN 4
+# define ROUT 5
+# define DROUT 6
+# define HERE_DOC 7
 
 typedef struct s_env_var
 {
