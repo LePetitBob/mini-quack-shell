@@ -1,11 +1,17 @@
 Vincent :
 
+redirs
+test tricky redir zhen implemented (echo lol >/dev/full)
+singleton for env
+pipe
+cd -> CDPATH
+here_docs
 
 ------------------------
 
 Albe :
 
-KO-Finish doc of pre-thinking
+OK-Finish doc of pre-thinking
 KO-Start main with parsing
 KO-add resolution to main
 KO-add here_doc to main
