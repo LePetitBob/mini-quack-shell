@@ -10,7 +10,7 @@ ifdef DEBUG
 CFLAGS += -fsanitize=address -fsanitize=address -g3
 endif
 
-SRCS_DIR = $(shell dinf srcs -type d)
+SRCS_DIR = $(shell find srcs -type d)
 OBJS_DIR = objs
 INC_DIR = ./ducklinclude/
 LIBFT_DIR = ./libft_duck
@@ -33,7 +33,8 @@ SRCS = srcs/main_Xec.c \
 		srcs/execution.c \
 		srcs/ft_utils_tmp.c
 
-A_SRCS = albe_main.c
+A_SRCS = albe_main.c \
+		split_whitespaces.c
 
 V_SRCS = main_Xec.c \
 		builtins/pwd.c \
@@ -82,7 +83,7 @@ fclean: clean
 		rm -rf $(NAME) $(NAME_FSAN)
 
 cleanall: fclean
-	make-C $(LIBFT_DIR) fclean
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

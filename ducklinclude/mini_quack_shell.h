@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/08 14:01:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:19:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <errno.h>
+# include "libft.h"
 
 # define WORD 0
 # define PIPE 1
@@ -46,6 +47,11 @@ typedef struct s_env
 {
 	t_env_var	*first;
 }				t_env;
+
+//			Parsing
+void	split_manager(char *line);
+char	**split_whitespaces(char *str);
+
 
 //?			Builtins
 int		is_builtin(char *cmd);

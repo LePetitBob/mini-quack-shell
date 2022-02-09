@@ -1,9 +1,21 @@
 (worst command ever for parsing)
 !!!!!!!!!!!!!!!!!!!!!! attention au \
 
+'|' ' ' '<' '<<' '>' '>>' ''' '"'
+
 0_original
 echo ---------n ""'"    coucou|<><> "       ' > outfilr | ls -la | <infilr cat
 1_split_spaces_"_'
 [echo][---------n][""'"    coucou|<><> "       '][>][outfilr][|][ls][-la][|][<infilr][cat]
 2_split_seps
 [echo][---------n][""'"    coucou|<><> "       '][>][outfilr][|][ls][-la][|][<][infilr][cat]
+
+0_original
+e''c""h''o'' "c"'o'""u'cou'
+1_split_spaces_"_'
+[e''c""h''o'']["c"'o'""u'cou']
+
+0_original
+e''c""h''o'' "c"'o'""u'cou'
+1_split_spaces_"_'
+[e''c""h''o'']["c"'o'""u'cou']
