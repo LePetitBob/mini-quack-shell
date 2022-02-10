@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   split_whitespaces.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/02/09 19:46:54 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/10 14:50:58 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-char	**split_whitespaces(char *str)
+void	split_whitespaces(char *str, char *(**args))
 {
-	char	**res;
 	char	*tmp;
 	char	quote;
 	int		i;
@@ -22,15 +21,16 @@ char	**split_whitespaces(char *str)
 
 	i = 0;
 	j = 0;
-	res = NULL;
 	tmp = ft_strdup(str);
 	ft_bzero(tmp, ft_strlen(str));
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\'' || str[i] == '\"')
 		{
+			tmp[j] = str[i];
 			quote = str[i];
 			++i;
+			++j;
 			while (str[i] != quote)
 			{
 				tmp[j] = str[i];
@@ -40,9 +40,9 @@ char	**split_whitespaces(char *str)
 		}
 		if (str[i] == ' ')
 		{
-			res = ft_addtab(res, tmp);
+			(*args) = ft_add_tab((*args), tmp);
 			j = 0;
-			ft_bzero(tmp);
+			ft_bzero(tmp, ft_strlen(str));
 		}
 		else
 		{
@@ -51,8 +51,7 @@ char	**split_whitespaces(char *str)
 		}
 		++i;
 	}
-	if (tmp[j] != '\0')
-		res = ft_add_tab(res, tmp);
+	if (tmp[0] != '\0')
+		(*args) = ft_add_tab((*args), tmp);
 	free(tmp);
-	return (res);
 }

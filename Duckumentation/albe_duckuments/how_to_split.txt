@@ -16,6 +16,14 @@ e''c""h''o'' "c"'o'""u'cou'
 [e''c""h''o'']["c"'o'""u'cou']
 
 0_original
-e''c""h''o'' "c"'o'""u'cou'
-1_split_spaces_"_'
-[e''c""h''o'']["c"'o'""u'cou']
+e''c""h''o' '"c"'o'""u'cou'
+[e''c""h''o' '"c"'o'""u'cou']
+
+
+"h ey" hey|<hey
+["h ey"][hey][|][<][hey]
+first copy everything before pointer
+insert it before separator
+copy everything after separator
+assign separator to his index
+insert it after separator

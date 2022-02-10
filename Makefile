@@ -34,7 +34,8 @@ SRCS = srcs/main_Xec.c \
 		srcs/ft_utils_tmp.c
 
 A_SRCS = albe_main.c \
-		split_whitespaces.c
+		split_whitespaces.c split_seps.c \
+		ft_utils_tmp.c
 
 V_SRCS = main_Xec.c \
 		builtins/pwd.c \
@@ -78,9 +79,13 @@ $(OBJS_DIR)/%.o: %.c
 
 clean:
 		rm -rf $(OBJS)
+		rm -rf $(A_OBJS)
+		rm -rf $(V_OBJS)
 
 fclean: clean
-		rm -rf $(NAME) $(NAME_FSAN)
+		rm -rf $(NAME)
+		rm -rf $(ALBE)
+		rm -rf $(VINC)
 
 cleanall: fclean
 	make -C $(LIBFT_DIR) fclean

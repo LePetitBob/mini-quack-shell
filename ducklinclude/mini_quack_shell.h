@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/09 20:19:19 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/10 15:11:46 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ typedef struct s_env
 
 //			Parsing
 void	split_manager(char *line);
-char	**split_whitespaces(char *str);
-
+void	split_whitespaces(char *str, char *(**args));
+void	split_seps(char *(**args));
+void	separate_separator(char *(**args), char *sep, int i_args);
 
 //?			Builtins
 int		is_builtin(char *cmd);
@@ -82,14 +83,14 @@ void	ft_free(char **s);
 int		is_num(char *s);
 
 //!				TO REMOVE WHEN LIBFT IMPLANTED
-int		ft_strlen(char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strdup(const char *s1);
+// int		ft_strlen(char *s);
+// int		ft_strncmp(const char *s1, const char *s2, size_t n);
+// char	*ft_strdup(const char *s1);
 char	*ft_strndup(const char *s1, size_t n);
-char	**ft_split(char const *str, char c);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_atoi(const char *str);
-int		ft_strcmp(const char *s1, const char *s2);
+// char	**ft_split(char const *str, char c);
+// char	*ft_strjoin(char *s1, char *s2);
+// int		ft_atoi(const char *str);
+// int		ft_strcmp(const char *s1, const char *s2);
 //!				TO REMOVE WHEN LIBFT IMPLANTED
 
 #endif
