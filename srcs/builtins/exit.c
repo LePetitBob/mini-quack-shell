@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:18:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/10 14:45:27 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 void	ft_clear(t_env *env)
 {

@@ -10,7 +10,7 @@ ifdef DEBUG
 CFLAGS += -fsanitize=address -fsanitize=address -g3
 endif
 
-SRCS_DIR = $(shell dinf srcs -type d)
+SRCS_DIR = $(shell find srcs -type d)
 OBJS_DIR = objs
 INC_DIR = ./ducklinclude/
 LIBFT_DIR = ./libft_duck
@@ -20,22 +20,7 @@ INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
 vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
-SRCS = srcs/main_Xec.c \
-		srcs/builtins/pwd.c \
-		srcs/builtins/echo.c \
-		srcs/builtins/env.c \
-		srcs/builtins/cd.c \
-		srcs/builtins/exit.c \
-		srcs/builtins/export.c \
-		srcs/builtins/unset.c \
-		srcs/ft_builtins.c \
-		srcs/create_cl.c \
-		srcs/execution.c \
-		srcs/ft_utils_tmp.c
-
-A_SRCS = albe_main.c
-
-V_SRCS = main_Xec.c \
+SRCS = main_Xek.c \
 		builtins/pwd.c \
 		builtins/echo.c \
 		builtins/env.c \
@@ -48,6 +33,22 @@ V_SRCS = main_Xec.c \
 		execution.c \
 		ft_utils_tmp.c
 
+A_SRCS = albe_main.c
+
+V_SRCS = main_Xek.c \
+		builtins/pwd.c \
+		builtins/echo.c \
+		builtins/env.c \
+		builtins/cd.c \
+		builtins/exit.c \
+		builtins/export.c \
+		builtins/unset.c \
+		ft_builtins.c \
+		ft_redir.c \
+		create_cl.c \
+		execution.c \
+		ft_utils_tmp.c
+
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 A_OBJS = $(addprefix $(OBJS_DIR)/,$(A_SRCS:.c=.o))
@@ -55,9 +56,9 @@ V_OBJS = $(addprefix $(OBJS_DIR)/,$(V_SRCS:.c=.o))
 
 all: $(LIBFT_DIR)/libft.a $(NAME)
 
-albe:$(LIBFT_DIR)/libft.a $(ALBE)
+albe: $(LIBFT_DIR)/libft.a $(ALBE)
 
-vinc:$(LIBFT_DIR)/libft.a $(VINC)
+vinc: $(LIBFT_DIR)/libft.a $(VINC)
 
 $(LIBFT_DIR)/libft.a:
 	make -C $(LIBFT_DIR) all

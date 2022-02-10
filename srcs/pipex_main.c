@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe.c                                             :+:      :+:    :+:   */
+/*   pipex_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 18:20:39 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/01 18:26:12 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/08 16:50:08 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 void	ft_dupstep(int fdin, int fdout)
 {

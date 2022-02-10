@@ -6,17 +6,16 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/04 18:43:29 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/10 14:45:33 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 int	format_unset_ok(char *var, int *err)
 {
 	int		i;
 	int		j;
-	char	*name;
 
 	j = 0;
 	i = 0;

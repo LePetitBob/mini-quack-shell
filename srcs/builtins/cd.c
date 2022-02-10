@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:12:41 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:28:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 char	*get_in_env(t_env *env, char *name)
 {

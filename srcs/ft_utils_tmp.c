@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/08 11:10:14 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/10 10:44:13 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 int	ft_strlen(char *s)
 {
@@ -36,8 +36,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 char	*ft_strdup(const char *s1)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 	char	*res;
 
 	i = 0;
@@ -57,8 +57,8 @@ char	*ft_strdup(const char *s1)
 
 char	*ft_strndup(const char *s1, size_t n)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 	char	*res;
 
 	i = 0;
@@ -231,7 +231,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!s1 || !s2)

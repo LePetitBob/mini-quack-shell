@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:13:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/10 14:45:31 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 //TODO Check setenv & unsetenv
 
@@ -40,7 +40,8 @@ int	format_export_ok(char *var, int *err)
 		|| (var[j] > 96 && var[j] < 123) || (var[j] > 46
 		&& var[j] < 58) || var[j] == '_'))
 		j++;
-	if (var[j] && var[j] != '=')
+	if ((var[j] && var[j] != '=') || (var[0] < 65 || var[0] > 122
+		|| (var[0] > 90 && var[0] < 97)))
 	{
 		while (var[i] && var[i] != '=')
 			i++;
