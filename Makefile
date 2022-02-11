@@ -39,6 +39,7 @@ A_SRCS = albe_main.c \
 		tokenize.c init_struct.c \
 		print_tokens.c \
 		expand_manager.c split_quotes_dollar.c \
+		export.c \
 		ft_utils_tmp.c
 
 V_SRCS = main_Xec.c \

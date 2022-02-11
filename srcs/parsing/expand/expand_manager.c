@@ -6,13 +6,13 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/11 18:23:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:38:09 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	expand_manager(t_token *tokens)
+void	expand_manager(t_token *tokens, t_env env)
 {
 	t_token	*it;
 	int		i;
@@ -40,7 +40,7 @@ void	expand_manager(t_token *tokens)
 	printf("finished Expand\n");
 }
 
-void	expand_str(t_token *it, int index)
+void	expand_str(t_token *it, int index, t_env env)
 {
 	char	**ret;
 	char	*tmp;

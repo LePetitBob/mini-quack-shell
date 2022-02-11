@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/11 19:16:37 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:38:18 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,18 @@ t_cmd	*ft_create_cmd1(void);
 
 //?			Parsing
 //			Split
-void	split_manager(char *line);
+void	split_manager(char *line, t_env env);
 void	split_whitespaces(char *str, char *(**args));
 void	split_seps(char *(**args));
 void	separate_separator(char *(**args), char *sep, int i_args);
 //
 //			Tokenize
-void	tokenize_manager(char *(**args));
+void	tokenize_manager(char *(**args), t_env env);
 int		get_arg_type(char *arg, int prev_type);
 //
 //			Expand
-void	expand_manager(t_token *tokens);
-void	expand_str(t_token *it, int index);
+void	expand_manager(t_token *tokens, t_env env);
+void	expand_str(t_token *it, int index, t_env env);
 
 void	split_quotes_dollar(char *str, char *(**ret));
 void	negate_spaces(char *(*str));
@@ -109,6 +109,7 @@ void	ft_exit(char **err, t_env *env);
 void	ft_export(t_env *env, char **cmd);
 void	replace_var(t_env *env, char *name, char *value);
 void	ft_unset(t_env *env, char **name);
+char	*get_env_name(t_env *env, char *name);
 int		existing_name(t_env *env, char *name);
 int		format_ok(char *var);
 //?			Builtins

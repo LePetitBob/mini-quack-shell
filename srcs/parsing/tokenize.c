@@ -6,13 +6,13 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/11 17:55:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:35:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	tokenize_manager(char *(**args))
+void	tokenize_manager(char *(**args), t_token env)
 {
 	t_token	*tokens;
 	t_token	*it;
@@ -36,7 +36,7 @@ void	tokenize_manager(char *(**args))
 	print_tokens(tokens);
 	ft_freetab(*args);
 	//call next function
-	expand_manager(tokens);
+	expand_manager(tokens, env);
 }
 
 int	get_arg_type(char *arg, int prev_type)
