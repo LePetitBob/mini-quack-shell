@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/11 19:08:59 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:16:37 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,13 @@ void	separate_separator(char *(**args), char *sep, int i_args);
 //			Tokenize
 void	tokenize_manager(char *(**args));
 int		get_arg_type(char *arg, int prev_type);
+//
+//			Expand
+void	expand_manager(t_token *tokens);
+void	expand_str(t_token *it, int index);
+
+void	split_quotes_dollar(char *str, char *(**ret));
+void	negate_spaces(char *(*str));
 //
 //?
 
