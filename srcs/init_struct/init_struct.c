@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:57:20 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/08 15:06:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/11 14:39:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_token	*ft_create_empty_token(void)
 
 	new = malloc(sizeof(t_token));
 	new->str = NULL;
-	new->type = NULL;
+	new->type = NO_TYPE;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/11 12:18:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:08:59 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,7 @@
 # include <errno.h>
 # include "libft.h"
 
-# define WORD 0
-# define PIPE 1
-# define FD 2
-# define LIMITER 3
-# define RIN 4
-# define ROUT 5
-# define DROUT 6
-# define HERE_DOC 7
-
+# define NO_TYPE -1
 # define WORD 0
 # define PIPE 1
 # define FD 2
@@ -57,11 +49,46 @@ typedef struct s_env
 	t_env_var	*first;
 }				t_env;
 
-//			Parsing
+typedef struct s_token
+{
+	char			*str;
+	int				type;
+	struct s_token	*next;
+	struct s_token	*prev;
+}				t_token;
+
+typedef struct s_cmd
+{
+	t_token			*arg;
+	t_token			*redir;
+	int				fdin;
+	int				fdout;
+	int				pid;
+	struct s_cmd	*next;
+	struct s_cmd	*prev;
+}				t_cmd;
+
+typedef struct s_cmd_list
+{
+	t_cmd	*first;
+}				t_cmd_lst;
+
+//			Init Structs
+t_token	*ft_create_empty_token(void);
+t_cmd	*ft_create_cmd1(void);
+
+//?			Parsing
+//			Split
 void	split_manager(char *line);
 void	split_whitespaces(char *str, char *(**args));
 void	split_seps(char *(**args));
 void	separate_separator(char *(**args), char *sep, int i_args);
+//
+//			Tokenize
+void	tokenize_manager(char *(**args));
+int		get_arg_type(char *arg, int prev_type);
+//
+//?
 
 //?			Builtins
 int		is_builtin(char *cmd);
@@ -90,6 +117,10 @@ void	ft_exec(char **cmd, char **envp);
 void	ft_clear(t_env *env);
 void	ft_free(char **s);
 int		is_num(char *s);
+
+//!				DEBUG
+void		print_tokens(t_token *tokens);
+//!
 
 //!				TO REMOVE WHEN LIBFT IMPLANTED
 // int		ft_strlen(char *s);

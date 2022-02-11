@@ -34,7 +34,10 @@ SRCS = srcs/main_Xec.c \
 		srcs/ft_utils_tmp.c
 
 A_SRCS = albe_main.c \
-		split_whitespaces.c split_seps.c \
+		split_manager.c \
+		split_whitespaces.c split_separators.c \
+		tokenize.c init_struct.c \
+		print_tokens.c \
 		ft_utils_tmp.c
 
 V_SRCS = main_Xec.c \
