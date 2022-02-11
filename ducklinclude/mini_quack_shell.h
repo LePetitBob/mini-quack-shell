@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 15:11:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:18:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@
 # include <signal.h>
 # include <errno.h>
 # include "libft.h"
+
+# define WORD 0
+# define PIPE 1
+# define FD 2
+# define LIMITER 3
+# define RIN 4
+# define ROUT 5
+# define DROUT 6
+# define HERE_DOC 7
 
 # define WORD 0
 # define PIPE 1
