@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/10 17:50:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 11:59:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	split_manager(char *line)
 	args = NULL;
 	//split spaces '"
 	split_whitespaces(line, &args);
-	// ft_print_tab(args);
-	// printf("\n");
+	ft_print_tab(args);
+	printf("\n");
 	//split <><<>>|
 	split_seps(&args);
 	ft_print_tab(args);
