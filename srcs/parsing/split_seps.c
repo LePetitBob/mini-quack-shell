@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:50:22 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/11 12:00:16 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:12:27 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,27 @@ void	split_seps(char *(**args))
 	i = 0;
 	while ((*args)[i])
 	{
-		if (ft_strsrch((*args)[i], '|') != -1)
-			separate_separator(args, "|", i);
-		if (ft_strsrch((*args)[i], '<') != -1)
+		if (ft_strsrch((*args)[i], '\'') == -1
+			&& ft_strsrch((*args)[i], '\"') == -1)
 		{
-			i_sep = ft_strsrch((*args)[i], '<') + 1;
-			if ((*args)[i][i_sep] == '<')
-				separate_separator(args, "<<", i);
-			else
-				separate_separator(args, "<", i);
-		}
-		if (ft_strsrch((*args)[i], '>') != -1)
-		{
-			i_sep = ft_strsrch((*args)[i], '>') + 1;
-			if ((*args)[i][i_sep] == '>')
-				separate_separator(args, ">>", i);
-			else
-				separate_separator(args, ">", i);
+			if (ft_strsrch((*args)[i], '|') != -1)
+				separate_separator(args, "|", i);
+			if (ft_strsrch((*args)[i], '<') != -1)
+			{
+				i_sep = ft_strsrch((*args)[i], '<') + 1;
+				if ((*args)[i][i_sep] == '<')
+					separate_separator(args, "<<", i);
+				else
+					separate_separator(args, "<", i);
+			}
+			if (ft_strsrch((*args)[i], '>') != -1)
+			{
+				i_sep = ft_strsrch((*args)[i], '>') + 1;
+				if ((*args)[i][i_sep] == '>')
+					separate_separator(args, ">>", i);
+				else
+					separate_separator(args, ">", i);
+			}
 		}
 		++i;
 	}
