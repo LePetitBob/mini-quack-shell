@@ -6,15 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 17:10:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/11 19:11:15 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-//TODO		Env doesnt update itself, we have to adjust it manually.
-//TODO		After each command that do so (cd changes PWD and OLDPWD, modifying
-//TODO		env variables, ...)
 
 void	ft_env(t_env *env)
 {
