@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 17:02:14 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:05:47 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	main(int ac, char **av, char **envp)
 		if (tmp->next)
 			pipe(fd);
 		//TODO	^--if (pipe < 0) clean stop
-		redir(tmp, fd);
+		redirection(tmp, fd);
 		execution(tmp, &env, fd);
 		if (tmp->next)
 			dup2(fd[0], fd[2]);
@@ -144,6 +144,7 @@ int	main(int ac, char **av, char **envp)
 		tmp = tmp->next;
 	}
 	close(fd[2]);
+	close(fd[3]);
 	tmp = cmds.first;
 	while (tmp)
 	{

@@ -3,7 +3,7 @@ ALBE = a_minishell
 VINC = v_minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 DEBUG =
 ifdef DEBUG

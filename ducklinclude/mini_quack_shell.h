@@ -6,12 +6,12 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/11 15:21:55 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:05:45 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINI_QUACK_SHELL
-# define MINI_QUACK_SHELL
+#ifndef MINI_QUACK_SHELL_H
+# define MINI_QUACK_SHELL_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -71,9 +71,9 @@ typedef struct s_env
 	t_env_var	*first;
 }				t_env;
 
-void		redir(t_cmd *cmd, int fd[3]);
+void		redirection(t_cmd *cmd, int fd[4]);
 char		**env_cl_to_arr(t_env *env);
-void		execution(t_cmd *cmd, t_env *env, int fd[3]);
+void		execution(t_cmd *cmd, t_env *env, int fd[4]);
 void		ft_exec(char **cmd, char **envp);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);

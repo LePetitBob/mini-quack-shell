@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 16:52:04 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:02:49 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
-void	execution(t_cmd *cmd, t_env *env, int fd[3])
+void	execution(t_cmd *cmd, t_env *env, int fd[4])
 {
 	// int		i;
 	// t_token	*tmp;

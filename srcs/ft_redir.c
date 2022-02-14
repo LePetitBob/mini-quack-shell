@@ -6,13 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 16:51:56 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:05:52 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	redir(t_cmd *cmd, int fd[4])
+void	redirection(t_cmd *cmd, int fd[4])
 {
 	t_token	*tmp;
 	int		err;
