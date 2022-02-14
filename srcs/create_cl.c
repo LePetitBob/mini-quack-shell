@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_cl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:15:17 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:12:50 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:02:13 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 t_env_var	*ft_create_elem(char *name, char *value)
 {

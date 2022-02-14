@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/11 19:34:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/14 13:46:53 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int ac, char **av, char *envp[])
 	while (1)
 	{
 		line = readline("mini-quack-shell$ ");
-		split_manager(line, env);
+		split_manager(line, &env);
 	}
 }

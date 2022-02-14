@@ -19,11 +19,7 @@ e''c""h''o'' "c"'o'""u'cou'
 e''c""h''o' '"c"'o'""u'cou'
 [e''c""h''o' '"c"'o'""u'cou']
 
+echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$a" | ls -la | <infilr cat
 
 "h ey" hey|<hey
 ["h ey"][hey][|][<][hey]
-first copy everything before pointer
-insert it before separator
-copy everything after separator
-assign separator to his index
-insert it after separator
