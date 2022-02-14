@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 18:45:38 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 16:52:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,34 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
-void	execution(t_cmd *cmd, t_env *env)
+void	execution(t_cmd *cmd, t_env *env, int fd[3])
 {
 	// int		i;
 	// t_token	*tmp;
 	char	**str_cmd;
+	char	**env_arr;
 
 	str_cmd = get_cmd_str(cmd);
-	// if (is_builtin(str_cmd))
-	// {
-	// }
-	// cmd->pid = fork();
-	// if (!cmd->pid)
-	// {
-		ft_exec(str_cmd, env_cl_to_arr(env));
-	// }
+	if (is_builtin(str_cmd[0]) && !cmd->next && !cmd->prev)
+		ft_builtins(str_cmd, env);
+	else
+	{
+		cmd->pid = fork();
+		//TODO		if (cmd->pid < 0)
+		//TODO			err;
+		if (!cmd->pid)
+		{
+			close(fd[0]);
+			close(fd[1]);
+			close(fd[2]);
+			if (is_builtin(str_cmd[0]))
+				ft_builtins(str_cmd, env);
+			else
+			{
+				env_arr = env_cl_to_arr(env);
+				ft_clear(env);
+				ft_exec(str_cmd, env_arr);
+			}
+		}
+	}
 }

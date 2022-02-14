@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 18:45:36 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:02:14 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	add_cmd1(t_cmd_lst *cmds)
 	t_cmd	*cmd;
 
 	cmd = create_cmd();
-	cmd->arg = create_token("echo", 0);
+	cmd->arg = create_token("cat", 0);
 	cmd->arg->next = create_token("coucou", 2);
+	// cmd->redir = create_token("outfilr", 6);
 	cmds->first = cmd;
-
 }
 
 void	add_cmd2(t_cmd_lst *cmds)
@@ -56,8 +56,22 @@ void	add_cmd2(t_cmd_lst *cmds)
 
 	cmd = create_cmd();
 	cmd->arg = create_token("grep", 0);
-	cmd->arg->next = create_token("r", 0);
+	cmd->arg->next = create_token("a", 0);
+	// cmd->redir = create_token("outfilr", 6);
+	cmd->prev = cmds->first;
 	cmds->first->next = cmd;
+}
+
+void	add_cmd3(t_cmd_lst *cmds)
+{
+	t_cmd	*cmd;
+
+	cmd = create_cmd();
+	cmd->arg = create_token("grep", 0);
+	cmd->arg->next = create_token("s", 0);
+	cmd->redir = create_token("outfilr", 6);
+	cmd->prev = cmds->first->next;
+	cmds->first->next->next = cmd;
 }
 
 void	rm_cmds(t_cmd_lst *cmd)
@@ -75,7 +89,7 @@ void	rm_cmds(t_cmd_lst *cmd)
 		tkn = tmp->arg;
 		while (tkn)
 		{
-			tkn2 = tmp->arg->next;
+			tkn2 = tkn->next;
 			free(tkn->str);
 			free(tkn);
 			tkn = tkn2;
@@ -83,7 +97,7 @@ void	rm_cmds(t_cmd_lst *cmd)
 		tkn = tmp->redir;
 		while (tkn)
 		{
-			tkn2 = tmp->redir->next;
+			tkn2 = tkn->next;
 			free(tkn->str);
 			free(tkn);
 			tkn = tkn2;
@@ -94,44 +108,48 @@ void	rm_cmds(t_cmd_lst *cmd)
 	}
 }
 
+void	closepipe(int fd[3])
+{
+	close(fd[0]);
+	close(fd[1]);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	t_cmd_lst	cmds;
 	t_cmd		*tmp;
-	// int			fdpipe[3];
+	int			fd[4];
 	t_env		env;
 
 	(void)ac;
 	(void)av;
-	(void)envp;
 	cmds.first = NULL;
 	get_env(envp, &env);
 	add_cmd1(&cmds);
-	// add_cmd2(&cmds);
-	printf("cmd1 :\narg[0] : %s\narg[1] : %s\n\n", cmds.first->arg->str, cmds.first->arg->next->str);
-	// printf("cmd2 :\narg[0] : %s\narg[1] : %s\n", cmds.first->next->arg->str, cmds.first->next->arg->next->str);
+	add_cmd2(&cmds);
+	add_cmd3(&cmds);
 	tmp = cmds.first;
-	// fdpipe[2] = dup(STDIN_FILENO);
+	fd[2] = dup(STDIN_FILENO);
+	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
-		// if (tmp->next)
-		// 	pipe(fdpipe);
-			//	^-- if (pipe < 0) clean stop
-		// redir
-		redir(tmp);
-		// exec -> is builtin ? -> fork
-		execution(tmp, &env);
-		// if (tmp->next)
-		// 	closepipe(fdpipe);
-		// dup2(fdpipe[0], fdpipe[2]);
+		if (tmp->next)
+			pipe(fd);
+		//TODO	^--if (pipe < 0) clean stop
+		redir(tmp, fd);
+		execution(tmp, &env, fd);
+		if (tmp->next)
+			dup2(fd[0], fd[2]);
+		closepipe(fd);
 		tmp = tmp->next;
 	}
+	close(fd[2]);
 	tmp = cmds.first;
-	// while (tmp)
-	// {
-	// 	waitpid(tmp->pid, NULL, 0);
-	// 	tmp = tmp->next;
-	// }
+	while (tmp)
+	{
+		waitpid(tmp->pid, NULL, 0);
+		tmp = tmp->next;
+	}
 	ft_clear(&env);
 	rm_cmds(&cmds);
 	return (0);

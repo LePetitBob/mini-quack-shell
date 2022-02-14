@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 17:09:23 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 12:34:40 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,7 @@ void	ft_builtins(char **cmd, t_env *env)
 		ft_unset(env, cmd);
 	else if (!ft_strcmp(cmd[0], "cd"))
 		ft_cd(cmd, env);
+	rl_clear_history();
+	ft_clear(env);
+	exit(0); //! g_exit_status
 }

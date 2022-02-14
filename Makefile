@@ -80,7 +80,7 @@ clean:
 		rm -rf $(OBJS)
 
 fclean: clean
-		rm -rf $(NAME) $(NAME_FSAN)
+		rm -rf $(NAME) $(VINC) $(ALBE)
 
 cleanall: fclean
 	make-C $(LIBFT_DIR) fclean

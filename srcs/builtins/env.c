@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/11 19:11:15 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/14 13:52:11 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	get_env(char **envp, t_env *env)
 
 	i = 0;
 	env_split = malloc(sizeof(char *) * 2);
+	if (!env_split)
+		return ;
 	env->first = NULL;
 	while (envp[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 18:46:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/11 15:21:55 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,29 @@ typedef struct s_env
 	t_env_var	*first;
 }				t_env;
 
+void		redir(t_cmd *cmd, int fd[3]);
+char		**env_cl_to_arr(t_env *env);
+void		execution(t_cmd *cmd, t_env *env, int fd[3]);
+void		ft_exec(char **cmd, char **envp);
+void		ft_clear(t_env *env);
+void		ft_free(char **s);
+int			is_num(char *s);
+
 //?			Builtins
-int		is_builtin(char *cmd);
-void	ft_builtins(char **cmd, t_env *env);
-void	ft_pwd(void);
-void	ft_cd(char **cmd, t_env *env);
-void	ft_echo(char **s);
-void	ft_env(t_env *env);
-void	get_env(char **envp, t_env *env);
-char	**env_cl_to_arr(t_env *env);
-void	ft_exit(char **err, t_env *env);
-void	ft_export(t_env *env, char **cmd);
-void	replace_var(t_env *env, char *name, char *value);
-void	ft_unset(t_env *env, char **name);
-int		existing_name(t_env *env, char *name);
-int		format_ok(char *var);
+int			is_builtin(char *cmd);
+void		ft_builtins(char **cmd, t_env *env);
+void		ft_pwd(void);
+void		ft_cd(char **cmd, t_env *env);
+void		ft_echo(char **s);
+void		ft_env(t_env *env);
+void		get_env(char **envp, t_env *env);
+char		**env_cl_to_arr(t_env *env);
+void		ft_exit(char **err, t_env *env);
+void		ft_export(t_env *env, char **cmd);
+void		replace_var(t_env *env, char *name, char *value);
+void		ft_unset(t_env *env, char **name);
+int			existing_name(t_env *env, char *name);
+int			format_ok(char *var);
 //?			Builtins
 
 //			CL
@@ -95,23 +103,15 @@ void		ft_addlast(t_env *env, char *name, char *value);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
-void	redir(t_cmd *cmd);
-char	**env_cl_to_arr(t_env *env);
-void	execution(t_cmd *cmd, t_env *env);
-void	ft_exec(char **cmd, char **envp);
-void	ft_clear(t_env *env);
-void	ft_free(char **s);
-int		is_num(char *s);
-
 //!				TO REMOVE WHEN LIBFT IMPLANTED
-int		ft_strlen(char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strdup(const char *s1);
-char	*ft_strndup(const char *s1, size_t n);
-char	**ft_split(char const *str, char c);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_atoi(const char *str);
-int		ft_strcmp(const char *s1, const char *s2);
+int			ft_strlen(char *s);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char		*ft_strdup(const char *s1);
+char		*ft_strndup(const char *s1, size_t n);
+char		**ft_split(char const *str, char c);
+char		*ft_strjoin(char *s1, char *s2);
+int			ft_atoi(const char *str);
+int			ft_strcmp(const char *s1, const char *s2);
 //!				TO REMOVE WHEN LIBFT IMPLANTED
 
 #endif
