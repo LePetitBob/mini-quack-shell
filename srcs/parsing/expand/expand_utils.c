@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 18:07:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:42:14 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,47 @@ void	convert_spaces(char *(**arr), char space)
 
 void	del_quotes(char *(*str))
 {
-	char	**splited;
-	char	**tmp;
-	char	*joined;
+	char	*prefix;
+	char	*sufix;
+	char	*cpy;
+	char	quote;
+	int		i;
+	int		diff;
 
-	splited = ft_split(*str, '\'');
-	while (splited[1])
+	i = 0;
+	while ((*str)[i] != '\0')
 	{
-		joined = ft_strjoin(splited[0], splited[1]);
-		tmp = ft_erase(splited, 0, 2);
-		ft_freetab(splited);
-		splited = ft_insert_tab(tmp, joined, 0);
-		free(joined);
+		if ((*str)[i] == '\'' || (*str)[i] == '\"')
+		{
+			quote = (*str)[i];
+			diff = i + 1;
+			if ((*str)[diff] == quote)
+			{
+				cpy = ft_del_one(*str, i);
+				free(*str);
+				*str = ft_del_one(cpy, i);
+				free(cpy);
+			}
+			else
+			{
+				prefix = ft_substr(*str, 0, diff);
+				while ((*str)[diff] != '\0' && (*str)[diff] != quote)
+					++diff;
+				cpy = ft_substr(*str, i, diff - i - 1);
+				sufix = ft_strjoin(prefix, cpy);
+				free(cpy);
+				cpy = ft_strdup(sufix);
+				free(sufix);
+				sufix = ft_substr(*str, diff, ft_strlen(*str) - diff + 1);
+				free(*str);
+				*str = ft_strjoin(cpy, sufix);
+				free(prefix);
+				free(sufix);
+				free(cpy);
+				i = diff - 1;
+			}
+			// printf("str-[%s]\n", *str);
+		}
+		++i;
 	}
-	free(*str);
-	*str = ft_strdup(splited[0]);
-	ft_freetab(splited);
-	splited = ft_split(*str, '\"');
-	while (splited[1])
-	{
-		joined = ft_strjoin(splited[0], splited[1]);
-		tmp = ft_erase(splited, 0, 2);
-		ft_freetab(splited);
-		splited = ft_insert_tab(tmp, joined, 0);
-		free(joined);
-	}
-	free(*str);
-	*str = ft_strdup(splited[0]);
-	ft_freetab(splited);
 }
