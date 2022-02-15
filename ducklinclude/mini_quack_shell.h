@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 18:09:10 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/15 17:37:49 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,16 @@ char	**expand_split_manager(char *str);
 char	**split_expand_prefix(char *str, int *i);
 void	split_quotes_expand(char *(**arr), char *str, int *index);
 void	split_dollar_expand(char *(**arr), char *str, int *index);
+void	expand_split_whitespaces(char *(**arr));
+
+void	expand_var(char *(*str), t_env *env);
+
+void	join_vars(char *(**arr));
+
+void	tokenize_expanded_vars(char **arr, t_token *parent);
+
+void	convert_spaces(char *(**arr), char space);
+void	del_quotes(char *(*str));
 //
 //?
 

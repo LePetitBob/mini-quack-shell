@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_manager.c                                    :+:      :+:    :+:   */
+/*   expand_join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 17:46:08 by amarini-         ###   ########.fr       */
+/*   Created: 2022/02/15 12:56:29 by amarini-          #+#    #+#             */
+/*   Updated: 2022/02/15 14:06:32 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-
-void	split_manager(char *line, t_env *env)
+void	join_vars(char *(**arr))
 {
-	char	**args;
+	char	*joined;
+	char	**tmp;
+	char	**cpy;
 
-	args = NULL;
-	ft_putstr("_____line:\n[");
-	ft_putstr(line);
-	ft_putstr("]\n\n");
-	split_whitespaces(line, &args);
-	ft_putstr("_____split_whitespaces:\n");
-	split_seps(&args);
-	ft_print_tab(args);
-	ft_putstr("\n");
-	tokenize_manager(&args, env);
+	while ((*arr)[1])
+	{
+		joined = ft_strjoin((*arr)[0], (*arr)[1]);
+		cpy = ft_erase((*arr), 0, 2);
+		tmp = ft_insert_tab(cpy, joined, 0);
+		free(joined);
+		ft_freetab(*arr);
+		*arr = ft_tabdup(tmp);
+		ft_freetab(tmp);
+	}
 }
-

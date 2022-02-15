@@ -3,7 +3,7 @@ ALBE = a_minishell
 VINC = v_minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 DEBUG =
 ifdef DEBUG
@@ -38,7 +38,11 @@ A_SRCS = albe_main.c \
 		split_whitespaces.c split_separators.c \
 		tokenize.c init_struct.c \
 		print_tokens.c \
-		expand_manager.c expand_split.c \
+		expand_manager.c expand_split.c split_quotes_dollar.c \
+		expand_var.c \
+		expand_join.c \
+		expand_tokenize.c \
+		expand_utils.c \
 		env.c create_cl.c export.c \
 		ft_utils_tmp.c
 

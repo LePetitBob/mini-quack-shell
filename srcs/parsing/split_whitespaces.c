@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/02/10 14:50:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:32:04 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,59 @@ void	split_whitespaces(char *str, char *(**args))
 	if (tmp[0] != '\0')
 		(*args) = ft_add_tab((*args), tmp);
 	free(tmp);
+}
+
+void	expand_split_whitespaces(char *(**arr))
+{
+	char	**tmp;
+	char	*cpy;
+	char	quote;
+	int		i;
+
+	i = 0;
+	cpy = ft_strdup((*arr)[0]);
+	ft_bzero(cpy, ft_strlen(cpy));
+	while ((*arr)[0][i] != '\0')
+	{
+		if ((*arr)[0][i] == ' ' && cpy[0] != '\0')
+		{
+			tmp = ft_add_tab((*arr), cpy);
+			ft_bzero(cpy, ft_strlen(cpy));
+			*arr = ft_tabdup(tmp);
+			ft_freetab(tmp);
+		}
+		if ((*arr)[0][i] == '\'' || (*arr)[0][i] == '\"')
+		{
+			// if (cpy[0] != '\0')
+			// {
+			// 	tmp = ft_add_tab((*arr), cpy);
+			// 	ft_bzero(cpy, ft_strlen(cpy));
+			// 	*arr = ft_tabdup(tmp);
+			// 	ft_freetab(tmp);
+			// }
+			cpy[ft_strlen(cpy)] = (*arr)[0][i];
+			quote = (*arr)[0][i];
+			++i;
+			while ((*arr)[0][i] != '\0' && (*arr)[0][i] != quote)
+			{
+				cpy[ft_strlen(cpy)] = (*arr)[0][i];
+				++i;
+			}
+		}
+		if((*arr)[0][i] != ' ')
+			cpy[ft_strlen(cpy)] = (*arr)[0][i];
+		++i;
+	}
+	if (cpy[0] != '\0')
+	{
+		tmp = ft_add_tab((*arr), cpy);
+			ft_bzero(cpy, ft_strlen(cpy));
+			*arr = ft_tabdup(tmp);
+			ft_freetab(tmp);
+	}
+	tmp = ft_erase(*arr, 0, 1);
+	ft_freetab(*arr);
+	*arr = ft_tabdup(tmp);
+	ft_freetab(tmp);
+	free(cpy);
 }
