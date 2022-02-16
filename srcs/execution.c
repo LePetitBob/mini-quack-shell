@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 18:02:49 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/15 18:32:27 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@ int	is_builtin(char *cmd)
 		|| !ft_strcmp(cmd, "exit") || !ft_strcmp(cmd, "env"))
 		return (1);
 	return (0);
+}
+
+void	cmd_not_found(char *cmd, char **tmp_paths)
+{
+	if (errno == EACCES)
+	{
+		write(2, "mini-quack-shell: permission denied: ", 37);
+		write(2, cmd, ft_strlen(cmd));
+		write(2, "\n", 1);
+	}
+	else
+	{
+		write(2, cmd, ft_strlen(cmd));
+		write(2, ": command not found\n", 20);
+	}
+	ft_free(tmp_paths);
+	exit(errno);
 }
 
 void	ft_exec(char **cmd, char **envp)
@@ -45,11 +62,11 @@ void	ft_exec(char **cmd, char **envp)
 			i[0]++;
 			free(path[0]);
 			free(path[1]);
+			if (errno == EACCES)
+				break ;
 		}
 	}
-	printf("%s: command not found\n", cmd[0]);
-	ft_free(tmp_paths);
-	exit(errno); //TODO define if !rights or !existence with access
+	cmd_not_found(cmd[0], tmp_paths);
 }
 
 char	**get_cmd_str(t_cmd *cmd)
@@ -78,28 +95,35 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
-void	execution(t_cmd *cmd, t_env *env, int fd[4])
+void	close_all_fds(int fd[4])
 {
-	// int		i;
-	// t_token	*tmp;
+	close(fd[0]);
+	close(fd[1]);
+	close(fd[2]);
+	close(fd[3]);
+}
+
+void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
+{
 	char	**str_cmd;
 	char	**env_arr;
 
 	str_cmd = get_cmd_str(cmd);
-	if (is_builtin(str_cmd[0]) && !cmd->next && !cmd->prev)
-		ft_builtins(str_cmd, env);
+	if (is_builtin(str_cmd[0]) && !is_piped)
+		ft_builtins(str_cmd, env, is_piped);
 	else
 	{
 		cmd->pid = fork();
-		//TODO		if (cmd->pid < 0)
-		//TODO			err;
+		if (cmd->pid < 0)
+		{
+			ft_free(str_cmd);
+			exit(errno);
+		}
 		if (!cmd->pid)
 		{
-			close(fd[0]);
-			close(fd[1]);
-			close(fd[2]);
+			close_all_fds(fd);
 			if (is_builtin(str_cmd[0]))
-				ft_builtins(str_cmd, env);
+				ft_builtins(str_cmd, env, is_piped);
 			else
 			{
 				env_arr = env_cl_to_arr(env);

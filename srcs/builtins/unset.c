@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 14:45:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:34:38 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	format_unset_ok(char *var, int *err)
 	j = 0;
 	i = 0;
 	while (var[j] && ((var[j] > 64 && var[j] < 91)
-		|| (var[j] > 96 && var[j] < 123) || (var[j] > 46
-		&& var[j] < 58) || var[j] == '_'))
+			|| (var[j] > 96 && var[j] < 123) || (var[j] > 46
+				&& var[j] < 58) || var[j] == '_'))
 		j++;
 	if (var[j])
 	{

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 18:05:47 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/16 15:50:48 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	add_cmd1(t_cmd_lst *cmds)
 
 	cmd = create_cmd();
 	cmd->arg = create_token("cat", 0);
-	cmd->arg->next = create_token("coucou", 2);
-	// cmd->redir = create_token("outfilr", 6);
+	// cmd->arg->next = create_token("popo", 0);
+	// cmd->redir = create_token("file", 5);
+	// cmd->redir->next = create_token("caca", 5);
 	cmds->first = cmd;
 }
 
@@ -55,8 +56,8 @@ void	add_cmd2(t_cmd_lst *cmds)
 	t_cmd	*cmd;
 
 	cmd = create_cmd();
-	cmd->arg = create_token("grep", 0);
-	cmd->arg->next = create_token("a", 0);
+	cmd->arg = create_token("ls", 0);
+	// cmd->arg->next = create_token("a", 0);
 	// cmd->redir = create_token("outfilr", 6);
 	cmd->prev = cmds->first;
 	cmds->first->next = cmd;
@@ -119,6 +120,7 @@ int	main(int ac, char **av, char **envp)
 	t_cmd_lst	cmds;
 	t_cmd		*tmp;
 	int			fd[4];
+	int			is_piped;
 	t_env		env;
 
 	(void)ac;
@@ -127,7 +129,10 @@ int	main(int ac, char **av, char **envp)
 	get_env(envp, &env);
 	add_cmd1(&cmds);
 	add_cmd2(&cmds);
-	add_cmd3(&cmds);
+	// add_cmd3(&cmds);
+	is_piped = 0;
+	if (cmds.first->next)
+		is_piped = 1;
 	tmp = cmds.first;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
@@ -137,7 +142,7 @@ int	main(int ac, char **av, char **envp)
 			pipe(fd);
 		//TODO	^--if (pipe < 0) clean stop
 		redirection(tmp, fd);
-		execution(tmp, &env, fd);
+		execution(tmp, &env, fd, is_piped);
 		if (tmp->next)
 			dup2(fd[0], fd[2]);
 		closepipe(fd);
@@ -153,5 +158,6 @@ int	main(int ac, char **av, char **envp)
 	}
 	ft_clear(&env);
 	rm_cmds(&cmds);
+	dprintf(2, "\nTRAVAIL TERMINE\n\n");
 	return (0);
 }

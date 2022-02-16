@@ -6,16 +6,16 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 12:34:40 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:33:31 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	ft_builtins(char **cmd, t_env *env)
+void	ft_builtins(char **cmd, t_env *env, int is_piped)
 {
 	if (!ft_strcmp(cmd[0], "exit"))
-		ft_exit(cmd, env);
+		ft_exit(cmd, env, is_piped);
 	else if (!ft_strcmp(cmd[0], "pwd"))
 		ft_pwd();
 	else if (!ft_strcmp(cmd[0], "env"))

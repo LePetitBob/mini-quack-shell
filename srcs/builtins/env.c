@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 13:52:11 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:33:40 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ void	get_env(char **envp, t_env *env)
 	free(env_split);
 }
 
-char	**env_cl_to_arr(t_env *env)
+int	env_size(t_env *env)
 {
-	int			i;
-	char		**env_arr;
-	char		*tmp[3];
 	t_env_var	*tmp_env;
+	int			i;
 
 	i = 0;
 	tmp_env = env->first;
@@ -64,11 +62,22 @@ char	**env_cl_to_arr(t_env *env)
 		i++;
 		tmp_env = tmp_env->next;
 	}
+	return (i);
+}
+
+char	**env_cl_to_arr(t_env *env)
+{
+	int			i;
+	char		**env_arr;
+	char		*tmp[3];
+	t_env_var	*tmp_env;
+
+	i = env_size(env);
 	env_arr = malloc(sizeof(char *) * (i + 1));
 	env_arr[i] = NULL;
 	i = 0;
 	tmp_env = env->first;
-	while(tmp_env)
+	while (tmp_env)
 	{
 		tmp[0] = ft_strdup(tmp_env->name);
 		tmp[1] = ft_strjoin(tmp[0], "=");
