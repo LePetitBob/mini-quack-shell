@@ -87,7 +87,7 @@
 			{
 				set type of t_token->next->next to t_token->next
 					[ex: type-FD -> type-DROUT]
-					[ex: type-WORD -> type-HERE_DOC]
+					[ex: type-LIMITER -> type-HERE_DOC]
 				del t_token->next (the RIN | ROUT | DROUT)
 				if (t_cmd->redir != NULL)
 					t_cmd->redir = t_token

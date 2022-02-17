@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:57:20 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 14:16:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:40:21 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_token	*ft_create_empty_token(void)
 	return (new);
 }
 
-t_cmd	*ft_create_cmd1(void)
+t_cmd	*ft_create_cmd(void)
 {
 	t_cmd	*new;
 

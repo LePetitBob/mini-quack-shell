@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/17 14:18:10 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:56:33 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void	tokenize_expanded_vars(char **arr, t_token *parent)
 		it->next = parent->next;
 		parent->next->prev = it;
 	}
+	parent = new_token;
 	free(parent->str);
 	parent->str = ft_strdup(new_token->str);
 	if (new_token->next)
 	{
 		parent->next = new_token->next;
-		new_token->next->prev = parent->next;
+		new_token->next->prev = parent;
 	}
 	free(new_token->str);
 	free(new_token);

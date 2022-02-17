@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/17 14:16:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:41:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	expand_caller(t_token *tokens, t_env *env)
 	ft_putstr("\n_____expand:\n");
 	print_tokens(tokens);
 	printf("\n");
+	command_manager(tokens, env);
 }
 
 void	expand_manager(t_token *it, t_env *env)

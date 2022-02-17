@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 
 DEBUG =
 ifdef DEBUG
-CFLAGS += -fsanitize=address -fsanitize=address -g3
+CFLAGS += -fsanitize=address -fsanitize=address
 endif
 
 SRCS_DIR = $(shell find srcs -type d)
@@ -37,14 +37,13 @@ A_SRCS = albe_main.c \
 		split_manager.c \
 		split_whitespaces.c split_separators.c \
 		tokenize.c init_struct.c \
-		print_tokens.c \
 		expand_manager.c expand_split.c split_quotes_dollar.c \
-		expand_var.c \
-		expand_join.c \
-		expand_tokenize.c \
-		expand_utils.c \
+		expand_var.c expand_join.c \
+		expand_tokenize.c expand_utils.c \
 		env.c create_cl.c export.c \
-		ft_utils_tmp.c
+		cmd_manager.c \
+		ft_utils_tmp.c \
+		print_tokens_cmds.c
 
 V_SRCS = main_Xec.c \
 		builtins/pwd.c \

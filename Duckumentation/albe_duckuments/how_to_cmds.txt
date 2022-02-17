@@ -1,0 +1,51 @@
+
+get tokens
+
+first convert all fd into previous redir type
+	dell redirs
+
+
+new cmd
+while (token)
+{
+	if (token->type == pipe)
+	{
+		new cmd
+		token = token->mext;
+		free(token->prev->str)
+		free(token->prev);
+		token->prev = NULL;
+	}
+	while (token && token->type != pipe)
+	{
+		if (token->type == redir)
+		{
+			if (token->redir)
+			{
+				cmd->redir->next = token;
+				token->prev = cmd->redir;
+			}
+			else
+				cmd->redir = token
+			if (token->next)
+			{
+				token = token->next
+				token->prev->next = NULL;
+				token->prev = NULL;
+			}
+		}
+		if (token->type = word)
+		{
+			cmd->arg = token;
+			while (token->next && token->type == word)
+				token = token->next;
+			if (token->next)
+			{
+				token = token->next;
+				token->prev->next = NULL;
+				token->prev = NULL;
+			}
+		}
+		token = token->next;
+	}
+}

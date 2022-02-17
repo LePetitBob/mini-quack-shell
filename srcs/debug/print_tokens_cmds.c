@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tokens.c                                     :+:      :+:    :+:   */
+/*   print_tokens_cmds.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/11 14:52:38 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:00:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ void	print_tokens(t_token *tokens)
 		ft_putstr("[");
 		ft_putstr(iterator->str);
 		ft_putstr("]\n");
+		iterator = iterator->next;
+	}
+}
+
+void	print_cmds(t_cmd *cmds)
+{
+	t_cmd	*iterator;
+
+	iterator = cmds;
+	while (iterator)
+	{
+		ft_putstr("cmds:\n{");
+		print_tokens(iterator->arg);
+		ft_putstr("}\n");
+		ft_putstr("redir:\n{");
+		print_tokens(iterator->redir);
+		ft_putstr("}\n");
 		iterator = iterator->next;
 	}
 }

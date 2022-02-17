@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/15 17:37:49 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:44:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_cmd_list
 
 //			Init Structs
 t_token	*ft_create_empty_token(void);
-t_cmd	*ft_create_cmd1(void);
+t_cmd	*ft_create_cmd(void);
 
 //?			Parsing
 //			Split
@@ -106,6 +106,10 @@ void	tokenize_expanded_vars(char **arr, t_token *parent);
 
 void	convert_spaces(char *(**arr), char space);
 void	del_quotes(char *(*str));
+//
+//			Commands
+void	command_manager(t_token *tokens, t_env *env);
+void	link_fd_redir(t_token **tokens);
 //
 //?
 
@@ -140,6 +144,7 @@ int		is_num(char *s);
 
 //!				DEBUG
 void		print_tokens(t_token *tokens);
+void		print_cmds(t_cmd *cmds);
 //!
 
 //!				TO REMOVE WHEN LIBFT IMPLANTED
