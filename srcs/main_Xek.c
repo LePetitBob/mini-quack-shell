@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/16 15:50:48 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/17 19:26:03 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ void	add_cmd1(t_cmd_lst *cmds)
 	t_cmd	*cmd;
 
 	cmd = create_cmd();
-	cmd->arg = create_token("cat", 0);
-	// cmd->arg->next = create_token("popo", 0);
-	// cmd->redir = create_token("file", 5);
-	// cmd->redir->next = create_token("caca", 5);
+	cmd->arg = create_token("cat", WORD);
+	cmd->arg->next = create_token("outfilr", WORD);
+	cmd->redir = create_token("trashtes1", ROUT);
+	cmd->redir->next = create_token("trashtes2", ROUT);
+	cmd->redir->next->prev = cmd->redir;
+	cmd->redir->next->next = create_token("trashtes3", ROUT);
+	cmd->redir->next->next->prev = cmd->redir->next;
 	cmds->first = cmd;
 }
 
@@ -57,7 +60,7 @@ void	add_cmd2(t_cmd_lst *cmds)
 
 	cmd = create_cmd();
 	cmd->arg = create_token("ls", 0);
-	// cmd->arg->next = create_token("a", 0);
+	cmd->arg->next = create_token("-la", 0);
 	// cmd->redir = create_token("outfilr", 6);
 	cmd->prev = cmds->first;
 	cmds->first->next = cmd;
@@ -73,6 +76,24 @@ void	add_cmd3(t_cmd_lst *cmds)
 	cmd->redir = create_token("outfilr", 6);
 	cmd->prev = cmds->first->next;
 	cmds->first->next->next = cmd;
+}
+
+void	rm_here_doc_tmp_file(char **envp)
+{
+	pid_t	pidtmp;
+	char	*tmp[3];
+
+	if (access(HERE_DOC_NAME, F_OK) == 0)
+	{
+		pidtmp = fork();
+		if (!pidtmp)
+		{
+			tmp[0] = ft_strdup("rm");
+			tmp[0] = ft_strdup(HERE_DOC_NAME);
+			tmp[0] = NULL;
+			ft_exec(tmp, envp);
+		}
+	}
 }
 
 void	rm_cmds(t_cmd_lst *cmd)
@@ -128,7 +149,7 @@ int	main(int ac, char **av, char **envp)
 	cmds.first = NULL;
 	get_env(envp, &env);
 	add_cmd1(&cmds);
-	add_cmd2(&cmds);
+	// add_cmd2(&cmds);
 	// add_cmd3(&cmds);
 	is_piped = 0;
 	if (cmds.first->next)
@@ -158,6 +179,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	ft_clear(&env);
 	rm_cmds(&cmds);
+	rm_here_doc_tmp_file(envp);
 	dprintf(2, "\nTRAVAIL TERMINE\n\n");
 	return (0);
 }

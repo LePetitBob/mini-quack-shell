@@ -47,6 +47,7 @@ V_SRCS = main_Xek.c \
 		ft_redir.c \
 		create_cl.c \
 		execution.c \
+		ft_here_doc.c \
 		ft_utils_tmp.c
 
 

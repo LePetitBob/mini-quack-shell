@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 18:05:45 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/17 15:28:02 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define ROUT 5
 # define DROUT 6
 # define HERE_DOC 7
+# define HERE_DOC_NAME ".tmprry_file_mini_QUACK_shell_ull_never_guess_its_name"
 
 typedef struct s_token
 {
@@ -72,8 +73,9 @@ typedef struct s_env
 }				t_env;
 
 void		redirection(t_cmd *cmd, int fd[4]);
+void		get_here_doc(char *limiter);
 char		**env_cl_to_arr(t_env *env);
-void		execution(t_cmd *cmd, t_env *env, int fd[4]);
+void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped);
 void		ft_exec(char **cmd, char **envp);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);
@@ -81,14 +83,14 @@ int			is_num(char *s);
 
 //?			Builtins
 int			is_builtin(char *cmd);
-void		ft_builtins(char **cmd, t_env *env);
+void		ft_builtins(char **cmd, t_env *env, int is_piped);
 void		ft_pwd(void);
 void		ft_cd(char **cmd, t_env *env);
 void		ft_echo(char **s);
 void		ft_env(t_env *env);
 void		get_env(char **envp, t_env *env);
 char		**env_cl_to_arr(t_env *env);
-void		ft_exit(char **err, t_env *env);
+void		ft_exit(char **err, t_env *env, int is_piped);
 void		ft_export(t_env *env, char **cmd);
 void		replace_var(t_env *env, char *name, char *value);
 void		ft_unset(t_env *env, char **name);
