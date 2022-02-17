@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 19:42:14 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:10:12 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,18 @@ void	del_quotes(char *(*str))
 			}
 			else
 			{
-				prefix = ft_substr(*str, 0, diff);
+				prefix = ft_substr(*str, 0, i);
 				while ((*str)[diff] != '\0' && (*str)[diff] != quote)
 					++diff;
-				cpy = ft_substr(*str, i, diff - i - 1);
+				cpy = ft_substr(*str, i + 1, diff - i - 1);
 				sufix = ft_strjoin(prefix, cpy);
 				free(cpy);
 				cpy = ft_strdup(sufix);
 				free(sufix);
-				sufix = ft_substr(*str, diff, ft_strlen(*str) - diff + 1);
+				if ((*str)[diff] == '\0')
+					sufix = ft_substr(*str, diff, ft_strlen(*str) - (diff + 1));
+				else
+					sufix = ft_substr(*str, diff + 1, ft_strlen(*str) - (diff + 1));
 				free(*str);
 				*str = ft_strjoin(cpy, sufix);
 				free(prefix);
@@ -75,6 +78,7 @@ void	del_quotes(char *(*str))
 			}
 			// printf("str-[%s]\n", *str);
 		}
-		++i;
+		else
+			++i;
 	}
 }

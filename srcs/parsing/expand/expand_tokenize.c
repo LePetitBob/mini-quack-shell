@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 18:06:21 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:18:10 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	tokenize_expanded_vars(char **arr, t_token *parent)
 
 	new_token = ft_create_empty_token();
 	new_token->str = ft_strdup(arr[0]);
-	new_token->type = WORD;
 	it = new_token;
 	i = 1;
 	while (arr[i])
@@ -39,7 +38,6 @@ void	tokenize_expanded_vars(char **arr, t_token *parent)
 	}
 	free(parent->str);
 	parent->str = ft_strdup(new_token->str);
-	parent->type = new_token->type;
 	if (new_token->next)
 	{
 		parent->next = new_token->next;

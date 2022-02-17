@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 17:46:08 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:11:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	split_manager(char *line, t_env *env)
 	ft_putstr(line);
 	ft_putstr("]\n\n");
 	split_whitespaces(line, &args);
-	ft_putstr("_____split_whitespaces:\n");
+	ft_putstr("_____split_whitespaces_seps:\n");
 	split_seps(&args);
 	ft_print_tab(args);
 	ft_putstr("\n");
