@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/17 19:26:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/18 17:55:00 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	add_cmd1(t_cmd_lst *cmds)
 
 	cmd = create_cmd();
 	cmd->arg = create_token("cat", WORD);
-	cmd->arg->next = create_token("outfilr", WORD);
-	cmd->redir = create_token("trashtes1", ROUT);
-	cmd->redir->next = create_token("trashtes2", ROUT);
+	// cmd->arg->next = create_token("outfilr", WORD);
+	cmd->redir = create_token("trashtes2", ROUT);
+	cmd->redir->next = create_token("fichtrebite", HERE_DOC);
 	cmd->redir->next->prev = cmd->redir;
 	cmd->redir->next->next = create_token("trashtes3", ROUT);
 	cmd->redir->next->next->prev = cmd->redir->next;
@@ -80,17 +80,17 @@ void	add_cmd3(t_cmd_lst *cmds)
 
 void	rm_here_doc_tmp_file(char **envp)
 {
-	pid_t	pidtmp;
-	char	*tmp[3];
+	pid_t		pidtmp;
+	char		*tmp[3];
 
-	if (access(HERE_DOC_NAME, F_OK) == 0)
+	if (access(HERE_DOC_PATH, F_OK) == 0)
 	{
 		pidtmp = fork();
 		if (!pidtmp)
 		{
 			tmp[0] = ft_strdup("rm");
-			tmp[0] = ft_strdup(HERE_DOC_NAME);
-			tmp[0] = NULL;
+			tmp[1] = ft_strdup(HERE_DOC_PATH);
+			tmp[2] = NULL;
 			ft_exec(tmp, envp);
 		}
 	}
@@ -161,12 +161,13 @@ int	main(int ac, char **av, char **envp)
 	{
 		if (tmp->next)
 			pipe(fd);
-		//TODO	^--if (pipe < 0) clean stop
 		redirection(tmp, fd);
 		execution(tmp, &env, fd, is_piped);
 		if (tmp->next)
+		{
 			dup2(fd[0], fd[2]);
-		closepipe(fd);
+			closepipe(fd);
+		}
 		tmp = tmp->next;
 	}
 	close(fd[2]);

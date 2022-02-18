@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/17 16:05:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/18 18:27:14 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,15 @@ char	**get_cmd_str(t_cmd *cmd)
 	t_token	*tmp;
 
 	i = 0;
+	// dprintf(2, "%s\n", cmd->arg->str);
+	// dprintf(2, "%s\n", cmd->arg->str);
 	tmp = cmd->arg;
 	while (tmp)
 	{
 		i++;
 		tmp = tmp->next;
 	}
+	tmp = NULL;
 	str_cmd = malloc(sizeof(char *) * (i + 1));
 	str_cmd[i] = NULL;
 	tmp = cmd->arg;
@@ -95,10 +98,13 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
-void	close_all_fds(int fd[4])
+void	close_all_fds(int fd[4], t_cmd *cmd)
 {
-	close(fd[0]);
-	close(fd[1]);
+	if (cmd->next)
+	{
+		close(fd[0]);
+		close(fd[1]);
+	}
 	close(fd[2]);
 	close(fd[3]);
 }
@@ -121,7 +127,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 		}
 		if (!cmd->pid)
 		{
-			close_all_fds(fd);
+			close_all_fds(fd, cmd);
 			if (is_builtin(str_cmd[0]))
 				ft_builtins(str_cmd, env, is_piped);
 			else

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/17 15:27:23 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/18 15:38:24 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	get_here_doc(char *limiter)
 	char	*here_doc_entry;
 	int		fd_hd;
 
+	chdir("objs/");
 	fd_hd = open(HERE_DOC_NAME, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	here_doc_entry = readline("> ");
-	// add_history(here_doc_entry);
 	while (ft_strcmp(limiter, here_doc_entry))
 	{
 		write(fd_hd, here_doc_entry, ft_strlen(here_doc_entry));
@@ -28,4 +28,5 @@ void	get_here_doc(char *limiter)
 		here_doc_entry = readline("> ");
 	}
 	close(fd_hd);
+	chdir("../");
 }
