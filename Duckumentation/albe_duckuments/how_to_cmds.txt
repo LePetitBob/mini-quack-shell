@@ -49,3 +49,49 @@ while (token)
 		token = token->next;
 	}
 }
+
+<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$PAGER" | ls -la | <infilr cat
+___token :
+[HERE_DOC][$HOME]
+[WORD][ls]
+[WORD][-l]
+[PIPE][|]
+[WORD][echo]
+[WORD][---------n]
+[WORD][""'"    coucou|<><> "       ']
+[ROUT][outfilr]
+[PIPE][|]
+[WORD][echo]
+[WORD]["$a"]
+[PIPE][|]
+[WORD][ls]
+[WORD][-la]
+[PIPE][|]
+[RIN][infilr]
+[WORD][cat]
+___cmd:
+cmds:
+{[WORD][ls]
+[WORD][-l]}
+redir:
+{[HERE_DOC][$HOME]}
+cmds:
+{[WORD][echo]
+[WORD][---------n]
+[WORD][""'"    coucou|<><> "       ']}
+redir:
+{[ROUT][outfilr]}
+cmds:
+{[WORD][echo]
+[WORD]["$a"]}
+redir:
+{}
+cmds:
+{[WORD][ls]
+[WORD][-la]}
+redir:
+{}
+cmds:
+{[WORD][cat]}
+redir:
+{[RIN][infilr]}

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 14:20:36 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:32:43 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	command_manager(t_token *tokens, t_env *env)
 	t_token	*it_t;
 	t_cmd	*cmds;
 	t_cmd	*it_c;
+	t_token	*tmp;
 
 	(void)env;
 	link_fd_redir(&tokens);
@@ -28,7 +29,7 @@ void	command_manager(t_token *tokens, t_env *env)
 	it_c = cmds;
 	while (it_t)
 	{
-		// printf("it-[%s]\n", it_t->str);
+		printf("start-[%s]\n", it_t->str);
 		if (it_t->type == PIPE)
 		{
 			it_c->next = ft_create_cmd();
@@ -46,8 +47,11 @@ void	command_manager(t_token *tokens, t_env *env)
 			{
 				if (it_c->redir)
 				{
-					it_c->redir->next = it_t;
-					it_t->prev = it_c->redir;
+					tmp = it_c->redir;
+					while (tmp->next)
+						tmp = tmp->next;
+					tmp->next = it_t;
+					it_t->prev = tmp;
 				}
 				else
 					it_c->redir = it_t;
@@ -57,24 +61,32 @@ void	command_manager(t_token *tokens, t_env *env)
 					it_t->prev->next = NULL;
 					it_t->prev = NULL;
 				}
+				printf("after_R-[%s]\n", it_t->str);
 			}
 			if (it_t->type == WORD)
 			{
-				it_c->arg = it_t;
-				while (it_t->next && it_t->next->type == WORD)
-					it_t = it_t->next;
+				if (it_c->arg)
+				{
+					tmp = it_c->arg;
+					while (tmp->next)
+						tmp = tmp->next;
+					tmp->next = it_t;
+					it_t->prev = tmp;
+				}
+				else
+					it_c->arg = it_t;
+				
 				if (it_t->next)
 				{
 					it_t = it_t->next;
 					it_t->prev->next = NULL;
 					it_t->prev = NULL;
 				}
+				printf("after_W-[%s]\n", it_t->str);
 			}
-			// printf("it-[%s]\n", it_t->str);
-			if (it_t->type != PIPE)
+			if (it_t->next == NULL)
 				it_t = it_t->next;
 		}
-		// it_t = it_t->next;
 	}
 	ft_putstr("\n_____cmds:\n");
 	print_cmds(cmds);
