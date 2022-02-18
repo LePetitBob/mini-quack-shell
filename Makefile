@@ -40,7 +40,7 @@ A_SRCS = albe_main.c \
 		expand_manager.c expand_split.c split_quotes_dollar.c \
 		expand_var.c expand_join.c \
 		expand_tokenize.c expand_utils.c \
-		env.c create_cl.c export.c \
+		env.c exit.c create_cl.c export.c \
 		cmd_manager.c \
 		ft_utils_tmp.c \
 		print_tokens_cmds.c

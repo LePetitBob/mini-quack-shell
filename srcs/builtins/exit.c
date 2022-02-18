@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/07 17:18:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/18 18:39:59 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 void	ft_clear(t_env *env)
 {
@@ -50,7 +50,7 @@ void	ft_exit(char **err, t_env *env)
 			write(2, "mini-quack-shell: exit: ", 24);
 			write(2, err[1], ft_strlen(err[1]));
 			write(2, ": numeric argument required\n", 28);
-			ft_free(err);
+			ft_freetab(err);
 			rl_clear_history();
 			ft_clear(env);
 			exit(2);
@@ -58,7 +58,7 @@ void	ft_exit(char **err, t_env *env)
 	}
 	if (i <= 2)
 	{
-		ft_free(err);
+		ft_freetab(err);
 		rl_clear_history();
 		ft_clear(env);
 		exit(errcode);

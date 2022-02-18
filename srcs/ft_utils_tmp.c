@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/10 17:46:49 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 18:40:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,19 +161,19 @@ char	*ft_strndup(const char *s1, size_t n)
 // 	return (splited);
 // }
 
-// int	is_num(char *s)
-// {
-// 	int	i;
+int	is_num(char *s)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] < 48 || s[i] > 57)
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] < 48 || s[i] > 57)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 // int	ft_atoi(const char *str)
 // {
