@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 14:25:13 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:47:54 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ void	split_dollar_expand(char *(**arr), char *str, int *index)
 	cpy = ft_strdup(str);
 	ft_bzero(cpy, ft_strlen(str));
 	cpy[0] = str[*index];
-	if (ft_isalpha(str[*index + i]) == 0 && str[*index + i] != '_')
+	if (ft_isalpha(str[*index + i]) == 0 && str[*index + i] != '_'
+		&& str[*index + i] != '0' && str[*index + i] != '?')
+	{
+		++(*index);
 		return ;
+	}
 	while (str[*index + i] != '\0' && (ft_isalnum(str[*index + i]) == 1
 		|| str[*index + i] == '_'))
 	{
@@ -56,7 +60,10 @@ void	split_dollar_expand(char *(**arr), char *str, int *index)
 		++i;
 	}
 	*index += i;
-	if (ft_isalnum(str[*index]) == 0 && str[*index] != '_')
+	if (str[*index] == '?')
+		cpy[i] = str[*index];
+	if (ft_isalnum(str[*index]) == 0 && str[*index] != '_'
+		&& str[*index] != '0' && str[*index] != '?')
 		--(*index); 
 	tmp = ft_add_tab(*arr, cpy);
 	free(cpy);

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/17 17:44:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:24:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define ROUT 5
 # define DROUT 6
 # define HERE_DOC 7
+
+extern int		g_exit_status;
 
 typedef struct s_env_var
 {
@@ -90,7 +92,7 @@ int		get_arg_type(char *arg, int prev_type);
 //
 //			Expand
 void	expand_caller(t_token *tokens, t_env *env);
-void	expand_manager(t_token *it, t_env *env);
+void	expand_manager(t_token **it, t_env *env);
 
 char	**expand_split_manager(char *str);
 char	**split_expand_prefix(char *str, int *i);
@@ -102,7 +104,7 @@ void	expand_var(char *(*str), t_env *env);
 
 void	join_vars(char *(**arr));
 
-void	tokenize_expanded_vars(char **arr, t_token *parent);
+void	tokenize_expanded_vars(char **arr, t_token **parent);
 
 void	convert_spaces(char *(**arr), char space);
 void	del_quotes(char *(*str));

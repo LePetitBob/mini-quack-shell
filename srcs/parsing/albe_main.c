@@ -6,11 +6,13 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/14 13:46:53 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:30:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+int g_exit_status;
 
 int	main(int ac, char **av, char *envp[])
 {
@@ -19,6 +21,7 @@ int	main(int ac, char **av, char *envp[])
 
 	(void)ac;
 	(void)av;
+	g_exit_status = 0;
 	get_env(envp, &env);
 	while (1)
 	{
