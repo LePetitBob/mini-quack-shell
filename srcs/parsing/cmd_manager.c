@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/17 19:57:37 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:20:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	link_fd_redir(t_token **tokens)
 	it = *tokens;
 	while (it->next)
 	{
-		printf("it-[%s]\n", it->str);
+		// printf("it-[%s]\n", it->str);
 		if ((it->next->type == FD || it->next->type == LIMITER)
 			&& (it->type == RIN || it->type == ROUT || it->type == DROUT
 			|| it->type == HERE_DOC))
@@ -98,7 +98,7 @@ void	link_fd_redir(t_token **tokens)
 			tmp = it;
 			it = it->next;
 			it->type = tmp->type;
-			printf("it-[%s]\n", it->str);
+			// printf("it-[%s]\n", it->str);
 			if (tmp->prev)
 			{
 				it->prev = tmp->prev;
@@ -111,7 +111,7 @@ void	link_fd_redir(t_token **tokens)
 			}
 			free(tmp->str);
 			free(tmp);
-			printf("it-[%s]\n", it->str);
+			// printf("it-[%s]\n", it->str);
 			// tmp = NULL;
 		}
 		else
