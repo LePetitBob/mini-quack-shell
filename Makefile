@@ -43,6 +43,7 @@ A_SRCS = albe_main.c \
 		env.c exit.c create_cl.c export.c \
 		cmd_manager.c \
 		ft_utils_tmp.c \
+		error_manager.c \
 		print_tokens_cmds.c
 
 V_SRCS = main_Xec.c \

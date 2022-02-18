@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/18 18:40:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:11:33 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # include <signal.h>
 # include <errno.h>
 # include "libft.h"
+
+# define ERNO_QUOTE 0
+# define ERNO_PIPE 1
 
 # define NO_TYPE -1
 # define WORD 0
@@ -143,6 +146,10 @@ void	ft_exec(char **cmd, char **envp);
 void	ft_clear(t_env *env);
 void	ft_free(char **s);
 int		is_num(char *s);
+
+//			ERRORS
+void	error_manager(int erno);
+//
 
 //!				DEBUG
 void		print_tokens(t_token *tokens);
