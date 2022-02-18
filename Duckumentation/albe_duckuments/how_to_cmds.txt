@@ -52,7 +52,7 @@ while (token)
 
 << $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$PAGER" | ls -la | <infilr cat
 ___token :
-[HERE_DOC][$HOME]
+[HERE_DOC][/mnt/nfs/homes/amarini-]
 [WORD][ls]
 [WORD][-l]
 [PIPE][|]
@@ -62,7 +62,7 @@ ___token :
 [ROUT][outfilr]
 [PIPE][|]
 [WORD][echo]
-[WORD]["$a"]
+[WORD][less]
 [PIPE][|]
 [WORD][ls]
 [WORD][-la]
@@ -83,7 +83,7 @@ redir:
 {[ROUT][outfilr]}
 cmds:
 {[WORD][echo]
-[WORD]["$a"]}
+[WORD][less]}
 redir:
 {}
 cmds:

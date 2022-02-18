@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/02/18 19:04:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 00:27:37 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,6 @@ void	expand_split_whitespaces(char *(**arr))
 		}
 		if ((*arr)[0][i] == '\'' || (*arr)[0][i] == '\"')
 		{
-			// if (cpy[0] != '\0')
-			// {
-			// 	tmp = ft_add_tab((*arr), cpy);
-			// 	ft_bzero(cpy, ft_strlen(cpy));
-			// 	*arr = ft_tabdup(tmp);
-			// 	ft_freetab(tmp);
-			// }
 			cpy[ft_strlen(cpy)] = (*arr)[0][i];
 			quote = (*arr)[0][i];
 			++i;

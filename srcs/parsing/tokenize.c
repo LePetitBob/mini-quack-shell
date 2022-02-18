@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 15:45:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 00:27:51 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ void	tokenize_manager(char *(**args), t_env *env)
 		it = it->next;
 		++i;
 	}
-	ft_putstr("_____tokenize:\n");
-	print_tokens(tokens);
-	ft_putstr("\n");
 	ft_freetab(*args);
-	//call next function
 	expand_caller(tokens, env);
 }
 

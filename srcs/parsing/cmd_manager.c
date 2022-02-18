@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 23:32:43 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 00:29:02 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,11 @@ void	command_manager(t_token *tokens, t_env *env)
 
 	(void)env;
 	link_fd_redir(&tokens);
-	ft_putstr("\n_____merge_redir:\n");
-	print_tokens(tokens);
-	printf("\n");
 	it_t = tokens;
 	cmds = ft_create_cmd();
 	it_c = cmds;
 	while (it_t)
 	{
-		printf("start-[%s]\n", it_t->str);
 		if (it_t->type == PIPE)
 		{
 			it_c->next = ft_create_cmd();
@@ -61,7 +57,6 @@ void	command_manager(t_token *tokens, t_env *env)
 					it_t->prev->next = NULL;
 					it_t->prev = NULL;
 				}
-				printf("after_R-[%s]\n", it_t->str);
 			}
 			if (it_t->type == WORD)
 			{
@@ -82,16 +77,11 @@ void	command_manager(t_token *tokens, t_env *env)
 					it_t->prev->next = NULL;
 					it_t->prev = NULL;
 				}
-				printf("after_W-[%s]\n", it_t->str);
 			}
 			if (it_t->next == NULL)
 				it_t = it_t->next;
 		}
 	}
-	ft_putstr("\n_____cmds:\n");
-	print_cmds(cmds);
-	printf("\n");
-	//call vincent functions
 }
 
 void	link_fd_redir(t_token **tokens)
@@ -102,7 +92,6 @@ void	link_fd_redir(t_token **tokens)
 	it = *tokens;
 	while (it->next)
 	{
-		// printf("it-[%s]\n", it->str);
 		if ((it->next->type == FD || it->next->type == LIMITER)
 			&& (it->type == RIN || it->type == ROUT || it->type == DROUT
 			|| it->type == HERE_DOC))
@@ -110,7 +99,6 @@ void	link_fd_redir(t_token **tokens)
 			tmp = it;
 			it = it->next;
 			it->type = tmp->type;
-			// printf("it-[%s]\n", it->str);
 			if (tmp->prev)
 			{
 				it->prev = tmp->prev;
@@ -123,8 +111,6 @@ void	link_fd_redir(t_token **tokens)
 			}
 			free(tmp->str);
 			free(tmp);
-			// printf("it-[%s]\n", it->str);
-			// tmp = NULL;
 		}
 		else
 			it = it->next;
