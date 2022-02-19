@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/18 17:55:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 03:14:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,6 @@ void	add_cmd1(t_cmd_lst *cmds)
 
 	cmd = create_cmd();
 	cmd->arg = create_token("cat", WORD);
-	// cmd->arg->next = create_token("outfilr", WORD);
-	cmd->redir = create_token("trashtes2", ROUT);
-	cmd->redir->next = create_token("fichtrebite", HERE_DOC);
-	cmd->redir->next->prev = cmd->redir;
-	cmd->redir->next->next = create_token("trashtes3", ROUT);
-	cmd->redir->next->next->prev = cmd->redir->next;
 	cmds->first = cmd;
 }
 
@@ -60,8 +54,6 @@ void	add_cmd2(t_cmd_lst *cmds)
 
 	cmd = create_cmd();
 	cmd->arg = create_token("ls", 0);
-	cmd->arg->next = create_token("-la", 0);
-	// cmd->redir = create_token("outfilr", 6);
 	cmd->prev = cmds->first;
 	cmds->first->next = cmd;
 }
@@ -149,7 +141,7 @@ int	main(int ac, char **av, char **envp)
 	cmds.first = NULL;
 	get_env(envp, &env);
 	add_cmd1(&cmds);
-	// add_cmd2(&cmds);
+	add_cmd2(&cmds);
 	// add_cmd3(&cmds);
 	is_piped = 0;
 	if (cmds.first->next)
@@ -176,6 +168,7 @@ int	main(int ac, char **av, char **envp)
 	while (tmp)
 	{
 		waitpid(tmp->pid, NULL, 0);
+		// wait(NULL);
 		tmp = tmp->next;
 	}
 	ft_clear(&env);
