@@ -6,7 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/02/19 06:17:50 by vduriez          ###   ########.fr       */
+=======
+/*   Updated: 2022/02/19 03:54:43 by vduriez          ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +62,15 @@ void	ft_exit(char **err, t_env *env, int is_piped)
 		if (is_num(err[1]))
 			errcode = ft_atoi(err[1]);
 		else
-			clear_and_exit(err, env);
+		{
+			write(2, "mini-quack-shell: exit: ", 24);
+			write(2, err[1], ft_strlen(err[1]));
+			write(2, ": numeric argument required\n", 28);
+			ft_freetab(err);
+			rl_clear_history();
+			ft_clear(env);
+			exit(2);
+		}
 	}
 	if (i <= 2)
 	{

@@ -1,0 +1,97 @@
+
+get tokens
+
+first convert all fd into previous redir type
+	dell redirs
+
+
+new cmd
+while (token)
+{
+	if (token->type == pipe)
+	{
+		new cmd
+		token = token->mext;
+		free(token->prev->str)
+		free(token->prev);
+		token->prev = NULL;
+	}
+	while (token && token->type != pipe)
+	{
+		if (token->type == redir)
+		{
+			if (token->redir)
+			{
+				cmd->redir->next = token;
+				token->prev = cmd->redir;
+			}
+			else
+				cmd->redir = token
+			if (token->next)
+			{
+				token = token->next
+				token->prev->next = NULL;
+				token->prev = NULL;
+			}
+		}
+		if (token->type = word)
+		{
+			cmd->arg = token;
+			while (token->next && token->type == word)
+				token = token->next;
+			if (token->next)
+			{
+				token = token->next;
+				token->prev->next = NULL;
+				token->prev = NULL;
+			}
+		}
+		token = token->next;
+	}
+}
+
+<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$PAGER" | ls -la | <infilr cat
+___token :
+[HERE_DOC][$HOME]
+[WORD][ls]
+[WORD][-l]
+[PIPE][|]
+[WORD][echo]
+[WORD][---------n]
+[WORD][""'"    coucou|<><> "       ']
+[ROUT][outfilr]
+[PIPE][|]
+[WORD][echo]
+[WORD]["$a"]
+[PIPE][|]
+[WORD][ls]
+[WORD][-la]
+[PIPE][|]
+[RIN][infilr]
+[WORD][cat]
+___cmd:
+cmds:
+{[WORD][ls]
+[WORD][-l]}
+redir:
+{[HERE_DOC][$HOME]}
+cmds:
+{[WORD][echo]
+[WORD][---------n]
+[WORD][""'"    coucou|<><> "       ']}
+redir:
+{[ROUT][outfilr]}
+cmds:
+{[WORD][echo]
+[WORD]["$a"]}
+redir:
+{}
+cmds:
+{[WORD][ls]
+[WORD][-la]}
+redir:
+{}
+cmds:
+{[WORD][cat]}
+redir:
+{[RIN][infilr]}

@@ -1,0 +1,31 @@
+(worst command ever for parsing)
+!!!!!!!!!!!!!!!!!!!!!! attention au \
+
+'|' ' ' '<' '<<' '>' '>>' ''' '"'
+
+0_original
+echo ---------n ""'"    coucou|<><> "       ' > outfilr | ls -la | <infilr cat
+1_split_spaces_"_'
+[echo][---------n][""'"    coucou|<><> "       '][>][outfilr][|][ls][-la][|][<infilr][cat]
+2_split_seps
+[echo][---------n][""'"    coucou|<><> "       '][>][outfilr][|][ls][-la][|][<][infilr][cat]
+
+0_original
+e''c""h''o'' "c"'o'""u'cou'
+1_split_spaces_"_'
+[e''c""h''o'']["c"'o'""u'cou']
+
+0_original
+e''c""h''o' '"c"'o'""u'cou'
+[e''c""h''o' '"c"'o'""u'cou']
+
+<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$a" | ls -la | <infilr cat
+
+"h ey" hey|<hey
+["h ey"][hey][|][<][hey]
+
+<< $HOME ls -l | cat Makefile >> test | < Makefile pwd >> test
+
+echo "hello there" > outfilr | echo '$a'
+
+cat "test" >> outfilr

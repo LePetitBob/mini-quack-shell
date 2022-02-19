@@ -6,13 +6,25 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 17:11:14 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 03:55:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-//TODO Check setenv & unsetenv
+char	*get_env_name(t_env *env, char *name)
+{
+	t_env_var	*tmp;
+
+	tmp = env->first;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->name, name))
+			return (tmp->value);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
 
 int	existing_name(t_env *env, char *name)
 {

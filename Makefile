@@ -46,8 +46,7 @@ A_SRCS = albe_main.c \
 		error_manager.c \
 		print_tokens_cmds.c
 
-V_SRCS = main_Xek.c \
-		builtins/pwd.c \
+V_SRCS = builtins/pwd.c \
 		builtins/echo.c \
 		builtins/env.c \
 		builtins/cd.c \
@@ -61,7 +60,6 @@ V_SRCS = main_Xek.c \
 		ft_here_doc.c \
 		cmd_manager.c \
 		ft_utils_tmp.c
-
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 A_OBJS = $(addprefix $(OBJS_DIR)/,$(A_SRCS:.c=.o))
