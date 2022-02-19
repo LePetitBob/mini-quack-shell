@@ -94,13 +94,9 @@ clean:
 		rm -rf $(V_OBJS)
 
 fclean: clean
-<<<<<<< HEAD
 		rm -rf $(NAME)
 		rm -rf $(ALBE)
 		rm -rf $(VINC)
-=======
-		rm -rf $(NAME) $(VINC) $(ALBE)
->>>>>>> builtins
 
 cleanall: fclean
 	make -C $(LIBFT_DIR) fclean

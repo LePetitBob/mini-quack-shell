@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 03:14:04 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 05:39:22 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,6 @@ int	main(int ac, char **av, char **envp)
 	while (tmp)
 	{
 		waitpid(tmp->pid, NULL, 0);
-		// wait(NULL);
 		tmp = tmp->next;
 	}
 	ft_clear(&env);
