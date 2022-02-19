@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/08 17:48:37 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 06:17:59 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int ac, char **av, char **envp)
 					waitpid(pid, NULL, 0);
 				}
 			}
-			ft_free(cmd);
+			ft_freetab(cmd);
 		}
 		else
 			free(term);

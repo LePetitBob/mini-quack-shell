@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/15 14:33:35 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 06:17:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	clear_and_exit(char **err, t_env *env)
 	write(2, "mini-quack-shell: exit: ", 24);
 	write(2, err[1], ft_strlen(err[1]));
 	write(2, ": numeric argument required\n", 28);
-	ft_free(err);
+	ft_freetab(err);
 	rl_clear_history();
 	ft_clear(env);
 	exit(2);
@@ -62,7 +62,7 @@ void	ft_exit(char **err, t_env *env, int is_piped)
 	}
 	if (i <= 2)
 	{
-		ft_free(err);
+		ft_freetab(err);
 		rl_clear_history();
 		ft_clear(env);
 		exit(errcode);

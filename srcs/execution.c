@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 02:50:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 06:18:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cmd_not_found(char *cmd, char **tmp_paths)
 		write(2, cmd, ft_strlen(cmd));
 		write(2, ": command not found\n", 20);
 	}
-	ft_free(tmp_paths);
+	ft_freetab(tmp_paths);
 	exit(errno);
 }
 
@@ -120,7 +120,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 		cmd->pid = fork();
 		if (cmd->pid < 0)
 		{
-			ft_free(str_cmd);
+			ft_freetab(str_cmd);
 			exit(errno);
 		}
 		if (!cmd->pid)
