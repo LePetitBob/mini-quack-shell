@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:45:53 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 02:58:31 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 08:24:13 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**expand_split_manager(char *str)
 		{
 			if (cpy[0] != '\0')
 			{
-				res = ft_add_tab(res, cpy);;
+				res = ft_add_tab(res, cpy);
 				ft_bzero(cpy, ft_strlen(cpy));
 			}
 			split_dollar_expand(&res, str, &i);

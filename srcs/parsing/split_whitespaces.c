@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/02/19 06:33:29 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 08:13:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void	split_whitespaces(char *str, char *(**args))
 			if (str[i] != quote)
 			{
 				free(tmp);
-				free(str);
-				if (*args)
-					ft_freetab(*args);
-				*args = NULL;
+				ft_freetab(*args);
 				if (quote == '\'')
 					error_manager(ERNO_S_QUOTE);
 				else

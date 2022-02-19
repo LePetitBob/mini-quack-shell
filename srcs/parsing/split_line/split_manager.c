@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 00:37:11 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 08:13:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	split_manager(char *line, t_env *env)
 	i = 0;
 	split_whitespaces(line, &args);
 	if (!args)
+	{
+		free(line);
 		return ;
+	}
 	free(line);
 	split_seps(&args);
 	while (args[i])

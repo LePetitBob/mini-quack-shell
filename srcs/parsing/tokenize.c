@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 06:40:48 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 08:06:14 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	check_tokens_type(t_token *tokens)
 	while (it)
 	{
 		if ((it->type == RIN || it->type == ROUT || it->type == DROUT
-			|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
-			|| it->next->type == ROUT || it->next->type == DROUT
-			|| it->next->type == HERE_DOC))
+				|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
+				|| it->next->type == ROUT || it->next->type == DROUT
+				|| it->next->type == HERE_DOC))
 		{
 			get_error_redir(it->next);
 			return (EXIT_FAILURE);
