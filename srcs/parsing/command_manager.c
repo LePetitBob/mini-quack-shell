@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   command_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 00:29:02 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 07:51:35 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,21 @@ void	command_manager(t_token *tokens, t_env *env)
 						tmp = tmp->next;
 					tmp->next = it_t;
 					it_t->prev = tmp;
+					tmp = tmp->next;
 				}
 				else
+				{
 					it_c->redir = it_t;
+					tmp = it_c->redir;
+				}
 				if (it_t->next)
 				{
 					it_t = it_t->next;
-					it_t->prev->next = NULL;
+					tmp->next = NULL;
 					it_t->prev = NULL;
 				}
+				else
+					it_t = it_t->next;
 			}
 			if (it_t->type == WORD)
 			{
@@ -67,21 +73,27 @@ void	command_manager(t_token *tokens, t_env *env)
 						tmp = tmp->next;
 					tmp->next = it_t;
 					it_t->prev = tmp;
+					tmp = tmp->next;
 				}
 				else
+				{
 					it_c->arg = it_t;
-				
+					tmp = it_c->arg;
+				}
 				if (it_t->next)
 				{
 					it_t = it_t->next;
-					it_t->prev->next = NULL;
+					tmp->next = NULL;
 					it_t->prev = NULL;
 				}
+				else
+					it_t = it_t->next;
 			}
-			if (it_t->next == NULL)
-				it_t = it_t->next;
+			// if (it_t->next == NULL)
+			// 	it_t = it_t->next;
 		}
 	}
+	print_cmds(cmds);
 }
 
 void	link_fd_redir(t_token **tokens)
@@ -94,7 +106,7 @@ void	link_fd_redir(t_token **tokens)
 	{
 		if ((it->next->type == FD || it->next->type == LIMITER)
 			&& (it->type == RIN || it->type == ROUT || it->type == DROUT
-			|| it->type == HERE_DOC))
+				|| it->type == HERE_DOC))
 		{
 			tmp = it;
 			it = it->next;

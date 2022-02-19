@@ -6,13 +6,13 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 18:41:57 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 01:01:35 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-int g_exit_status;
+int	g_exit_status;
 
 int	main(int ac, char **av, char *envp[])
 {

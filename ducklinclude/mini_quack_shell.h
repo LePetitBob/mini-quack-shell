@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/18 19:11:33 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 06:33:59 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,14 @@
 # include <errno.h>
 # include "libft.h"
 
-# define ERNO_QUOTE 0
-# define ERNO_PIPE 1
+# define ERNO_S_QUOTE 0
+# define ERNO_D_QUOTE 1
+# define ERNO_PIPE 2
+# define ERNO_RIN 3
+# define ERNO_ROUT 4
+# define ERNO_DROUT 5
+# define ERNO_HERE_DOC 6
+# define ERNO_NEWLINE 7
 
 # define NO_TYPE -1
 # define WORD 0
@@ -78,20 +84,32 @@ typedef struct s_cmd_list
 	t_cmd	*first;
 }				t_cmd_lst;
 
+//?			Structs
 //			Init Structs
 t_token	*ft_create_empty_token(void);
 t_cmd	*ft_create_cmd(void);
+//
+//			Free Structs
+void	free_token(t_token *tokens);
+void	free_cmds(t_cmd *cmds);
+//
+//?
 
 //?			Parsing
 //			Split
 void	split_manager(char *line, t_env *env);
+
 void	split_whitespaces(char *str, char *(**args));
+void	add_non_whitespace(char *(**arr), char *cpy);
+
 void	split_seps(char *(**args));
+void	check_separator(char *(**args), int i_args);
 void	separate_separator(char *(**args), char *sep, int i_args);
 //
 //			Tokenize
 void	tokenize_manager(char *(**args), t_env *env);
 int		get_arg_type(char *arg, int prev_type);
+int		check_tokens_type(t_token *tokens);
 //
 //			Expand
 void	expand_caller(t_token *tokens, t_env *env);
@@ -147,9 +165,11 @@ void	ft_clear(t_env *env);
 void	ft_free(char **s);
 int		is_num(char *s);
 
-//			ERRORS
+//?			ERRORS
 void	error_manager(int erno);
-//
+char	*get_syntax_error(int erno);
+void	get_error_redir(t_token *next);
+//?
 
 //!				DEBUG
 void		print_tokens(t_token *tokens);

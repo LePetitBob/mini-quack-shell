@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 00:27:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 06:40:48 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	tokenize_manager(char *(**args), t_env *env)
 		++i;
 	}
 	ft_freetab(*args);
+	if (check_tokens_type(tokens) == EXIT_FAILURE)
+	{
+		free_token(tokens);
+		return ;
+	}
 	expand_caller(tokens, env);
 }
 
@@ -57,4 +62,24 @@ int	get_arg_type(char *arg, int prev_type)
 	else
 		type = WORD;
 	return (type);
+}
+
+int	check_tokens_type(t_token *tokens)
+{
+	t_token	*it;
+
+	it = tokens;
+	while (it)
+	{
+		if ((it->type == RIN || it->type == ROUT || it->type == DROUT
+			|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
+			|| it->next->type == ROUT || it->next->type == DROUT
+			|| it->next->type == HERE_DOC))
+		{
+			get_error_redir(it->next);
+			return (EXIT_FAILURE);
+		}
+		it = it->next;
+	}
+	return (EXIT_SUCCESS);
 }

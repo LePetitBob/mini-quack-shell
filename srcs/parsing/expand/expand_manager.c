@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 00:28:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 07:53:16 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	expand_caller(t_token *tokens, t_env *env)
 	it = tokens;
 	while (it)
 	{
-		if (it->type == WORD && (ft_strsrch(it->str, '\'') != -1
-			|| ft_strsrch(it->str, '\"') != -1
-			|| ft_strsrch(it->str, '$') != -1))
+		if ((it->type == WORD || it->type == LIMITER)
+			&& (ft_strsrch(it->str, '\'') != -1
+				|| ft_strsrch(it->str, '\"') != -1
+				|| ft_strsrch(it->str, '$') != -1))
 			expand_manager(&it, env);
 		if (!it)
 			return ;

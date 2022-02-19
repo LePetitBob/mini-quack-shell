@@ -36,14 +36,15 @@ SRCS = srcs/main_Xec.c \
 A_SRCS = albe_main.c \
 		split_manager.c \
 		split_whitespaces.c split_separators.c \
-		tokenize.c init_struct.c \
+		tokenize.c \
 		expand_manager.c expand_split.c split_quotes_dollar.c \
 		expand_var.c expand_join.c \
 		expand_tokenize.c expand_utils.c \
 		env.c exit.c create_cl.c export.c \
-		cmd_manager.c \
+		command_manager.c \
 		ft_utils_tmp.c \
-		error_manager.c \
+		init_struct.c del_struct.c \
+		error_manager.c get_error_redir.c \
 		print_tokens_cmds.c
 
 V_SRCS = main_Xec.c \

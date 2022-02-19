@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:45:53 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/15 14:05:29 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 02:58:31 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	**expand_split_manager(char *str)
 {
 	char	**res;
-	char	**tmp;
 	char	*cpy;
 	int		i;
 
@@ -24,48 +23,32 @@ char	**expand_split_manager(char *str)
 	ft_bzero(cpy, ft_strlen(str));
 	res = NULL;
 	res = split_expand_prefix(str, &i);
-	// ft_print_tab(res);
 	while (str[i])
 	{
-		// printf("str[i][%c]\n", str[i]);
 		if (str[i] == '\'' || str[i] == '\"')
 		{
-			// printf("in \'|\"\n");
 			if (cpy[0] != '\0')
 			{
-				tmp = ft_add_tab(res, cpy);
+				res = ft_add_tab(res, cpy);
 				ft_bzero(cpy, ft_strlen(cpy));
-				res = ft_tabdup(tmp);
-				ft_freetab(tmp);
 			}
 			split_quotes_expand(&res, str, &i);
-			// ft_print_tab(res);
-			// printf("\n");
 		}
 		else if (str[i] == '$')
 		{
-			// printf("in $\n");
 			if (cpy[0] != '\0')
 			{
-				tmp = ft_add_tab(res, cpy);
+				res = ft_add_tab(res, cpy);;
 				ft_bzero(cpy, ft_strlen(cpy));
-				res = ft_tabdup(tmp);
-				ft_freetab(tmp);
 			}
 			split_dollar_expand(&res, str, &i);
-			// ft_print_tab(res);
-			// printf("\n");
 		}
 		else
 			cpy[ft_strlen(cpy)] = str[i];
 		++i;
 	}
 	if (cpy[0] != '\0')
-	{
-		tmp = ft_add_tab(res, cpy);
-		res = ft_tabdup(tmp);
-		ft_freetab(tmp);
-	}
+		res = ft_add_tab(res, cpy);
 	free(cpy);
 	return (res);
 }

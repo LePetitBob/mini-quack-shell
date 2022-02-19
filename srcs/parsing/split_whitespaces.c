@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/02/19 00:27:37 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 06:33:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,20 @@ void	split_whitespaces(char *str, char *(**args))
 	char	*tmp;
 	char	quote;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
-	tmp = ft_strdup(str);
-	ft_bzero(tmp, ft_strlen(str));
+	tmp = ft_strnew(ft_strlen(str));
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\'' || str[i] == '\"')
 		{
-			tmp[j] = str[i];
+			tmp[ft_strlen(tmp)] = str[i];
 			quote = str[i];
 			++i;
-			++j;
 			while (str[i] != '\0' && str[i] != quote)
 			{
-				tmp[j] = str[i];
+				tmp[ft_strlen(tmp)] = str[i];
 				++i;
-				++j;
 			}
 			if (str[i] != quote)
 			{
@@ -44,21 +39,20 @@ void	split_whitespaces(char *str, char *(**args))
 				if (*args)
 					ft_freetab(*args);
 				*args = NULL;
-				error_manager(ERNO_QUOTE);
+				if (quote == '\'')
+					error_manager(ERNO_S_QUOTE);
+				else
+					error_manager(ERNO_D_QUOTE);
 				return ;
 			}
 		}
 		if (str[i] == ' ')
 		{
 			(*args) = ft_add_tab((*args), tmp);
-			j = 0;
 			ft_bzero(tmp, ft_strlen(str));
 		}
 		else
-		{
-			tmp[j] = str[i];
-			++j;
-		}
+			tmp[ft_strlen(tmp)] = str[i];
 		++i;
 	}
 	if (tmp[0] != '\0')
@@ -68,23 +62,16 @@ void	split_whitespaces(char *str, char *(**args))
 
 void	expand_split_whitespaces(char *(**arr))
 {
-	char	**tmp;
 	char	*cpy;
 	char	quote;
 	int		i;
 
 	i = 0;
-	cpy = ft_strdup((*arr)[0]);
-	ft_bzero(cpy, ft_strlen(cpy));
+	cpy = ft_strnew(ft_strlen((*arr)[0]));
 	while ((*arr)[0][i] != '\0')
 	{
 		if ((*arr)[0][i] == ' ' && cpy[0] != '\0')
-		{
-			tmp = ft_add_tab((*arr), cpy);
-			ft_bzero(cpy, ft_strlen(cpy));
-			*arr = ft_tabdup(tmp);
-			ft_freetab(tmp);
-		}
+			add_non_whitespace(arr, cpy);
 		if ((*arr)[0][i] == '\'' || (*arr)[0][i] == '\"')
 		{
 			cpy[ft_strlen(cpy)] = (*arr)[0][i];
@@ -96,20 +83,27 @@ void	expand_split_whitespaces(char *(**arr))
 				++i;
 			}
 		}
-		if((*arr)[0][i] != ' ')
+		if ((*arr)[0][i] != ' ')
 			cpy[ft_strlen(cpy)] = (*arr)[0][i];
 		++i;
 	}
 	if (cpy[0] != '\0')
+		add_non_whitespace(arr, cpy);
+	add_non_whitespace(arr, NULL);
+	free(cpy);
+}
+
+void	add_non_whitespace(char *(**arr), char *cpy)
+{
+	char	**tmp;
+
+	if (!cpy)
+		tmp = ft_erase(*arr, 0, 1);
+	else
 	{
-		tmp = ft_add_tab((*arr), cpy);
-			ft_bzero(cpy, ft_strlen(cpy));
-			*arr = ft_tabdup(tmp);
-			ft_freetab(tmp);
+		tmp = ft_add_tab(*arr, cpy);
+		ft_bzero(cpy, ft_strlen(cpy));
 	}
-	tmp = ft_erase(*arr, 0, 1);
-	ft_freetab(*arr);
 	*arr = ft_tabdup(tmp);
 	ft_freetab(tmp);
-	free(cpy);
 }

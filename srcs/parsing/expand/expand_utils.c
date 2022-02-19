@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/17 14:10:12 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 07:53:09 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	del_quotes(char *(*str))
 				free(cpy);
 				i = diff - 1;
 			}
-			// printf("str-[%s]\n", *str);
 		}
 		else
 			++i;

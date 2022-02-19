@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_manager.c                                    :+:      :+:    :+:   */
+/*   get_error_redir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 00:37:11 by amarini-         ###   ########.fr       */
+/*   Created: 2022/02/19 06:00:18 by amarini-          #+#    #+#             */
+/*   Updated: 2022/02/19 06:04:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	split_manager(char *line, t_env *env)
+void	get_error_redir(t_token *next)
 {
-	char	**args;
-	int		i;
-
-	args = NULL;
-	i = 0;
-	split_whitespaces(line, &args);
-	if (!args)
-		return ;
-	free(line);
-	split_seps(&args);
-	while (args[i])
-	{
-		if (ft_strcmp(args[i], "|") == 0
-			&& (i == 0 || args[i + 1] == NULL
-				|| ft_strcmp(args[i + 1], "|") == 0))
-		{
-			error_manager(ERNO_PIPE);
-			ft_freetab(args);
-			return ;
-		}
-		++i;
-	}
-	tokenize_manager(&args, env);
+	if (!next)
+		error_manager(ERNO_NEWLINE);
+	else if (next->type == RIN)
+		error_manager(ERNO_RIN);
+	else if (next->type == ROUT)
+		error_manager(ERNO_ROUT);
+	else if (next->type == DROUT)
+		error_manager(ERNO_DROUT);
+	else if (next->type == HERE_DOC)
+		error_manager(ERNO_HERE_DOC);
 }

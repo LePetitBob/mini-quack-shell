@@ -29,3 +29,10 @@ e''c""h''o' '"c"'o'""u'cou'
 echo "hello there" > outfilr | echo '$a'
 
 cat "test" >> outfilr
+
+
+>> test >test > >
+| >> test >test > >
+>> test >test >
+<< >> test >test <
+>> >test >test <

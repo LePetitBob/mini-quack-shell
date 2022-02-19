@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 19:12:54 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 06:32:00 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,41 @@ void	error_manager(int erno)
 	char	*final;
 
 	prefix = ft_strdup("mini_quack_shell: ");
-	if (erno == ERNO_QUOTE)
-		err = ft_strdup("syntax error unclosed quote\n");
-	else if (erno == ERNO_PIPE)
-		err = ft_strdup("syntax error near unexpected token \'|\'\n");
+	if (erno == ERNO_S_QUOTE || erno == ERNO_D_QUOTE || erno == ERNO_PIPE
+		|| erno == ERNO_RIN || erno == ERNO_HERE_DOC || erno == ERNO_ROUT
+		|| erno == ERNO_DROUT || erno == ERNO_NEWLINE)
+		err = get_syntax_error(erno);
 	final = ft_strjoin(prefix, err);
 	ft_putstr(final);
 	free(prefix);
 	free(err);
 	free(final);
+}
+
+char	*get_syntax_error(int erno)
+{
+	char	*tmp;
+	char	*pb;
+
+	if (erno == ERNO_S_QUOTE)
+		pb = ft_strdup("\'\'\'");
+	else if (erno == ERNO_D_QUOTE)
+		pb = ft_strdup("\'\"\'");
+	else if (erno == ERNO_PIPE)
+		pb = ft_strdup("\'|\'");
+	else if (erno == ERNO_RIN)
+		pb = ft_strdup("\'<\'");
+	else if (erno == ERNO_HERE_DOC)
+		pb = ft_strdup("\'<<\'");
+	else if (erno == ERNO_ROUT)
+		pb = ft_strdup("\'>\'");
+	else if (erno == ERNO_DROUT)
+		pb = ft_strdup("\'>>\'");
+	else if (erno == ERNO_NEWLINE)
+		pb = ft_strdup("\'newline\'");
+	tmp = ft_strjoin("syntax error near unexpected token ", pb);
+	free(pb);
+	pb = ft_strjoin(tmp, "\n");
+	free(tmp);
+	return (pb);
 }
