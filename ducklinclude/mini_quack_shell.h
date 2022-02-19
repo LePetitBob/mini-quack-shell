@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/17 15:28:02 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/18 15:44:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define DROUT 6
 # define HERE_DOC 7
 # define HERE_DOC_NAME ".tmprry_file_mini_QUACK_shell_ull_never_guess_its_name"
+# define HERE_DOC_PATH "objs/.tmprry_file_mini_QUACK_shell_ull_never_guess_its_name"
 
 typedef struct s_token
 {

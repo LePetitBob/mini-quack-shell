@@ -3,11 +3,11 @@ ALBE = a_minishell
 VINC = v_minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 
 DEBUG =
 ifdef DEBUG
-CFLAGS += -fsanitize=address -fsanitize=address -g3
+CFLAGS += -fsanitize=address -fsanitize=address
 endif
 
 SRCS_DIR = $(shell find srcs -type d)
@@ -79,6 +79,8 @@ $(OBJS_DIR)/%.o: %.c
 
 clean:
 		rm -rf $(OBJS)
+		rm -rf $(A_OBJS)
+		rm -rf $(V_OBJS)
 
 fclean: clean
 		rm -rf $(NAME) $(VINC) $(ALBE)
