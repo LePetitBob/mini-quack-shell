@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 06:33:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 07:21:20 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,26 +80,6 @@ typedef struct s_env
 	t_env_var	*first;
 }				t_env;
 
-<<<<<<< HEAD
-void		cmd_manager(t_env *env, t_cmd_lst *cmds);
-//* REDIR
-void		redirection(t_cmd *cmd, int fd[4]);
-void		get_here_doc(char *limiter);
-void		closepipe(int fd[3]);
-void		rm_here_doc_tmp_file(t_env *env);
-int			invalid_filename(char *filename, int *err, char *FILENO);
-//* EXECUTION
-void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped);
-void		ft_exec(char **cmd, char **envp);
-void		close_all_fds(int fd[4], t_cmd *cmd);
-char		**get_cmd_str(t_cmd *cmd);
-char		**env_cl_to_arr(t_env *env);
-//* FREE ENV && CMD_LST
-void		ft_clear(t_env *env);
-void		rm_cmds(t_cmd_lst *cmd);
-//* 
-char		*create_path(t_env *env, char **cmd);
-=======
 //			Init Structs
 t_token	*ft_create_empty_token(void);
 t_cmd	*ft_create_cmd(void);
@@ -138,32 +118,6 @@ void	del_quotes(char *(*str));
 void	command_manager(t_token *tokens, t_env *env);
 void	link_fd_redir(t_token **tokens);
 //
-//?
-
-//?			Builtins
-int		is_builtin(char *cmd);
-void	ft_builtins(char **cmd, t_env *env, int is_piped);
-void	ft_pwd(void);
-void	ft_cd(char **cmd, t_env *env);
-void	ft_echo(char **s);
-void	ft_env(t_env *env);
-void	get_env(char **envp, t_env *env);
-void 	ft_exit(char **err, t_env *env, int is_piped);
-void	ft_export(t_env *env, char **cmd);
-void	replace_var(t_env *env, char *name, char *value);
-void	ft_unset(t_env *env, char **name);
-char	*get_env_name(t_env *env, char *name);
-int		existing_name(t_env *env, char *name);
-int		format_ok(char *var);
-void	redirection(t_cmd *cmd, int fd[4]);
-void	get_here_doc(char *limiter);
-char	**env_cl_to_arr(t_env *env);
-void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped);
-void	ft_exec(char **cmd, char **envp);
-void	ft_clear(t_env *env);
-void	ft_free(char **s);
-int		is_num(char *s);
->>>>>>> master
 
 //?			Builtins
 int			is_builtin(char *cmd);
@@ -193,9 +147,13 @@ int			env_size(t_env *env);
 char		**env_cl_to_arr(t_env *env);
 //* EXIT
 void		ft_exit(char **err, t_env *env, int is_piped);
+void		ft_clear(t_env *env);
 void		clear_and_exit(char **err, t_env *env);
 int			is_num(char *s);
 //?			Builtins
+
+//* EXEC
+void	ft_exec(char **cmd, char **envp);
 
 //			CL
 t_env_var	*ft_create_elem(char *name, char *value);
@@ -204,10 +162,6 @@ void		ft_addlast(t_env *env, char *name, char *value);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
-void	ft_exec(char **cmd, char **envp);
-void	ft_clear(t_env *env);
-void	ft_free(char **s);
-int		is_num(char *s);
 
 //			ERRORS
 void	error_manager(int erno);
@@ -219,7 +173,6 @@ void		print_cmds(t_cmd *cmds);
 //!
 
 //!				TO REMOVE WHEN LIBFT IMPLANTED
-<<<<<<< HEAD
 // int			ft_strlen(char *s);
 // int			ft_strncmp(const char *s1, const char *s2, size_t n);
 // char		*ft_strdup(const char *s1);
@@ -229,15 +182,5 @@ char		*ft_strndup(const char *s1, size_t n);
 // int			ft_atoi(const char *str);
 // int			ft_strcmp(const char *s1, const char *s2);
 //!				TO REMOVE WHEN LIBFT IMPLANTED
-=======
-// int		ft_strlen(char *s);
-// int		ft_strncmp(const char *s1, const char *s2, size_t n);
-// char	*ft_strdup(const char *s1);
-char	*ft_strndup(const char *s1, int n);
-// char	**ft_split(char const *str, char c);
-// char	*ft_strjoin(char *s1, char *s2);
-// int		ft_atoi(const char *str);
-// int		ft_strcmp(const char *s1, const char *s2);
->>>>>>> master
 
 #endif
