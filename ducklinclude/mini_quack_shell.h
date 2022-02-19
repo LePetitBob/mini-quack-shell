@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/18 15:44:17 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 06:24:08 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # define ROUT 5
 # define DROUT 6
 # define HERE_DOC 7
-# define HERE_DOC_NAME ".tmprry_file_mini_QUACK_shell_ull_never_guess_its_name"
-# define HERE_DOC_PATH "objs/.tmprry_file_mini_QUACK_shell_ull_never_guess_its_name"
+# define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
+# define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
 typedef struct s_token
 {
@@ -73,30 +73,55 @@ typedef struct s_env
 	t_env_var	*first;
 }				t_env;
 
+void		cmd_manager(t_env *env, t_cmd_lst *cmds);
+//* REDIR
 void		redirection(t_cmd *cmd, int fd[4]);
 void		get_here_doc(char *limiter);
-char		**env_cl_to_arr(t_env *env);
+void		closepipe(int fd[3]);
+void		rm_here_doc_tmp_file(t_env *env);
+int			invalid_filename(char *filename, int *err, char *FILENO);
+//* EXECUTION
 void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped);
 void		ft_exec(char **cmd, char **envp);
+void		close_all_fds(int fd[4], t_cmd *cmd);
+char		**get_cmd_str(t_cmd *cmd);
+char		**env_cl_to_arr(t_env *env);
+//* FREE ENV && CMD_LST
 void		ft_clear(t_env *env);
-void		ft_free(char **s);
-int			is_num(char *s);
+void		rm_cmds(t_cmd_lst *cmd);
+//* 
+char		*create_path(t_env *env, char **cmd);
 
 //?			Builtins
 int			is_builtin(char *cmd);
 void		ft_builtins(char **cmd, t_env *env, int is_piped);
+//* PWD
 void		ft_pwd(void);
+//* CD
 void		ft_cd(char **cmd, t_env *env);
+void		env_change_and_error_management(t_env *env, char **cmd, int i);
+void		invalid_path(char **cmd);
+//* ECHO
 void		ft_echo(char **s);
-void		ft_env(t_env *env);
-void		get_env(char **envp, t_env *env);
-char		**env_cl_to_arr(t_env *env);
-void		ft_exit(char **err, t_env *env, int is_piped);
+//* EXPORT
 void		ft_export(t_env *env, char **cmd);
 void		replace_var(t_env *env, char *name, char *value);
-void		ft_unset(t_env *env, char **name);
 int			existing_name(t_env *env, char *name);
-int			format_ok(char *var);
+int			format_export_ok(char *var);
+void		add_env_var(t_env *env, char **var);
+//* UNSET
+int			format_unset_ok(char *var, int *err);
+void		ft_unset(t_env *env, char **name);
+//* ENV
+void		get_env(char **envp, t_env *env);
+void		ft_env(t_env *env);
+char		*get_in_env(t_env *env, char *name);
+int			env_size(t_env *env);
+char		**env_cl_to_arr(t_env *env);
+//* EXIT
+void		ft_exit(char **err, t_env *env, int is_piped);
+void		clear_and_exit(char **err, t_env *env);
+int			is_num(char *s);
 //?			Builtins
 
 //			CL
@@ -107,14 +132,14 @@ void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
 //!				TO REMOVE WHEN LIBFT IMPLANTED
-int			ft_strlen(char *s);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-char		*ft_strdup(const char *s1);
+// int			ft_strlen(char *s);
+// int			ft_strncmp(const char *s1, const char *s2, size_t n);
+// char		*ft_strdup(const char *s1);
 char		*ft_strndup(const char *s1, size_t n);
-char		**ft_split(char const *str, char c);
-char		*ft_strjoin(char *s1, char *s2);
-int			ft_atoi(const char *str);
-int			ft_strcmp(const char *s1, const char *s2);
+// char		**ft_split(char const *str, char c);
+// char		*ft_strjoin(char *s1, char *s2);
+// int			ft_atoi(const char *str);
+// int			ft_strcmp(const char *s1, const char *s2);
 //!				TO REMOVE WHEN LIBFT IMPLANTED
 
 #endif

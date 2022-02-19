@@ -33,7 +33,18 @@ SRCS = main_Xek.c \
 		execution.c \
 		ft_utils_tmp.c
 
-A_SRCS = albe_main.c
+A_SRCS = albe_main.c \
+		split_manager.c \
+		split_whitespaces.c split_separators.c \
+		tokenize.c init_struct.c \
+		expand_manager.c expand_split.c split_quotes_dollar.c \
+		expand_var.c expand_join.c \
+		expand_tokenize.c expand_utils.c \
+		env.c exit.c create_cl.c export.c \
+		cmd_manager.c \
+		ft_utils_tmp.c \
+		error_manager.c \
+		print_tokens_cmds.c
 
 V_SRCS = main_Xek.c \
 		builtins/pwd.c \
@@ -48,6 +59,7 @@ V_SRCS = main_Xek.c \
 		create_cl.c \
 		execution.c \
 		ft_here_doc.c \
+		cmd_manager.c \
 		ft_utils_tmp.c
 
 
@@ -83,10 +95,12 @@ clean:
 		rm -rf $(V_OBJS)
 
 fclean: clean
-		rm -rf $(NAME) $(VINC) $(ALBE)
+		rm -rf $(NAME)
+		rm -rf $(ALBE)
+		rm -rf $(VINC)
 
 cleanall: fclean
-	make-C $(LIBFT_DIR) fclean
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
