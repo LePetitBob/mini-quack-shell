@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/18 18:39:59 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 03:54:43 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,25 @@ void	ft_clear(t_env *env)
 	}
 }
 
-void	ft_exit(char **err, t_env *env)
+void	clear_and_exit(char **err, t_env *env)
+{
+	write(2, "mini-quack-shell: exit: ", 24);
+	write(2, err[1], ft_strlen(err[1]));
+	write(2, ": numeric argument required\n", 28);
+	ft_free(err);
+	rl_clear_history();
+	ft_clear(env);
+	exit(2);
+}
+
+void	ft_exit(char **err, t_env *env, int is_piped)
 {
 	int	errcode;
 	int	i;
 
 	errcode = EXIT_SUCCESS;
-	write(2, "exit\n", 5);
+	if (!is_piped)
+		write(1, "exit\n", 5);
 	i = 0;
 	while (err[i])
 		i++;

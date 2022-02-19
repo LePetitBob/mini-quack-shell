@@ -6,13 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/04 18:07:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/08 17:48:33 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
-void	ft_pwd(char **cmd)
+void	ft_pwd(void)
 {
 	char	*path;
 

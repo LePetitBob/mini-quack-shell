@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/15 14:34:17 by vduriez          ###   ########.fr       */
+/*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
+/*   Updated: 2022/02/19 03:59:55 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	ft_echo(char **s)
+void	get_here_doc(char *limiter)
 {
-	int	i;
-	int	nl;
+	char	*here_doc_entry;
+	int		fd_hd;
 
-	nl = 1;
-	if (s[1] && !strncmp("-n", s[1], 2))
+	chdir("objs/");
+	fd_hd = open(HERE_DOC_NAME, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	here_doc_entry = readline("> ");
+	while (ft_strcmp(limiter, here_doc_entry))
 	{
-		i = 2;
-		while (s[1][i] == 'n')
-			i++;
-		if (!s[1][i])
-			nl = 0;
+		write(fd_hd, here_doc_entry, ft_strlen(here_doc_entry));
+		write(fd_hd, "\n", 1);
+		free(here_doc_entry);
+		here_doc_entry = readline("> ");
 	}
-	i = 1;
-	if (nl == 0)
-		i++;
-	while (s[i])
-	{
-		if ((nl == 0 && i != 2) || (nl == 1 && i != 1))
-			printf(" ");
-		write(1, s[i], ft_strlen(s[i]));
-		i++;
-	}
-	if (nl == 1)
-		write(1, "\n", 1);
+	close(fd_hd);
+	chdir("../");
 }

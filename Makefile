@@ -20,18 +20,18 @@ INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
 vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
-SRCS = srcs/main_Xec.c \
-		srcs/builtins/pwd.c \
-		srcs/builtins/echo.c \
-		srcs/builtins/env.c \
-		srcs/builtins/cd.c \
-		srcs/builtins/exit.c \
-		srcs/builtins/export.c \
-		srcs/builtins/unset.c \
-		srcs/ft_builtins.c \
-		srcs/create_cl.c \
-		srcs/execution.c \
-		srcs/ft_utils_tmp.c
+SRCS = main_Xek.c \
+		builtins/pwd.c \
+		builtins/echo.c \
+		builtins/env.c \
+		builtins/cd.c \
+		builtins/exit.c \
+		builtins/export.c \
+		builtins/unset.c \
+		ft_builtins.c \
+		create_cl.c \
+		execution.c \
+		ft_utils_tmp.c
 
 A_SRCS = albe_main.c \
 		split_manager.c \
@@ -46,7 +46,7 @@ A_SRCS = albe_main.c \
 		error_manager.c \
 		print_tokens_cmds.c
 
-V_SRCS = main_Xec.c \
+V_SRCS = main_Xek.c \
 		builtins/pwd.c \
 		builtins/echo.c \
 		builtins/env.c \
@@ -55,8 +55,10 @@ V_SRCS = main_Xec.c \
 		builtins/export.c \
 		builtins/unset.c \
 		ft_builtins.c \
+		ft_redir.c \
 		create_cl.c \
 		execution.c \
+		ft_here_doc.c \
 		ft_utils_tmp.c
 
 
@@ -66,9 +68,9 @@ V_OBJS = $(addprefix $(OBJS_DIR)/,$(V_SRCS:.c=.o))
 
 all: $(LIBFT_DIR)/libft.a $(NAME)
 
-albe:$(LIBFT_DIR)/libft.a $(ALBE)
+albe: $(LIBFT_DIR)/libft.a $(ALBE)
 
-vinc:$(LIBFT_DIR)/libft.a $(VINC)
+vinc: $(LIBFT_DIR)/libft.a $(VINC)
 
 $(LIBFT_DIR)/libft.a:
 	make -C $(LIBFT_DIR) all
@@ -92,9 +94,13 @@ clean:
 		rm -rf $(V_OBJS)
 
 fclean: clean
+<<<<<<< HEAD
 		rm -rf $(NAME)
 		rm -rf $(ALBE)
 		rm -rf $(VINC)
+=======
+		rm -rf $(NAME) $(VINC) $(ALBE)
+>>>>>>> builtins
 
 cleanall: fclean
 	make -C $(LIBFT_DIR) fclean
