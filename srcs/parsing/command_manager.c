@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/21 16:42:26 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/21 18:02:48 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	command_manager(t_token *tokens, t_env *env)
 		}
 		while (it_t && it_t->type != PIPE)
 		{
+			//! BETWEEN HERE
 			if (it_t->type == RIN || it_t->type == ROUT || it_t->type == DROUT
 				|| it_t->type == HERE_DOC)
 			{
@@ -79,7 +80,7 @@ void	command_manager(t_token *tokens, t_env *env)
 				else
 					it_t = it_t->next;
 			}
-			if (it_t->type == WORD)
+			else if (it_t->type == WORD)
 			{
 				if (it_c->arg)
 				{
@@ -102,7 +103,7 @@ void	command_manager(t_token *tokens, t_env *env)
 					it_t->prev = NULL;
 				}
 				else
-					it_t = it_t->next;
+					it_t = it_t->next;	//! AND HERE
 			}
 		}
 	}
