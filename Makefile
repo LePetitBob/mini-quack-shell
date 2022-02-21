@@ -46,6 +46,7 @@ SRCS = builtins/pwd.c \
 		expand_join.c \
 		expand_tokenize.c \
 		expand_utils.c \
+		del_struct.c \
 		command_manager.c \
 		error_manager.c \
 		del_struct.c \
