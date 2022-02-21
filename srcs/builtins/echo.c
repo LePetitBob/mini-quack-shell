@@ -6,11 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/02 17:09:18 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:34:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 void	ft_echo(char **s)
 {
@@ -31,11 +31,11 @@ void	ft_echo(char **s)
 		i++;
 	while (s[i])
 	{
-		if ((nl == 0 && i != 2) || (nl == 1 &&i != 1))
+		if ((nl == 0 && i != 2) || (nl == 1 && i != 1))
 			printf(" ");
-		printf("%s", s[i]);
+		write(1, s[i], ft_strlen(s[i]));
 		i++;
 	}
-	if (nl ==1)
-		printf("\n");
+	if (nl == 1)
+		write(1, "\n", 1);
 }

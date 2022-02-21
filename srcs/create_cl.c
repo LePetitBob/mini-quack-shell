@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_cl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:15:17 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 11:02:13 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 06:33:11 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,6 @@ void	ft_addlast(t_env *env, char *name, char *value)
 	{
 		env->first = a;
 	}
-}
-
-void	ft_rmfirst(t_env *env)
-{
-	t_env_var	*tmp;
-
-	tmp = env->first;
-	env->first = tmp->next;
-	free(tmp);
 }
 
 void	ft_rmvar(t_env *env, char *var_name)

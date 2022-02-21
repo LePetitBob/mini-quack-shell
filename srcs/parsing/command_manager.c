@@ -6,11 +6,26 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 08:05:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:35:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+t_cmd	*ft_create_cmd(void)
+{
+	t_cmd	*new;
+
+	new = malloc(sizeof(t_cmd));
+	new->arg = NULL;
+	new->redir = NULL;
+	new->fdin = 0;
+	new->fdout = 1;
+	new->pid = 0;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}
 
 void	command_manager(t_token *tokens, t_env *env)
 {
@@ -92,6 +107,11 @@ void	command_manager(t_token *tokens, t_env *env)
 		}
 	}
 	print_cmds(cmds);
+<<<<<<< HEAD:srcs/parsing/command_manager.c
+=======
+	printf("\n");
+	cmd_manager(env, cmds);
+>>>>>>> 79230b949c7516644ad3b11c02315a10c170ac7a:srcs/parsing/command_manager.c
 }
 
 void	link_fd_redir(t_token **tokens)

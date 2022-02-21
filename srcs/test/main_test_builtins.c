@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   main_test_builtins.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/08 11:47:13 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 06:17:59 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ducklinclude/mini-quack-shell.h"
+#include "mini_quack_shell.h"
 
 int	main(int ac, char **av, char **envp)
 {
@@ -41,7 +41,7 @@ int	main(int ac, char **av, char **envp)
 			else
 			{
 				if (!ft_strcmp(cmd[0], "pwd"))
-					ft_pwd(cmd);
+					ft_pwd();
 				else if (!ft_strcmp(cmd[0], "env"))
 					ft_env(&env);
 				else if (!ft_strcmp(cmd[0], "echo"))
@@ -65,7 +65,7 @@ int	main(int ac, char **av, char **envp)
 					waitpid(pid, NULL, 0);
 				}
 			}
-			ft_free(cmd);
+			ft_freetab(cmd);
 		}
 		else
 			free(term);

@@ -20,18 +20,35 @@ INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
 vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
-SRCS = srcs/main_Xec.c \
-		srcs/builtins/pwd.c \
-		srcs/builtins/echo.c \
-		srcs/builtins/env.c \
-		srcs/builtins/cd.c \
-		srcs/builtins/exit.c \
-		srcs/builtins/export.c \
-		srcs/builtins/unset.c \
-		srcs/ft_builtins.c \
-		srcs/create_cl.c \
-		srcs/execution.c \
-		srcs/ft_utils_tmp.c
+SRCS = builtins/pwd.c \
+		builtins/echo.c \
+		builtins/env.c \
+		builtins/cd.c \
+		builtins/exit.c \
+		builtins/export.c \
+		builtins/unset.c \
+		ft_builtins.c \
+		ft_redir.c \
+		create_cl.c \
+		execution.c \
+		ft_here_doc.c \
+		cmd_manager.c \
+		ft_utils_tmp.c \
+		albe_main.c \
+		split_manager.c \
+		split_whitespaces.c \
+		split_separators.c \
+		tokenize.c \
+		expand_manager.c \
+		expand_split.c \
+		split_quotes_dollar.c \
+		expand_var.c \
+		expand_join.c \
+		expand_tokenize.c \
+		expand_utils.c \
+		command_manager.c \
+		error_manager.c \
+		print_tokens_cmds.c
 
 A_SRCS = albe_main.c \
 		split_manager.c \
@@ -47,8 +64,7 @@ A_SRCS = albe_main.c \
 		error_manager.c get_error_redir.c \
 		print_tokens_cmds.c
 
-V_SRCS = main_Xec.c \
-		builtins/pwd.c \
+V_SRCS = builtins/pwd.c \
 		builtins/echo.c \
 		builtins/env.c \
 		builtins/cd.c \
@@ -56,10 +72,12 @@ V_SRCS = main_Xec.c \
 		builtins/export.c \
 		builtins/unset.c \
 		ft_builtins.c \
+		ft_redir.c \
 		create_cl.c \
 		execution.c \
+		ft_here_doc.c \
+		cmd_manager.c \
 		ft_utils_tmp.c
-
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 A_OBJS = $(addprefix $(OBJS_DIR)/,$(A_SRCS:.c=.o))
@@ -67,9 +85,9 @@ V_OBJS = $(addprefix $(OBJS_DIR)/,$(V_SRCS:.c=.o))
 
 all: $(LIBFT_DIR)/libft.a $(NAME)
 
-albe:$(LIBFT_DIR)/libft.a $(ALBE)
+albe: $(LIBFT_DIR)/libft.a $(ALBE)
 
-vinc:$(LIBFT_DIR)/libft.a $(VINC)
+vinc: $(LIBFT_DIR)/libft.a $(VINC)
 
 $(LIBFT_DIR)/libft.a:
 	make -C $(LIBFT_DIR) all

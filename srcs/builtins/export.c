@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/11 19:36:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/19 07:55:14 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-//TODO Check setenv & unsetenv
-
-char	*get_env_name(t_env *env, char *name)
-{
-	t_env_var	*tmp;
-
-	tmp = env->first;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->name, name))
-			return (tmp->value);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
 
 int	existing_name(t_env *env, char *name)
 {
@@ -42,7 +26,7 @@ int	existing_name(t_env *env, char *name)
 	return (0);
 }
 
-int	format_export_ok(char *var, int *err)
+int	format_export_ok(char *var)
 {
 	int		i;
 	int		j;
@@ -51,10 +35,11 @@ int	format_export_ok(char *var, int *err)
 	j = 0;
 	i = 0;
 	while (var[j] && var[j] != '=' && ((var[j] > 64 && var[j] < 91)
-		|| (var[j] > 96 && var[j] < 123) || (var[j] > 46
-		&& var[j] < 58) || var[j] == '_'))
+			|| (var[j] > 96 && var[j] < 123) || (var[j] > 46
+				&& var[j] < 58) || var[j] == '_'))
 		j++;
-	if (var[j] && var[j] != '=')
+	if ((var[j] && var[j] != '=') || (var[0] < 65 || var[0] > 122
+			|| (var[0] > 90 && var[0] < 97)))
 	{
 		while (var[i] && var[i] != '=')
 			i++;
@@ -63,7 +48,7 @@ int	format_export_ok(char *var, int *err)
 		write(2, name, ft_strlen(name));
 		write(2, "`: not a valid identifier\n", 26);
 		free(name);
-		*err = 1;
+		//! g_exit_status = 1;
 		return (0);
 	}
 	return (1);
@@ -98,14 +83,13 @@ void	add_env_var(t_env *env, char **var)
 
 void	ft_export(t_env *env, char **cmd)
 {
-	int		i[3];
+	int		i[2];
 	char	*var[2];
 
-	i[0] = 0;		 //TODO 		norm function to init i ?
-	i[2] = 0;		 //TODO 		 (actually 26 lines)
+	i[0] = 0;
 	while (cmd[i[0]])
 	{
-		if (format_export_ok(cmd[i[0]], &i[2]))
+		if (format_export_ok(cmd[i[0]]))
 		{
 			i[1] = 0;
 			while (cmd[i[0]][i[1]] && cmd[i[0]][i[1]] != '=')
@@ -124,5 +108,4 @@ void	ft_export(t_env *env, char **cmd)
 		}
 		i[0]++;
 	}
-	//! g_exit_status (i[2]);
 }

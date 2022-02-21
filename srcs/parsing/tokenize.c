@@ -6,11 +6,23 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 08:06:14 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:34:46 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+t_token	*ft_create_empty_token(void)
+{
+	t_token	*new;
+
+	new = malloc(sizeof(t_token));
+	new->str = NULL;
+	new->type = -1;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}
 
 void	tokenize_manager(char *(**args), t_env *env)
 {
