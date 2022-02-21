@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 03:59:55 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/21 11:10:08 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,24 @@ void	get_here_doc(char *limiter)
 	}
 	close(fd_hd);
 	chdir("../");
+}
+
+void	rm_here_doc_tmp_file(t_env *env)
+{
+	pid_t		pidtmp;
+	char		*tmp[3];
+	char		**tmpenv;
+
+	tmpenv = env_cl_to_arr(env);
+	if (access(HERE_DOC_PATH, F_OK) == 0)
+	{
+		pidtmp = fork();
+		if (!pidtmp)
+		{
+			tmp[0] = ft_strdup("rm");
+			tmp[1] = ft_strdup(HERE_DOC_PATH);
+			tmp[2] = NULL;
+			ft_exec(tmp, tmpenv);
+		}
+	}
 }

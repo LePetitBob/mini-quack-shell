@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/18 18:23:01 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/21 12:54:29 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,38 @@ int	invalid_filename(char *filename, int *err, char *FILENO)
 	return (0);
 }
 
+void	apply_redir(char *str, int type, t_cmd *cmd, int *err)
+{
+	if (type == HERE_DOC)
+	{
+		if (cmd->fdin != 0)
+			close(cmd->fdin);
+		get_here_doc(str);
+		cmd->fdin = open(HERE_DOC_PATH, O_RDONLY);
+	}
+	else if (type == RIN)
+	{
+		if (cmd->fdin != 0)
+			close(cmd->fdin);
+		if (!invalid_filename(str, err, "IN"))
+			cmd->fdin = open(str, O_RDONLY);
+	}
+	else if (type == ROUT)
+	{
+		if (cmd->fdout != 1)
+			close(cmd->fdout);
+		if (!invalid_filename(str, err, "OUT"))
+			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	}
+	else if (type == DROUT)
+	{
+		if (cmd->fdout != 1)
+			close(cmd->fdout);
+		if (!invalid_filename(str, err, "OUT"))
+			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	}
+}
+
 void	redirection(t_cmd *cmd, int fd[4])
 {
 	t_token	*tmp;
@@ -50,46 +82,17 @@ void	redirection(t_cmd *cmd, int fd[4])
 		dup2(fd[3], STDOUT_FILENO);
 	while (tmp)
 	{
-		if (tmp->type == HERE_DOC)
-		{
-			if (cmd->fdin != 0)
-				close(cmd->fdin);
-			get_here_doc(tmp->str);
-			cmd->fdin = open(HERE_DOC_PATH, O_RDONLY);
-		}
-		else if (tmp->type == RIN)
-		{
-			if (cmd->fdin != 0)
-				close(cmd->fdin);
-			if (!invalid_filename(tmp->str, &err, "IN"))
-				cmd->fdin = open(tmp->str, O_RDONLY);
-		}
-		else if (tmp->type == ROUT)
-		{
-			if (cmd->fdout != 1)
-				close(cmd->fdout);
-			if (!invalid_filename(tmp->str, &err, "OUT"))
-				cmd->fdout = open(tmp->str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		}
-		else if (tmp->type == DROUT)
-		{
-			if (cmd->fdout != 1)
-				close(cmd->fdout);
-			if (!invalid_filename(tmp->str, &err, "OUT"))
-				cmd->fdout = open(tmp->str, O_WRONLY | O_CREAT | O_APPEND, 0644);
-		}
+		apply_redir(tmp->str, tmp->type, cmd, &err);
 		if (err)
 			break ;
 		tmp = tmp->next;
 	}
 	if (cmd->fdin != 0)
-	{
 		dup2(cmd->fdin, STDIN_FILENO);
+	if (cmd->fdin != 0)
 		close(cmd->fdin);
-	}
 	if (cmd->fdout != 1)
-	{
 		dup2(cmd->fdout, STDOUT_FILENO);
+	if (cmd->fdout != 1)
 		close(cmd->fdout);
-	}
 }

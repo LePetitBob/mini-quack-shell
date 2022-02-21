@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 03:53:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/19 07:51:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ void	ft_env(t_env *env)
 		printf("%s=%s\n", tmp->name, tmp->value);
 		tmp = tmp->next;
 	}
+}
+
+char	*get_env_name(t_env *env, char *name)
+{
+	t_env_var	*tmp;
+
+	tmp = env->first;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->name, name))
+			return (tmp->value);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }
 
 void	get_env(char **envp, t_env *env)

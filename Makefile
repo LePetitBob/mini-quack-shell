@@ -20,8 +20,7 @@ INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
 vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
-SRCS = main_Xek.c \
-		builtins/pwd.c \
+SRCS = builtins/pwd.c \
 		builtins/echo.c \
 		builtins/env.c \
 		builtins/cd.c \
@@ -29,9 +28,27 @@ SRCS = main_Xek.c \
 		builtins/export.c \
 		builtins/unset.c \
 		ft_builtins.c \
+		ft_redir.c \
 		create_cl.c \
 		execution.c \
-		ft_utils_tmp.c
+		ft_here_doc.c \
+		cmd_manager.c \
+		ft_utils_tmp.c \
+		albe_main.c \
+		split_manager.c \
+		split_whitespaces.c \
+		split_separators.c \
+		tokenize.c \
+		expand_manager.c \
+		expand_split.c \
+		split_quotes_dollar.c \
+		expand_var.c \
+		expand_join.c \
+		expand_tokenize.c \
+		expand_utils.c \
+		command_manager.c \
+		error_manager.c \
+		print_tokens_cmds.c
 
 A_SRCS = albe_main.c \
 		split_manager.c \

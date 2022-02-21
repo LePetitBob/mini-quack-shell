@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_manager.c                                      :+:      :+:    :+:   */
+/*   command_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 23:32:43 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:51:39 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+t_cmd	*ft_create_cmd(void)
+{
+	t_cmd	*new;
+
+	new = malloc(sizeof(t_cmd));
+	new->arg = NULL;
+	new->redir = NULL;
+	new->fdin = 0;
+	new->fdout = 1;
+	new->pid = 0;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}
 
 void	command_manager(t_token *tokens, t_env *env)
 {
@@ -91,7 +106,7 @@ void	command_manager(t_token *tokens, t_env *env)
 	ft_putstr("\n_____cmds:\n");
 	print_cmds(cmds);
 	printf("\n");
-	//call vincent functions
+	cmd_manager(env, cmds);
 }
 
 void	link_fd_redir(t_token **tokens)
