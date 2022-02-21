@@ -48,6 +48,8 @@ SRCS = builtins/pwd.c \
 		expand_utils.c \
 		command_manager.c \
 		error_manager.c \
+		del_struct.c \
+		get_error_redir.c \
 		print_tokens_cmds.c
 
 A_SRCS = albe_main.c \
