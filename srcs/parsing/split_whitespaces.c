@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_whitespaces.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/02/19 08:13:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:46:01 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,21 @@ void	split_whitespaces(char *str, char *(**args))
 	free(tmp);
 }
 
+void	add_non_whitespace(char *(**arr), char *cpy)
+{
+	char	**tmp;
+
+	if (!cpy)
+		tmp = ft_erase(*arr, 0, 1);
+	else
+	{
+		tmp = ft_add_tab(*arr, cpy);
+		ft_bzero(cpy, ft_strlen(cpy));
+	}
+	*arr = ft_tabdup(tmp);
+	ft_freetab(tmp);
+}
+
 void	expand_split_whitespaces(char *(**arr))
 {
 	char	*cpy;
@@ -88,19 +103,4 @@ void	expand_split_whitespaces(char *(**arr))
 		add_non_whitespace(arr, cpy);
 	add_non_whitespace(arr, NULL);
 	free(cpy);
-}
-
-void	add_non_whitespace(char *(**arr), char *cpy)
-{
-	char	**tmp;
-
-	if (!cpy)
-		tmp = ft_erase(*arr, 0, 1);
-	else
-	{
-		tmp = ft_add_tab(*arr, cpy);
-		ft_bzero(cpy, ft_strlen(cpy));
-	}
-	*arr = ft_tabdup(tmp);
-	ft_freetab(tmp);
 }

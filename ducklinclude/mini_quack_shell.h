@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/21 16:34:15 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:52:27 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,6 @@ typedef struct s_cmd_list
 	struct s_cmd	*first;
 }				t_cmd_lst;
 
-//?			Structs
-//			Init Structs
-t_token	*ft_create_empty_token(void);
-t_cmd	*ft_create_cmd(void);
-//
-//			Free Structs
-void	free_token(t_token *tokens);
-void	free_cmds(t_cmd *cmds);
-//
-//?
-
-//?			Parsing
-//			Split
-void	split_manager(char *line, t_env *env);
-
-void	split_whitespaces(char *str, char *(**args));
-void	add_non_whitespace(char *(**arr), char *cpy);
-
-void	split_seps(char *(**args));
-void	check_separator(char *(**args), int i_args);
-void	separate_separator(char *(**args), char *sep, int i_args);
-//
-//			Tokenize
-void	tokenize_manager(char *(**args), t_env *env);
-int		get_arg_type(char *arg, int prev_type);
-int		check_tokens_type(t_token *tokens);
 typedef struct s_env_var
 {
 	char				*name;
@@ -142,6 +116,7 @@ void		expand_var(char *(*str), t_env *env);
 void		join_vars(char *(**arr));
 
 void		tokenize_expanded_vars(char **arr, t_token **parent);
+void		free_token(t_token *tokens);
 
 void		convert_spaces(char *(**arr), char space);
 void		del_quotes(char *(*str));

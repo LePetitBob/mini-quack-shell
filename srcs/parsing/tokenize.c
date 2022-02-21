@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/21 16:34:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:49:32 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,26 @@ t_token	*ft_create_empty_token(void)
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
+}
+
+int	check_tokens_type(t_token *tokens)
+{
+	t_token	*it;
+
+	it = tokens;
+	while (it)
+	{
+		if ((it->type == RIN || it->type == ROUT || it->type == DROUT
+				|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
+				|| it->next->type == ROUT || it->next->type == DROUT
+				|| it->next->type == HERE_DOC))
+		{
+			get_error_redir(it->next);
+			return (EXIT_FAILURE);
+		}
+		it = it->next;
+	}
+	return (EXIT_SUCCESS);
 }
 
 void	tokenize_manager(char *(**args), t_env *env)
@@ -74,24 +94,4 @@ int	get_arg_type(char *arg, int prev_type)
 	else
 		type = WORD;
 	return (type);
-}
-
-int	check_tokens_type(t_token *tokens)
-{
-	t_token	*it;
-
-	it = tokens;
-	while (it)
-	{
-		if ((it->type == RIN || it->type == ROUT || it->type == DROUT
-				|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
-				|| it->next->type == ROUT || it->next->type == DROUT
-				|| it->next->type == HERE_DOC))
-		{
-			get_error_redir(it->next);
-			return (EXIT_FAILURE);
-		}
-		it = it->next;
-	}
-	return (EXIT_SUCCESS);
 }
