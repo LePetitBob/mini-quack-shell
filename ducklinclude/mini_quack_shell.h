@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 12:29:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:41:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void		expand_manager(t_token **it, t_env *env);
 
 char		**expand_split_manager(char *str);
 char		**split_expand_prefix(char *str, int *i);
+void		add_splited_to_args(char *(**args), char *str);
+
 void		split_quotes_expand(char *(**arr), char *str, int *index);
 void		split_dollar_expand(char *(**arr), char *str, int *index);
 void		expand_split_whitespaces(char *(**arr));
@@ -121,6 +123,7 @@ void		free_token(t_token *tokens);
 
 void		convert_spaces(char *(**arr), char space);
 void		del_quotes(char *(*str));
+void		copy_str_without_quotes(char *(*str), int *i, char quote);
 //
 //			Commands
 void		command_manager(t_token *tokens, t_env *env);

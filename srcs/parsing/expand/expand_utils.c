@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 07:53:09 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:44:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,9 @@ void	convert_spaces(char *(**arr), char space)
 
 void	del_quotes(char *(*str))
 {
-	char	*prefix;
-	char	*sufix;
 	char	*cpy;
 	char	quote;
 	int		i;
-	int		diff;
 
 	i = 0;
 	while ((*str)[i] != '\0')
@@ -47,8 +44,7 @@ void	del_quotes(char *(*str))
 		if ((*str)[i] == '\'' || (*str)[i] == '\"')
 		{
 			quote = (*str)[i];
-			diff = i + 1;
-			if ((*str)[diff] == quote)
+			if ((*str)[i + 1] == quote)
 			{
 				cpy = ft_del_one(*str, i);
 				free(*str);
@@ -56,28 +52,36 @@ void	del_quotes(char *(*str))
 				free(cpy);
 			}
 			else
-			{
-				prefix = ft_substr(*str, 0, i);
-				while ((*str)[diff] != '\0' && (*str)[diff] != quote)
-					++diff;
-				cpy = ft_substr(*str, i + 1, diff - i - 1);
-				sufix = ft_strjoin(prefix, cpy);
-				free(cpy);
-				cpy = ft_strdup(sufix);
-				free(sufix);
-				if ((*str)[diff] == '\0')
-					sufix = ft_substr(*str, diff, ft_strlen(*str) - (diff + 1));
-				else
-					sufix = ft_substr(*str, diff + 1, ft_strlen(*str) - (diff + 1));
-				free(*str);
-				*str = ft_strjoin(cpy, sufix);
-				free(prefix);
-				free(sufix);
-				free(cpy);
-				i = diff - 1;
-			}
+				copy_str_without_quotes(str, &i, quote);
 		}
 		else
 			++i;
 	}
+}
+
+void	copy_str_without_quotes(char *(*str), int *i, char quote)
+{
+	char	*prefix;
+	char	*sufix;
+	char	*cpy;
+	char	*tmp;
+	int		diff;
+
+	diff = (*i) + 1;
+	prefix = ft_substr(*str, 0, *i);
+	while ((*str)[diff] != '\0' && (*str)[diff] != quote)
+		++diff;
+	cpy = ft_substr(*str, (*i) + 1, diff - (*i) - 1);
+	tmp = ft_strjoin(prefix, cpy);
+	if ((*str)[diff] == '\0')
+		sufix = ft_substr(*str, diff, ft_strlen(*str) - (diff + 1));
+	else
+		sufix = ft_substr(*str, diff + 1, ft_strlen(*str) - (diff + 1));
+	free(*str);
+	*str = ft_strjoin(tmp, sufix);
+	free(prefix);
+	free(cpy);
+	free(tmp);
+	free(sufix);
+	*i = diff - 1;
 }

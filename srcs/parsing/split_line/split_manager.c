@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 13:10:45 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:46:20 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	split_manager(char *line, t_env *env)
 	split_seps(&args);
 	while (args[i])
 	{
-		if (ft_strcmp(args[i], "|") == 0
-			&& (i == 0 || args[i + 1] == NULL
+		if (ft_strcmp(args[i], "|") == 0 && (i == 0 || args[i + 1] == NULL
 				|| ft_strcmp(args[i + 1], "|") == 0))
 		{
 			error_manager(ERNO_PIPE);

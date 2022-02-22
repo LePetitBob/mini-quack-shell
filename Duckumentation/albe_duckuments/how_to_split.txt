@@ -26,11 +26,12 @@ e''c""h''o' '"c"'o'""u'cou'
 
 << $HOME ls -l | cat Makefile >> test | < Makefile pwd >> test
 
-echo "hello there" > outfilr | echo '$a'
+echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
 
 cat "test" >> outfilr
 
 cat Makefile > outfilr | grep $ >> outfilr
+cat Makefile | grep $ > outfilr
 
 >> test >test > >
 | >> test >test > >

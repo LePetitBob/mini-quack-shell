@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:45:53 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 08:24:13 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:06:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,32 @@ char	**expand_split_manager(char *str)
 	int		i;
 
 	i = 0;
-	cpy = ft_strdup(str);
-	ft_bzero(cpy, ft_strlen(str));
-	res = NULL;
+	cpy = ft_strnew(ft_strlen(str));
 	res = split_expand_prefix(str, &i);
 	while (str[i])
 	{
+		if (str[i] == '\'' || str[i] == '\"' || str[i] == '$')
+			add_splited_to_args(&res, cpy);
 		if (str[i] == '\'' || str[i] == '\"')
-		{
-			if (cpy[0] != '\0')
-			{
-				res = ft_add_tab(res, cpy);
-				ft_bzero(cpy, ft_strlen(cpy));
-			}
 			split_quotes_expand(&res, str, &i);
-		}
 		else if (str[i] == '$')
-		{
-			if (cpy[0] != '\0')
-			{
-				res = ft_add_tab(res, cpy);
-				ft_bzero(cpy, ft_strlen(cpy));
-			}
 			split_dollar_expand(&res, str, &i);
-		}
 		else
 			cpy[ft_strlen(cpy)] = str[i];
 		++i;
 	}
-	if (cpy[0] != '\0')
-		res = ft_add_tab(res, cpy);
+	add_splited_to_args(&res, cpy);
 	free(cpy);
 	return (res);
+}
+
+void	add_splited_to_args(char *(**args), char *str)
+{
+	if (str[0] != '\0')
+	{
+		*args = ft_add_tab(*args, str);
+		ft_bzero(str, ft_strlen(str));
+	}
 }
 
 char	**split_expand_prefix(char *str, int *i)
