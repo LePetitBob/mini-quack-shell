@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/17 17:00:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:55:18 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ void	print_cmds(t_cmd *cmds)
 		ft_putstr("}\n");
 		iterator = iterator->next;
 	}
+	if (iterator == NULL)
+		ft_putstr("{NULL}\n");
 }

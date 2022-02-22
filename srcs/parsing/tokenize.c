@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/21 16:49:32 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 11:38:18 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-t_token	*ft_create_empty_token(void)
-{
-	t_token	*new;
-
-	new = malloc(sizeof(t_token));
-	new->str = NULL;
-	new->type = -1;
-	new->next = NULL;
-	new->prev = NULL;
-	return (new);
-}
 
 int	check_tokens_type(t_token *tokens)
 {

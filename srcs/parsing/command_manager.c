@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   command_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/21 18:05:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 11:57:26 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-t_cmd	*ft_create_cmd(void)
-{
-	t_cmd	*new;
-
-	new = malloc(sizeof(t_cmd));
-	new->arg = NULL;
-	new->redir = NULL;
-	new->fdin = 0;
-	new->fdout = 1;
-	new->pid = 0;
-	new->next = NULL;
-	new->prev = NULL;
-	return (new);
-}
 
 void	command_manager(t_token *tokens, t_env *env)
 {
@@ -53,9 +38,8 @@ void	command_manager(t_token *tokens, t_env *env)
 		}
 		while (it_t && it_t->type != PIPE)
 		{
-			//! BETWEEN HERE
-			if (it_t->type == RIN || it_t->type == ROUT || it_t->type == DROUT
-				|| it_t->type == HERE_DOC)
+			if (it_t && (it_t->type == RIN || it_t->type == ROUT
+				|| it_t->type == DROUT || it_t->type == HERE_DOC))
 			{
 				if (it_c->redir)
 				{
@@ -80,7 +64,7 @@ void	command_manager(t_token *tokens, t_env *env)
 				else
 					it_t = it_t->next;
 			}
-			else if (it_t->type == WORD)
+			if (it_t && it_t->type == WORD)
 			{
 				if (it_c->arg)
 				{
@@ -103,12 +87,10 @@ void	command_manager(t_token *tokens, t_env *env)
 					it_t->prev = NULL;
 				}
 				else
-					it_t = it_t->next;	//! AND HERE
+					it_t = it_t->next;
 			}
 		}
 	}
-	// print_cmds(cmds);
-	// printf("\n");
 	cmd_manager(env, cmds);
 }
 
