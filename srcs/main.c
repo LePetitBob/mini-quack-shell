@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 13:01:40 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 13:10:54 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int	main(int ac, char **av, char *envp[])
 			return (0);
 		}
 		split_manager(line, &env);
-		ft_putstr("__________done_everything:\n");
 	}
 }

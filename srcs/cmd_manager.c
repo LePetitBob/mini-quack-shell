@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 05:52:03 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 13:05:13 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 13:14:16 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	int			fd[4];
 	int			is_piped;
 
-	printf("			exec\n");
 	cmds = malloc(sizeof(t_cmd*));
 	cmds->first = cmd;
 	is_piped = 0;
@@ -95,22 +94,15 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	{
 		if (tmp->next)
 			pipe(fd);
-		write(2, " redir :\n", 9);
 		redirection(tmp, fd);
-		write(2, " redir done\n\n", 13);
-		write(2, " exec :\n", 8);
 		execution(tmp, env, fd, is_piped);
-		write(2, " exec done\n\n", 12);
 		if (tmp->next)
 		{
 			dup2(fd[0], fd[2]);
 			closepipe(fd);
 		}
 		dup2(fd[3], STDOUT_FILENO);
-		write(2, "    cmd done\n\n", 14);
 		tmp = tmp->next;
 	}
-	write(2, " clear :\n", 9);
 	close_wait_clear(cmds, fd, env);
-	write(2, " clear done:\n", 13);
 }
