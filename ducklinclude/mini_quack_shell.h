@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 19:31:04 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:42:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ void		copy_str_without_quotes(char *(*str), int *i, char quote);
 //			Commands
 void		command_manager(t_token *tokens, t_env *env);
 void		link_fd_redir(t_token **tokens);
+void		assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign);
+void		unlink_cmd_token(t_token *cmd_t, t_token **it_t);
 //
 
 //?			Builtins

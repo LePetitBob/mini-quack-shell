@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 19:31:50 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:47:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	command_manager(t_token *tokens, t_env *env)
 	t_token	*it_t;
 	t_cmd	*cmds;
 	t_cmd	*it_c;
-	t_token	*tmp;
 
-	(void)env;
 	link_fd_redir(&tokens);
 	it_t = tokens;
 	cmds = ft_create_cmd();
@@ -40,58 +38,11 @@ void	command_manager(t_token *tokens, t_env *env)
 		{
 			if (it_t && (it_t->type == RIN || it_t->type == ROUT
 					|| it_t->type == DROUT || it_t->type == HERE_DOC))
-			{
-				if (it_c->redir)
-				{
-					tmp = it_c->redir;
-					while (tmp->next)
-						tmp = tmp->next;
-					tmp->next = it_t;
-					it_t->prev = tmp;
-					tmp = tmp->next;
-				}
-				else
-				{
-					it_c->redir = it_t;
-					tmp = it_c->redir;
-				}
-				if (it_t->next)
-				{
-					it_t = it_t->next;
-					tmp->next = NULL;
-					it_t->prev = NULL;
-				}
-				else
-					it_t = it_t->next;
-			}
+				assign_token_cmd(&it_c, &it_t, 0);
 			if (it_t && it_t->type == WORD)
-			{
-				if (it_c->arg)
-				{
-					tmp = it_c->arg;
-					while (tmp->next)
-						tmp = tmp->next;
-					tmp->next = it_t;
-					it_t->prev = tmp;
-					tmp = tmp->next;
-				}
-				else
-				{
-					it_c->arg = it_t;
-					tmp = it_c->arg;
-				}
-				if (it_t->next)
-				{
-					it_t = it_t->next;
-					tmp->next = NULL;
-					it_t->prev = NULL;
-				}
-				else
-					it_t = it_t->next;
-			}
+				assign_token_cmd(&it_c, &it_t, 1);
 		}
 	}
-	print_cmds(cmds);
 	cmd_manager(env, cmds);
 }
 
@@ -125,5 +76,42 @@ void	link_fd_redir(t_token **tokens)
 		}
 		else
 			it = it->next;
+	}
+}
+
+void	assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign)
+{
+	t_token	*tmp;
+
+	if (assign == 0)
+		tmp = (*it_c)->redir;
+	else if (assign == 1)
+		tmp = (*it_c)->arg;
+	if (tmp)
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = (*it_t);
+		(*it_t)->prev = tmp;
+		tmp = tmp->next;
+	}
+	else
+	{
+		if (assign == 0)
+			(*it_c)->redir = *it_t;
+		else if (assign == 1)
+			(*it_c)->arg = *it_t;
+		tmp = *it_t;
+	}
+	unlink_cmd_token(tmp, it_t);
+}
+
+void	unlink_cmd_token(t_token *cmd_t, t_token **it_t)
+{
+	*it_t = (*it_t)->next;
+	if (*it_t)
+	{
+		cmd_t->next = NULL;
+		(*it_t)->prev = NULL;
 	}
 }
