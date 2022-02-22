@@ -6,7 +6,15 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 05:52:03 by vduriez           #+#    #+#             */
+<<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2022/02/22 13:14:16 by vduriez          ###   ########.fr       */
+=======
+/*   Updated: 2022/02/22 17:22:29 by vduriez          ###   ########.fr       */
+>>>>>>> debugvinc
+=======
+/*   Updated: 2022/02/22 19:18:56 by vduriez          ###   ########.fr       */
+>>>>>>> debugvinc
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +66,12 @@ void	init_fds(int fd[4])
 	fd[3] = dup(STDOUT_FILENO);
 }
 
-void	close_wait_clear(t_cmd_lst *cmds, int fd[4], t_env *env)
+void	close_wait_clear(t_cmd_lst *cmds, t_env *env)
 {
 	t_cmd	*tmp;
 
-	close(fd[2]);
-	close(fd[3]);
+	// close(fd[2]);
+	// close(fd[3]);
 	tmp = cmds->first;
 	while (tmp)
 	{
@@ -101,8 +109,18 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 			dup2(fd[0], fd[2]);
 			closepipe(fd);
 		}
+<<<<<<< HEAD
 		dup2(fd[3], STDOUT_FILENO);
 		tmp = tmp->next;
 	}
 	close_wait_clear(cmds, fd, env);
+=======
+		tmp = tmp->next;
+	}
+	dup2(fd[2], STDIN_FILENO);
+	dup2(fd[3], STDOUT_FILENO);
+	close(fd[2]);
+	close(fd[3]);
+	close_wait_clear(cmds, env);
+>>>>>>> debugvinc
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tokens_cmds.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 11:55:18 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:22:38 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	print_tokens(t_token *tokens)
 		ft_putstr("]");
 		ft_putstr("[");
 		ft_putstr(iterator->str);
-		ft_putstr("]\n");
+		ft_putstr("]");
 		iterator = iterator->next;
 	}
 }
