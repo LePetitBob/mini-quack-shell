@@ -109,9 +109,7 @@ $(OBJS_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-		rm -rf $(OBJS)
-		rm -rf $(A_OBJS)
-		rm -rf $(V_OBJS)
+		rm -rf $(OBJS_DIR)
 
 fclean: clean
 		rm -rf $(NAME)

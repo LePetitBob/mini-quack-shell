@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 14:38:24 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:09:58 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	expand_var(char **str, t_env *env)
 		*str = ft_strjoin(value, cpy);
 		return ;
 	}
-	var = ft_strdup(*str);
-	ft_bzero(var, ft_strlen(var));
+	var = ft_strnew(ft_strlen(*str));
 	while ((*str)[i] != '\0' && (ft_isalnum((*str)[i]) == 1
 		|| (*str)[i] == '_'))
 	{

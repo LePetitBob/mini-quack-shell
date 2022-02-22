@@ -19,7 +19,7 @@ e''c""h''o'' "c"'o'""u'cou'
 e''c""h''o' '"c"'o'""u'cou'
 [e''c""h''o' '"c"'o'""u'cou']
 
-<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$a" | ls -la | <infilr cat
+<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$HOME" | ls -la | <infilr cat
 
 "h ey" hey|<hey
 ["h ey"][hey][|][<][hey]
