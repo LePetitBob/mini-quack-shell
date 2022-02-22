@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 17:23:02 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:02:00 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	command_manager(t_token *tokens, t_env *env)
 			}
 		}
 	}
+	print_cmds(cmds);
 	cmd_manager(env, cmds);
 }
 
