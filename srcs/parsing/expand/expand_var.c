@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:09:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:04:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,17 @@ void	expand_var(char **str, t_env *env)
 	if ((*str)[0] == '\'' || (*str)[ft_strsrch(*str, '$') + 1] == '\0'
 		|| (*str)[ft_strsrch(*str, '$') + 1] == '\"')
 		return ;
-	i = ft_strsrch(*str, '$');
-	if (i > 0)
-		cpy = ft_strndup((*str), i);
-	++i;
-	if ((*str)[i] == '?')
+	i = ft_strsrch(*str, '$') + 1;
+	if ((i - 1) > 0)
+		cpy = ft_strndup((*str), i - 1);
+	if ((*str)[i] == '?' || (*str)[i] == '0')
 	{
-		value = ft_itoa(g_exit_status);
-		if (cpy)
-		{
-			value = ft_strjoin(cpy, value);
-			free(cpy);
-		}
-		cpy = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
-		free(*str);
-		*str = ft_strjoin(value, cpy);
-		return ;
-	}
-	if ((*str)[i] == '0')
-	{
-		value = ft_strdup("mini_quack_shell");
-		if (cpy)
-		{
-			value = ft_strjoin(cpy, value);
-			free(cpy);
-		}
-		cpy = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
-		free(*str);
-		*str = ft_strjoin(value, cpy);
+		expand_exeptions(str, i, cpy);
 		return ;
 	}
 	var = ft_strnew(ft_strlen(*str));
 	while ((*str)[i] != '\0' && (ft_isalnum((*str)[i]) == 1
-		|| (*str)[i] == '_'))
+			|| (*str)[i] == '_'))
 	{
 		var[ft_strlen(var)] = (*str)[i];
 		++i;
@@ -75,5 +53,29 @@ void	expand_var(char **str, t_env *env)
 	free(*str);
 	*str = ft_strdup(value);
 	free(var);
+	free(value);
+}
+
+void	expand_exeptions(char **str, int i, char *cpy)
+{
+	char	*value;
+	char	*tmp;
+
+	tmp = NULL;
+	if ((*str)[i] == '?')
+		value = ft_itoa(g_exit_status);
+	else if ((*str)[i] == '0')
+		value = ft_strdup("mini_quack_shell");
+	if (cpy)
+	{
+		tmp = ft_strjoin(cpy, value);
+		free(cpy);
+		free(value);
+		value = ft_strdup(tmp);
+	}
+	value = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
+	free(*str);
+	*str = ft_strjoin(value, cpy);
+	free(tmp);
 	free(value);
 }

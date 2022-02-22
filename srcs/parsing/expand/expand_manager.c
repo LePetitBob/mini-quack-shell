@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:10:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:49:32 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	expand_caller(t_token *tokens, t_env *env)
 			return ;
 		it = it->next;
 	}
+	print_tokens(tokens);
 	command_manager(tokens, env);
 }
 

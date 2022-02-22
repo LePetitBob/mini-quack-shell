@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 15:52:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:47:57 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,14 @@ void	tokenize_expanded_vars(char **arr, t_token **parent)
 {
 	t_token	*new_token;
 	t_token	*it;
-	int		i;
 
 	if (!arr)
 	{
-		if ((*parent)->prev)
-		{
-			if ((*parent)->next)
-			{
-				(*parent)->prev->next = (*parent)->next;
-				(*parent)->next->prev = (*parent)->prev;
-			}
-			else
-				(*parent)->prev->next = NULL;
-		}
-		else if ((*parent)->next)
-		{
-			(*parent) = (*parent)->next;
-			free((*parent)->prev->str);
-			free((*parent)->prev);
-			(*parent)->prev = NULL;
-		}
-		else
-		{
-			free(*parent);
-			*parent = NULL;
-		}
+		relink_parent_to_himself(parent);
 		return ;
 	}
-	new_token = ft_create_empty_token();
-	new_token->str = ft_strdup(arr[0]);
-	it = new_token;
-	i = 1;
-	while (arr[i])
-	{
-		it->next = ft_create_empty_token();
-		it->next->str = ft_strdup(arr[i]);
-		it->next->type = WORD;
-		it->next->prev = it;
-		it = it->next;
-		++i;
-	}
+	new_token = make_new_tokens(arr);
+	it = get_last_token(new_token);
 	if ((*parent)->next)
 	{
 		it->next = (*parent)->next;
@@ -71,4 +38,52 @@ void	tokenize_expanded_vars(char **arr, t_token **parent)
 	}
 	free(new_token->str);
 	free(new_token);
+}
+
+void	relink_parent_to_himself(t_token **parent)
+{
+	t_token	*tmp;
+
+	tmp = *parent;
+	if ((*parent)->prev)
+	{
+		*parent = (*parent)->prev;
+		if (tmp->next)
+		{
+			(*parent)->next = tmp->next;
+			tmp->next->prev = (*parent);
+		}
+		else
+			(*parent)->next = NULL;
+	}
+	else if ((*parent)->next)
+	{
+		(*parent) = (*parent)->next;
+		(*parent)->prev = NULL;
+	}
+	free(tmp->str);
+	free(tmp);
+	tmp = NULL;
+}
+
+t_token	*make_new_tokens(char **arr)
+{
+	t_token	*new_token;
+	t_token	*it;
+	int		i;
+
+	new_token = ft_create_empty_token();
+	new_token->str = ft_strdup(arr[0]);
+	it = new_token;
+	i = 1;
+	while (arr[i])
+	{
+		it->next = ft_create_empty_token();
+		it->next->str = ft_strdup(arr[i]);
+		it->next->type = WORD;
+		it->next->prev = it;
+		it = it->next;
+		++i;
+	}
+	return (new_token);
 }

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 14:33:01 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:39:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,22 @@ void	split_dollar_expand(char *(**arr), char *str, int *index)
 {
 	char	**tmp;
 	char	*cpy;
-	int		i;
 
-	i = 1;
-	cpy = ft_strdup(str);
-	ft_bzero(cpy, ft_strlen(str));
+	cpy = ft_strnew(ft_strlen(str));
 	cpy[0] = str[*index];
-	if (str[*index + i] != '\0' && (ft_isalpha(str[*index + i]) == 0
-			&& str[*index + i] != '_' && str[*index + i] != '0'
-			&& str[*index + i] != '?'))
-	{
-		++(*index);
+	++(*index);
+	if (str[*index] != '\0' && (ft_isalpha(str[*index]) == 0
+			&& str[*index] != '_' && str[*index] != '0'
+			&& str[*index] != '?'))
 		return ;
-	}
-	while (str[*index + i] != '\0' && (ft_isalnum(str[*index + i]) == 1
-			|| str[*index + i] == '_'))
+	while (str[*index] != '\0' && (ft_isalnum(str[*index]) == 1
+			|| str[*index] == '_'))
 	{
-		cpy[i] = str[*index + i];
-		++i;
+		cpy[ft_strlen(cpy)] = str[*index];
+		++(*index);
 	}
-	*index += i;
 	if (str[*index] == '?')
-		cpy[i] = str[*index];
+		cpy[ft_strlen(cpy)] = str[*index];
 	if (ft_isalnum(str[*index]) == 0 && str[*index] != '_'
 		&& str[*index] != '0' && str[*index] != '?')
 		--(*index);

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 15:41:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:04:43 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,11 @@ typedef struct s_env
 	t_env_var	*first;
 }				t_env;
 
-//			Init Structs
+//			Structs
 t_token		*ft_create_empty_token(void);
+t_token		*get_last_token(t_token *tokens);
 t_cmd		*ft_create_cmd(void);
+void		free_token(t_token *tokens);
 
 //?			Parsing
 //			Split
@@ -111,15 +113,17 @@ char		**split_expand_prefix(char *str, int *i);
 void		add_splited_to_args(char *(**args), char *str);
 
 void		split_quotes_expand(char *(**arr), char *str, int *index);
-void		split_dollar_expand(char *(**arr), char *str, int *index);
+void		split_dollar_expand(char *(**arr), char *str, int *i);
 void		expand_split_whitespaces(char *(**arr));
 
 void		expand_var(char *(*str), t_env *env);
+void		expand_exeptions(char **str, int i, char *cpy);
 
 void		join_vars(char *(**arr));
 
 void		tokenize_expanded_vars(char **arr, t_token **parent);
-void		free_token(t_token *tokens);
+void		relink_parent_to_himself(t_token **parent);
+t_token		*make_new_tokens(char **arr);
 
 void		convert_spaces(char *(**arr), char space);
 void		del_quotes(char *(*str));
