@@ -5,8 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
 /*   Updated: 2022/02/22 19:38:16 by amarini-         ###   ########.fr       */
+=======
+/*   Created: 2022/02/19 05:52:03 by vduriez           #+#    #+#             */
+/*   Updated: 2022/02/22 21:50:13 by vduriez          ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +83,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 {
 	t_cmd_lst	*cmds;
 	t_cmd		*tmp;
-	int			fd[4];
+	int			fd[5];
 	int			is_piped;
 
 	cmds = malloc(sizeof(t_cmd*));
@@ -92,16 +97,24 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
+		if (tmp->prev)
+		{
+			dup2(fd[0], fd[4]);
+			closepipe(fd);
+		}
 		if (tmp->next)
 			pipe(fd);
 		redirection(tmp, fd);
 		execution(tmp, env, fd, is_piped);
+<<<<<<< HEAD
 		if (tmp->next)
 		{
 			dup2(fd[0], fd[2]);
 			closepipe(fd);
 		}
 		dup2(fd[3], STDOUT_FILENO);
+=======
+>>>>>>> master
 		tmp = tmp->next;
 	}
 	dup2(fd[2], STDIN_FILENO);
