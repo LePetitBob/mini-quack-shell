@@ -6,7 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/02/22 13:13:12 by vduriez          ###   ########.fr       */
+=======
+/*   Updated: 2022/02/22 16:46:45 by vduriez          ###   ########.fr       */
+>>>>>>> debugvinc
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +44,7 @@ void	apply_redir(char *str, int type, t_cmd *cmd, int *err)
 {
 	if (type == HERE_DOC)
 	{
+		dprintf(2, "i see here doc\n");
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
 		get_here_doc(str);
@@ -75,11 +80,6 @@ void	redirection(t_cmd *cmd, int fd[4])
 
 	err = 0;
 	tmp = cmd->redir;
-	dup2(fd[2], STDIN_FILENO);
-	if (cmd->next)
-		dup2(fd[1], STDOUT_FILENO);
-	else if (cmd->prev)
-		dup2(fd[3], STDOUT_FILENO);
 	while (tmp)
 	{
 		apply_redir(tmp->str, tmp->type, cmd, &err);
@@ -87,6 +87,15 @@ void	redirection(t_cmd *cmd, int fd[4])
 			break ;
 		tmp = tmp->next;
 	}
+<<<<<<< HEAD
+=======
+	if (cmd->prev)
+		dup2(fd[2], STDIN_FILENO);
+	if (cmd->next)
+		dup2(fd[1], STDOUT_FILENO);
+	else
+		dup2(fd[3], STDOUT_FILENO);
+>>>>>>> debugvinc
 	if (cmd->fdin != 0)
 		dup2(cmd->fdin, STDIN_FILENO);
 	if (cmd->fdin != 0)

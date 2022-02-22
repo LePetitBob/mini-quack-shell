@@ -6,7 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/02/22 13:10:54 by vduriez          ###   ########.fr       */
+=======
+/*   Updated: 2022/02/22 14:34:46 by vduriez          ###   ########.fr       */
+>>>>>>> debugvinc
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +30,13 @@ int	main(int ac, char **av, char *envp[])
 	get_env(envp, &env);
 	while (1)
 	{
+		i++;
 		write(2, ft_itoa(i), ft_countnbr(1, i));
 		line = readline("mini-quack-shell$ ");
 		add_history(line);
 		if (!line)
 		{
+			dprintf(2, "!line frome readline\n");
 			ft_clear(&env);
 			return (0);
 		}

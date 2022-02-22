@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 12:29:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:27:53 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
 void		cmd_manager(t_env *env, t_cmd *cmd);
-void		close_wait_clear(t_cmd_lst *cmds, int fd[4], t_env *env);
+void		close_wait_clear(t_cmd_lst *cmds, t_env *env);
 void		init_fds(int fd[4]);
 void		closepipe(int fd[3]);
 void		close_all_fds(int fd[4], t_cmd *cmd);
