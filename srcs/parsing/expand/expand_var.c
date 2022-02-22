@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/18 17:31:12 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:38:24 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	expand_var(char **str, t_env *env)
 	int		i;
 
 	cpy = NULL;
-	if ((*str)[0] == '\'')
+	if ((*str)[0] == '\'' || (*str)[ft_strsrch(*str, '$') + 1] == '\0'
+		|| (*str)[ft_strsrch(*str, '$') + 1] == '\"')
 		return ;
 	i = ft_strsrch(*str, '$');
 	if (i > 0)
