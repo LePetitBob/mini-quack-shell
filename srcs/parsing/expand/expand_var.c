@@ -6,11 +6,34 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 18:04:25 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:14:58 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+void	expand_vars_manager(char *(**arr), t_env *env)
+{
+	char	**tmp;
+	int		i;
+
+	i = 0;
+	while ((*arr)[i])
+	{
+		if (ft_strsrch((*arr)[i], '$') != -1)
+		{
+			expand_var(&(*arr)[i], env);
+			if ((*arr)[i][0] == '\0')
+			{
+				tmp = ft_erase(*arr, i, 1);
+				free(*arr);
+				*arr = ft_tabdup(tmp);
+				ft_freetab(tmp);
+			}
+		}
+		++i;
+	}
+}
 
 void	expand_var(char **str, t_env *env)
 {

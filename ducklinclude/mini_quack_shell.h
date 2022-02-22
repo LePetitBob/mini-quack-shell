@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 18:04:43 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:15:10 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void		split_quotes_expand(char *(**arr), char *str, int *index);
 void		split_dollar_expand(char *(**arr), char *str, int *i);
 void		expand_split_whitespaces(char *(**arr));
 
+void		expand_vars_manager(char *(**arr), t_env *env);
 void		expand_var(char *(*str), t_env *env);
 void		expand_exeptions(char **str, int i, char *cpy);
 

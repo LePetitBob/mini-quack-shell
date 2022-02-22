@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:49:32 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:17:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	expand_caller(t_token *tokens, t_env *env)
 			return ;
 		it = it->next;
 	}
-	print_tokens(tokens);
+	// print_tokens(tokens);
 	command_manager(tokens, env);
 }
 
@@ -40,16 +40,17 @@ void	expand_manager(t_token **it, t_env *env)
 	i = 0;
 	arr = expand_split_manager((*it)->str);
 	convert_spaces(&arr, ' ');
-	while (arr && arr[i])
-	{
-		if (ft_strsrch(arr[i], '$') != -1)
-		{
-			expand_var(&arr[i], env);
-			if (arr[i][0] == '\0')
-				arr = ft_erase(arr, i, 1);
-		}
-		++i;
-	}
+	expand_vars_manager(&arr, env);
+	// while (arr && arr[i])
+	// {
+	// 	if (ft_strsrch(arr[i], '$') != -1)
+	// 	{
+	// 		expand_var(&arr[i], env);
+	// 		if (arr[i][0] == '\0')
+	// 			arr = ft_erase(arr, i, 1);
+	// 	}
+	// 	++i;
+	// }
 	if (!arr)
 	{
 		tokenize_expanded_vars(arr, it);
