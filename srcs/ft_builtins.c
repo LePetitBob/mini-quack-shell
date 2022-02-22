@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/15 14:33:31 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 13:00:03 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	ft_builtins(char **cmd, t_env *env, int is_piped)
 		ft_unset(env, cmd);
 	else if (!ft_strcmp(cmd[0], "cd"))
 		ft_cd(cmd, env);
-	rl_clear_history();
-	ft_clear(env);
-	exit(0); //! g_exit_status
+	if (is_piped)
+	{
+		rl_clear_history();
+		ft_clear(env);
+		exit(0); //! g_exit_status
+	}
 }

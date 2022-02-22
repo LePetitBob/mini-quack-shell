@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 12:30:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:49:37 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	tokenize_manager(char *(**args), t_env *env)
 	print_tokens(tokens);
 	ft_putstr("__________}\n");
 	expand_caller(tokens, env);
+	ft_putstr("__________done_tokenize:\n");
 }
 
 int	get_arg_type(char *arg, int prev_type)

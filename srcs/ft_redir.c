@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/21 12:54:29 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 13:03:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	redirection(t_cmd *cmd, int fd[4])
 			break ;
 		tmp = tmp->next;
 	}
+	dprintf(2, "fdout : %d\n", cmd->fdout);
 	if (cmd->fdin != 0)
 		dup2(cmd->fdin, STDIN_FILENO);
 	if (cmd->fdin != 0)

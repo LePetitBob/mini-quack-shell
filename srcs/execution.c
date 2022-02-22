@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 06:18:17 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 12:59:15 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 
 	str_cmd = get_cmd_str(cmd);
 	if (is_builtin(str_cmd[0]) && !is_piped)
+	{
+		dprintf(2, "coucou les builtins non pipe\n");
 		ft_builtins(str_cmd, env, is_piped);
+	}
 	else
 	{
 		cmd->pid = fork();
