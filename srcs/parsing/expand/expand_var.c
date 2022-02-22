@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 22:49:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 23:19:57 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	expand_vars_manager(char *(**arr), t_env *env)
 	int		i;
 
 	i = 0;
-	while ((*arr)[i])
+	while (*arr && (*arr)[i])
 	{
 		if (ft_strsrch((*arr)[i], '$') != -1)
 		{
@@ -105,9 +105,10 @@ void	expand_exeptions(char **str, int i, char *cpy)
 		tmp = ft_strjoin(cpy, value);
 		free(cpy);
 		free(value);
-		value = ft_strdup(tmp);
+		cpy = ft_strdup(tmp);
 	}
-	value = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
+	if ((*str)[i + 1] != '\0')
+		value = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
 	free(*str);
 	*str = ft_strjoin(value, cpy);
 	free(tmp);
