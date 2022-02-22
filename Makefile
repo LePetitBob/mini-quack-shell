@@ -34,7 +34,7 @@ SRCS = builtins/pwd.c \
 		ft_here_doc.c \
 		cmd_manager.c \
 		ft_utils_tmp.c \
-		albe_main.c \
+		main.c \
 		split_manager.c \
 		split_whitespaces.c \
 		split_separators.c \
@@ -53,7 +53,7 @@ SRCS = builtins/pwd.c \
 		get_error_redir.c \
 		print_tokens_cmds.c
 
-A_SRCS = albe_main.c \
+A_SRCS = main.c \
 		split_manager.c \
 		split_whitespaces.c split_separators.c \
 		tokenize.c \

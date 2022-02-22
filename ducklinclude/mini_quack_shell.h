@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/21 16:52:27 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 12:29:46 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void		separate_separator(char *(**args), char *sep, int i_args);
 //			Tokenize
 void		tokenize_manager(char *(**args), t_env *env);
 int			get_arg_type(char *arg, int prev_type);
+int			check_tokens_type(t_token *tokens);
 //
 //			Expand
 void		expand_caller(t_token *tokens, t_env *env);

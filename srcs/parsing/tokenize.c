@@ -6,31 +6,11 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 11:38:18 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:30:51 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-int	check_tokens_type(t_token *tokens)
-{
-	t_token	*it;
-
-	it = tokens;
-	while (it)
-	{
-		if ((it->type == RIN || it->type == ROUT || it->type == DROUT
-				|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
-				|| it->next->type == ROUT || it->next->type == DROUT
-				|| it->next->type == HERE_DOC))
-		{
-			get_error_redir(it->next);
-			return (EXIT_FAILURE);
-		}
-		it = it->next;
-	}
-	return (EXIT_SUCCESS);
-}
 
 void	tokenize_manager(char *(**args), t_env *env)
 {
@@ -58,6 +38,9 @@ void	tokenize_manager(char *(**args), t_env *env)
 		free_token(tokens);
 		return ;
 	}
+	ft_putstr("__________tokenized:\n{");
+	print_tokens(tokens);
+	ft_putstr("__________}\n");
 	expand_caller(tokens, env);
 }
 
@@ -82,4 +65,24 @@ int	get_arg_type(char *arg, int prev_type)
 	else
 		type = WORD;
 	return (type);
+}
+
+int	check_tokens_type(t_token *tokens)
+{
+	t_token	*it;
+
+	it = tokens;
+	while (it)
+	{
+		if ((it->type == RIN || it->type == ROUT || it->type == DROUT
+				|| it->type == HERE_DOC) && (!it->next || it->next->type == RIN
+				|| it->next->type == ROUT || it->next->type == DROUT
+				|| it->next->type == HERE_DOC))
+		{
+			get_error_redir(it->next);
+			return (EXIT_FAILURE);
+		}
+		it = it->next;
+	}
+	return (EXIT_SUCCESS);
 }
