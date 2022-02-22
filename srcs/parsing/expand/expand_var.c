@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 23:19:57 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 00:13:19 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	expand_vars_manager(char *(**arr), t_env *env)
 		if (ft_strsrch((*arr)[i], '$') != -1)
 		{
 			expand_var(&(*arr)[i], env);
-			if ((*arr)[i][0] == '\0')
+			if (!(*arr)[i] || (*arr)[i][0] == '\0')
 			{
 				tmp = ft_erase(*arr, i, 1);
 				free(*arr);
@@ -68,7 +68,10 @@ void	expand_var(char **str, t_env *env)
 		free(cpy);
 	}
 	free(*str);
-	*str = ft_strdup(value);
+	if (!value)
+		*str = ft_strdup("\0");
+	else
+		*str = ft_strdup(value);
 	free(var);
 	free(value);
 }
