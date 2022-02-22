@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 12:49:23 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 17:23:14 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,5 @@ void	split_manager(char *line, t_env *env)
 		}
 		++i;
 	}
-	ft_putstr("__________splited_str:\n{");
-	ft_print_tab(args);
-	ft_putstr("__________}\n");
 	tokenize_manager(&args, env);
-	ft_putstr("__________done_split:\n");
 }

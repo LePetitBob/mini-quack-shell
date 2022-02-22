@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 12:49:37 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 17:23:08 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ void	tokenize_manager(char *(**args), t_env *env)
 		free_token(tokens);
 		return ;
 	}
-	ft_putstr("__________tokenized:\n{");
-	print_tokens(tokens);
-	ft_putstr("__________}\n");
 	expand_caller(tokens, env);
-	ft_putstr("__________done_tokenize:\n");
 }
 
 int	get_arg_type(char *arg, int prev_type)
