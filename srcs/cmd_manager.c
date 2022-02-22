@@ -6,15 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 05:52:03 by vduriez           #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-/*   Updated: 2022/02/22 13:14:16 by vduriez          ###   ########.fr       */
-=======
-/*   Updated: 2022/02/22 17:22:29 by vduriez          ###   ########.fr       */
->>>>>>> debugvinc
-=======
-/*   Updated: 2022/02/22 19:18:56 by vduriez          ###   ########.fr       */
->>>>>>> debugvinc
+/*   Updated: 2022/02/22 21:50:13 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +78,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 {
 	t_cmd_lst	*cmds;
 	t_cmd		*tmp;
-	int			fd[4];
+	int			fd[5];
 	int			is_piped;
 
 	cmds = malloc(sizeof(t_cmd*));
@@ -100,21 +92,15 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
+		if (tmp->prev)
+		{
+			dup2(fd[0], fd[4]);
+			closepipe(fd);
+		}
 		if (tmp->next)
 			pipe(fd);
 		redirection(tmp, fd);
 		execution(tmp, env, fd, is_piped);
-		if (tmp->next)
-		{
-			dup2(fd[0], fd[2]);
-			closepipe(fd);
-		}
-<<<<<<< HEAD
-		dup2(fd[3], STDOUT_FILENO);
-		tmp = tmp->next;
-	}
-	close_wait_clear(cmds, fd, env);
-=======
 		tmp = tmp->next;
 	}
 	dup2(fd[2], STDIN_FILENO);
@@ -122,5 +108,4 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	close(fd[2]);
 	close(fd[3]);
 	close_wait_clear(cmds, env);
->>>>>>> debugvinc
 }
