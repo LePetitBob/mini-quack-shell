@@ -30,6 +30,7 @@ echo "hello there" > outfilr | echo '$a'
 
 cat "test" >> outfilr
 
+cat Makefile > outfilr | grep $ >> outfilr
 
 >> test >test > >
 | >> test >test > >
