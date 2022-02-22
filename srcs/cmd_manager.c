@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 19:38:16 by amarini-         ###   ########.fr       */
-=======
-/*   Created: 2022/02/19 05:52:03 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 21:50:13 by vduriez          ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2022/02/22 22:15:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +101,6 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 			pipe(fd);
 		redirection(tmp, fd);
 		execution(tmp, env, fd, is_piped);
-<<<<<<< HEAD
-		if (tmp->next)
-		{
-			dup2(fd[0], fd[2]);
-			closepipe(fd);
-		}
-		dup2(fd[3], STDOUT_FILENO);
-=======
->>>>>>> master
 		tmp = tmp->next;
 	}
 	dup2(fd[2], STDIN_FILENO);

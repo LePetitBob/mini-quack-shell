@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 19:14:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/22 22:49:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,7 @@ void	expand_var(char **str, t_env *env)
 		expand_exeptions(str, i, cpy);
 		return ;
 	}
-	var = ft_strnew(ft_strlen(*str));
-	while ((*str)[i] != '\0' && (ft_isalnum((*str)[i]) == 1
-			|| (*str)[i] == '_'))
-	{
-		var[ft_strlen(var)] = (*str)[i];
-		++i;
-	}
+	var = get_exp_var_name(*str, &i);
 	value = get_env_name(env, var);
 	if ((*str)[0] != '$')
 	{
@@ -77,6 +71,23 @@ void	expand_var(char **str, t_env *env)
 	*str = ft_strdup(value);
 	free(var);
 	free(value);
+}
+
+char	*get_exp_var_name(char *str, int *index)
+{
+	char	*var;
+	int		i;
+
+	i = 0;
+	var = ft_strnew(ft_strlen(str));
+	while (str[*index] != '\0' && (ft_isalnum(str[*index]) == 1
+			|| str[*index] == '_'))
+	{
+		var[i] = str[*index];
+		++i;
+		++(*index);
+	}
+	return (var);
 }
 
 void	expand_exeptions(char **str, int i, char *cpy)

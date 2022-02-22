@@ -6,11 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/02/22 21:42:39 by amarini-         ###   ########.fr       */
-=======
-/*   Updated: 2022/02/22 19:31:30 by vduriez          ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2022/02/22 22:45:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +118,7 @@ void		expand_split_whitespaces(char *(**arr));
 
 void		expand_vars_manager(char *(**arr), t_env *env);
 void		expand_var(char *(*str), t_env *env);
+char		*get_exp_var_name(char *str, int *index);
 void		expand_exeptions(char **str, int i, char *cpy);
 
 void		join_vars(char *(**arr));
