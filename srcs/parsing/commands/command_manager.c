@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 00:17:53 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 02:18:56 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,59 +25,27 @@ void	command_manager(t_token *tokens, t_env *env)
 	while (it_t)
 	{
 		if (it_t->type == PIPE)
-		{
-			it_c->next = ft_create_cmd();
-			it_c->next->prev = it_c;
-			it_c = it_c->next;
-			it_t = it_t->next;
-			free(it_t->prev->str);
-			free(it_t->prev);
-			it_t->prev = NULL;
-		}
+			free_pipe_make_cmd(&it_c, &it_t);
 		while (it_t && it_t->type != PIPE)
 		{
-			if (it_t && (it_t->type == RIN || it_t->type == ROUT
-					|| it_t->type == DROUT || it_t->type == HERE_DOC))
+			if (it_t->type == RIN || it_t->type == ROUT || it_t->type == DROUT
+				|| it_t->type == HERE_DOC)
 				assign_token_cmd(&it_c, &it_t, 0);
 			if (it_t && it_t->type == WORD)
 				assign_token_cmd(&it_c, &it_t, 1);
 		}
 	}
-	// print_cmds(cmds);
 	cmd_manager(env, cmds);
 }
 
-void	link_fd_redir(t_token **tokens)
+void	free_pipe_make_cmd(t_cmd **it_c, t_token **it_t)
 {
-	t_token	*it;
-	t_token	*tmp;
-
-	it = *tokens;
-	while (it->next)
-	{
-		if ((it->next->type == FD || it->next->type == LIMITER)
-			&& (it->type == RIN || it->type == ROUT || it->type == DROUT
-				|| it->type == HERE_DOC))
-		{
-			tmp = it;
-			it = it->next;
-			it->type = tmp->type;
-			if (tmp->prev)
-			{
-				it->prev = tmp->prev;
-				tmp->prev->next = it;
-			}
-			else
-			{
-				it->prev = NULL;
-				*tokens = it;
-			}
-			free(tmp->str);
-			free(tmp);
-		}
-		else
-			it = it->next;
-	}
+	(*it_c)->next = ft_create_cmd();
+	(*it_c)->next->prev = *it_c;
+	*it_c = (*it_c)->next;
+	*it_t = (*it_t)->next;
+	free_one_token((*it_t)->prev);
+	(*it_t)->prev = NULL;
 }
 
 void	assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign)

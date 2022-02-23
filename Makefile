@@ -40,14 +40,15 @@ SRCS = builtins/pwd.c \
 		split_separators.c \
 		tokenize.c \
 		expand_manager.c \
-		expand_split.c \
 		split_quotes_dollar.c \
+		expand_split_seps.c \
+		expand_split_whitespace.c \
 		expand_var.c \
 		expand_join.c \
 		expand_tokenize.c \
 		expand_utils.c \
 		del_struct.c \
-		command_manager.c \
+		command_manager.c link_fd_redir.c \
 		error_manager.c \
 		init_struct.c del_struct.c struct_utils.c \
 		get_error_redir.c \

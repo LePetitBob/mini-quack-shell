@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 05:44:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/19 05:52:44 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 01:47:43 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ void	free_token(t_token *tokens)
 	while (tokens->next)
 	{
 		it = it->next;
-		free(it->prev->str);
 		it->prev->next = NULL;
-		free(it->prev);
+		free_one_token(it->prev);
 		it->prev = NULL;
 	}
 	free(it->str);
 	free(it);
 	it = NULL;
+}
+
+void	free_one_token(t_token *token)
+{
+	free(token->str);
+	free(token);
 }
 
 void	free_cmds(t_cmd *cmds)

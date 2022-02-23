@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 01:08:21 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:59:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,21 @@ t_token		*ft_create_empty_token(void);
 t_token		*get_last_token(t_token *tokens);
 t_cmd		*ft_create_cmd(void);
 void		free_token(t_token *tokens);
+void		free_one_token(t_token *token);
 
 //?			Parsing
 //			Split
 void		split_manager(char *line, t_env *env);
-void		split_whitespaces(char *str, char *(**args));
+
 void		split_seps(char *(**args));
+void		check_separator(char *(**args), int i_args);
 void		separate_separator(char *(**args), char *sep, int i_args);
+
+void		split_whitespaces(char *str, char *(**args));
+int			split_skip_quotes(char *(**args), char *str, int *index,
+				char **tmp);
+int			ret_error_quotes(char *str, int i, char *tmp, char *(**args),
+				char quote);
 //
 //			Tokenize
 void		tokenize_manager(char *(**args), t_env *env);
@@ -114,12 +122,17 @@ void		add_splited_to_args(char *(**args), char *str);
 
 void		split_quotes_expand(char *(**arr), char *str, int *index);
 void		split_dollar_expand(char *(**arr), char *str, int *i);
+
 void		expand_split_whitespaces(char *(**arr));
+void		add_non_whitespace(char *(**arr), char *cpy);
+void		expand_skip_quotes(char *(**arr), char **cpy, int *index);
 
 void		expand_vars_manager(char *(**arr), t_env *env);
 void		expand_var(char *(*str), t_env *env);
+int			expand_exeptions(char **str, int i, char *cpy, char *value);
 char		*get_exp_var_name(char *str, int *index);
-void		expand_exeptions(char **str, int i, char *cpy);
+void		join_pre_sufix_expanded_var(char **str, int i, char **value,
+				char *cpy);
 
 void		join_vars(char *(**arr));
 
@@ -133,9 +146,13 @@ void		copy_str_without_quotes(char *(*str), int *i, char quote);
 //
 //			Commands
 void		command_manager(t_token *tokens, t_env *env);
-void		link_fd_redir(t_token **tokens);
+void		free_pipe_make_cmd(t_cmd **it_c, t_token **it_t);
 void		assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign);
 void		unlink_cmd_token(t_token *cmd_t, t_token **it_t);
+
+void		link_fd_redir(t_token **tokens);
+void		relink_node_parent(t_token **it, t_token **head);
+
 //
 
 //?			Builtins
@@ -202,15 +219,15 @@ void		ft_addlast(t_env *env, char *name, char *value);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
-void	ft_exec(char **cmd, char **envp);
-void	ft_clear(t_env *env);
-void	ft_free(char **s);
-int		is_num(char *s);
+void		ft_exec(char **cmd, char **envp);
+void		ft_clear(t_env *env);
+void		ft_free(char **s);
+int			is_num(char *s);
 
 //?			ERRORS
-void	error_manager(int erno);
-char	*get_syntax_error(int erno);
-void	get_error_redir(t_token *next);
+void		error_manager(int erno);
+char		*get_syntax_error(int erno);
+void		get_error_redir(t_token *next);
 //?
 
 //!				DEBUG

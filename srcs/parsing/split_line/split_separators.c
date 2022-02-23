@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   split_separators.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:50:22 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/21 16:46:26 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:08:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+void	split_seps(char *(**args))
+{
+	int		i;
+
+	i = 0;
+	while ((*args)[i])
+	{
+		if (ft_strsrch((*args)[i], '\'') == -1
+			&& ft_strsrch((*args)[i], '\"') == -1)
+		{
+			if (ft_strsrch((*args)[i], '|') != -1)
+				separate_separator(args, "|", i);
+			if (ft_strsrch((*args)[i], '<') != -1
+				|| ft_strsrch((*args)[i], '>') != -1)
+				check_separator(args, i);
+		}
+		++i;
+	}
+}
 
 void	check_separator(char *(**args), int i_args)
 {
@@ -31,26 +51,6 @@ void	check_separator(char *(**args), int i_args)
 			separate_separator(args, ">>", i_args);
 		else
 			separate_separator(args, ">", i_args);
-	}
-}
-
-void	split_seps(char *(**args))
-{
-	int		i;
-
-	i = 0;
-	while ((*args)[i])
-	{
-		if (ft_strsrch((*args)[i], '\'') == -1
-			&& ft_strsrch((*args)[i], '\"') == -1)
-		{
-			if (ft_strsrch((*args)[i], '|') != -1)
-				separate_separator(args, "|", i);
-			if (ft_strsrch((*args)[i], '<') != -1
-				|| ft_strsrch((*args)[i], '>') != -1)
-				check_separator(args, i);
-		}
-		++i;
 	}
 }
 
