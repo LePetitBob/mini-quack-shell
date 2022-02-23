@@ -3,18 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-/*   Updated: 2022/02/23 04:59:03 by amarini-         ###   ########.fr       */
-=======
-/*   Updated: 2022/02/23 06:23:49 by amarini-         ###   ########.fr       */
->>>>>>> parsingErrors
-=======
-/*   Updated: 2022/02/23 06:14:42 by vduriez          ###   ########.fr       */
->>>>>>> 43885910dc88ff610c506caaf4a5a04515aa8af5
+/*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
+/*   Updated: 2022/02/23 07:25:37 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +47,8 @@
 # define HERE_DOC 7
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
+
+extern int	g_exit_status;
 
 typedef struct s_token
 {
