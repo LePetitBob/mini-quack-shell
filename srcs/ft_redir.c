@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 21:50:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 22:55:25 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	apply_redir(char *str, int type, t_cmd *cmd, int *err)
 	}
 }
 
-void	redirection(t_cmd *cmd, int fd[5])
+void	redirection(t_cmd *cmd, int fd[6])
 {
 	t_token	*tmp;
 	int		err;

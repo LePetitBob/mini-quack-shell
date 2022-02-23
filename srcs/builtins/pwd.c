@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 12:58:09 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 23:31:44 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_pwd(void)
 	char	*path;
 
 	path = getcwd(NULL, 0);
+	if (!path)
+		g_exit_status = 1;
 	printf("%s\n", path);
 	free(path);
 }

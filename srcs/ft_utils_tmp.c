@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 03:53:26 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 21:55:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ char	*ft_strndup(const char *s1, int n)
 	j = 0;
 	while (s1[i] && i < (int)n)
 		i++;
-	if (!(res = malloc(sizeof(char) * i + 1)))
+	res = malloc(sizeof(char) * i + 1);
+	if (!res)
 		return (NULL);
 	while (j < i)
 	{

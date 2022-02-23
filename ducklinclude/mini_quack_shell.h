@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 22:45:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 00:32:26 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void		redirection(t_cmd *cmd, int fd[4]);
 int			invalid_filename(char *filename, int *err, char *FILENO);
 
 //* EXEC
-void		execution(t_cmd *cmd, t_env *env, int fd[5], int is_piped);
+void		execution(t_cmd *cmd, t_env *env, int fd[6], int is_piped);
 void		ft_exec(char **cmd, char **envp);
 char		**get_cmd_str(t_cmd *cmd);
 void		cmd_not_found(char *cmd, char **tmp_paths);
@@ -186,10 +186,10 @@ int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
 void		cmd_manager(t_env *env, t_cmd *cmd);
-void		close_wait_clear(t_cmd_lst *cmds, t_env *env);
-void		init_fds(int fd[5]);
+void		close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env);
+void		init_fds(int fd[6]);
 void		closepipe(int fd[4]);
-void		close_all_fds(int fd[5], t_cmd *cmd);
+void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
 void		rm_here_doc_tmp_file(t_env *env);
 void		rm_cmds(t_cmd_lst *cmd);

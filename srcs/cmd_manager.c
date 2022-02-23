@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 22:15:36 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 00:32:30 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,14 @@ void	closepipe(int fd[3])
 	close(fd[1]);
 }
 
-void	init_fds(int fd[4])
-{
-	fd[2] = dup(STDIN_FILENO);
-	fd[3] = dup(STDOUT_FILENO);
-}
-
-void	close_wait_clear(t_cmd_lst *cmds, t_env *env)
+void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 {
 	t_cmd	*tmp;
 
-	// close(fd[2]);
-	// close(fd[3]);
+	dup2(fd[2], STDIN_FILENO);
+	dup2(fd[3], STDOUT_FILENO);
+	close(fd[2]);
+	close(fd[3]);
 	tmp = cmds->first;
 	while (tmp)
 	{
@@ -78,34 +74,27 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 {
 	t_cmd_lst	*cmds;
 	t_cmd		*tmp;
-	int			fd[5];
-	int			is_piped;
+	int			fd[6];
 
 	cmds = malloc(sizeof(t_cmd*));
 	cmds->first = cmd;
-	is_piped = 0;
+	fd[5] = 0;
 	if (cmds->first->next)
-		is_piped = 1;
+		fd[5] = 1;
 	tmp = cmds->first;
-	// init_fds(&fd);
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
 		if (tmp->prev)
-		{
 			dup2(fd[0], fd[4]);
+		if (tmp->prev)
 			closepipe(fd);
-		}
 		if (tmp->next)
 			pipe(fd);
 		redirection(tmp, fd);
-		execution(tmp, env, fd, is_piped);
+		execution(tmp, env, fd, fd[5]);
 		tmp = tmp->next;
 	}
-	dup2(fd[2], STDIN_FILENO);
-	dup2(fd[3], STDOUT_FILENO);
-	close(fd[2]);
-	close(fd[3]);
-	close_wait_clear(cmds, env);
+	close_wait_clear(cmds, fd, env);
 }

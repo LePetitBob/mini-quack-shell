@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 14:26:56 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 23:32:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	ft_builtins(char **cmd, t_env *env, int is_piped)
 	{
 		rl_clear_history();
 		ft_clear(env);
-		exit(0); //! g_exit_status
+		exit(g_exit_status);
 	}
 }

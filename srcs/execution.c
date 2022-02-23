@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 17:22:37 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/22 23:33:56 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	**get_cmd_str(t_cmd *cmd)
 	char	**str_cmd;
 	t_token	*tmp;
 
+	g_exit_status = 0;
 	i = 0;
 	tmp = cmd->arg;
 	while (tmp)
