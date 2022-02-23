@@ -6,20 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 01:09:25 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 06:08:58 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-int	is_builtin(char *cmd)
-{
-	if (!ft_strcmp(cmd, "cd") || !ft_strcmp(cmd, "pwd")
-		|| !ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset")
-		|| !ft_strcmp(cmd, "exit") || !ft_strcmp(cmd, "env"))
-		return (1);
-	return (0);
-}
+extern int	g_exit_status;
 
 void	cmd_not_found(char *cmd, char **tmp_paths)
 {
@@ -28,40 +21,40 @@ void	cmd_not_found(char *cmd, char **tmp_paths)
 		write(2, "mini-quack-shell: permission denied: ", 37);
 		write(2, cmd, ft_strlen(cmd));
 		write(2, "\n", 1);
+		g_exit_status = 1;
 	}
 	else
 	{
 		write(2, cmd, ft_strlen(cmd));
 		write(2, ": command not found\n", 20);
+		g_exit_status = 127;
 	}
 	ft_freetab(tmp_paths);
-	exit(errno);
+	exit(g_exit_status);
 }
 
 void	ft_exec(char **cmd, char **envp)
 {
-	int		i[2];
+	int		i;
 	char	**tmp_paths;
-	char	*path[2];
+	char	*path;
 
-	i[0] = 0;
-	while (ft_strncmp(envp[i[0]], "PATH=", 5) != 0)
-		i[0]++;
-	if (envp[i[0]])
+	i = 0;
+	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
+		i++;
+	if (envp[i])
 	{
 		if (access(cmd[0], X_OK) == 0)
 			execve(cmd[0], cmd + sizeof(char *), envp);
-		tmp_paths = ft_split(envp[i[0]] + 5, ':');
-		i[0] = 0;
-		while (tmp_paths[i[0]])
+		tmp_paths = ft_split(envp[i] + 5, ':');
+		i = 0;
+		while (tmp_paths[i])
 		{
-			path[0] = ft_strjoin(tmp_paths[i[0]], "/");
-			path[1] = ft_strjoin(path[0], cmd[0]);
-			if (access(path[1], X_OK) == 0)
-				i[1] = execve(path[1], cmd, envp);
-			i[0]++;
-			free(path[0]);
-			free(path[1]);
+			path = get_path(tmp_paths[i], cmd[0]);
+			if (access(path, X_OK) == 0)
+				execve(path, cmd, envp);
+			i++;
+			free(path);
 			if (errno == EACCES)
 				break ;
 		}
@@ -75,7 +68,6 @@ char	**get_cmd_str(t_cmd *cmd)
 	char	**str_cmd;
 	t_token	*tmp;
 
-	g_exit_status = 0;
 	i = 0;
 	tmp = cmd->arg;
 	while (tmp)
@@ -134,5 +126,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 			ft_clear(env);
 			ft_exec(str_cmd, env_arr);
 		}
+		ft_freetab(str_cmd);
+		ft_freetab(env_arr);
 	}
 }

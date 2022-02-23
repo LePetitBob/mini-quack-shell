@@ -6,11 +6,22 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 23:32:09 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:37:37 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern int	g_exit_status;
+
+int	is_builtin(char *cmd)
+{
+	if (!ft_strcmp(cmd, "cd") || !ft_strcmp(cmd, "pwd")
+		|| !ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset")
+		|| !ft_strcmp(cmd, "exit") || !ft_strcmp(cmd, "env"))
+		return (1);
+	return (0);
+}
 
 void	ft_builtins(char **cmd, t_env *env, int is_piped)
 {

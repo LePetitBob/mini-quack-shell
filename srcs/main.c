@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 19:24:55 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:30:48 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int ac, char **av, char *envp[])
 {
 	char	*line;
 	t_env	env;
-	int i = 0;
 
 	(void)ac;
 	(void)av;
@@ -26,8 +25,6 @@ int	main(int ac, char **av, char *envp[])
 	get_env(envp, &env);
 	while (1)
 	{
-		i++;
-		write(2, ft_itoa(i), ft_countnbr(1, i));
 		line = readline("mini-quack-shell$ ");
 		add_history(line);
 		if (!line)

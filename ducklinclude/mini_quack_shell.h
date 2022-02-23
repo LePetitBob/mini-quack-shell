@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 01:08:21 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:37:07 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@
 # define HERE_DOC 7
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
-
-extern int	g_exit_status;
 
 typedef struct s_token
 {
@@ -173,14 +171,16 @@ int			is_num(char *s);
 //?			Builtins
 
 //* REDIR
-void		apply_redir(char *str, int type, t_cmd *cmd);
+void		apply_redir(char *str, int type, t_cmd *cmd, int *i);
+void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		redirection(t_cmd *cmd, int fd[4]);
-int			invalid_filename(char *filename, char *FILENO);
+int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], int is_piped);
 void		ft_exec(char **cmd, char **envp);
 char		**get_cmd_str(t_cmd *cmd);
+char		*get_path(char *path, char *cmd);
 void		cmd_not_found(char *cmd, char **tmp_paths);
 int			is_builtin(char *cmd);
 
@@ -202,15 +202,15 @@ void		ft_addlast(t_env *env, char *name, char *value);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
-void	ft_exec(char **cmd, char **envp);
-void	ft_clear(t_env *env);
-void	ft_free(char **s);
-int		is_num(char *s);
+void		ft_exec(char **cmd, char **envp);
+void		ft_clear(t_env *env);
+void		ft_free(char **s);
+int			is_num(char *s);
 
 //?			ERRORS
-void	error_manager(int erno);
-char	*get_syntax_error(int erno);
-void	get_error_redir(t_token *next);
+void		error_manager(int erno);
+char		*get_syntax_error(int erno);
+void		get_error_redir(t_token *next);
 //?
 
 //!				DEBUG

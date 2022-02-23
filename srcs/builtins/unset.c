@@ -6,11 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/15 14:34:38 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:38:06 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern int	g_exit_status;
 
 int	format_unset_ok(char *var, int *err)
 {
@@ -59,5 +61,5 @@ void	ft_unset(t_env *env, char **name)
 		free(var);
 		i++;
 	}
-	//! return (err);
+	g_exit_status = err;
 }
