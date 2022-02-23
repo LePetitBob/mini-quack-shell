@@ -19,22 +19,29 @@ e''c""h''o'' "c"'o'""u'cou'
 e''c""h''o' '"c"'o'""u'cou'
 [e''c""h''o' '"c"'o'""u'cou']
 
-<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$HOME" | ls -la | <infilr cat
+<< $HOME ls -l | echo ---------n ""'"    coucou|<><> "       ' > outfilr | echo "$HOME" | ls -la | <outfilr cat
 
 "h ey" hey|<hey
 ["h ey"][hey][|][<][hey]
 
 << $HOME ls -l | cat Makefile >> test | < Makefile pwd >> test
 
-echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
+echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
+
+echo asdv >/dev/stdout| ls -la -> test this
 
 cat "test" >> outfilr
 
 cat Makefile > outfilr | grep $ >> outfilr
 cat Makefile | grep $ > outfilr
 
+echo $$$$$$
+
+echo a$a"b"'c d'
+
 >> test >test > >
 | >> test >test > >
+
 >> test >test >
 << >> test >test <
 >> >test >test <
