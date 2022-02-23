@@ -6,20 +6,20 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 22:55:25 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 01:08:06 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-int	invalid_filename(char *filename, int *err, char *FILENO)
+int	invalid_filename(char *filename, char *FILENO)
 {
 	if (!access(filename, F_OK))
 	{
 		if ((!ft_strcmp(FILENO, "OUT") && !access(filename, W_OK))
 			|| (!ft_strcmp(FILENO, "IN") && !access(filename, R_OK)))
 			return (0);
-		*err = 1;
+		g_exit_status = 1;
 		write(2, "mini-quack-shell: ", 18);
 		write(2, filename, ft_strlen(filename));
 		write(2, ": permission denied\n", 20);
@@ -27,7 +27,7 @@ int	invalid_filename(char *filename, int *err, char *FILENO)
 	}
 	else if (!ft_strcmp(FILENO, "IN"))
 	{
-		*err = 1;
+		g_exit_status = 1;
 		write(2, "mini-quack-shell: no such file or directory: ", 45);
 		write(2, filename, ft_strlen(filename));
 		write(2, "\n", 1);
@@ -36,7 +36,7 @@ int	invalid_filename(char *filename, int *err, char *FILENO)
 	return (0);
 }
 
-void	apply_redir(char *str, int type, t_cmd *cmd, int *err)
+void	apply_redir(char *str, int type, t_cmd *cmd)
 {
 	if (type == HERE_DOC)
 	{
@@ -49,21 +49,21 @@ void	apply_redir(char *str, int type, t_cmd *cmd, int *err)
 	{
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
-		if (!invalid_filename(str, err, "IN"))
+		if (!invalid_filename(str, "IN"))
 			cmd->fdin = open(str, O_RDONLY);
 	}
 	else if (type == ROUT)
 	{
 		if (cmd->fdout != 1)
 			close(cmd->fdout);
-		if (!invalid_filename(str, err, "OUT"))
+		if (!invalid_filename(str, "OUT"))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	}
 	else if (type == DROUT)
 	{
 		if (cmd->fdout != 1)
 			close(cmd->fdout);
-		if (!invalid_filename(str, err, "OUT"))
+		if (!invalid_filename(str, "OUT"))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	}
 }
@@ -71,14 +71,13 @@ void	apply_redir(char *str, int type, t_cmd *cmd, int *err)
 void	redirection(t_cmd *cmd, int fd[6])
 {
 	t_token	*tmp;
-	int		err;
 
-	err = 0;
+	g_exit_status = 0;
 	tmp = cmd->redir;
 	while (tmp)
 	{
-		apply_redir(tmp->str, tmp->type, cmd, &err);
-		if (err)
+		apply_redir(tmp->str, tmp->type, cmd);
+		if (g_exit_status != 0)
 			break ;
 		tmp = tmp->next;
 	}

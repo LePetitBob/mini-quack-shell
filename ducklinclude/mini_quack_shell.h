@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 00:32:26 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 01:08:21 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,9 +173,9 @@ int			is_num(char *s);
 //?			Builtins
 
 //* REDIR
-void		apply_redir(char *str, int type, t_cmd *cmd, int *err);
+void		apply_redir(char *str, int type, t_cmd *cmd);
 void		redirection(t_cmd *cmd, int fd[4]);
-int			invalid_filename(char *filename, int *err, char *FILENO);
+int			invalid_filename(char *filename, char *FILENO);
 
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], int is_piped);
