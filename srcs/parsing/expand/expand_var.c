@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 05:02:43 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 07:09:02 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	expand_vars_manager(char *(**arr), t_env *env)
 	}
 }
 
+//!ENV VAR IN HERE_DOC MUST BE EXPANDED !!!!!
+//!give this to vincent for here_doc
 void	expand_var(char **str, t_env *env)
 {
 	char	*cpy;

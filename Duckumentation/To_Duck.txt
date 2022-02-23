@@ -11,8 +11,4 @@ here_docs
 
 Albe :
 
-OK-Finish doc of pre-thinking
-KO-Start main with parsing
-KO-add resolution to main
-KO-add here_doc to main
-KO-add redirection to main
+ENV VAR IN HERE_DOC MUST BE EXPANDED

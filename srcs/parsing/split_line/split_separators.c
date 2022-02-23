@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:50:22 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 04:08:39 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 07:08:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	separate_separator(char *(**args), char *sep, int i_args)
 {
 	char	*tmp;
 
+	tmp = NULL;
 	if (ft_strcmp((*args)[i_args], sep) == 0)
 		return ;
 	if (ft_strsrch((*args)[i_args], sep[0]) > 0)
@@ -73,8 +74,10 @@ void	separate_separator(char *(**args), char *sep, int i_args)
 			(*args)[i_args] = ft_strdup(tmp);
 		}
 		free(tmp);
+		tmp = NULL;
 	}
-	tmp = ft_del_one((*args)[i_args], ft_strsrch((*args)[i_args], sep[0]));
+	if (ft_strlen((*args)[i_args]) > 1)
+		tmp = ft_del_one((*args)[i_args], ft_strsrch((*args)[i_args], sep[0]));
 	if (ft_strlen(sep) > 1)
 		tmp = ft_del_one(tmp, ft_strsrch((*args)[i_args], sep[0]));
 	free((*args)[i_args]);
