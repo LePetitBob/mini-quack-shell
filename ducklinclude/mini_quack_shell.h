@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 22:45:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 06:23:49 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void		free_token(t_token *tokens);
 void		split_manager(char *line, t_env *env);
 void		split_whitespaces(char *str, char *(**args));
 void		split_seps(char *(**args));
+void		check_separator(char *(**args), int i_args);
 void		separate_separator(char *(**args), char *sep, int i_args);
 //
 //			Tokenize

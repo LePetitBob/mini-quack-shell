@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 17:39:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 06:11:53 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	split_dollar_expand(char *(**arr), char *str, int *index)
 	++(*index);
 	if (str[*index] != '\0' && (ft_isalpha(str[*index]) == 0
 			&& str[*index] != '_' && str[*index] != '0'
-			&& str[*index] != '?'))
+			&& str[*index] != '?' && str[*index] != '$'))
 		return ;
 	while (str[*index] != '\0' && (ft_isalnum(str[*index]) == 1
 			|| str[*index] == '_'))
