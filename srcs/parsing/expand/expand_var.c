@@ -6,11 +6,13 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:09:02 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/23 07:12:09 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern int	g_exit_status;
 
 void	expand_vars_manager(char *(**arr), t_env *env)
 {

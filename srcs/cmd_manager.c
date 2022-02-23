@@ -6,11 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 00:32:30 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:49:30 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern int	g_exit_status;
 
 void	clear_token_cl(t_token *lst)
 {
@@ -55,6 +57,7 @@ void	closepipe(int fd[3])
 void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 {
 	t_cmd	*tmp;
+	int		err;
 
 	dup2(fd[2], STDIN_FILENO);
 	dup2(fd[3], STDOUT_FILENO);
@@ -63,7 +66,9 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	tmp = cmds->first;
 	while (tmp)
 	{
-		waitpid(tmp->pid, NULL, 0);
+		waitpid(tmp->pid, &err, 0);
+		if (err != 0 && g_exit_status != 0)
+			g_exit_status = 1;
 		tmp = tmp->next;
 	}
 	rm_cmds(cmds);
@@ -76,7 +81,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	t_cmd		*tmp;
 	int			fd[6];
 
-	cmds = malloc(sizeof(t_cmd*));
+	cmds = malloc(sizeof(t_cmd *));
 	cmds->first = cmd;
 	fd[5] = 0;
 	if (cmds->first->next)

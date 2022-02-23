@@ -6,11 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/14 17:26:48 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/23 04:37:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern int	g_exit_status;
 
 char	*get_in_env(t_env *env, char *name)
 {
@@ -76,7 +78,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	}
 	free(pwd);
 	free(path);
-	//! g_exit_status i
+	g_exit_status = i;
 }
 
 void	ft_cd(char **cmd, t_env *env)
@@ -89,14 +91,16 @@ void	ft_cd(char **cmd, t_env *env)
 	if (i > 2)
 	{
 		write(2, "mini-quack-shell: cd: too many arguments\n", 41);
-		return ;//! g_exit_status 1
+		g_exit_status = 1;
+		return ;
 	}
 	if (!existing_name(env, "HOME"))
 	{
 		if (!cmd[1] || cmd[1][0] == '~')
 		{
 			write(2, "mini-quack-shell: cd: HOME not set\n", 35);
-			return ;//! g_exit_status 1
+			g_exit_status = 1;
+			return ;
 		}
 	}
 	env_change_and_error_management(env, cmd, i);

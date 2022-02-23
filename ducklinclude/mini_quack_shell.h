@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:52:38 by vduriez           #+#    #+#             */
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*   Updated: 2022/02/23 04:59:03 by amarini-         ###   ########.fr       */
 =======
 /*   Updated: 2022/02/23 06:23:49 by amarini-         ###   ########.fr       */
 >>>>>>> parsingErrors
+=======
+/*   Updated: 2022/02/23 06:14:42 by vduriez          ###   ########.fr       */
+>>>>>>> 43885910dc88ff610c506caaf4a5a04515aa8af5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +55,6 @@
 # define HERE_DOC 7
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
-
-extern int	g_exit_status;
 
 typedef struct s_token
 {
@@ -194,14 +196,16 @@ int			is_num(char *s);
 //?			Builtins
 
 //* REDIR
-void		apply_redir(char *str, int type, t_cmd *cmd);
+void		apply_redir(char *str, int type, t_cmd *cmd, int *i);
+void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		redirection(t_cmd *cmd, int fd[4]);
-int			invalid_filename(char *filename, char *FILENO);
+int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], int is_piped);
 void		ft_exec(char **cmd, char **envp);
 char		**get_cmd_str(t_cmd *cmd);
+char		*get_path(char *path, char *cmd);
 void		cmd_not_found(char *cmd, char **tmp_paths);
 int			is_builtin(char *cmd);
 
