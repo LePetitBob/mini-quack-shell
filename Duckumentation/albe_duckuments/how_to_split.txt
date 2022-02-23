@@ -27,6 +27,7 @@ e''c""h''o' '"c"'o'""u'cou'
 << $HOME ls -l | cat Makefile >> test | < Makefile pwd >> test
 
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
+echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
 
 echo asdv >/dev/stdout| ls -la -> test this
 

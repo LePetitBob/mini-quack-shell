@@ -7,8 +7,29 @@ pipe
 cd -> CDPATH
 here_docs
 
+if redir, pb open of fd
+
 ------------------------
 
 Albe :
 
 ENV VAR IN HERE_DOC MUST BE EXPANDED
+
+echo "h ey" > hey| echo hey>hey
+- error fd -> check parsing
+
+----------------------------
+
+LEAKS :
+
+dunno :
+- "readline"
+
+exec :
+- get_cmd_str (execution.c:79)
+- env_cl_to_arr (env.c:90)
+- cmd_manager (cmd_manager.c:95)
+- redirection (ft_redir.c:96)
+
+parsing :
+- add_non_whitespace (expand_split_whitespace.c:49)
