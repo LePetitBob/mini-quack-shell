@@ -23,6 +23,8 @@ echo "h ey" > hey| echo hey>hey
 
 - "h ey" hey|<hey -> permission denied
 
+$USER:$HOME$
+
 ----------------------------
 
 LEAKS :
