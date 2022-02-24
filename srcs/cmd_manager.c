@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 04:49:30 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/24 17:51:12 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	t_cmd	*tmp;
 	int		err;
 
+	err = 0;
 	dup2(fd[2], STDIN_FILENO);
 	dup2(fd[3], STDOUT_FILENO);
 	close(fd[2]);
@@ -89,6 +90,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	tmp = cmds->first;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
+	fd[4] = dup(STDIN_FILENO);
 	while (tmp)
 	{
 		if (tmp->prev)
