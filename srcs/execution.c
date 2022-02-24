@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 05:55:37 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 23:19:51 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_exec(char **cmd, char **envp)
 		while (tmp_paths[i])
 		{
 			path = get_path(tmp_paths[i], cmd[0]);
+			//TODO ->PIPE g_exit_status
 			if (access(path, X_OK) == 0)
 				execve(path, cmd, envp);
 			i++;
@@ -60,6 +61,7 @@ void	ft_exec(char **cmd, char **envp)
 		}
 	}
 	cmd_not_found(cmd[0], tmp_paths);
+	//TODO ->PIPE g_exit_status
 }
 
 char	**get_cmd_str(t_cmd *cmd)
@@ -89,11 +91,7 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
-//here: fd[0] is unset; his value is gabagge memory
-//here: fd[1] is unset; his value is gabagge memory
-//here: fd[2]=STDIN
-//here: fd[3]=STDOUT
-void	close_all_fds(int fd[4], t_cmd *cmd)
+void	close_all_fds(int fd[6], t_cmd *cmd)
 {
 	if (cmd->next)
 	{
@@ -111,9 +109,12 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 
 	str_cmd = get_cmd_str(cmd);
 	if (is_builtin(str_cmd[0]) && !is_piped)
+	{
+		close(fd[2]);
+		close(fd[3]);
 		ft_builtins(str_cmd, env, is_piped);
-	if (is_builtin(str_cmd[0]) && !is_piped)
 		return ;
+	}
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 		ft_freetab(str_cmd);
@@ -130,7 +131,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 			ft_clear(env);
 			ft_exec(str_cmd, env_arr);
 		}
-		ft_freetab(str_cmd);
 		ft_freetab(env_arr);
 	}
+	ft_freetab(str_cmd);
 }

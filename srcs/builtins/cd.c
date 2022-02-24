@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 04:37:50 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/24 17:00:54 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 {
 	char	*path;
 	char	*pwd;
+	char	*tmp[2];
 
 	if (!cmd[1] && getenv("HOME"))
 		chdir(getenv("HOME"));
@@ -67,15 +68,20 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 		path = ft_strdup(cmd[1]);
 	pwd = getcwd(NULL, 0);
 	i = chdir(path);
+	tmp[0] = get_in_env(env, "OLDPWD");
+	tmp[1] = get_in_env(env, "PWD");
 	if (i < 0)
 		invalid_path(cmd);
-	else
-	{
+	if (i >= 0 && tmp[0])
 		replace_var(env, "OLDPWD", pwd);
-		free(pwd);
-		pwd = getcwd(NULL, 0);
+	free(pwd);
+	pwd = getcwd(NULL, 0);
+	if (i >= 0 && tmp[1])
 		replace_var(env, "PWD", pwd);
-	}
+	if (i >= 0 && tmp[0])
+		free(tmp[0]);
+	if (i >= 0 && tmp[1])
+		free(tmp[1]);
 	free(pwd);
 	free(path);
 	g_exit_status = i;

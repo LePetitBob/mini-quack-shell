@@ -1,11 +1,8 @@
 Vincent :
 
-redirs
 test tricky redir zhen implemented (echo lol >/dev/full)
-singleton for env
-pipe
 cd -> CDPATH
-here_docs
+inf loop on "smthng | grep smthngls" in the waitpid loop from cmd_manager
 
 if redir, pb open of fd
 

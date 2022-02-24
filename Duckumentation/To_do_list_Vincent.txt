@@ -1,6 +1,0 @@
-test echo lol >/dev/full
-singleton for env
-redirs
-pipe
-cd -> CDPATH
-here_docs
