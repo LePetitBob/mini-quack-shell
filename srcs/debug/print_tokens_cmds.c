@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tokens_cmds.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 14:22:38 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/24 05:41:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,31 @@ void	print_tokens(t_token *tokens)
 	iterator = tokens;
 	while (iterator)
 	{
-		ft_putstr("[");
+		dprintf(2, "[");
 		if (iterator->type == NO_TYPE)
-			ft_putstr("NO_TYPE");
+			dprintf(2, "NO_TYPE");
 		else if (iterator->type == WORD)
-			ft_putstr("WORD");
+			dprintf(2, "WORD");
 		else if (iterator->type == PIPE)
-			ft_putstr("PIPE");
+			dprintf(2, "PIPE");
 		else if (iterator->type == FD)
-			ft_putstr("FD");
+			dprintf(2, "FD");
 		else if (iterator->type == LIMITER)
-			ft_putstr("LIMITER");
+			dprintf(2, "LIMITER");
 		else if (iterator->type == RIN)
-			ft_putstr("RIN");
+			dprintf(2, "RIN");
 		else if (iterator->type == ROUT)
-			ft_putstr("ROUT");
+			dprintf(2, "ROUT");
 		else if (iterator->type == DROUT)
-			ft_putstr("DROUT");
+			dprintf(2, "DROUT");
 		else if (iterator->type == HERE_DOC)
-			ft_putstr("HERE_DOC");
-		ft_putstr("]");
-		ft_putstr("[");
-		ft_putstr(iterator->str);
-		ft_putstr("]");
+			dprintf(2, "HERE_DOC");
+		dprintf(2, "]");
+		dprintf(2,"[%s]", iterator->str);
 		iterator = iterator->next;
 	}
+	if (!iterator)
+		dprintf(2, "[NULL]");
 }
 
 void	print_cmds(t_cmd *cmds)
@@ -51,16 +51,18 @@ void	print_cmds(t_cmd *cmds)
 	t_cmd	*iterator;
 
 	iterator = cmds;
+	dprintf(2, "\n__________START");
 	while (iterator)
 	{
-		ft_putstr("cmds:\n{");
+		dprintf(2, "cmds:\n{");
 		print_tokens(iterator->arg);
-		ft_putstr("}\n");
-		ft_putstr("redir:\n{");
+		dprintf(2, "}\n");
+		dprintf(2, "redir:\n{");
 		print_tokens(iterator->redir);
-		ft_putstr("}\n");
+		dprintf(2, "}\n");
 		iterator = iterator->next;
 	}
 	if (iterator == NULL)
-		ft_putstr("{NULL}\n");
+		dprintf(2, "{NULL}\n");
+	dprintf(2, "__________END\n");
 }

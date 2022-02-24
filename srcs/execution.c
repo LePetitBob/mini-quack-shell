@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 01:22:39 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 05:55:37 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_exec(char **cmd, char **envp)
 		i++;
 	if (envp[i])
 	{
-		if (access(cmd[0], X_OK) == 0)
+		if (cmd[0] && access(cmd[0], X_OK) == 0)
 			execve(cmd[0], cmd + sizeof(char *), envp);
 		tmp_paths = ft_split(envp[i] + 5, ':');
 		i = 0;

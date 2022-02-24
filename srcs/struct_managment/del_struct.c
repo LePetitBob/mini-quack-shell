@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 05:44:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 01:47:43 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 03:46:04 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_token(t_token *tokens)
 	t_token	*it;
 
 	it = tokens;
-	while (tokens->next)
+	while (it->next)
 	{
 		it = it->next;
 		it->prev->next = NULL;

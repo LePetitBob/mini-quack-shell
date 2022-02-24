@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/24 03:19:01 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 03:29:30 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*get_prompt_prefix(t_env *env)
 	free(home);
 	home = get_env_name(env, "USER");
 	if (!home)
-		home = ft_strdup("noname");
+		home = ft_strdup("unknown");
 	path = ft_strjoin(home, ":");
 	free(home);
 	home = ft_strjoin(path, tmp);
