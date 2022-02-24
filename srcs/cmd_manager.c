@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/24 05:44:36 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 06:43:48 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	rm_here_doc_tmp_file(env);
 }
 
-//here: fd[0] is unset; his value is gabagge memory
-//here: fd[1] is unset; his value is gabagge memory
+//here: fd[0] is unset; becomes pipe(0)
+//here: fd[1] is unset; becomes pipe(1)
 //here: fd[2]=STDIN
 //here: fd[3]=STDOUT
 //here: fd[4] is unset; it will take fd[0]'s value which is garbagge memory

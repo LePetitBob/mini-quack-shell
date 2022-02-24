@@ -9,6 +9,8 @@ here_docs
 
 if redir, pb open of fd
 
+if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
+
 ------------------------
 
 Albe :

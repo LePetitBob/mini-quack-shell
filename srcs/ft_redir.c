@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 01:45:55 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 07:46:56 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 			close(cmd->fdout);
 		if (!invalid_filename(str, "OUT", i))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		else
+			cmd->fdout = -1;
 	}
 	else if (type == DROUT)
 	{
@@ -55,6 +57,8 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 			close(cmd->fdout);
 		if (!invalid_filename(str, "OUT", i))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		else
+			cmd->fdout = -1;
 	}
 }
 
@@ -73,9 +77,24 @@ void	apply_redir(char *str, int type, t_cmd *cmd, int *i)
 			close(cmd->fdin);
 		if (!invalid_filename(str, "IN", i))
 			cmd->fdin = open(str, O_RDONLY);
+		else
+			cmd->fdin = -1;
 	}
 	else if (type == ROUT || type == DROUT)
 		redir_out(cmd, str, type, i);
+}
+
+void	tmp_pipe(int std)
+{
+	int	tmppipe[2];
+
+	pipe(tmppipe);
+	dup2(tmppipe[std], std);
+	close(tmppipe[std]);
+	if (std == 0)
+		close(tmppipe[1]);
+	else if (std == 1)
+		close(tmppipe[0]);
 }
 
 //here: fd[1] is unset; his value is gabagge memory
@@ -101,12 +120,18 @@ void	redirection(t_cmd *cmd, int fd[6])
 		dup2(fd[1], STDOUT_FILENO);
 	else
 		dup2(fd[3], STDOUT_FILENO);
-	if (cmd->fdin != 0)
+	if (cmd->fdin != -1 && cmd->fdin != 0)
+	{
 		dup2(cmd->fdin, STDIN_FILENO);
-	if (cmd->fdin != 0)
 		close(cmd->fdin);
-	if (cmd->fdout != 1)
+	}
+	else if (cmd->fdin == -1)
+		tmp_pipe(0);
+	if (cmd->fdout != -1 && cmd->fdout != 1)
+	{
 		dup2(cmd->fdout, STDOUT_FILENO);
-	if (cmd->fdout != 1)
 		close(cmd->fdout);
+	}
+	else if (cmd->fdout == -1)
+		tmp_pipe(1);
 }
