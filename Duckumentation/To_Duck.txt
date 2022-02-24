@@ -33,10 +33,15 @@ dunno :
 - "readline"
 
 exec :
-- get_cmd_str (execution.c:79)
-- env_cl_to_arr (env.c:90)
-- cmd_manager (cmd_manager.c:95)
-- redirection (ft_redir.c:96)
+- Invalid read of size 1
+	- get_cmd_str (execution.c:85)
+	- relink_parent_to_himself (expand_tokenize.c:64)
+- Conditional jump or move depends on uninitialised value(s)
+	-close_wait_clear (cmd_manager.c:70)
 
 parsing :
 - add_non_whitespace (expand_split_whitespace.c:49)
+- Invalid read of size 1
+	- expand_split_manager (expand_split_seps.c:24)
+- Invalid read of size 8
+	- expand_caller (expand_manager.c:29)
