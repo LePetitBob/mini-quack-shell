@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/22 16:08:55 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 00:10:48 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_env(t_env *env)
 	tmp = env->first;
 	while (tmp)
 	{
-		printf("%s=%s\n", tmp->name, tmp->value);
+		// printf("%s=%s\n", tmp->name, tmp->value);
 		tmp = tmp->next;
 	}
 }

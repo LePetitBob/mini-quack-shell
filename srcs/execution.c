@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 06:08:58 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/24 01:22:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
+//here: fd[0] is unset; his value is gabagge memory
+//here: fd[1] is unset; his value is gabagge memory
+//here: fd[2]=STDIN
+//here: fd[3]=STDOUT
 void	close_all_fds(int fd[4], t_cmd *cmd)
 {
 	if (cmd->next)

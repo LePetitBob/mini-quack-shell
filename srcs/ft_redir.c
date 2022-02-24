@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 04:37:40 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/24 01:45:55 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void	apply_redir(char *str, int type, t_cmd *cmd, int *i)
 		redir_out(cmd, str, type, i);
 }
 
+//here: fd[1] is unset; his value is gabagge memory
+//here: fd[3]=STDOUT
+//here: fd[4] is either : unset | dup of fd[0] which has garbagge memory in
 void	redirection(t_cmd *cmd, int fd[6])
 {
 	t_token	*tmp;

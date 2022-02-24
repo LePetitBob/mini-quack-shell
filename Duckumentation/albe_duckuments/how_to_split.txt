@@ -32,7 +32,7 @@ echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
 echo asdv >/dev/stdout| ls -la -> test this
 
 echo $$$$$$
-	echo gerigh >/dev/stdout| ls -la
+echo gerigh >/dev/stdout| ls -la
 
 cat "test" >> outfilr
 

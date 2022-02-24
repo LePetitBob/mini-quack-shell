@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:12:33 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 00:10:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av, char *envp[])
 		add_history(line);
 		if (!line)
 		{
-			dprintf(2, "!line from readline\n");
+			// dprintf(2, "!line from readline\n");
 			ft_clear(&env);
 			return (0);
 		}

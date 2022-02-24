@@ -3,8 +3,6 @@ coucou
 
 ey hey|<hey: h: command not found
 
-bash: warning: here-document at line 0 delimited by end-of-file (wanted `/mnt/nfs/homes/amarini-')
-
 hello
 
 hello
@@ -12,34 +10,30 @@ hello
 ls: cannot access '-': No such file or directory
 ls: cannot access 'this': No such file or directory
 
-144368144368144368
+153359153359153359
 
-total 72
-4 drwxr-xr-x 8 amarini- 2020_paris 4096 Feb 23 23:15 .
-4 drwxr-xr-x 5 amarini- 2020_paris 4096 Feb  8 18:03 ..
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:19 a
-4 -rw-r--r-- 1 amarini- 2020_paris  125 Feb 23 23:19 abc
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:19 b
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:15 c
-4 -rw-r--r-- 1 amarini- 2020_paris  125 Feb 23 23:19 d
-4 drwxr-xr-x 2 amarini- 2020_paris 4096 Feb 23 08:15 ducklinclude
-4 drwxr-xr-x 3 amarini- 2020_paris 4096 Feb 23 22:36 Duckumentation
-4 -rw-r--r-- 1 amarini- 2020_paris   11 Feb 23 23:19 file
-4 drwxr-xr-x 9 amarini- 2020_paris 4096 Feb 23 21:11 .git
-4 -rw-r--r-- 1 amarini- 2020_paris   90 Feb  1 17:18 .gitmodules
-4 drwxr-xr-x 5 amarini- 2020_paris 4096 Feb 23 21:03 libft_duck
-4 -rw-r--r-- 1 amarini- 2020_paris    7 Feb 23 23:19 log
-4 -rw-r--r-- 1 amarini- 2020_paris 2526 Feb 23 07:06 Makefile
-4 drwxr-xr-x 3 amarini- 2020_paris 4096 Feb 23 21:19 objs
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:06 out1
-4 -rw-r--r-- 1 amarini- 2020_paris    4 Feb 23 23:19 out2
-4 -rw-r--r-- 1 amarini- 2020_paris 2526 Feb 23 23:18 outfilr
-4 -rw-r--r-- 1 amarini- 2020_paris    9 Feb 23 23:19 output
-4 -rw-r--r-- 1 amarini- 2020_paris   68 Feb 23 23:19 pqr
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:15 salut
-4 drwxr-xr-x 8 amarini- 2020_paris 4096 Feb 23 07:13 srcs
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:50 test
-0 -rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:06 test1
+total 392
+  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 00:15 .
+  4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb  8 18:03 ..
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:08 &1
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 a
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 abc
+  4 drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 23 08:15 ducklinclude
+  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 23 22:36 Duckumentation
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 file
+  4 drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 23 23:54 .git
+  4 -rw-r--r-- 1 amarini- 2020_paris     90 Feb  1 17:18 .gitmodules
+  4 -rw-r--r-- 1 amarini- 2020_paris      5 Feb 24 00:01 hey
+  4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 24 00:14 libft_duck
+  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 23 07:06 Makefile
+340 -rwxr-xr-x 1 amarini- 2020_paris 347240 Feb 24 00:14 minishell
+  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 00:14 objs
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 23 23:58 out1
+  4 -rw-r--r-- 1 amarini- 2020_paris      2 Feb 24 00:15 out2
+  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 00:15 outfilr
+  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 23 07:13 srcs
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test1
 
 
 
@@ -64,24 +58,20 @@ bash: -c: line 0: `>> >test >test <'
 bash: -c: line 0: syntax error near unexpected token `newline'
 bash: -c: line 0: `echo bonjour > '
 
+&1
 a
 abc
-b
-c
-d
 ducklinclude
 Duckumentation
 file
+hey
 libft_duck
-log
 Makefile
+minishell
 objs
 out1
 out2
 outfilr
-output
-pqr
-salut
 srcs
 test
 test1
@@ -89,7 +79,7 @@ test1
 bash: f2: No such file or directory
       0       0       0
 
-srcs/debug/all_test: line 44: : No such file or directory
+srcs/debug/b_all_test: line 42: : No such file or directory
 
 
 
@@ -101,10 +91,12 @@ bash: -c: line 0: `|'
 
 bash: -c: line 1: syntax error: unexpected end of file
 
+bash: b: No such file or directory
 
 
 bash: exho: command not found
 
+bash: b: No such file or directory
 
 bash: line 0: cd: too many arguments
 
@@ -130,6 +122,7 @@ bash: -c: line 1: syntax error: unexpected end of file
 bash: -c: line 0: syntax error near unexpected token `|'
 bash: -c: line 0: `| echo'
 
+bash: b: No such file or directory
 
 cat: /dev/bin: No such file or directory
 
@@ -159,7 +152,7 @@ bash: line 0: exit: abc: numeric argument required
 
 bonjour
 
-/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+/mnt/nfs/homes/amarini-
 
 bash: line 0: exit: -18abc: numeric argument required
 
@@ -201,24 +194,20 @@ bash: line 0: cd: ms: No such file or directory
 bonjour
 
 simple
+&1
 a
 abc
-b
-c
-d
 ducklinclude
 Duckumentation
 file
+hey
 libft_duck
-log
 Makefile
+minishell
 objs
 out1
 out2
 outfilr
-output
-pqr
-salut
 srcs
 test
 test1
@@ -236,8 +225,6 @@ libft_duck
 out1
 out2
 outfilr
-output
-salut
 test
 test1
 
@@ -354,7 +341,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/38303/bus
 GIO_LAUNCHED_DESKTOP_FILE_PID=109854
 GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
-OLDPWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+OLDPWD=/mnt/nfs/homes/amarini-
 TERM_PROGRAM=vscode
 
 Makefiles
@@ -365,7 +352,7 @@ Makefiles
 /mnt/nfs/homes/amarini-
 
 
-srcs/debug/all_test: line 258: : No such file or directory
+srcs/debug/b_all_test: line 256: : No such file or directory
 
 bash: line 0: export: `111=222': not a valid identifier
 
@@ -435,13 +422,12 @@ ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/38303/bus
 GIO_LAUNCHED_DESKTOP_FILE_PID=109854
 GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
-OLDPWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+OLDPWD=/mnt/nfs/homes/amarini-
 TERM_PROGRAM=vscode
 
 /mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
 
-env: ‘./minishell’: No such file or directory
-
+mini-quack-shell$ 
 2
 
 bash: line 0: cd: too many arguments
@@ -449,56 +435,48 @@ bash: line 0: cd: too many arguments
 
 s
 
+&1
 a
 abc
-b
-c
-d
 ducklinclude
 Duckumentation
 file
+hey
 libft_duck
-log
 Makefile
+minishell
 objs
 out1
 out2
 outfilr
-output
-pqr
-salut
 srcs
 test
 test1
 
 /mnt/nfs/homes/amarini-
 
-total 68
-drwxr-xr-x 8 amarini- 2020_paris 4096 Feb 23 23:15 .
-drwxr-xr-x 5 amarini- 2020_paris 4096 Feb  8 18:03 ..
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:19 a
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:50 abc
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:19 b
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:15 c
--rw-r--r-- 1 amarini- 2020_paris  125 Feb 23 23:19 d
-drwxr-xr-x 2 amarini- 2020_paris 4096 Feb 23 08:15 ducklinclude
-drwxr-xr-x 3 amarini- 2020_paris 4096 Feb 23 22:36 Duckumentation
--rw-r--r-- 1 amarini- 2020_paris   11 Feb 23 23:50 file
-drwxr-xr-x 9 amarini- 2020_paris 4096 Feb 23 21:11 .git
--rw-r--r-- 1 amarini- 2020_paris   90 Feb  1 17:18 .gitmodules
-drwxr-xr-x 5 amarini- 2020_paris 4096 Feb 23 21:03 libft_duck
--rw-r--r-- 1 amarini- 2020_paris    7 Feb 23 23:19 log
--rw-r--r-- 1 amarini- 2020_paris 2526 Feb 23 07:06 Makefile
-drwxr-xr-x 3 amarini- 2020_paris 4096 Feb 23 21:19 objs
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:06 out1
--rw-r--r-- 1 amarini- 2020_paris    2 Feb 23 23:50 out2
--rw-r--r-- 1 amarini- 2020_paris 2526 Feb 23 23:50 outfilr
--rw-r--r-- 1 amarini- 2020_paris    9 Feb 23 23:19 output
--rw-r--r-- 1 amarini- 2020_paris   68 Feb 23 23:19 pqr
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:15 salut
-drwxr-xr-x 8 amarini- 2020_paris 4096 Feb 23 07:13 srcs
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:50 test
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:06 test1
+total 396
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 00:15 .
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb  8 18:03 ..
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:08 &1
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 a
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 abc
+drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 23 08:15 ducklinclude
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 23 22:36 Duckumentation
+-rw-r--r-- 1 amarini- 2020_paris     11 Feb 24 00:15 file
+drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 23 23:54 .git
+-rw-r--r-- 1 amarini- 2020_paris     90 Feb  1 17:18 .gitmodules
+-rw-r--r-- 1 amarini- 2020_paris      5 Feb 24 00:01 hey
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 24 00:14 libft_duck
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 23 07:06 Makefile
+-rwxr-xr-x 1 amarini- 2020_paris 347240 Feb 24 00:14 minishell
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 00:14 objs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 23 23:58 out1
+-rw-r--r-- 1 amarini- 2020_paris      2 Feb 24 00:15 out2
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 00:15 outfilr
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 23 07:13 srcs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test1
 
 abcd
 
@@ -538,15 +516,14 @@ bash: -c: line 0: `cat < >'
 
 
 
-env: ‘./minishell’: No such file or directory
-
+mini-quack-shell$ 
 bash: line 0: export: `111=222': not a valid identifier
 
 simple
 
 abc
 
-: line 0: cd: minishell: No such file or directory
+: line 0: cd: minishell: Not a directory
 
 bash: ort: command not found
 
@@ -582,23 +559,21 @@ Shell options:
 bash: -c: line 1: syntax error: unexpected end of file
 
 
+&1
 a
 abc
-b
-c
-d
 ducklinclude
 Duckumentation
 file
+hey
 libft_duck
-log
 Makefile
+minishell
 objs
 out1
 out2
 outfilr
 output
-pqr
 salut
 srcs
 test
@@ -623,23 +598,21 @@ bash: -c: line 0: `echo >'
 
 bash: not_cmd: command not found
 
+&1
 a
 abc
-b
-c
-d
 ducklinclude
 Duckumentation
 file
+hey
 libft_duck
-log
 Makefile
+minishell
 objs
 out1
 out2
 outfilr
 output
-pqr
 salut
 srcs
 test
@@ -657,28 +630,26 @@ cat: bla: No such file or directory
 
 /mnt/nfs/homes/amarini-
 
-total 60
--rw-r--r-- 1 amarini- 2020_paris 2526 Feb 23 07:06 Makefile
-drwxr-xr-x 8 amarini- 2020_paris 4096 Feb 23 07:13 srcs
-drwxr-xr-x 2 amarini- 2020_paris 4096 Feb 23 08:15 ducklinclude
-drwxr-xr-x 5 amarini- 2020_paris 4096 Feb 23 21:03 libft_duck
-drwxr-xr-x 3 amarini- 2020_paris 4096 Feb 23 21:19 objs
-drwxr-xr-x 3 amarini- 2020_paris 4096 Feb 23 22:36 Duckumentation
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:06 out1
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:06 test1
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:15 salut
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:15 c
--rw-r--r-- 1 amarini- 2020_paris   68 Feb 23 23:19 pqr
--rw-r--r-- 1 amarini- 2020_paris    7 Feb 23 23:19 log
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:19 b
--rw-r--r-- 1 amarini- 2020_paris  125 Feb 23 23:19 d
--rw-r--r-- 1 amarini- 2020_paris    0 Feb 23 23:50 test
--rw-r--r-- 1 amarini- 2020_paris 2526 Feb 23 23:50 outfilr
--rw-r--r-- 1 amarini- 2020_paris    9 Feb 23 23:50 output
--rw-r--r-- 1 amarini- 2020_paris   13 Feb 23 23:50 a
--rw-r--r-- 1 amarini- 2020_paris   11 Feb 23 23:50 file
--rw-r--r-- 1 amarini- 2020_paris  125 Feb 23 23:50 abc
--rw-r--r-- 1 amarini- 2020_paris    4 Feb 23 23:50 out2
+total 392
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 23 07:06 Makefile
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 23 07:13 srcs
+drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 23 08:15 ducklinclude
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 23 22:36 Duckumentation
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 23 23:58 out1
+-rw-r--r-- 1 amarini- 2020_paris      5 Feb 24 00:01 hey
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:08 &1
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 24 00:14 libft_duck
+-rwxr-xr-x 1 amarini- 2020_paris 347240 Feb 24 00:14 minishell
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 00:14 objs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test1
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 00:15 outfilr
+-rw-r--r-- 1 amarini- 2020_paris      9 Feb 24 00:16 output
+-rw-r--r-- 1 amarini- 2020_paris     13 Feb 24 00:16 a
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:16 salut
+-rw-r--r-- 1 amarini- 2020_paris     11 Feb 24 00:16 file
+-rw-r--r-- 1 amarini- 2020_paris    128 Feb 24 00:16 abc
+-rw-r--r-- 1 amarini- 2020_paris      4 Feb 24 00:16 out2
 
 
 

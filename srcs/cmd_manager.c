@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 04:49:30 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/24 01:48:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	rm_here_doc_tmp_file(env);
 }
 
+//here: fd[0] is unset; his value is gabagge memory
+//here: fd[1] is unset; his value is gabagge memory
+//here: fd[2]=STDIN
+//here: fd[3]=STDOUT
+//here: fd[4] is unset; it will take fd[0]'s value which is garbagge memory
+//here: fd[5] is an int; 0=ONE cmd | 1=MULTIPLE cmd
 void	cmd_manager(t_env *env, t_cmd *cmd)
 {
 	t_cmd_lst	*cmds;
@@ -87,12 +93,18 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	if (cmds->first->next)
 		fd[5] = 1;
 	tmp = cmds->first;
+	fd[4] = -1;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
 		if (tmp->prev)
-			dup2(fd[0], fd[4]);
+		{
+			if (fd[4] == -1)
+				fd[4] = dup(fd[0]);
+			else
+				dup2(fd[0], fd[4]);
+		}
 		if (tmp->prev)
 			closepipe(fd);
 		if (tmp->next)

@@ -1,11 +1,9 @@
-exec 1>srcs/debug/logs.txt
+exec 1>srcs/debug/b_logs.txt
 exec 2>&1
 echo
 bash -c "e''c""h''o'' "c"'o'""u'cou'"
 echo
 bash -c ""h ey" hey|<hey"
-echo
-bash -c "<< $HOME ls -l | cat Makefile >> test | < Makefile pwd >> test"
 echo
 bash -c "echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $"
 echo

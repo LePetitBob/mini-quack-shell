@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 07:19:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/24 00:10:51 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	ft_pwd(void)
 	path = getcwd(NULL, 0);
 	if (!path)
 		g_exit_status = 1;
-	printf("%s\n", path);
+	// printf("%s\n", path);
 	free(path);
 }

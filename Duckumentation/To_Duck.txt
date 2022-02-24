@@ -17,6 +17,11 @@ ENV VAR IN HERE_DOC MUST BE EXPANDED
 
 echo "h ey" > hey| echo hey>hey
 - error fd -> check parsing
+- make syntax error for ';'
+- make syntax error for '&'
+- make syntax error for '&&'
+
+- "h ey" hey|<hey -> permission denied
 
 ----------------------------
 
