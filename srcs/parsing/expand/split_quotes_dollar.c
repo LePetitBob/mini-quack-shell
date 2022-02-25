@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 06:11:53 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:35:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	split_quotes_expand(char *(**arr), char *str, int *index)
 
 	i = 1;
 	quote = str[*index];
-	cpy = ft_strdup(str);
-	ft_bzero(cpy, ft_strlen(cpy));
+	cpy = ft_strnew(ft_strlen(str));
 	cpy[0] = quote;
 	while (str[*index + i] != '\0' && str[*index + i] != quote)
 	{
@@ -48,7 +47,10 @@ void	split_dollar_expand(char *(**arr), char *str, int *index)
 	if (str[*index] != '\0' && (ft_isalpha(str[*index]) == 0
 			&& str[*index] != '_' && str[*index] != '0'
 			&& str[*index] != '?' && str[*index] != '$'))
+	{
+		--(*index);
 		return ;
+	}
 	while (str[*index] != '\0' && (ft_isalnum(str[*index]) == 1
 			|| str[*index] == '_'))
 	{

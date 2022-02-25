@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:45:53 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:09:29 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:35:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	**expand_split_manager(char *str)
 	res = split_expand_prefix(str, &i);
 	while (str[i])
 	{
-		if (str[i] == '\'' || str[i] == '\"' || str[i] == '$')
+		if (cpy[0] != '\0' && (str[i] == '\'' || str[i] == '\"'
+				|| str[i] == '$'))
 			add_splited_to_args(&res, cpy);
 		if (str[i] == '\'' || str[i] == '\"')
 			split_quotes_expand(&res, str, &i);
@@ -53,8 +54,7 @@ char	**split_expand_prefix(char *str, int *i)
 	char	*cpy;
 
 	res = NULL;
-	cpy = ft_strdup(str);
-	ft_bzero(cpy, ft_strlen(str));
+	cpy = ft_strnew(ft_strlen(str));
 	while (str[*i] != '\0' && str[*i] != '\'' && str[*i] != '\"'
 		&& str[*i] != '$')
 	{
