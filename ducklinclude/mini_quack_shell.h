@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/24 02:14:38 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 02:01:55 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void		join_vars(char *(**arr));
 
 void		tokenize_expanded_vars(char **arr, t_token **parent);
 void		relink_parent_to_himself(t_token **parent);
+void		no_link_parent(t_token **parent);
 t_token		*make_new_tokens(char **arr);
 
 void		convert_spaces(char *(**arr), char space);

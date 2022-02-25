@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/24 05:41:44 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:49:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	print_tokens(t_token *tokens)
 {
 	t_token	*iterator;
 
+	if (!tokens)
+	{
+		ft_putstr("[NO_TOKEN]");
+		return ;
+	}
 	iterator = tokens;
 	while (iterator)
 	{
