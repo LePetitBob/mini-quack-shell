@@ -26,8 +26,10 @@ echo "h ey" > hey| echo hey>hey
 
 LEAKS :
 
-dunno :
-- "readline"
+(dunno :
+- "readline")
+==> Normal. Comes from readline, no matter what you do.
+Just forget about it, as the subject precises that you can just ignore it.
 
 exec :
 - Invalid read of size 1
