@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 23:19:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 05:00:21 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void	cmd_not_found(char *cmd, char **tmp_paths)
 {
 	if (errno == EACCES)
 	{
-		write(2, "mini-quack-shell: permission denied: ", 37);
-		write(2, cmd, ft_strlen(cmd));
-		write(2, "\n", 1);
+		error_manager(ERNO_ACCESS, cmd);
 		g_exit_status = 1;
+	}
+	else if (errno == ENOTDIR)
+	{
+		error_manager(ERNO_ISDIR, cmd);
+		g_exit_status = 126;
 	}
 	else
 	{
-		write(2, cmd, ft_strlen(cmd));
-		write(2, ": command not found\n", 20);
+		error_manager(ERNO_NOCMD, cmd);
 		g_exit_status = 127;
 	}
 	ft_freetab(tmp_paths);
@@ -40,11 +42,13 @@ void	ft_exec(char **cmd, char **envp)
 	char	*path;
 
 	i = 0;
-	while (ft_strncmp(envp[i], "PATH=", 5) != 0)
+	if (ft_strcmp(cmd[0], "..") == 0 || ft_strcmp(cmd[0], ".") == 0)
+		cmd_not_found(cmd[0], NULL);
+	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
 	if (envp[i])
 	{
-		if (cmd[0] && access(cmd[0], X_OK) == 0)
+		if (cmd[0] && cmd[0][0] == '/' && access(cmd[0], X_OK) == 0)
 			execve(cmd[0], cmd + sizeof(char *), envp);
 		tmp_paths = ft_split(envp[i] + 5, ':');
 		i = 0;
@@ -52,7 +56,7 @@ void	ft_exec(char **cmd, char **envp)
 		{
 			path = get_path(tmp_paths[i], cmd[0]);
 			//TODO ->PIPE g_exit_status
-			if (access(path, X_OK) == 0)
+			if (cmd[0] && access(path, X_OK) == 0)
 				execve(path, cmd, envp);
 			i++;
 			free(path);

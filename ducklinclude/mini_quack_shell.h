@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/25 02:01:55 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 04:09:46 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # define ERNO_DROUT 5
 # define ERNO_HERE_DOC 6
 # define ERNO_NEWLINE 7
+# define ERNO_ACCESS 8
+# define ERNO_NOCMD 9
+# define ERNO_ISDIR 10
 
 # define NO_TYPE -1
 # define WORD 0
@@ -231,7 +234,8 @@ void		ft_free(char **s);
 int			is_num(char *s);
 
 //?			ERRORS
-void		error_manager(int erno);
+void		error_manager(int erno, char *str);
+char		*get_cmd_error(int erno, char *cmd);
 char		*get_syntax_error(int erno);
 void		get_error_redir(t_token *next);
 //?

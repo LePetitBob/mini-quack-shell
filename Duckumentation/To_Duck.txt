@@ -4,9 +4,7 @@ test tricky redir zhen implemented (echo lol >/dev/full)
 cd -> CDPATH
 inf loop on "smthng | grep smthngls" in the waitpid loop from cmd_manager
 
-if redir, pb open of fd
-
-if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
+exit +10 should work but does not
 
 ------------------------
 
@@ -30,15 +28,5 @@ dunno :
 - "readline"
 
 exec :
-- Invalid read of size 1
-	- get_cmd_str (execution.c:85)
-	- relink_parent_to_himself (expand_tokenize.c:64)
-- Conditional jump or move depends on uninitialised value(s)
-	-close_wait_clear (cmd_manager.c:70)
 
 parsing :
-- add_non_whitespace (expand_split_whitespace.c:49)
-- Invalid read of size 1
-	- expand_split_manager (expand_split_seps.c:24)
-- Invalid read of size 8
-	- expand_caller (expand_manager.c:29)

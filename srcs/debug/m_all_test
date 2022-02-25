@@ -45,22 +45,17 @@ cat Makefile | grep pr | head -n 5 | cat test /dev/bin
 cat -e > test1 < test2
 echo $ a
 echo ?$
-exit -
 unset a ""
 unset 1_aa
 unset ""
 export var
 export var=test
-exit -1
-exit -abc
 unset "" a
 unset LOL ROR
 pwd lalala
 export "HI=hi"
-exit abc
 echo "" bonjour
 cd -
-exit -18abc
 export $var=test
 unset "" test
 export "" test=abc
@@ -71,14 +66,11 @@ export "" | unset ""
 unset var1
 echo bonjour |
 ../a.out
-exit
 echo $USER$var\$USER$USER\$USERtest$USER
 echo "\\\$HOME"
 sdfs > abc
-exit -10
 ..
 >file
-exit 999999
 cat >file
 cat < <
 						
@@ -158,7 +150,6 @@ cd ../../../../../..
 not_cmd bonjour > salut
 cat < >
 echo test > file test1
-exit +10
 env -i ./minishell
 export "111=222"
 echo simple
@@ -213,3 +204,4 @@ export var=at
 c$var Makefile
 cat < input.txt | wc
 rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1
+exit
