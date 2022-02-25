@@ -1,10 +1,13 @@
 Vincent :
 
-test tricky redir zhen implemented (echo lol >/dev/full)
-cd -> CDPATH
-inf loop on "smthng | grep smthngls" in the waitpid loop from cmd_manager
+cat srcs/debug/m_alltest | valgrind  ./minishell &>srcs/debug/m_log.txt
 
-exit +10 should work but does not
+test tricky redir when implemented (echo lol >/dev/full)
+cd -> CDPATH
+
+if redir, pb open of fd
+
+if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
 
 ------------------------
 
@@ -18,15 +21,40 @@ echo "h ey" > hey| echo hey>hey
 - make syntax error for '&'
 - make syntax error for '&&'
 
+// question : - make syntax error for '||' ? Or consider it like an empty pipe ?
+// logically speaking, i'd rather make the syntax error
+
 - "h ey" hey|<hey -> permission denied
 
 ----------------------------
 
 LEAKS :
 
-dunno :
-- "readline"
+(dunno :
+- "readline")
+==> Normal. Comes from readline, no matter what you do.
+Just forget about it, as the subject precises that you can just ignore it.
 
 exec :
+- Found in -->export "" | unset "" and -->../a.out
+	-get_in_env (env_change_and_error_management (cd.c:71))
+- Invalid read of size 1
+	- get_cmd_str (execution.c:85)
+	- relink_parent_to_himself (expand_tokenize.c:64)
+- Conditional jump or move depends on uninitialised value(s)
+	-close_wait_clear (cmd_manager.c:70)
 
 parsing :
+- add_non_whitespace (expand_split_whitespace.c:49)
+- Invalid read of size 1
+	- expand_split_manager (expand_split_seps.c:24)
+- Invalid read of size 8
+	- expand_caller (expand_manager.c:29)
+- Found in -->export "" | unset "" and -->../a.out
+	- Definitely lost :
+		- ft_del_one (split_separators.c:80)
+		- expand_var (expand_var.c:63)
+		- ft_strnew (split_quotes_dollar.c:44)
+		- ft_tabdup (split_quotes_dollar.c:35)
+		- and some more, i'll let you catch them all
+			(don't mind those in cd i'll take care of them)

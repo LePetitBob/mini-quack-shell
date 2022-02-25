@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/25 05:00:21 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 18:57:35 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 	}
 	close(fd[2]);
 	close(fd[3]);
+	close(fd[4]);
 }
 
 void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
