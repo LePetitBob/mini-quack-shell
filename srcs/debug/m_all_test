@@ -71,7 +71,6 @@ echo "\\\$HOME"
 sdfs > abc
 ..
 >file
-cat >file
 cat < <
 						
 cd ms      
@@ -88,7 +87,6 @@ echo bonjour >>> test
 ls><abc
 echo -n -n -nnnn -nnnnm
 echo -n lalalal
-echo 'abc
 sleep 5 | exit
 echo "$HOME"
 export LOL=lala ROR=rar

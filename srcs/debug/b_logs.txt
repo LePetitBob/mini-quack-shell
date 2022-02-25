@@ -1,70 +1,69 @@
 
+___e''ch''o'' c'o'u'cou'
 coucou
-
+___h ey hey|<hey
 ey hey|<hey: h: command not found
-
+___echo hello there > outfilr | echo  | echo '/mnt/nfs/homes/amarini-' | echo /mnt/nfs/homes/amarini- | echo $
 hello
-
+___echo hello there > outfilr | echo '/mnt/nfs/homes/amarini-' | echo /mnt/nfs/homes/amarini- | echo $
 hello
-
+___echo asdv >/dev/stdout| ls -la -> test this
 ls: cannot access '-': No such file or directory
 ls: cannot access 'this': No such file or directory
-
-153359153359153359
-
-total 392
-  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 00:15 .
+___echo 399937399937399937
+399937399937399937
+___echo gerigh >/dev/stdout| ls -las
+total 408
+  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 25 05:22 .
   4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb  8 18:03 ..
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:08 &1
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 a
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 abc
-  4 drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 23 08:15 ducklinclude
-  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 23 22:36 Duckumentation
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 file
-  4 drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 23 23:54 .git
+  4 -rw-r--r-- 1 amarini- 2020_paris      8 Feb 25 05:22 $test
+  4 -rw-r--r-- 1 amarini- 2020_paris     99 Feb 25 05:22 a
+  4 -rw-r--r-- 1 amarini- 2020_paris     24 Feb 25 05:22 abc
+  4 drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 24 23:14 ducklinclude
+  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 23:14 Duckumentation
+  4 -rw-r--r-- 1 amarini- 2020_paris     20 Feb 25 05:22 file
+  4 drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 25 05:07 .git
   4 -rw-r--r-- 1 amarini- 2020_paris     90 Feb  1 17:18 .gitmodules
-  4 -rw-r--r-- 1 amarini- 2020_paris      5 Feb 24 00:01 hey
-  4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 24 00:14 libft_duck
-  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 23 07:06 Makefile
-340 -rwxr-xr-x 1 amarini- 2020_paris 347240 Feb 24 00:14 minishell
-  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 00:14 objs
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 23 23:58 out1
-  4 -rw-r--r-- 1 amarini- 2020_paris      2 Feb 24 00:15 out2
-  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 00:15 outfilr
-  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 23 07:13 srcs
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test
-  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test1
-
-
-
-
+  4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 25 05:07 libft_duck
+  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 23:13 Makefile
+344 -rwxr-xr-x 1 amarini- 2020_paris 348696 Feb 25 05:15 minishell
+  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 25 05:14 objs
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 out1
+  4 -rw-r--r-- 1 amarini- 2020_paris      2 Feb 25 05:22 out2
+  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 25 05:22 outfilr
+  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 23:14 srcs
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 test
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 test1
+___cat test >> outfilr
+___cat Makefile > outfilr | grep $ >> outfilr
+___cat Makefile | grep $ > outfilr
+___echo ab'c d'
 abc d
-
+___>> test >test > >
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `>> test >test > >'
-
+___| >> test >test > >
 bash: -c: line 0: syntax error near unexpected token `|'
 bash: -c: line 0: `| >> test >test > >'
-
+___>> test >test >
 bash: -c: line 0: syntax error near unexpected token `newline'
 bash: -c: line 0: `>> test >test >'
-
+___<< >> test >test <
 bash: -c: line 0: syntax error near unexpected token `>>'
 bash: -c: line 0: `<< >> test >test <'
-
+___>> >test >test <
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `>> >test >test <'
-
+___echo bonjour > 
 bash: -c: line 0: syntax error near unexpected token `newline'
 bash: -c: line 0: `echo bonjour > '
-
-&1
+___ls <> abc
+$test
 a
 abc
 ducklinclude
 Duckumentation
 file
-hey
 libft_duck
 Makefile
 minishell
@@ -75,132 +74,118 @@ outfilr
 srcs
 test
 test1
-
+___cat<f2|wc
 bash: f2: No such file or directory
       0       0       0
+srcs/debug/b_all_test: 42: cannot create : Directory nonexistent
+srcs/debug/b_all_test: 43: cannot create : Directory nonexistent
+___echo 
 
-srcs/debug/b_all_test: line 42: : No such file or directory
-
-
-
+___echo $HOME
 /mnt/nfs/homes/amarini-
-
+___|
 bash: -c: line 0: syntax error near unexpected token `|'
 bash: -c: line 0: `|'
-
-
+___cat < test
+___echo bonjour ||
 bash: -c: line 1: syntax error: unexpected end of file
-
+___>a cat <b >>c
 bash: b: No such file or directory
-
-
+___exit 0 | exit 1
+___exho 2 >> out1 > out2
 bash: exho: command not found
-
+___<a cat <b <c
 bash: b: No such file or directory
-
+___cat Makefile | grep pr | head -n 5 | cd test /dev/bin
 bash: line 0: cd: too many arguments
-
+___echo 1
 0
-
-
+___
+___cat Makefile | grep pr | head -n 5 | hello
 bash: hello: command not found
-
+___echo 127
 0
-
+___>a ls <machin >>c >d
 bash: machin: No such file or directory
-
-
+___echo 2 > out1 >> out2
+___echo bonjour > > out
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `echo bonjour > > out'
-
+___$
 bash: $: command not found
-
-
-
+___exit 1 | exit 0
+___echo 2 >> out1 > out2
+___echo bonjour ||
 bash: -c: line 1: syntax error: unexpected end of file
-
+___| echo
 bash: -c: line 0: syntax error near unexpected token `|'
 bash: -c: line 0: `| echo'
-
+___<a cat <b <c
 bash: b: No such file or directory
-
+___cat Makefile | grep pr | head -n 5 | cat test /dev/bin
 cat: /dev/bin: No such file or directory
-
+___cat -e > test1 < test2
 bash: test2: No such file or directory
-
+___echo $ a
 $ a
-
+___echo ?$
 ?$
-
-bash: line 0: exit: -: numeric argument required
-
-
+___unset a 
+___unset 1_aa
 bash: line 0: unset: `1_aa': not a valid identifier
-
-
-
-
-
-bash: line 0: exit: -abc: numeric argument required
-
-
-
+___unset 
+___export var
+___export var=test
+___unset  a
+___unset LOL ROR
+___pwd lalala
 /mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
-
-
-bash: line 0: exit: abc: numeric argument required
-
+___export HI=hi
+___echo  bonjour
 bonjour
-
-/mnt/nfs/homes/amarini-
-
-bash: line 0: exit: -18abc: numeric argument required
-
-bash: line 0: export: `=test': not a valid identifier
-
-
-
+___cd -
 /mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
-
+___export =test
+bash: line 0: export: `=test': not a valid identifier
+___unset  test
+___export  test=abc
+___pwd a b c d
+/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___unset a1=10
 bash: line 0: unset: `a1=10': not a valid identifier
-
+___echo  Makefile
 Makefile
-
-
-
+___export  | unset 
+___unset var1
+___echo bonjour |
 bash: -c: line 1: syntax error: unexpected end of file
-
+___../a.out
 bash: ../a.out: No such file or directory
-
-
+___echo amarini-$USERamarini-$USERtestamarini-
 amarini---
-
+___echo \$HOME
 $HOME
-
+___sdfs > abc
 bash: sdfs: command not found
-
-
+___..
 bash: ..: command not found
-
-
-
-
+___>file
+___cat < <
 bash: -c: line 0: syntax error near unexpected token `<'
 bash: -c: line 0: `cat < <'
-
-
+___						
+___cd ms      
 bash: line 0: cd: ms: No such file or directory
-
+___/bin/echo bonjour
 bonjour
-
-simple
-&1
+___echo -n simple
+simple___cat | cat | cat | ls
+$test
 a
 abc
 ducklinclude
 Duckumentation
 file
-hey
 libft_duck
 Makefile
 minishell
@@ -211,15 +196,16 @@ outfilr
 srcs
 test
 test1
-
+___ifcat <f2| wc -
 bash: f2: No such file or directory
       0       0       0 -
-
-
+___unset a c
+___pwd
 /mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___echo
 
-
-
+___ls | grep t
+$test
 Duckumentation
 libft_duck
 out1
@@ -227,78 +213,76 @@ out2
 outfilr
 test
 test1
-
-
+___export a=6 b=8 c=9
+___echo bonjour >>> test
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `echo bonjour >>> test'
-
+___ls><abc
 bash: -c: line 0: syntax error near unexpected token `<'
 bash: -c: line 0: `ls><abc'
-
--nnnnm
-lalalal
-bash: -c: line 0: unexpected EOF while looking for matching `''
-bash: -c: line 1: syntax error: unexpected end of file
-
-
+___echo -n -n -nnnn -nnnnm
+-nnnnm___echo -n lalalal
+lalalal___sleep 5 | exit
+___echo /mnt/nfs/homes/amarini-
 /mnt/nfs/homes/amarini-
-
-
+___export LOL=lala ROR=rar
+___export 111=222
 bash: line 0: export: `111=222': not a valid identifier
-
+___echo	a
 a
-
-
-
+___ls | exit
+___export a=5 a=7 a=8
+___echo Makefile
 Makefile
-
+___not_cmd
 bash: not_cmd: command not found
-
+___echo  bonjour
 bonjour
-
-
+___cd 
+___echo '/mnt/nfs/homes/amarini-'
 /mnt/nfs/homes/amarini-
-
+___hello|world
 bash: hello: command not found
 bash: world: command not found
-
+___echo n n n
 n
-
-
+___cd ../../../../../..
+___cat Makefile | grep pr | head -n 5 cd file_not_exit
 head: cannot open 'cd' for reading: No such file or directory
 head: cannot open 'file_not_exit' for reading: No such file or directory
-
-
+___sort <abc | grep test
+___echo a'bcd'e
 abcde
-
+___echo $ a
 $
-
+___echo 0
 0
-
+___cd no_file
 bash: line 0: cd: no_file: No such file or directory
-
+___env
 SHELL=/bin/zsh
 LSCOLORS=Gxfxcxdxbxegedabagacad
-SESSION_MANAGER=local/e2r11p8.clusters.42paris.fr:@/tmp/.ICE-unix/109502,unix/e2r11p8.clusters.42paris.fr:/tmp/.ICE-unix/109502
+SESSION_MANAGER=local/e2r10p13.clusters.42paris.fr:@/tmp/.ICE-unix/319628,unix/e2r10p13.clusters.42paris.fr:/tmp/.ICE-unix/319628
 QT_ACCESSIBILITY=1
 COLORTERM=truecolor
 XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
 LESS=-R
-XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session4
 XDG_MENU_PREFIX=gnome-
 TERM_PROGRAM_VERSION=1.64.2
 GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LANGUAGE=en
 MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
 SSH_AUTH_SOCK=/run/user/38303/keyring/ssh
 BREAKPAD_DUMP_LOCATION=/mnt/nfs/homes/amarini-/.config/Code/exthost Crash Reports
 XMODIFIERS=@im=ibus
 DESKTOP_SESSION=ubuntu
-SSH_AGENT_PID=109466
+SSH_AGENT_PID=319592
 GTK_MODULES=gail:atk-bridge
-KRB5CCNAME=FILE:/tmp/krb5cc_38303_30pxxm
 PWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
-LOGNAME=amarini-
+KRB5CCNAME=FILE:/tmp/krb5cc_38303_V7Pj3u
 XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=amarini-
 XDG_SESSION_TYPE=x11
 GPG_AGENT_INFO=/run/user/38303/gnupg/S.gpg-agent:0:1
 _=/usr/bin/env
@@ -306,6 +290,7 @@ XAUTHORITY=/mnt/nfs/homes/amarini-/.Xauthority
 VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
 XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/amarini-
 GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GDM_LANG=en
 HOME=/mnt/nfs/homes/amarini-
 IM_CONFIG_PHASE=1
 LANG=en_US.UTF-8
@@ -313,8 +298,8 @@ LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd
 XDG_CURRENT_DESKTOP=Unity
 GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
 XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
-INVOCATION_ID=e2f9a1a6a390459c93bee929ca45ad3f
-MANAGERPID=108981
+INVOCATION_ID=a3f20104b15c427fae17418eab1fc8ba
+MANAGERPID=319097
 CHROME_DESKTOP=code-url-handler.desktop
 GJS_DEBUG_OUTPUT=stderr
 VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
@@ -326,60 +311,61 @@ LIBVIRT_DEFAULT_URI=qemu:///system
 USER=amarini-
 VSCODE_GIT_IPC_HANDLE=/run/user/38303/vscode-git-6ecabeac5a.sock
 DISPLAY=:0
-SHLVL=2
+SHLVL=1
 PAGER=less
 QT_IM_MODULE=ibus
 XDG_RUNTIME_DIR=/run/user/38303
 DOCKER_HOST=unix:///run/user/38303/docker.sock
 VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
-JOURNAL_STREAM=9:434670
+JOURNAL_STREAM=9:941167
 XDG_DATA_DIRS=/usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/amarini-/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
 GDK_BACKEND=x11
 PATH=/mnt/nfs/homes/amarini-/bin:/mnt/nfs/homes/amarini-/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 GDMSESSION=ubuntu
 ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/38303/bus
-GIO_LAUNCHED_DESKTOP_FILE_PID=109854
+GIO_LAUNCHED_DESKTOP_FILE_PID=319965
 GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
-OLDPWD=/mnt/nfs/homes/amarini-
+OLDPWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
 TERM_PROGRAM=vscode
-
+___echo Makefiles
 Makefiles
-
+___echo /mnt/nfs/homes/amarini-
 /mnt/nfs/homes/amarini-
-
-
+___echo test > file test1
+___echo /mnt/nfs/homes/amarini-
 /mnt/nfs/homes/amarini-
-
-
-srcs/debug/b_all_test: line 256: : No such file or directory
-
+___
+srcs/debug/b_all_test: 236: cannot create : Directory nonexistent
+srcs/debug/b_all_test: 237: cannot create : Directory nonexistent
+___export 111=222
 bash: line 0: export: `111=222': not a valid identifier
-
+___expot  test=a
 bash: expot: command not found
-
+___env
 SHELL=/bin/zsh
 LSCOLORS=Gxfxcxdxbxegedabagacad
-SESSION_MANAGER=local/e2r11p8.clusters.42paris.fr:@/tmp/.ICE-unix/109502,unix/e2r11p8.clusters.42paris.fr:/tmp/.ICE-unix/109502
+SESSION_MANAGER=local/e2r10p13.clusters.42paris.fr:@/tmp/.ICE-unix/319628,unix/e2r10p13.clusters.42paris.fr:/tmp/.ICE-unix/319628
 QT_ACCESSIBILITY=1
 COLORTERM=truecolor
 XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
 LESS=-R
-XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session4
 XDG_MENU_PREFIX=gnome-
 TERM_PROGRAM_VERSION=1.64.2
 GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LANGUAGE=en
 MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
 SSH_AUTH_SOCK=/run/user/38303/keyring/ssh
 BREAKPAD_DUMP_LOCATION=/mnt/nfs/homes/amarini-/.config/Code/exthost Crash Reports
 XMODIFIERS=@im=ibus
 DESKTOP_SESSION=ubuntu
-SSH_AGENT_PID=109466
+SSH_AGENT_PID=319592
 GTK_MODULES=gail:atk-bridge
-KRB5CCNAME=FILE:/tmp/krb5cc_38303_30pxxm
 PWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
-LOGNAME=amarini-
+KRB5CCNAME=FILE:/tmp/krb5cc_38303_V7Pj3u
 XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=amarini-
 XDG_SESSION_TYPE=x11
 GPG_AGENT_INFO=/run/user/38303/gnupg/S.gpg-agent:0:1
 _=/usr/bin/env
@@ -387,6 +373,7 @@ XAUTHORITY=/mnt/nfs/homes/amarini-/.Xauthority
 VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
 XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/amarini-
 GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GDM_LANG=en
 HOME=/mnt/nfs/homes/amarini-
 IM_CONFIG_PHASE=1
 LANG=en_US.UTF-8
@@ -394,8 +381,8 @@ LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd
 XDG_CURRENT_DESKTOP=Unity
 GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
 XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
-INVOCATION_ID=e2f9a1a6a390459c93bee929ca45ad3f
-MANAGERPID=108981
+INVOCATION_ID=a3f20104b15c427fae17418eab1fc8ba
+MANAGERPID=319097
 CHROME_DESKTOP=code-url-handler.desktop
 GJS_DEBUG_OUTPUT=stderr
 VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
@@ -407,41 +394,40 @@ LIBVIRT_DEFAULT_URI=qemu:///system
 USER=amarini-
 VSCODE_GIT_IPC_HANDLE=/run/user/38303/vscode-git-6ecabeac5a.sock
 DISPLAY=:0
-SHLVL=2
+SHLVL=1
 PAGER=less
 QT_IM_MODULE=ibus
 XDG_RUNTIME_DIR=/run/user/38303
 DOCKER_HOST=unix:///run/user/38303/docker.sock
 VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
-JOURNAL_STREAM=9:434670
+JOURNAL_STREAM=9:941167
 XDG_DATA_DIRS=/usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/amarini-/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
 GDK_BACKEND=x11
 PATH=/mnt/nfs/homes/amarini-/bin:/mnt/nfs/homes/amarini-/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 GDMSESSION=ubuntu
 ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/38303/bus
-GIO_LAUNCHED_DESKTOP_FILE_PID=109854
+GIO_LAUNCHED_DESKTOP_FILE_PID=319965
 GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
-OLDPWD=/mnt/nfs/homes/amarini-
+OLDPWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
 TERM_PROGRAM=vscode
-
+___pwd a
 /mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
-
-mini-quack-shell$ 
-2
-
+___env -i ./minishell
+unknown:$ ___echo 1
+1
+___cd a b c d
 bash: line 0: cd: too many arguments
-
-
+___cd ~
+___echo \s
 s
-
-&1
+___/bin/ls
+$test
 a
 abc
 ducklinclude
 Duckumentation
 file
-hey
 libft_duck
 Makefile
 minishell
@@ -452,86 +438,84 @@ outfilr
 srcs
 test
 test1
-
+___echo \/mnt/nfs/homes/amarini- \$HOME \/mnt/nfs/homes/amarini- /mnt/nfs/homes/amarini- /mnt/nfs/homes/amarini- /mnt/nfs/homes/amarini-
 /mnt/nfs/homes/amarini-
-
-total 396
-drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 00:15 .
+___ls   	 	 	   -l    	 			 	-all
+total 400
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 25 05:22 .
 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb  8 18:03 ..
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:08 &1
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 a
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 abc
-drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 23 08:15 ducklinclude
-drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 23 22:36 Duckumentation
--rw-r--r-- 1 amarini- 2020_paris     11 Feb 24 00:15 file
-drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 23 23:54 .git
+-rw-r--r-- 1 amarini- 2020_paris      8 Feb 25 05:22 $test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:27 a
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:27 abc
+drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 24 23:14 ducklinclude
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 23:14 Duckumentation
+-rw-r--r-- 1 amarini- 2020_paris     11 Feb 25 05:27 file
+drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 25 05:07 .git
 -rw-r--r-- 1 amarini- 2020_paris     90 Feb  1 17:18 .gitmodules
--rw-r--r-- 1 amarini- 2020_paris      5 Feb 24 00:01 hey
-drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 24 00:14 libft_duck
--rw-r--r-- 1 amarini- 2020_paris   2526 Feb 23 07:06 Makefile
--rwxr-xr-x 1 amarini- 2020_paris 347240 Feb 24 00:14 minishell
-drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 00:14 objs
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 23 23:58 out1
--rw-r--r-- 1 amarini- 2020_paris      2 Feb 24 00:15 out2
--rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 00:15 outfilr
-drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 23 07:13 srcs
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test1
-
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 25 05:07 libft_duck
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 23:13 Makefile
+-rwxr-xr-x 1 amarini- 2020_paris 348696 Feb 25 05:15 minishell
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 25 05:14 objs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 out1
+-rw-r--r-- 1 amarini- 2020_paris      2 Feb 25 05:27 out2
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 25 05:27 outfilr
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 23:14 srcs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 test1
+___echo abcd
 abcd
-
-
+___cat < Makefile | grep gcc > output
+___eho ME
 bash: eho: command not found
-
-
+___export a=10
+___not_cmd
 bash: not_cmd: command not found
-
+___echo -nABC
 -nABC
-
+___cd var1 var2 var3
 bash: line 0: cd: too many arguments
-
+___echo abcd
 abcd
-
-
+___> a echo Hello World!
+___c. ./path_not_found
 bash: c.: command not found
-
+___echo 12"
 bash: -c: line 0: unexpected EOF while looking for matching `"'
 bash: -c: line 1: syntax error: unexpected end of file
-
+___/bin/echo bonjour
 bonjour
-
-
+___echo > a Hello Wordl!
+___echo \$HOME
 \/mnt/nfs/homes/amarini-
-
+___cat Makefile | grep pr | head -n 5 | hello
 bash: hello: command not found
-
-
-
+___echo -n
+___cd ../../../../../..
+___/binn/ls
 bash: /binn/ls: No such file or directory
-
+___not_cmd bonjour > salut
 bash: not_cmd: command not found
-
+___cat < >
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `cat < >'
-
-
-
-mini-quack-shell$ 
+___echo test > file test1
+___env -i ./minishell
+unknown:$ ___export 111=222
 bash: line 0: export: `111=222': not a valid identifier
-
+___echo simple
 simple
-
+___echo abc
 abc
-
+___cd minishell 
 : line 0: cd: minishell: Not a directory
-
+___ort _abc=1
 bash: ort: command not found
-
-
+___ls >> abc
+___cd /home/user42/
 bash: line 0: cd: /home/user42/: No such file or directory
-
+___ls qwerty
 ls: cannot access 'qwerty': No such file or directory
-
+___-R
 bash: -R: invalid option
 Usage:	bash [GNU long option] [option] ...
 	bash [GNU long option] [option] script-file ...
@@ -555,17 +539,16 @@ GNU long options:
 Shell options:
 	-ilrsD or -c command or -O shopt_option		(invocation only)
 	-abefhkmnptuvxBCHP or -o option
-
+___echo |
 bash: -c: line 1: syntax error: unexpected end of file
-
-
-&1
+___echo 2 > out1 >> out2
+___sort < abc
+$test
 a
 abc
 ducklinclude
 Duckumentation
 file
-hey
 libft_duck
 Makefile
 minishell
@@ -578,33 +561,33 @@ salut
 srcs
 test
 test1
+___echo n n 
 
 n
-
+___echo $HOME
 /mnt/nfs/homes/amarini-
-
-bash: 2: command not found
-
-
+___1
+bash: 1: command not found
+___
+___echo '/mnt/nfs/homes/amarini-'
 /mnt/nfs/homes/amarini-
-
-
+___export   et unset 
+___exit 1 2 3 a
 bash: line 0: exit: too many arguments
-
-
+___                         
+___echo >
 bash: -c: line 0: syntax error near unexpected token `newline'
 bash: -c: line 0: `echo >'
-
-
+___sleep 5 | exit
+___not_cmd bonjour > salut
 bash: not_cmd: command not found
-
-&1
+___sort | ls
+$test
 a
 abc
 ducklinclude
 Duckumentation
 file
-hey
 libft_duck
 Makefile
 minishell
@@ -617,74 +600,579 @@ salut
 srcs
 test
 test1
-
-
+___export test=ici=coucou
+___cat > >
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `cat > >'
-
-
-
+___export HI= hi
+___cat < test
+___echo 'abc'
 abc
-
+___cat bla
 cat: bla: No such file or directory
-
+___echo /mnt/nfs/homes/amarini-
 /mnt/nfs/homes/amarini-
-
-total 392
--rw-r--r-- 1 amarini- 2020_paris   2526 Feb 23 07:06 Makefile
-drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 23 07:13 srcs
-drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 23 08:15 ducklinclude
-drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 23 22:36 Duckumentation
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 23 23:58 out1
--rw-r--r-- 1 amarini- 2020_paris      5 Feb 24 00:01 hey
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:08 &1
-drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 24 00:14 libft_duck
--rwxr-xr-x 1 amarini- 2020_paris 347240 Feb 24 00:14 minishell
-drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 00:14 objs
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:15 test1
--rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 00:15 outfilr
--rw-r--r-- 1 amarini- 2020_paris      9 Feb 24 00:16 output
--rw-r--r-- 1 amarini- 2020_paris     13 Feb 24 00:16 a
--rw-r--r-- 1 amarini- 2020_paris      0 Feb 24 00:16 salut
--rw-r--r-- 1 amarini- 2020_paris     11 Feb 24 00:16 file
--rw-r--r-- 1 amarini- 2020_paris    128 Feb 24 00:16 abc
--rw-r--r-- 1 amarini- 2020_paris      4 Feb 24 00:16 out2
-
-
-
-
-
-
-
-
+___/bin/ls -lrt
+total 396
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 23:13 Makefile
+drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 24 23:14 ducklinclude
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 23:14 srcs
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 23:14 Duckumentation
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 25 05:07 libft_duck
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 25 05:14 objs
+-rwxr-xr-x 1 amarini- 2020_paris 348696 Feb 25 05:15 minishell
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 test
+-rw-r--r-- 1 amarini- 2020_paris      8 Feb 25 05:22 $test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 out1
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:22 test1
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 25 05:27 outfilr
+-rw-r--r-- 1 amarini- 2020_paris      9 Feb 25 05:28 output
+-rw-r--r-- 1 amarini- 2020_paris     13 Feb 25 05:28 a
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 salut
+-rw-r--r-- 1 amarini- 2020_paris     11 Feb 25 05:28 file
+-rw-r--r-- 1 amarini- 2020_paris    127 Feb 25 05:28 abc
+-rw-r--r-- 1 amarini- 2020_paris      4 Feb 25 05:28 out2
+___cd .
+___ls > abc
+___cd ../../..
+___export 'a'='b'
+___cat abc | grep t > pqr
+___> log echo coucou
+___> a ls > b < Makefile
+___echo hudifg d | | hugdfihd
 bash: -c: line 0: syntax error near unexpected token `|'
 bash: -c: line 0: `echo hudifg d | | hugdfihd'
-
+___echo bonjour >>> test
 bash: -c: line 0: syntax error near unexpected token `>'
 bash: -c: line 0: `echo bonjour >>> test'
-
+___unset =
 bash: line 0: unset: `=': not a valid identifier
-
-
+___>a ls >b >>c >d
+___./efwufkk
 bash: ./efwufkk: No such file or directory
-
-
+___cd /mnt/nfs/homes/amarini-/Documents
+___echo bonjour > 
 bash: -c: line 0: syntax error near unexpected token `newline'
 bash: -c: line 0: `echo bonjour > '
-
+___cd /mnt/nfs/homes/amarini-/Bureau
 bash: line 0: cd: /mnt/nfs/homes/amarini-/Bureau: No such file or directory
-
+___unset a c=10
 bash: line 0: unset: `c=10': not a valid identifier
-
+___echo ~
 /mnt/nfs/homes/amarini-
-
-
+___export var=at
+___c Makefile
 bash: c: command not found
-
+___cat < input.txt | wc
 bash: input.txt: No such file or directory
       0       0       0
+___rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1
+___exit
+___e''ch''o'' c'o'u'cou'
+coucou
+___h ey hey|<hey
+ey hey|<hey: h: command not found
+___echo hello there > outfilr | echo  | echo '/mnt/nfs/homes/amarini-' | echo /mnt/nfs/homes/amarini- | echo $
+hello
+___echo hello there > outfilr | echo '/mnt/nfs/homes/amarini-' | echo /mnt/nfs/homes/amarini- | echo $
+hello
+___echo asdv >/dev/stdout| ls -la -> test this
+ls: cannot access '-': No such file or directory
+ls: cannot access 'this': No such file or directory
+___echo 399937399937399937
+399937399937399937
+___echo gerigh >/dev/stdout| ls -las
+total 388
+  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 25  2022 .
+  4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb  8 18:03 ..
+  4 -rw-r--r-- 1 amarini- 2020_paris      8 Feb 25 05:22 $test
+  4 drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 24 23:14 ducklinclude
+  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 23:14 Duckumentation
+  4 drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 25 05:07 .git
+  4 -rw-r--r-- 1 amarini- 2020_paris     90 Feb  1 17:18 .gitmodules
+  4 drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 25 05:07 libft_duck
+  4 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 23:13 Makefile
+344 -rwxr-xr-x 1 amarini- 2020_paris 348696 Feb 25 05:15 minishell
+  4 drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 25 05:14 objs
+  4 drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 23:14 srcs
+  0 -rw-r--r-- 1 amarini- 2020_paris      0 Feb 25  2022 test
+___cat test >> outfilr
+___cat Makefile > outfilr | grep $ >> outfilr
+___cat Makefile | grep $ > outfilr
+___echo ab'c d'
+abc d
+___>> test >test > >
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `>> test >test > >'
+___| >> test >test > >
+bash: -c: line 0: syntax error near unexpected token `|'
+bash: -c: line 0: `| >> test >test > >'
+___>> test >test >
+bash: -c: line 0: syntax error near unexpected token `newline'
+bash: -c: line 0: `>> test >test >'
+___<< >> test >test <
+bash: -c: line 0: syntax error near unexpected token `>>'
+bash: -c: line 0: `<< >> test >test <'
+___>> >test >test <
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `>> >test >test <'
+___echo bonjour > 
+bash: -c: line 0: syntax error near unexpected token `newline'
+bash: -c: line 0: `echo bonjour > '
+___ls <> abc
+$test
+abc
+ducklinclude
+Duckumentation
+libft_duck
+Makefile
+minishell
+objs
+outfilr
+srcs
+test
+___cat<f2|wc
+bash: f2: No such file or directory
+      0       0       0
+srcs/debug/b_all_test: 452: cannot create : Directory nonexistent
+srcs/debug/b_all_test: 453: cannot create : Directory nonexistent
+___echo 
 
+___echo $HOME
+/mnt/nfs/homes/amarini-
+___|
+bash: -c: line 0: syntax error near unexpected token `|'
+bash: -c: line 0: `|'
+___cat < test
+___echo bonjour ||
+bash: -c: line 1: syntax error: unexpected end of file
+___>a cat <b >>c
+bash: b: No such file or directory
+___exit 0 | exit 1
+___exho 2 >> out1 > out2
+bash: exho: command not found
+___<a cat <b <c
+bash: b: No such file or directory
+___cat Makefile | grep pr | head -n 5 | cd test /dev/bin
+bash: line 0: cd: too many arguments
+___echo 1
+0
+___
+___cat Makefile | grep pr | head -n 5 | hello
+bash: hello: command not found
+___echo 127
+0
+___>a ls <machin >>c >d
+bash: machin: No such file or directory
+___echo 2 > out1 >> out2
+___echo bonjour > > out
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `echo bonjour > > out'
+___$
+bash: $: command not found
+___exit 1 | exit 0
+___echo 2 >> out1 > out2
+___echo bonjour ||
+bash: -c: line 1: syntax error: unexpected end of file
+___| echo
+bash: -c: line 0: syntax error near unexpected token `|'
+bash: -c: line 0: `| echo'
+___<a cat <b <c
+bash: b: No such file or directory
+___cat Makefile | grep pr | head -n 5 | cat test /dev/bin
+cat: /dev/bin: No such file or directory
+___cat -e > test1 < test2
+bash: test2: No such file or directory
+___echo $ a
+$ a
+___echo ?$
+?$
+___unset a 
+___unset 1_aa
+bash: line 0: unset: `1_aa': not a valid identifier
+___unset 
+___export var
+___export var=test
+___unset  a
+___unset LOL ROR
+___pwd lalala
+/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___export HI=hi
+___echo  bonjour
+bonjour
+___cd -
+/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___export =test
+bash: line 0: export: `=test': not a valid identifier
+___unset  test
+___export  test=abc
+___pwd a b c d
+/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___unset a1=10
+bash: line 0: unset: `a1=10': not a valid identifier
+___echo  Makefile
+Makefile
+___export  | unset 
+___unset var1
+___echo bonjour |
+bash: -c: line 1: syntax error: unexpected end of file
+___../a.out
+bash: ../a.out: No such file or directory
+___echo amarini-$USERamarini-$USERtestamarini-
+amarini---
+___echo \$HOME
+$HOME
+___sdfs > abc
+bash: sdfs: command not found
+___..
+bash: ..: command not found
+___>file
+___cat < <
+bash: -c: line 0: syntax error near unexpected token `<'
+bash: -c: line 0: `cat < <'
+___						
+___cd ms      
+bash: line 0: cd: ms: No such file or directory
+___/bin/echo bonjour
+bonjour
+___echo -n simple
+simple___cat | cat | cat | ls
+$test
+a
+abc
+ducklinclude
+Duckumentation
+file
+libft_duck
+Makefile
+minishell
+objs
+out1
+out2
+outfilr
+srcs
+test
+test1
+___ifcat <f2| wc -
+bash: f2: No such file or directory
+      0       0       0 -
+___unset a c
+___pwd
+/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___echo
+
+___ls | grep t
+$test
+Duckumentation
+libft_duck
+out1
+out2
+outfilr
+test
+test1
+___export a=6 b=8 c=9
+___echo bonjour >>> test
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `echo bonjour >>> test'
+___ls><abc
+bash: -c: line 0: syntax error near unexpected token `<'
+bash: -c: line 0: `ls><abc'
+___echo -n -n -nnnn -nnnnm
+-nnnnm___echo -n lalalal
+lalalal___sleep 5 | exit
+___echo /mnt/nfs/homes/amarini-
+/mnt/nfs/homes/amarini-
+___export LOL=lala ROR=rar
+___export 111=222
+bash: line 0: export: `111=222': not a valid identifier
+___echo	a
+a
+___ls | exit
+___export a=5 a=7 a=8
+___echo Makefile
+Makefile
+___not_cmd
+bash: not_cmd: command not found
+___echo  bonjour
+bonjour
+___cd 
+___echo '/mnt/nfs/homes/amarini-'
+/mnt/nfs/homes/amarini-
+___hello|world
+bash: hello: command not found
+bash: world: command not found
+___echo n n n
+n
+___cd ../../../../../..
+___cat Makefile | grep pr | head -n 5 cd file_not_exit
+head: cannot open 'cd' for reading: No such file or directory
+head: cannot open 'file_not_exit' for reading: No such file or directory
+___sort <abc | grep test
+___echo a'bcd'e
+abcde
+___echo $ a
+$
+___echo 0
+0
+___cd no_file
+bash: line 0: cd: no_file: No such file or directory
+___env
+SHELL=/bin/zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+SESSION_MANAGER=local/e2r10p13.clusters.42paris.fr:@/tmp/.ICE-unix/319628,unix/e2r10p13.clusters.42paris.fr:/tmp/.ICE-unix/319628
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+LESS=-R
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session4
+XDG_MENU_PREFIX=gnome-
+TERM_PROGRAM_VERSION=1.64.2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LANGUAGE=en
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+SSH_AUTH_SOCK=/run/user/38303/keyring/ssh
+BREAKPAD_DUMP_LOCATION=/mnt/nfs/homes/amarini-/.config/Code/exthost Crash Reports
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+SSH_AGENT_PID=319592
+GTK_MODULES=gail:atk-bridge
+PWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+KRB5CCNAME=FILE:/tmp/krb5cc_38303_V7Pj3u
+XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=amarini-
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/38303/gnupg/S.gpg-agent:0:1
+_=/usr/bin/env
+XAUTHORITY=/mnt/nfs/homes/amarini-/.Xauthority
+VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/amarini-
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GDM_LANG=en
+HOME=/mnt/nfs/homes/amarini-
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=Unity
+GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+INVOCATION_ID=a3f20104b15c427fae17418eab1fc8ba
+MANAGERPID=319097
+CHROME_DESKTOP=code-url-handler.desktop
+GJS_DEBUG_OUTPUT=stderr
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+ZSH=/mnt/nfs/homes/amarini-/.oh-my-zsh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=amarini-
+VSCODE_GIT_IPC_HANDLE=/run/user/38303/vscode-git-6ecabeac5a.sock
+DISPLAY=:0
+SHLVL=1
+PAGER=less
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/38303
+DOCKER_HOST=unix:///run/user/38303/docker.sock
+VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
+JOURNAL_STREAM=9:941167
+XDG_DATA_DIRS=/usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/amarini-/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+GDK_BACKEND=x11
+PATH=/mnt/nfs/homes/amarini-/bin:/mnt/nfs/homes/amarini-/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/38303/bus
+GIO_LAUNCHED_DESKTOP_FILE_PID=319965
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
+OLDPWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+TERM_PROGRAM=vscode
+___echo Makefiles
+Makefiles
+___echo /mnt/nfs/homes/amarini-
+/mnt/nfs/homes/amarini-
+___echo test > file test1
+___echo /mnt/nfs/homes/amarini-
+/mnt/nfs/homes/amarini-
+___
+srcs/debug/b_all_test: 646: cannot create : Directory nonexistent
+srcs/debug/b_all_test: 647: cannot create : Directory nonexistent
+___export 111=222
+bash: line 0: export: `111=222': not a valid identifier
+___expot  test=a
+bash: expot: command not found
+___env
+SHELL=/bin/zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+SESSION_MANAGER=local/e2r10p13.clusters.42paris.fr:@/tmp/.ICE-unix/319628,unix/e2r10p13.clusters.42paris.fr:/tmp/.ICE-unix/319628
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+LESS=-R
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session4
+XDG_MENU_PREFIX=gnome-
+TERM_PROGRAM_VERSION=1.64.2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LANGUAGE=en
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+SSH_AUTH_SOCK=/run/user/38303/keyring/ssh
+BREAKPAD_DUMP_LOCATION=/mnt/nfs/homes/amarini-/.config/Code/exthost Crash Reports
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+SSH_AGENT_PID=319592
+GTK_MODULES=gail:atk-bridge
+PWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+KRB5CCNAME=FILE:/tmp/krb5cc_38303_V7Pj3u
+XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=amarini-
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/38303/gnupg/S.gpg-agent:0:1
+_=/usr/bin/env
+XAUTHORITY=/mnt/nfs/homes/amarini-/.Xauthority
+VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/amarini-
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+GDM_LANG=en
+HOME=/mnt/nfs/homes/amarini-
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=Unity
+GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+INVOCATION_ID=a3f20104b15c427fae17418eab1fc8ba
+MANAGERPID=319097
+CHROME_DESKTOP=code-url-handler.desktop
+GJS_DEBUG_OUTPUT=stderr
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+ZSH=/mnt/nfs/homes/amarini-/.oh-my-zsh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=amarini-
+VSCODE_GIT_IPC_HANDLE=/run/user/38303/vscode-git-6ecabeac5a.sock
+DISPLAY=:0
+SHLVL=1
+PAGER=less
+QT_IM_MODULE=ibus
+XDG_RUNTIME_DIR=/run/user/38303
+DOCKER_HOST=unix:///run/user/38303/docker.sock
+VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
+JOURNAL_STREAM=9:941167
+XDG_DATA_DIRS=/usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/amarini-/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+GDK_BACKEND=x11
+PATH=/mnt/nfs/homes/amarini-/bin:/mnt/nfs/homes/amarini-/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/38303/bus
+GIO_LAUNCHED_DESKTOP_FILE_PID=319965
+GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
+OLDPWD=/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+TERM_PROGRAM=vscode
+___pwd a
+/mnt/nfs/homes/amarini-/Desktop/repo/mini-quack-shell
+___env -i ./minishell
+unknown:$ ___echo 1
+1
+___cd a b c d
+bash: line 0: cd: too many arguments
+___cd ~
+___echo \s
+s
+___/bin/ls
+$test
+a
+abc
+ducklinclude
+Duckumentation
+file
+libft_duck
+Makefile
+minishell
+objs
+out1
+out2
+outfilr
+srcs
+test
+test1
+___echo \/mnt/nfs/homes/amarini- \$HOME \/mnt/nfs/homes/amarini- /mnt/nfs/homes/amarini- /mnt/nfs/homes/amarini- /mnt/nfs/homes/amarini-
+/mnt/nfs/homes/amarini-
+___ls   	 	 	   -l    	 			 	-all
+total 400
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 25 05:28 .
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb  8 18:03 ..
+-rw-r--r-- 1 amarini- 2020_paris      8 Feb 25 05:22 $test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 a
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 abc
+drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 24 23:14 ducklinclude
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 23:14 Duckumentation
+-rw-r--r-- 1 amarini- 2020_paris     11 Feb 25 05:28 file
+drwxr-xr-x 9 amarini- 2020_paris   4096 Feb 25 05:07 .git
+-rw-r--r-- 1 amarini- 2020_paris     90 Feb  1 17:18 .gitmodules
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 25 05:07 libft_duck
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 23:13 Makefile
+-rwxr-xr-x 1 amarini- 2020_paris 348696 Feb 25 05:15 minishell
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 25 05:14 objs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 out1
+-rw-r--r-- 1 amarini- 2020_paris      2 Feb 25 05:28 out2
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 25 05:28 outfilr
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 23:14 srcs
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 test1
+___echo abcd
+abcd
+___cat < Makefile | grep gcc > output
+___eho ME
+bash: eho: command not found
+___export a=10
+___not_cmd
+bash: not_cmd: command not found
+___echo -nABC
+-nABC
+___cd var1 var2 var3
+bash: line 0: cd: too many arguments
+___echo abcd
+abcd
+___> a echo Hello World!
+___c. ./path_not_found
+bash: c.: command not found
+___echo 12"
+bash: -c: line 0: unexpected EOF while looking for matching `"'
+bash: -c: line 1: syntax error: unexpected end of file
+___/bin/echo bonjour
+bonjour
+___echo > a Hello Wordl!
+___echo \$HOME
+\/mnt/nfs/homes/amarini-
+___cat Makefile | grep pr | head -n 5 | hello
+bash: hello: command not found
+___echo -n
+___cd ../../../../../..
+___/binn/ls
+bash: /binn/ls: No such file or directory
+___not_cmd bonjour > salut
+bash: not_cmd: command not found
+___cat < >
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `cat < >'
+___echo test > file test1
+___env -i ./minishell
+unknown:$ ___export 111=222
+bash: line 0: export: `111=222': not a valid identifier
+___echo simple
+simple
+___echo abc
+abc
+___cd minishell 
+: line 0: cd: minishell: Not a directory
+___ort _abc=1
+bash: ort: command not found
+___ls >> abc
+___cd /home/user42/
+bash: line 0: cd: /home/user42/: No such file or directory
+___ls qwerty
+ls: cannot access 'qwerty': No such file or directory
+___-R
 bash: -R: invalid option
 Usage:	bash [GNU long option] [option] ...
 	bash [GNU long option] [option] script-file ...
@@ -708,3 +1196,130 @@ GNU long options:
 Shell options:
 	-ilrsD or -c command or -O shopt_option		(invocation only)
 	-abefhkmnptuvxBCHP or -o option
+___echo |
+bash: -c: line 1: syntax error: unexpected end of file
+___echo 2 > out1 >> out2
+___sort < abc
+$test
+a
+abc
+ducklinclude
+Duckumentation
+file
+libft_duck
+Makefile
+minishell
+objs
+out1
+out2
+outfilr
+output
+salut
+srcs
+test
+test1
+___echo n n 
+
+n
+___echo $HOME
+/mnt/nfs/homes/amarini-
+___1
+bash: 1: command not found
+___
+___echo '/mnt/nfs/homes/amarini-'
+/mnt/nfs/homes/amarini-
+___export   et unset 
+___exit 1 2 3 a
+bash: line 0: exit: too many arguments
+___                         
+___echo >
+bash: -c: line 0: syntax error near unexpected token `newline'
+bash: -c: line 0: `echo >'
+___sleep 5 | exit
+___not_cmd bonjour > salut
+bash: not_cmd: command not found
+___sort | ls
+$test
+a
+abc
+ducklinclude
+Duckumentation
+file
+libft_duck
+Makefile
+minishell
+objs
+out1
+out2
+outfilr
+output
+salut
+srcs
+test
+test1
+___export test=ici=coucou
+___cat > >
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `cat > >'
+___export HI= hi
+___cat < test
+___echo 'abc'
+abc
+___cat bla
+cat: bla: No such file or directory
+___echo /mnt/nfs/homes/amarini-
+/mnt/nfs/homes/amarini-
+___/bin/ls -lrt
+total 396
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 24 23:13 Makefile
+drwxr-xr-x 2 amarini- 2020_paris   4096 Feb 24 23:14 ducklinclude
+drwxr-xr-x 8 amarini- 2020_paris   4096 Feb 24 23:14 srcs
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 24 23:14 Duckumentation
+drwxr-xr-x 5 amarini- 2020_paris   4096 Feb 25 05:07 libft_duck
+drwxr-xr-x 3 amarini- 2020_paris   4096 Feb 25 05:14 objs
+-rwxr-xr-x 1 amarini- 2020_paris 348696 Feb 25 05:15 minishell
+-rw-r--r-- 1 amarini- 2020_paris      8 Feb 25 05:22 $test
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 test
+-rw-r--r-- 1 amarini- 2020_paris   2526 Feb 25 05:28 outfilr
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 out1
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 test1
+-rw-r--r-- 1 amarini- 2020_paris      9 Feb 25 05:28 output
+-rw-r--r-- 1 amarini- 2020_paris     13 Feb 25 05:28 a
+-rw-r--r-- 1 amarini- 2020_paris      0 Feb 25 05:28 salut
+-rw-r--r-- 1 amarini- 2020_paris     11 Feb 25 05:28 file
+-rw-r--r-- 1 amarini- 2020_paris    127 Feb 25 05:28 abc
+-rw-r--r-- 1 amarini- 2020_paris      4 Feb 25 05:28 out2
+___cd .
+___ls > abc
+___cd ../../..
+___export 'a'='b'
+___cat abc | grep t > pqr
+___> log echo coucou
+___> a ls > b < Makefile
+___echo hudifg d | | hugdfihd
+bash: -c: line 0: syntax error near unexpected token `|'
+bash: -c: line 0: `echo hudifg d | | hugdfihd'
+___echo bonjour >>> test
+bash: -c: line 0: syntax error near unexpected token `>'
+bash: -c: line 0: `echo bonjour >>> test'
+___unset =
+bash: line 0: unset: `=': not a valid identifier
+___>a ls >b >>c >d
+___./efwufkk
+bash: ./efwufkk: No such file or directory
+___cd /mnt/nfs/homes/amarini-/Documents
+___echo bonjour > 
+bash: -c: line 0: syntax error near unexpected token `newline'
+bash: -c: line 0: `echo bonjour > '
+___cd /mnt/nfs/homes/amarini-/Bureau
+bash: line 0: cd: /mnt/nfs/homes/amarini-/Bureau: No such file or directory
+___unset a c=10
+bash: line 0: unset: `c=10': not a valid identifier
+___echo ~
+/mnt/nfs/homes/amarini-
+___export var=at
+___c Makefile
+bash: c: command not found
+___cat < input.txt | wc
+bash: input.txt: No such file or directory
+      0       0       0
