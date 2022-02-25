@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 06:59:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 05:04:21 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	split_manager(char *line, t_env *env)
 		if (ft_strcmp(args[i], "|") == 0 && (i == 0 || args[i + 1] == NULL
 				|| ft_strcmp(args[i + 1], "|") == 0))
 		{
-			error_manager(ERNO_PIPE);
+			error_manager(ERNO_PIPE, NULL);
 			ft_freetab(args);
 			return ;
 		}
