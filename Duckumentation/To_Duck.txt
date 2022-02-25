@@ -1,8 +1,7 @@
 Vincent :
 
-test tricky redir zhen implemented (echo lol >/dev/full)
+test tricky redir when implemented (echo lol >/dev/full)
 cd -> CDPATH
-inf loop on "smthng | grep smthngls" in the waitpid loop from cmd_manager
 
 if redir, pb open of fd
 
@@ -19,6 +18,9 @@ echo "h ey" > hey| echo hey>hey
 - make syntax error for ';'
 - make syntax error for '&'
 - make syntax error for '&&'
+
+// question : - make syntax error for '||' ? Or consider it like an empty pipe ?
+// logically speaking, i'd rather make the syntax error
 
 - "h ey" hey|<hey -> permission denied
 
