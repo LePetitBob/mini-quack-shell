@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:12:09 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/26 04:08:58 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ void	expand_vars_manager(char *(**arr), t_env *env)
 			if (!(*arr)[i] || (*arr)[i][0] == '\0')
 			{
 				tmp = ft_erase(*arr, i, 1);
-				free(*arr);
+				ft_freetab(*arr);
 				*arr = ft_tabdup(tmp);
 				ft_freetab(tmp);
+				--i;
 			}
 		}
 		++i;

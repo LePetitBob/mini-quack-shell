@@ -76,7 +76,7 @@ cat < <
 cd ms      
 /bin/echo bonjour
 echo -n simple
-cat | cat | cat | ls
+# cat | cat | cat | ls
 ifcat <f2| wc -
 unset a c
 pwd

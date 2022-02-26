@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/25 18:57:35 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/26 06:20:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	cmd_not_found(char *cmd, char **tmp_paths)
 		error_manager(ERNO_ISDIR, cmd);
 		g_exit_status = 126;
 	}
+	else if (!cmd || cmd[0] == '\0')
+		exit(g_exit_status);
 	else
 	{
 		error_manager(ERNO_NOCMD, cmd);
@@ -42,14 +44,15 @@ void	ft_exec(char **cmd, char **envp)
 	char	*path;
 
 	i = 0;
-	if (ft_strcmp(cmd[0], "..") == 0 || ft_strcmp(cmd[0], ".") == 0)
+	if (!cmd[0] || cmd[0][0] == '\0' || ft_strcmp(cmd[0], "..") == 0
+		|| ft_strcmp(cmd[0], ".") == 0)
 		cmd_not_found(cmd[0], NULL);
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
 	if (envp[i])
 	{
 		if (cmd[0] && cmd[0][0] == '/' && access(cmd[0], X_OK) == 0)
-			execve(cmd[0], cmd + sizeof(char *), envp);
+			execve(cmd[0], cmd /*+ sizeof(char *)*/, envp);
 		tmp_paths = ft_split(envp[i] + 5, ':');
 		i = 0;
 		while (tmp_paths[i])
@@ -99,12 +102,17 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 {
 	if (cmd->next)
 	{
-		close(fd[0]);
-		close(fd[1]);
+		if (fd[0] != -1)
+			close(fd[0]);
+		if (fd[1] != -1)
+			close(fd[1]);
 	}
-	close(fd[2]);
-	close(fd[3]);
-	close(fd[4]);
+	if (fd[2] != -1)
+		close(fd[2]);
+	if (fd[3] != -1)
+		close(fd[3]);
+	if (fd[4] != -1)
+		close(fd[4]);
 }
 
 void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)

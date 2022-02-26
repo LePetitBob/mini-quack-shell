@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 17:00:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/26 03:48:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	char	*pwd;
 	char	*tmp[2];
 
+	tmp[0] = NULL;
+	tmp[1] = NULL;
 	if (!cmd[1] && getenv("HOME"))
 		chdir(getenv("HOME"));
 	if (!cmd[1] && getenv("HOME"))
@@ -78,10 +80,8 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	pwd = getcwd(NULL, 0);
 	if (i >= 0 && tmp[1])
 		replace_var(env, "PWD", pwd);
-	if (i >= 0 && tmp[0])
-		free(tmp[0]);
-	if (i >= 0 && tmp[1])
-		free(tmp[1]);
+	free(tmp[0]);
+	free(tmp[1]);
 	free(pwd);
 	free(path);
 	g_exit_status = i;

@@ -7,7 +7,10 @@ cd -> CDPATH
 
 if redir, pb open of fd
 
-if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
+see expand_var.c to expand possible env var in HERE_DOC
+
+-if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
+THis works so nvm, bash does the same, it doesn't wait
 
 ------------------------
 
@@ -22,6 +25,7 @@ echo "h ey" > hey| echo hey>hey
 - make syntax error for '&&'
 
 // question : - make syntax error for '||' ? Or consider it like an empty pipe ?
+	// it is already the case (syntax error)
 // logically speaking, i'd rather make the syntax error
 
 - "h ey" hey|<hey -> permission denied
@@ -36,8 +40,6 @@ LEAKS :
 Just forget about it, as the subject precises that you can just ignore it.
 
 exec :
-- Found in -->export "" | unset "" and -->../a.out
-	-get_in_env (env_change_and_error_management (cd.c:71))
 - Invalid read of size 1
 	- get_cmd_str (execution.c:85)
 	- relink_parent_to_himself (expand_tokenize.c:64)
@@ -45,10 +47,6 @@ exec :
 	-close_wait_clear (cmd_manager.c:70)
 
 parsing :
-- add_non_whitespace (expand_split_whitespace.c:49)
-- Invalid read of size 1
-	- expand_split_manager (expand_split_seps.c:24)
-- Invalid read of size 8
 	- expand_caller (expand_manager.c:29)
 - Found in -->export "" | unset "" and -->../a.out
 	- Definitely lost :
