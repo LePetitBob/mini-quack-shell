@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/25 04:09:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:25:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define ERNO_ACCESS 8
 # define ERNO_NOCMD 9
 # define ERNO_ISDIR 10
+# define ERNO_EXIT_ARGS 11
 
 # define NO_TYPE -1
 # define WORD 0

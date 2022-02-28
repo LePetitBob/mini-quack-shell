@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/25 04:09:17 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:27:33 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	error_manager(int erno, char *str)
 		|| erno == ERNO_RIN || erno == ERNO_HERE_DOC || erno == ERNO_ROUT
 		|| erno == ERNO_DROUT || erno == ERNO_NEWLINE)
 		err = get_syntax_error(erno);
-	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD)
+	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
+		|| erno == ERNO_EXIT_ARGS)
 		err = get_cmd_error(erno, str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
@@ -48,6 +49,8 @@ char	*get_cmd_error(int erno, char *cmd)
 		pb = ft_strdup(": command not found\n");
 	if (erno == ERNO_ISDIR)
 		pb = ft_strdup(": Is a directory\n");
+	if (erno == ERNO_EXIT_ARGS)
+		pb = ft_strdup(": too many arguments\n");
 	tmp = ft_strjoin(cmd, pb);
 	free(pb);
 	return (tmp);
