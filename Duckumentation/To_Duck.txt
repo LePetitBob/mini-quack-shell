@@ -12,6 +12,9 @@ see expand_var.c to expand possible env var in HERE_DOC
 -if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
 THis works so nvm, bash does the same, it doesn't wait
 
+redir before check of cmd so doesn't return command not found in console
+exho 2 >> out1 > out2
+
 ------------------------
 
 Albe :
@@ -24,35 +27,4 @@ echo "h ey" > hey| echo hey>hey
 - make syntax error for '&'
 - make syntax error for '&&'
 
-// question : - make syntax error for '||' ? Or consider it like an empty pipe ?
-	// it is already the case (syntax error)
-// logically speaking, i'd rather make the syntax error
-
-- "h ey" hey|<hey -> permission denied
-
 ----------------------------
-
-LEAKS :
-
-(dunno :
-- "readline")
-==> Normal. Comes from readline, no matter what you do.
-Just forget about it, as the subject precises that you can just ignore it.
-
-exec :
-- Invalid read of size 1
-	- get_cmd_str (execution.c:85)
-	- relink_parent_to_himself (expand_tokenize.c:64)
-- Conditional jump or move depends on uninitialised value(s)
-	-close_wait_clear (cmd_manager.c:70)
-
-parsing :
-	- expand_caller (expand_manager.c:29)
-- Found in -->export "" | unset "" and -->../a.out
-	- Definitely lost :
-		- ft_del_one (split_separators.c:80)
-		- expand_var (expand_var.c:63)
-		- ft_strnew (split_quotes_dollar.c:44)
-		- ft_tabdup (split_quotes_dollar.c:35)
-		- and some more, i'll let you catch them all
-			(don't mind those in cd i'll take care of them)

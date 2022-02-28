@@ -27,6 +27,7 @@ echo bonjour ||
 >a cat <b >>c
 exit 0 | exit 1
 exho 2 >> out1 > out2
+echo 2 >> out1 > out2
 <a cat <b <c
 cat Makefile | grep pr | head -n 5 | cd test /dev/bin
 echo $?

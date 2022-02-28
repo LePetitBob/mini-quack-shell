@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/26 04:20:17 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:43:51 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	rm_cmds(t_cmd_lst *cmd)
 	tmp = cmd->first;
 	while (tmp)
 	{
+		// print_tokens(tmp->arg);
+		// ft_putstr("\n");
+		// print_tokens(tmp->redir);
+		// ft_putstr("\n");
 		tmp2 = tmp->next;
 		clear_token_cl(tmp->arg);
 		clear_token_cl(tmp->redir);
@@ -116,7 +120,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 		if (tmp->next)
 			pipe(fd);
 		redirection(tmp, fd);
-		execution(tmp, env, fd, fd[5]);
+		execution(tmp, env, fd, fd[5], cmds);
 		tmp = tmp->next;
 	}
 	close_wait_clear(cmds, fd, env);

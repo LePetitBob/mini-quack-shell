@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 16:25:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:44:15 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ t_token		*get_last_token(t_token *tokens);
 t_cmd		*ft_create_cmd(void);
 void		free_token(t_token *tokens);
 void		free_one_token(t_token *token);
+void		free_cmds(t_cmd *cmds);
 
 //			Main
 char		*get_prompt_prefix(t_env *env);
@@ -165,7 +166,7 @@ void		relink_node_parent(t_token **it, t_token **head);
 
 //?			Builtins
 int			is_builtin(char *cmd);
-void		ft_builtins(char **cmd, t_env *env, int is_piped);
+void		ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds);
 //* PWD
 void		ft_pwd(void);
 //* CD
@@ -191,9 +192,9 @@ int			env_size(t_env *env);
 char		**env_cl_to_arr(t_env *env);
 char		*get_env_name(t_env *env, char *name);
 //* EXIT
-void		ft_exit(char **err, t_env *env, int is_piped);
+void		ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds);
 void		ft_clear(t_env *env);
-void		clear_and_exit(char **err, t_env *env);
+void		clear_and_exit(char **err, t_env *env, t_cmd_lst *cmds);
 int			is_num(char *s);
 //?			Builtins
 
@@ -204,7 +205,8 @@ void		redirection(t_cmd *cmd, int fd[4]);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
-void		execution(t_cmd *cmd, t_env *env, int fd[6], int is_piped);
+void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
+	t_cmd_lst *cmds);
 void		ft_exec(char **cmd, char **envp);
 char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/26 06:20:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:44:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 		close(fd[4]);
 }
 
-void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
+void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
+	t_cmd_lst *cmds)
 {
 	char	**str_cmd;
 	char	**env_arr;
@@ -125,7 +126,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 	{
 		close(fd[2]);
 		close(fd[3]);
-		ft_builtins(str_cmd, env, is_piped);
+		ft_builtins(str_cmd, env, is_piped, cmds);
 		return ;
 	}
 	cmd->pid = fork();
@@ -137,7 +138,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 	{
 		close_all_fds(fd, cmd);
 		if (is_builtin(str_cmd[0]))
-			ft_builtins(str_cmd, env, is_piped);
+			ft_builtins(str_cmd, env, is_piped, cmds);
 		else
 		{
 			env_arr = env_cl_to_arr(env);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtins.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 16:18:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/28 18:45:16 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	is_builtin(char *cmd)
 	return (0);
 }
 
-void	ft_builtins(char **cmd, t_env *env, int is_piped)
+void	ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds)
 {
 	if (!ft_strcmp(cmd[0], "exit"))
-		ft_exit(cmd, env, is_piped);
+		ft_exit(cmd, env, is_piped, cmds);
 	else
 	{
 		if (!ft_strcmp(cmd[0], "pwd"))

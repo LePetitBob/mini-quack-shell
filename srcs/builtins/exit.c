@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/28 16:30:57 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:39:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_clear(t_env *env)
 	}
 }
 
-void	clear_and_exit(char **err, t_env *env)
+void	clear_and_exit(char **err, t_env *env, t_cmd_lst *cmds)
 {
 	write(2, "mini-quack-shell: exit: ", 24);
 	write(2, err[1], ft_strlen(err[1]));
@@ -39,10 +39,11 @@ void	clear_and_exit(char **err, t_env *env)
 	ft_freetab(err);
 	rl_clear_history();
 	ft_clear(env);
+	rm_cmds(cmds);
 	exit(2);
 }
 
-void	ft_exit(char **err, t_env *env, int is_piped)
+void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 {
 	int	errcode;
 	int	i;
@@ -58,13 +59,14 @@ void	ft_exit(char **err, t_env *env, int is_piped)
 		if (is_num(err[1]))
 			errcode = ft_atoi(err[1]);
 		else
-			clear_and_exit(err, env);
+			clear_and_exit(err, env, cmds);
 	}
 	ft_freetab(err);
 	if (i <= 2)
 	{
 		rl_clear_history();
 		ft_clear(env);
+		rm_cmds(cmds);
 		exit(errcode);
 	}
 	error_manager(ERNO_EXIT_ARGS, "exit");
