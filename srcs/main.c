@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/24 03:29:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/26 11:04:10 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int ac, char **av, char *envp[])
 		add_history(line);
 		if (!line)
 		{
-			// dprintf(2, "!line from readline\n");
 			ft_clear(&env);
 			return (0);
 		}

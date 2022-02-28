@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/26 06:20:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:54:40 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ char	**get_cmd_str(t_cmd *cmd)
 	}
 	tmp = NULL;
 	str_cmd = malloc(sizeof(char *) * (i + 1));
+	if (!str_cmd)
+		return (NULL);
 	str_cmd[i] = NULL;
 	tmp = cmd->arg;
 	i = 0;
@@ -126,6 +128,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 		close(fd[2]);
 		close(fd[3]);
 		ft_builtins(str_cmd, env, is_piped);
+		ft_freetab(str_cmd);
 		return ;
 	}
 	cmd->pid = fork();
@@ -143,8 +146,8 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped)
 			env_arr = env_cl_to_arr(env);
 			ft_clear(env);
 			ft_exec(str_cmd, env_arr);
+			ft_freetab(env_arr);
 		}
-		ft_freetab(env_arr);
 	}
 	ft_freetab(str_cmd);
 }
