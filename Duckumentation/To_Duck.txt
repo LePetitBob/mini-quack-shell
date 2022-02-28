@@ -5,12 +5,7 @@ cat srcs/debug/m_alltest | valgrind  ./minishell &>srcs/debug/m_log.txt
 test tricky redir when implemented (echo lol >/dev/full)
 cd -> CDPATH
 
-if redir, pb open of fd
-
 see expand_var.c to expand possible env var in HERE_DOC
-
--if bad redir + cat, pipe of cat fails and doesn't wait for Ctrl+D
-THis works so nvm, bash does the same, it doesn't wait
 
 redir before check of cmd so doesn't return command not found in console
 exho 2 >> out1 > out2

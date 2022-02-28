@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 18:43:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:02:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ void	rm_cmds(t_cmd_lst *cmd)
 	tmp = cmd->first;
 	while (tmp)
 	{
-		// print_tokens(tmp->arg);
-		// ft_putstr("\n");
-		// print_tokens(tmp->redir);
-		// ft_putstr("\n");
 		tmp2 = tmp->next;
 		clear_token_cl(tmp->arg);
 		clear_token_cl(tmp->redir);

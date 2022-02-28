@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 16:27:33 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:02:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	error_manager(int erno, char *str)
 		final = ft_strjoin(prefix, err);
 	else
 		final = ft_strdup(err);
-	ft_putstr(final);
+	ft_putstr_fd(final, STDERR_FILENO);
 	free(prefix);
 	free(err);
 	free(final);
