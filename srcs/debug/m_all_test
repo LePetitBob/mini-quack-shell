@@ -1,3 +1,4 @@
+pwd
 e''c""h''o'' "c"'o'""u'cou'
 "h ey" hey|<hey
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
@@ -172,7 +173,7 @@ exit 1 2 3 a
 echo >
 sleep 5 | exit
 not_cmd bonjour > salut
-sort | ls
+# sort | ls
 export "test=ici"=coucou
 cat > >
 export "HI= hi"
@@ -201,5 +202,6 @@ echo ~
 export var=at
 c$var Makefile
 cat < input.txt | wc
-rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+rm -rf '$test' a abc file out1 out2 outfilr test test1
 exit
