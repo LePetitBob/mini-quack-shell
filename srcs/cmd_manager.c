@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/25 18:09:04 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/28 16:56:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ void	rm_cmds(t_cmd_lst *cmd)
 
 void	closepipe(int fd[3])
 {
-	close(fd[0]);
-	close(fd[1]);
+	if (fd[0] != -1)
+		close(fd[0]);
+	if (fd[1] != -1)
+		close(fd[1]);
 }
 
 void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
@@ -64,7 +66,8 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	dup2(fd[3], STDOUT_FILENO);
 	close(fd[2]);
 	close(fd[3]);
-	close(fd[4]);
+	if (fd[4] != -1)
+		close(fd[4]);
 	tmp = cmds->first;
 	while (tmp)
 	{

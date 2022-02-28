@@ -1,433 +1,821 @@
 exec 1>srcs/debug/b_logs.txt
 exec 2>&1
 echo
+echo "___e''c""h''o'' "c"'o'""u'cou'"
 bash -c "e''c""h''o'' "c"'o'""u'cou'"
-echo
+echo "___"h ey" hey|<hey"
 bash -c ""h ey" hey|<hey"
-echo
+echo "___echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $"
 bash -c "echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $"
-echo
+echo "___echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $"
 bash -c "echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $"
-echo
-bash -c echo asdv >/dev/stdout| ls -la -> test this
-echo
+echo "___echo asdv >/dev/stdout| ls -la -> test this"
+bash -c "echo asdv >/dev/stdout| ls -la -> test this"
+echo "___echo $$$$$$"
 bash -c "echo $$$$$$"
-echo
+echo "___echo gerigh >/dev/stdout| ls -las"
 bash -c "echo gerigh >/dev/stdout| ls -las"
-echo
+echo "___cat "test" >> outfilr"
 bash -c "cat "test" >> outfilr"
-echo
+echo "___cat Makefile > outfilr | grep $ >> outfilr"
 bash -c "cat Makefile > outfilr | grep $ >> outfilr"
-echo
+echo "___cat Makefile | grep $ > outfilr"
 bash -c "cat Makefile | grep $ > outfilr"
-echo
+echo "___echo a$a"b"'c d'"
 bash -c "echo a$a"b"'c d'"
-echo
+echo "___>> test >test > >"
 bash -c ">> test >test > >"
-echo
+echo "___| >> test >test > >"
 bash -c "| >> test >test > >"
-echo
+echo "___>> test >test >"
 bash -c ">> test >test >"
-echo
+echo "___<< >> test >test <"
 bash -c "<< >> test >test <"
-echo
+echo "___>> >test >test <"
 bash -c ">> >test >test <"
-echo
+echo "___echo bonjour > $test"
 bash -c "echo bonjour > $test"
-echo
+echo "___ls <> abc"
 bash -c "ls <> abc"
-echo
+echo "___cat<f2|wc"
 bash -c "cat<f2|wc"
-echo
+echo "___export var="cat Makefile | grep >""
 bash -c "export var="cat Makefile | grep >""
-echo
+echo "___echo $var"
 bash -c "echo $var"
-echo
+echo "___echo $"HOME""
 bash -c "echo $"HOME""
-echo
+echo "___|"
 bash -c "|"
-echo
+echo "___cat < test"
 bash -c "cat < test"
-echo
+echo "___echo bonjour ||"
 bash -c "echo bonjour ||"
-echo
+echo "___>a cat <b >>c"
 bash -c ">a cat <b >>c"
-echo
+echo "___exit 0 | exit 1"
 bash -c "exit 0 | exit 1"
-echo
+echo "___exho 2 >> out1 > out2"
 bash -c "exho 2 >> out1 > out2"
-echo
+echo "___<a cat <b <c"
 bash -c "<a cat <b <c"
-echo
+echo "___cat Makefile | grep pr | head -n 5 | cd test /dev/bin"
 bash -c "cat Makefile | grep pr | head -n 5 | cd test /dev/bin"
-echo
+echo "___echo $?"
 bash -c "echo $?"
-echo
+echo "___$bla"
 bash -c "$bla"
-echo
+echo "___cat Makefile | grep pr | head -n 5 | hello"
 bash -c "cat Makefile | grep pr | head -n 5 | hello"
-echo
+echo "___echo $?"
 bash -c "echo $?"
-echo
+echo "___>a ls <machin >>c >d"
 bash -c ">a ls <machin >>c >d"
-echo
+echo "___echo 2 > out1 >> out2"
 bash -c "echo 2 > out1 >> out2"
-echo
+echo "___echo bonjour > > out"
 bash -c "echo bonjour > > out"
-echo
+echo "___$"
 bash -c "$"
-echo
+echo "___exit 1 | exit 0"
 bash -c "exit 1 | exit 0"
-echo
+echo "___echo 2 >> out1 > out2"
 bash -c "echo 2 >> out1 > out2"
-echo
+echo "___echo bonjour ||"
 bash -c "echo bonjour ||"
-echo
+echo "___| echo"
 bash -c "| echo"
-echo
+echo "___<a cat <b <c"
 bash -c "<a cat <b <c"
-echo
+echo "___cat Makefile | grep pr | head -n 5 | cat test /dev/bin"
 bash -c "cat Makefile | grep pr | head -n 5 | cat test /dev/bin"
-echo
+echo "___cat -e > test1 < test2"
 bash -c "cat -e > test1 < test2"
-echo
+echo "___echo $ a"
 bash -c "echo $ a"
-echo
+echo "___echo ?$"
 bash -c "echo ?$"
-echo
-bash -c "exit -"
-echo
+echo "___unset a """
 bash -c "unset a """
-echo
+echo "___unset 1_aa"
 bash -c "unset 1_aa"
-echo
+echo "___unset """
 bash -c "unset """
-echo
+echo "___export var"
 bash -c "export var"
-echo
+echo "___export var=test"
 bash -c "export var=test"
-echo
-bash -c "exit -1"
-echo
-bash -c "exit -abc"
-echo
+echo "___unset "" a"
 bash -c "unset "" a"
-echo
+echo "___unset LOL ROR"
 bash -c "unset LOL ROR"
-echo
+echo "___pwd lalala"
 bash -c "pwd lalala"
-echo
+echo "___export "HI=hi""
 bash -c "export "HI=hi""
-echo
-bash -c "exit abc"
-echo
+echo "___echo "" bonjour"
 bash -c "echo "" bonjour"
-echo
+echo "___cd -"
 bash -c "cd -"
-echo
-bash -c "exit -18abc"
-echo
+echo "___export $var=test"
 bash -c "export $var=test"
-echo
+echo "___unset "" test"
 bash -c "unset "" test"
-echo
+echo "___export "" test=abc"
 bash -c "export "" test=abc"
-echo
+echo "___pwd a b c d"
 bash -c "pwd a b c d"
-echo
+echo "___unset a1=10"
 bash -c "unset a1=10"
-echo
+echo "___echo "$tests" "Makefile""
 bash -c "echo "$tests" "Makefile""
-echo
+echo "___export "" | unset """
 bash -c "export "" | unset """
-echo
+echo "___unset var1"
 bash -c "unset var1"
-echo
+echo "___echo bonjour |"
 bash -c "echo bonjour |"
-echo
+echo "___../a.out"
 bash -c "../a.out"
-echo
-bash -c "exit"
-echo
+echo "___echo $USER$var\$USER$USER\$USERtest$USER"
 bash -c "echo $USER$var\$USER$USER\$USERtest$USER"
-echo
+echo "___echo "\\\$HOME""
 bash -c "echo "\\\$HOME""
-echo
+echo "___sdfs > abc"
 bash -c "sdfs > abc"
-echo
-bash -c "exit -10"
-echo
+echo "___.."
 bash -c ".."
-echo
+echo "___>file"
 bash -c ">file"
-echo
-bash -c "exit 999999"
-echo
-bash -c "cat >file"
-echo
+echo "___cat < <"
 bash -c "cat < <"
-echo
+echo "___						"
 bash -c "						"
-echo
+echo "___cd ms      "
 bash -c "cd ms      "
-echo
+echo "___/bin/echo bonjour"
 bash -c "/bin/echo bonjour"
-echo
+echo "___echo -n simple"
 bash -c "echo -n simple"
-echo
+echo "___cat | cat | cat | ls"
 bash -c "cat | cat | cat | ls"
-echo
+echo "___ifcat <f2| wc -"
 bash -c "ifcat <f2| wc -"
-echo
+echo "___unset a c"
 bash -c "unset a c"
-echo
+echo "___pwd"
 bash -c "pwd"
-echo
+echo "___echo"
 bash -c "echo"
-echo
+echo "___ls | grep t"
 bash -c "ls | grep t"
-echo
+echo "___export a=6 b=8 c=9"
 bash -c "export a=6 b=8 c=9"
-echo
+echo "___echo bonjour >>> test"
 bash -c "echo bonjour >>> test"
-echo
+echo "___ls><abc"
 bash -c "ls><abc"
-echo
+echo "___echo -n -n -nnnn -nnnnm"
 bash -c "echo -n -n -nnnn -nnnnm"
-echo
+echo "___echo -n lalalal"
 bash -c "echo -n lalalal"
-echo
-bash -c "echo 'abc"
-echo
+echo "___sleep 5 | exit"
 bash -c "sleep 5 | exit"
-echo
+echo "___echo "$HOME""
 bash -c "echo "$HOME""
-echo
+echo "___export LOL=lala ROR=rar"
 bash -c "export LOL=lala ROR=rar"
-echo
+echo "___export 111=222"
 bash -c "export 111=222"
-echo
+echo "___echo	a"
 bash -c "echo	a"
-echo
+echo "___ls | exit"
 bash -c "ls | exit"
-echo
+echo "___export a=5 a=7 a=8"
 bash -c "export a=5 a=7 a=8"
-echo
+echo "___echo "$tests""Makefile""
 bash -c "echo "$tests""Makefile""
-echo
+echo "___not_cmd"
 bash -c "not_cmd"
-echo
+echo "___echo $var bonjour"
 bash -c "echo $var bonjour"
-echo
+echo "___cd $var"
 bash -c "cd $var"
-echo
+echo "___echo '$HOME'"
 bash -c "echo '$HOME'"
-echo
+echo "___hello|world"
 bash -c "hello|world"
-echo
+echo "___echo "\n \n \n""
 bash -c "echo "\n \n \n""
-echo
+echo "___cd ../../../../../.."
 bash -c "cd ../../../../../.."
-echo
+echo "___cat Makefile | grep pr | head -n 5 cd file_not_exit"
 bash -c "cat Makefile | grep pr | head -n 5 cd file_not_exit"
-echo
+echo "___sort <abc | grep test"
 bash -c "sort <abc | grep test"
-echo
+echo "___echo a'bcd'e"
 bash -c "echo a'bcd'e"
-echo
+echo "___echo "$   a""
 bash -c "echo "$   a""
-echo
+echo "___echo $?"
 bash -c "echo $?"
-echo
+echo "___cd no_file"
 bash -c "cd no_file"
-echo
+echo "___env"
 bash -c "env"
-echo
+echo "___echo "$tests"Makefiles"
 bash -c "echo "$tests"Makefiles"
-echo
+echo "___echo "$HOME""
 bash -c "echo "$HOME""
-echo
+echo "___echo test > file test1"
 bash -c "echo test > file test1"
-echo
+echo "___echo ""$HOME"""
 bash -c "echo ""$HOME"""
-echo
+echo "___"""
 bash -c """"
-echo
+echo "___export var="cat Makefile | grep >""
 bash -c "export var="cat Makefile | grep >""
-echo
+echo "___export "111"="222""
 bash -c "export "111"="222""
-echo
+echo "___expot "" test=a"
 bash -c "expot "" test=a"
-echo
+echo "___env"
 bash -c "env"
-echo
+echo "___pwd a"
 bash -c "pwd a"
-echo
+echo "___env -i ./minishell"
 bash -c "env -i ./minishell"
-echo
+echo "___echo $SHLVL"
 bash -c "echo $SHLVL"
-echo
+echo "___cd a b c d"
 bash -c "cd a b c d"
-echo
+echo "___cd ~"
 bash -c "cd ~"
-echo
+echo "___echo \s"
 bash -c "echo \s"
-echo
+echo "___/bin/ls"
 bash -c "/bin/ls"
-echo
+echo "___echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME""
 bash -c "echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME""
-echo
+echo "___ls   	 	 	   -l    	 			 	-all"
 bash -c "ls   	 	 	   -l    	 			 	-all"
-echo
+echo "___echo a"bc"d"
 bash -c "echo a"bc"d"
-echo
+echo "___cat < Makefile | grep gcc > output"
 bash -c "cat < Makefile | grep gcc > output"
-echo
+echo "___eho $HO"ME""
 bash -c "eho $HO"ME""
-echo
+echo "___export a=10"
 bash -c "export a=10"
-echo
+echo "___not_cmd"
 bash -c "not_cmd"
-echo
+echo "___echo -nABC"
 bash -c "echo -nABC"
-echo
+echo "___cd var1 var2 var3"
 bash -c "cd var1 var2 var3"
-echo
+echo "___echo abcd"
 bash -c "echo abcd"
-echo
+echo "___> a echo Hello World!"
 bash -c "> a echo Hello World!"
-echo
+echo "___c. ./path_not_found"
 bash -c "c. ./path_not_found"
-echo
+echo "___echo "12\"""
 bash -c "echo "12\"""
-echo
+echo "___/bin/echo bonjour"
 bash -c "/bin/echo bonjour"
-echo
+echo "___echo > a Hello Wordl!"
 bash -c "echo > a Hello Wordl!"
-echo
+echo "___echo "\\\\\$HOME""
 bash -c "echo "\\\\\$HOME""
-echo
+echo "___cat Makefile | grep pr | head -n 5 | hello"
 bash -c "cat Makefile | grep pr | head -n 5 | hello"
-echo
+echo "___echo -n"
 bash -c "echo -n"
-echo
+echo "___cd ../../../../../.."
 bash -c "cd ../../../../../.."
-echo
+echo "___/binn/ls"
 bash -c "/binn/ls"
-echo
+echo "___not_cmd bonjour > salut"
 bash -c "not_cmd bonjour > salut"
-echo
+echo "___cat < >"
 bash -c "cat < >"
-echo
+echo "___echo test > file test1"
 bash -c "echo test > file test1"
-echo
-bash -c "exit +10"
-echo
+echo "___env -i ./minishell"
 bash -c "env -i ./minishell"
-echo
+echo "___export "111=222""
 bash -c "export "111=222""
-echo
+echo "___echo simple"
 bash -c "echo simple"
-echo
+echo "___echo "'abc'""
 bash -c "echo "'abc'""
-echo
+echo "___cd "minishell          ""
 bash -c "cd "minishell          ""
-echo
+echo "___ort _abc=1"
 bash -c "ort _abc=1"
-echo
+echo "___ls >> abc"
 bash -c "ls >> abc"
-echo
+echo "___cd /home/user42/"
 bash -c "cd /home/user42/"
-echo
+echo "___ls qwerty"
 bash -c "ls qwerty"
-echo
+echo "___$LESS$VAR"
 bash -c "$LESS$VAR"
-echo
+echo "___echo |"
 bash -c "echo |"
-echo
+echo "___echo 2 > out1 >> out2"
 bash -c "echo 2 > out1 >> out2"
-echo
+echo "___sort < abc"
 bash -c "sort < abc"
-echo
+echo "___echo "\n \n \\n""
 bash -c "echo "\n \n \\n""
-echo
+echo "___echo "'$HOME'""
 bash -c "echo "'$HOME'""
-echo
+echo "___$SHLVL"
 bash -c "$SHLVL"
-echo
+echo "___$bla"
 bash -c "$bla"
-echo
+echo "___echo '$HOME'"
 bash -c "echo '$HOME'"
-echo
+echo "___export ""  et unset """
 bash -c "export ""  et unset """
-echo
+echo "___exit 1 2 3 a"
 bash -c "exit 1 2 3 a"
-echo
+echo "___                         "
 bash -c "                         "
-echo
+echo "___echo >"
 bash -c "echo >"
-echo
+echo "___sleep 5 | exit"
 bash -c "sleep 5 | exit"
-echo
+echo "___not_cmd bonjour > salut"
 bash -c "not_cmd bonjour > salut"
-echo
+echo "___sort | ls"
 bash -c "sort | ls"
-echo
+echo "___export "test=ici"=coucou"
 bash -c "export "test=ici"=coucou"
-echo
+echo "___cat > >"
 bash -c "cat > >"
-echo
+echo "___export "HI= hi""
 bash -c "export "HI= hi""
-echo
+echo "___cat < test"
 bash -c "cat < test"
-echo
+echo "___echo '"abc"'"
 bash -c "echo '"abc"'"
-echo
+echo "___cat bla"
 bash -c "cat bla"
-echo
+echo "___echo $HOME"
 bash -c "echo $HOME"
-echo
+echo "___/bin/ls -lrt"
 bash -c "/bin/ls -lrt"
-echo
+echo "___cd ."
 bash -c "cd ."
-echo
+echo "___ls > abc"
 bash -c "ls > abc"
-echo
+echo "___cd ../../.."
 bash -c "cd ../../.."
-echo
+echo "___export 'a'='b'"
 bash -c "export 'a'='b'"
-echo
+echo "___cat abc | grep t > pqr"
 bash -c "cat abc | grep t > pqr"
-echo
+echo "___> log echo coucou"
 bash -c "> log echo coucou"
-echo
+echo "___> a ls > b < Makefile"
 bash -c "> a ls > b < Makefile"
-echo
+echo "___echo hudifg d | | hugdfihd"
 bash -c "echo hudifg d | | hugdfihd"
-echo
+echo "___echo bonjour >>> test"
 bash -c "echo bonjour >>> test"
-echo
+echo "___unset ="
 bash -c "unset ="
-echo
+echo "___>a ls >b >>c >d"
 bash -c ">a ls >b >>c >d"
-echo
+echo "___./efwufkk"
 bash -c "./efwufkk"
-echo
+echo "___cd $HOME/Documents"
 bash -c "cd $HOME/Documents"
-echo
+echo "___echo bonjour > $test"
 bash -c "echo bonjour > $test"
-echo
+echo "___cd $HOME/Bureau"
 bash -c "cd $HOME/Bureau"
-echo
+echo "___unset a c=10"
 bash -c "unset a c=10"
-echo
+echo "___echo ~"
 bash -c "echo ~"
-echo
+echo "___export var=at"
 bash -c "export var=at"
-echo
+echo "___c$var Makefile"
 bash -c "c$var Makefile"
-echo
+echo "___cat < input.txt | wc"
 bash -c "cat < input.txt | wc"
-echo
-bash -c "$LESS$VAR"
+echo "___rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1"
 bash -c "rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1"
+echo "___exit"
+bash -c "exit"
+echo "___e''c""h''o'' "c"'o'""u'cou'"
+bash -c "e''c""h''o'' "c"'o'""u'cou'"
+echo "___"h ey" hey|<hey"
+bash -c ""h ey" hey|<hey"
+echo "___echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $"
+bash -c "echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $"
+echo "___echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $"
+bash -c "echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $"
+echo "___echo asdv >/dev/stdout| ls -la -> test this"
+bash -c "echo asdv >/dev/stdout| ls -la -> test this"
+echo "___echo $$$$$$"
+bash -c "echo $$$$$$"
+echo "___echo gerigh >/dev/stdout| ls -las"
+bash -c "echo gerigh >/dev/stdout| ls -las"
+echo "___cat "test" >> outfilr"
+bash -c "cat "test" >> outfilr"
+echo "___cat Makefile > outfilr | grep $ >> outfilr"
+bash -c "cat Makefile > outfilr | grep $ >> outfilr"
+echo "___cat Makefile | grep $ > outfilr"
+bash -c "cat Makefile | grep $ > outfilr"
+echo "___echo a$a"b"'c d'"
+bash -c "echo a$a"b"'c d'"
+echo "___>> test >test > >"
+bash -c ">> test >test > >"
+echo "___| >> test >test > >"
+bash -c "| >> test >test > >"
+echo "___>> test >test >"
+bash -c ">> test >test >"
+echo "___<< >> test >test <"
+bash -c "<< >> test >test <"
+echo "___>> >test >test <"
+bash -c ">> >test >test <"
+echo "___echo bonjour > $test"
+bash -c "echo bonjour > $test"
+echo "___ls <> abc"
+bash -c "ls <> abc"
+echo "___cat<f2|wc"
+bash -c "cat<f2|wc"
+echo "___export var="cat Makefile | grep >""
+bash -c "export var="cat Makefile | grep >""
+echo "___echo $var"
+bash -c "echo $var"
+echo "___echo $"HOME""
+bash -c "echo $"HOME""
+echo "___|"
+bash -c "|"
+echo "___cat < test"
+bash -c "cat < test"
+echo "___echo bonjour ||"
+bash -c "echo bonjour ||"
+echo "___>a cat <b >>c"
+bash -c ">a cat <b >>c"
+echo "___exit 0 | exit 1"
+bash -c "exit 0 | exit 1"
+echo "___exho 2 >> out1 > out2"
+bash -c "exho 2 >> out1 > out2"
+echo "___<a cat <b <c"
+bash -c "<a cat <b <c"
+echo "___cat Makefile | grep pr | head -n 5 | cd test /dev/bin"
+bash -c "cat Makefile | grep pr | head -n 5 | cd test /dev/bin"
+echo "___echo $?"
+bash -c "echo $?"
+echo "___$bla"
+bash -c "$bla"
+echo "___cat Makefile | grep pr | head -n 5 | hello"
+bash -c "cat Makefile | grep pr | head -n 5 | hello"
+echo "___echo $?"
+bash -c "echo $?"
+echo "___>a ls <machin >>c >d"
+bash -c ">a ls <machin >>c >d"
+echo "___echo 2 > out1 >> out2"
+bash -c "echo 2 > out1 >> out2"
+echo "___echo bonjour > > out"
+bash -c "echo bonjour > > out"
+echo "___$"
+bash -c "$"
+echo "___exit 1 | exit 0"
+bash -c "exit 1 | exit 0"
+echo "___echo 2 >> out1 > out2"
+bash -c "echo 2 >> out1 > out2"
+echo "___echo bonjour ||"
+bash -c "echo bonjour ||"
+echo "___| echo"
+bash -c "| echo"
+echo "___<a cat <b <c"
+bash -c "<a cat <b <c"
+echo "___cat Makefile | grep pr | head -n 5 | cat test /dev/bin"
+bash -c "cat Makefile | grep pr | head -n 5 | cat test /dev/bin"
+echo "___cat -e > test1 < test2"
+bash -c "cat -e > test1 < test2"
+echo "___echo $ a"
+bash -c "echo $ a"
+echo "___echo ?$"
+bash -c "echo ?$"
+echo "___unset a """
+bash -c "unset a """
+echo "___unset 1_aa"
+bash -c "unset 1_aa"
+echo "___unset """
+bash -c "unset """
+echo "___export var"
+bash -c "export var"
+echo "___export var=test"
+bash -c "export var=test"
+echo "___unset "" a"
+bash -c "unset "" a"
+echo "___unset LOL ROR"
+bash -c "unset LOL ROR"
+echo "___pwd lalala"
+bash -c "pwd lalala"
+echo "___export "HI=hi""
+bash -c "export "HI=hi""
+echo "___echo "" bonjour"
+bash -c "echo "" bonjour"
+echo "___cd -"
+bash -c "cd -"
+echo "___export $var=test"
+bash -c "export $var=test"
+echo "___unset "" test"
+bash -c "unset "" test"
+echo "___export "" test=abc"
+bash -c "export "" test=abc"
+echo "___pwd a b c d"
+bash -c "pwd a b c d"
+echo "___unset a1=10"
+bash -c "unset a1=10"
+echo "___echo "$tests" "Makefile""
+bash -c "echo "$tests" "Makefile""
+echo "___export "" | unset """
+bash -c "export "" | unset """
+echo "___unset var1"
+bash -c "unset var1"
+echo "___echo bonjour |"
+bash -c "echo bonjour |"
+echo "___../a.out"
+bash -c "../a.out"
+echo "___echo $USER$var\$USER$USER\$USERtest$USER"
+bash -c "echo $USER$var\$USER$USER\$USERtest$USER"
+echo "___echo "\\\$HOME""
+bash -c "echo "\\\$HOME""
+echo "___sdfs > abc"
+bash -c "sdfs > abc"
+echo "___.."
+bash -c ".."
+echo "___>file"
+bash -c ">file"
+echo "___cat < <"
+bash -c "cat < <"
+echo "___						"
+bash -c "						"
+echo "___cd ms      "
+bash -c "cd ms      "
+echo "___/bin/echo bonjour"
+bash -c "/bin/echo bonjour"
+echo "___echo -n simple"
+bash -c "echo -n simple"
+echo "___cat | cat | cat | ls"
+bash -c "cat | cat | cat | ls"
+echo "___ifcat <f2| wc -"
+bash -c "ifcat <f2| wc -"
+echo "___unset a c"
+bash -c "unset a c"
+echo "___pwd"
+bash -c "pwd"
+echo "___echo"
+bash -c "echo"
+echo "___ls | grep t"
+bash -c "ls | grep t"
+echo "___export a=6 b=8 c=9"
+bash -c "export a=6 b=8 c=9"
+echo "___echo bonjour >>> test"
+bash -c "echo bonjour >>> test"
+echo "___ls><abc"
+bash -c "ls><abc"
+echo "___echo -n -n -nnnn -nnnnm"
+bash -c "echo -n -n -nnnn -nnnnm"
+echo "___echo -n lalalal"
+bash -c "echo -n lalalal"
+echo "___sleep 5 | exit"
+bash -c "sleep 5 | exit"
+echo "___echo "$HOME""
+bash -c "echo "$HOME""
+echo "___export LOL=lala ROR=rar"
+bash -c "export LOL=lala ROR=rar"
+echo "___export 111=222"
+bash -c "export 111=222"
+echo "___echo	a"
+bash -c "echo	a"
+echo "___ls | exit"
+bash -c "ls | exit"
+echo "___export a=5 a=7 a=8"
+bash -c "export a=5 a=7 a=8"
+echo "___echo "$tests""Makefile""
+bash -c "echo "$tests""Makefile""
+echo "___not_cmd"
+bash -c "not_cmd"
+echo "___echo $var bonjour"
+bash -c "echo $var bonjour"
+echo "___cd $var"
+bash -c "cd $var"
+echo "___echo '$HOME'"
+bash -c "echo '$HOME'"
+echo "___hello|world"
+bash -c "hello|world"
+echo "___echo "\n \n \n""
+bash -c "echo "\n \n \n""
+echo "___cd ../../../../../.."
+bash -c "cd ../../../../../.."
+echo "___cat Makefile | grep pr | head -n 5 cd file_not_exit"
+bash -c "cat Makefile | grep pr | head -n 5 cd file_not_exit"
+echo "___sort <abc | grep test"
+bash -c "sort <abc | grep test"
+echo "___echo a'bcd'e"
+bash -c "echo a'bcd'e"
+echo "___echo "$   a""
+bash -c "echo "$   a""
+echo "___echo $?"
+bash -c "echo $?"
+echo "___cd no_file"
+bash -c "cd no_file"
+echo "___env"
+bash -c "env"
+echo "___echo "$tests"Makefiles"
+bash -c "echo "$tests"Makefiles"
+echo "___echo "$HOME""
+bash -c "echo "$HOME""
+echo "___echo test > file test1"
+bash -c "echo test > file test1"
+echo "___echo ""$HOME"""
+bash -c "echo ""$HOME"""
+echo "___"""
+bash -c """"
+echo "___export var="cat Makefile | grep >""
+bash -c "export var="cat Makefile | grep >""
+echo "___export "111"="222""
+bash -c "export "111"="222""
+echo "___expot "" test=a"
+bash -c "expot "" test=a"
+echo "___env"
+bash -c "env"
+echo "___pwd a"
+bash -c "pwd a"
+echo "___env -i ./minishell"
+bash -c "env -i ./minishell"
+echo "___echo $SHLVL"
+bash -c "echo $SHLVL"
+echo "___cd a b c d"
+bash -c "cd a b c d"
+echo "___cd ~"
+bash -c "cd ~"
+echo "___echo \s"
+bash -c "echo \s"
+echo "___/bin/ls"
+bash -c "/bin/ls"
+echo "___echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME""
+bash -c "echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME""
+echo "___ls   	 	 	   -l    	 			 	-all"
+bash -c "ls   	 	 	   -l    	 			 	-all"
+echo "___echo a"bc"d"
+bash -c "echo a"bc"d"
+echo "___cat < Makefile | grep gcc > output"
+bash -c "cat < Makefile | grep gcc > output"
+echo "___eho $HO"ME""
+bash -c "eho $HO"ME""
+echo "___export a=10"
+bash -c "export a=10"
+echo "___not_cmd"
+bash -c "not_cmd"
+echo "___echo -nABC"
+bash -c "echo -nABC"
+echo "___cd var1 var2 var3"
+bash -c "cd var1 var2 var3"
+echo "___echo abcd"
+bash -c "echo abcd"
+echo "___> a echo Hello World!"
+bash -c "> a echo Hello World!"
+echo "___c. ./path_not_found"
+bash -c "c. ./path_not_found"
+echo "___echo "12\"""
+bash -c "echo "12\"""
+echo "___/bin/echo bonjour"
+bash -c "/bin/echo bonjour"
+echo "___echo > a Hello Wordl!"
+bash -c "echo > a Hello Wordl!"
+echo "___echo "\\\\\$HOME""
+bash -c "echo "\\\\\$HOME""
+echo "___cat Makefile | grep pr | head -n 5 | hello"
+bash -c "cat Makefile | grep pr | head -n 5 | hello"
+echo "___echo -n"
+bash -c "echo -n"
+echo "___cd ../../../../../.."
+bash -c "cd ../../../../../.."
+echo "___/binn/ls"
+bash -c "/binn/ls"
+echo "___not_cmd bonjour > salut"
+bash -c "not_cmd bonjour > salut"
+echo "___cat < >"
+bash -c "cat < >"
+echo "___echo test > file test1"
+bash -c "echo test > file test1"
+echo "___env -i ./minishell"
+bash -c "env -i ./minishell"
+echo "___export "111=222""
+bash -c "export "111=222""
+echo "___echo simple"
+bash -c "echo simple"
+echo "___echo "'abc'""
+bash -c "echo "'abc'""
+echo "___cd "minishell          ""
+bash -c "cd "minishell          ""
+echo "___ort _abc=1"
+bash -c "ort _abc=1"
+echo "___ls >> abc"
+bash -c "ls >> abc"
+echo "___cd /home/user42/"
+bash -c "cd /home/user42/"
+echo "___ls qwerty"
+bash -c "ls qwerty"
+echo "___$LESS$VAR"
+bash -c "$LESS$VAR"
+echo "___echo |"
+bash -c "echo |"
+echo "___echo 2 > out1 >> out2"
+bash -c "echo 2 > out1 >> out2"
+echo "___sort < abc"
+bash -c "sort < abc"
+echo "___echo "\n \n \\n""
+bash -c "echo "\n \n \\n""
+echo "___echo "'$HOME'""
+bash -c "echo "'$HOME'""
+echo "___$SHLVL"
+bash -c "$SHLVL"
+echo "___$bla"
+bash -c "$bla"
+echo "___echo '$HOME'"
+bash -c "echo '$HOME'"
+echo "___export ""  et unset """
+bash -c "export ""  et unset """
+echo "___exit 1 2 3 a"
+bash -c "exit 1 2 3 a"
+echo "___                         "
+bash -c "                         "
+echo "___echo >"
+bash -c "echo >"
+echo "___sleep 5 | exit"
+bash -c "sleep 5 | exit"
+echo "___not_cmd bonjour > salut"
+bash -c "not_cmd bonjour > salut"
+echo "___sort | ls"
+bash -c "sort | ls"
+echo "___export "test=ici"=coucou"
+bash -c "export "test=ici"=coucou"
+echo "___cat > >"
+bash -c "cat > >"
+echo "___export "HI= hi""
+bash -c "export "HI= hi""
+echo "___cat < test"
+bash -c "cat < test"
+echo "___echo '"abc"'"
+bash -c "echo '"abc"'"
+echo "___cat bla"
+bash -c "cat bla"
+echo "___echo $HOME"
+bash -c "echo $HOME"
+echo "___/bin/ls -lrt"
+bash -c "/bin/ls -lrt"
+echo "___cd ."
+bash -c "cd ."
+echo "___ls > abc"
+bash -c "ls > abc"
+echo "___cd ../../.."
+bash -c "cd ../../.."
+echo "___export 'a'='b'"
+bash -c "export 'a'='b'"
+echo "___cat abc | grep t > pqr"
+bash -c "cat abc | grep t > pqr"
+echo "___> log echo coucou"
+bash -c "> log echo coucou"
+echo "___> a ls > b < Makefile"
+bash -c "> a ls > b < Makefile"
+echo "___echo hudifg d | | hugdfihd"
+bash -c "echo hudifg d | | hugdfihd"
+echo "___echo bonjour >>> test"
+bash -c "echo bonjour >>> test"
+echo "___unset ="
+bash -c "unset ="
+echo "___>a ls >b >>c >d"
+bash -c ">a ls >b >>c >d"
+echo "___./efwufkk"
+bash -c "./efwufkk"
+echo "___cd $HOME/Documents"
+bash -c "cd $HOME/Documents"
+echo "___echo bonjour > $test"
+bash -c "echo bonjour > $test"
+echo "___cd $HOME/Bureau"
+bash -c "cd $HOME/Bureau"
+echo "___unset a c=10"
+bash -c "unset a c=10"
+echo "___echo ~"
+bash -c "echo ~"
+echo "___export var=at"
+bash -c "export var=at"
+echo "___c$var Makefile"
+bash -c "c$var Makefile"
+echo "___cat < input.txt | wc"
+bash -c "cat < input.txt | wc"
+bash -c "rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1"
+bash -c "exit"

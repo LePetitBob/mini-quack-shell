@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:10:02 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/26 03:04:38 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	expand_manager(t_token **it, t_env *env)
 	if (!arr)
 	{
 		tokenize_expanded_vars(arr, it);
+		ft_freetab(arr);
 		return ;
 	}
 	join_vars(&arr);

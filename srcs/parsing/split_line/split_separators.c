@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:50:22 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:08:39 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/26 02:29:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	check_separator(char *(**args), int i_args)
 void	separate_separator(char *(**args), char *sep, int i_args)
 {
 	char	*tmp;
+	char	*del_sep;
 
 	tmp = NULL;
 	if (ft_strcmp((*args)[i_args], sep) == 0)
@@ -79,7 +80,11 @@ void	separate_separator(char *(**args), char *sep, int i_args)
 	if (ft_strlen((*args)[i_args]) > 1)
 		tmp = ft_del_one((*args)[i_args], ft_strsrch((*args)[i_args], sep[0]));
 	if (ft_strlen(sep) > 1)
-		tmp = ft_del_one(tmp, ft_strsrch((*args)[i_args], sep[0]));
+	{
+		del_sep = ft_del_one(tmp, ft_strsrch((*args)[i_args], sep[0]));
+		free(tmp);
+		tmp = del_sep;
+	}
 	free((*args)[i_args]);
 	(*args)[i_args] = ft_strdup(sep);
 	*args = ft_insert_tab(*args, tmp, i_args + 1);

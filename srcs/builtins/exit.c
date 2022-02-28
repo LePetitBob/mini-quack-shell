@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 16:26:06 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/02/28 16:30:57 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	ft_exit(char **err, t_env *env, int is_piped)
 		else
 			clear_and_exit(err, env);
 	}
+	ft_freetab(err);
 	if (i <= 2)
 	{
-		ft_freetab(err);
 		rl_clear_history();
 		ft_clear(env);
 		exit(errcode);
 	}
-	write(2, "too many arguments\n", 19);
+	error_manager(ERNO_EXIT_ARGS, "exit");
 }

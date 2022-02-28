@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 07:46:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/25 05:13:59 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,6 @@ void	tmp_pipe(int std)
 		close(tmppipe[0]);
 }
 
-//here: fd[1] is unset; his value is gabagge memory
-//here: fd[3]=STDOUT
-//here: fd[4] is either : unset | dup of fd[0] which has garbagge memory in
 void	redirection(t_cmd *cmd, int fd[6])
 {
 	t_token	*tmp;

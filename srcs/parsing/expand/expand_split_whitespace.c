@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 04:09:47 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/23 07:34:53 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/02/26 03:15:53 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	add_non_whitespace(char *(**arr), char *cpy)
 	char	**tmp;
 
 	if (!cpy)
+	{
 		tmp = ft_erase(*arr, 0, 1);
+		ft_freetab(*arr);
+	}
 	else
 	{
 		tmp = ft_add_tab(*arr, cpy);

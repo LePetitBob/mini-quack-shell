@@ -1,3 +1,4 @@
+pwd
 e''c""h''o'' "c"'o'""u'cou'
 "h ey" hey|<hey
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
@@ -45,22 +46,17 @@ cat Makefile | grep pr | head -n 5 | cat test /dev/bin
 cat -e > test1 < test2
 echo $ a
 echo ?$
-exit -
 unset a ""
 unset 1_aa
 unset ""
 export var
 export var=test
-exit -1
-exit -abc
 unset "" a
 unset LOL ROR
 pwd lalala
 export "HI=hi"
-exit abc
 echo "" bonjour
 cd -
-exit -18abc
 export $var=test
 unset "" test
 export "" test=abc
@@ -71,21 +67,17 @@ export "" | unset ""
 unset var1
 echo bonjour |
 ../a.out
-exit
 echo $USER$var\$USER$USER\$USERtest$USER
 echo "\\\$HOME"
 sdfs > abc
-exit -10
 ..
 >file
-exit 999999
-cat >file
 cat < <
 						
 cd ms      
 /bin/echo bonjour
 echo -n simple
-cat | cat | cat | ls
+# cat | cat | cat | ls
 ifcat <f2| wc -
 unset a c
 pwd
@@ -96,7 +88,6 @@ echo bonjour >>> test
 ls><abc
 echo -n -n -nnnn -nnnnm
 echo -n lalalal
-echo 'abc
 sleep 5 | exit
 echo "$HOME"
 export LOL=lala ROR=rar
@@ -158,7 +149,6 @@ cd ../../../../../..
 not_cmd bonjour > salut
 cat < >
 echo test > file test1
-exit +10
 env -i ./minishell
 export "111=222"
 echo simple
@@ -183,7 +173,7 @@ exit 1 2 3 a
 echo >
 sleep 5 | exit
 not_cmd bonjour > salut
-sort | ls
+# sort | ls
 export "test=ici"=coucou
 cat > >
 export "HI= hi"
@@ -212,4 +202,6 @@ echo ~
 export var=at
 c$var Makefile
 cat < input.txt | wc
-rm -rf a abc b c d file log out1 out2 outfilr output pqr salut test test1
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+rm -rf '$test' a abc file out1 out2 outfilr test test1
+exit

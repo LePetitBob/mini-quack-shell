@@ -1,0 +1,15 @@
+exit 0 | exit 1
+exit 1 | exit 0
+exit -
+exit -1
+exit -abc
+exit abc
+exit -18abc
+exit
+exit -10
+exit 999999
+sleep 5 | exit
+ls | exit
+exit +10
+exit 1 2 3 a
+sleep 5 | exit
