@@ -17,21 +17,18 @@ extern int	g_exit_status;
 int	format_unset_ok(char *var, int *err)
 {
 	int		i;
-	int		j;
 
-	j = 0;
 	i = 0;
-	while (var[j] && ((var[j] > 64 && var[j] < 91)
-			|| (var[j] > 96 && var[j] < 123) || (var[j] > 46
-				&& var[j] < 58) || var[j] == '_'))
-		j++;
-	if (var[j])
+	while (var[i] && ((var[i] > 64 && var[i] < 91)
+			|| (var[i] > 96 && var[i] < 123) || (var[i] > 46
+				&& var[i] < 58)))
+		i++;
+	if (var[i] || (var[0] < 65 || var[0] > 122
+			|| (var[0] > 90 && var[0] < 97)))
 	{
-		while (var[i] && var[i] != '=')
-			i++;
-		write(2, "mini-quack-shell: `", 19);
+		write(2, "mini-quack-shell: unset: `", 26);
 		write(2, var, ft_strlen(var));
-		write(2, "`: not a valid identifier\n", 26);
+		write(2, "\': not a valid identifier\n", 26);
 		*err = 1;
 		return (0);
 	}

@@ -19,7 +19,7 @@ void	ft_env(t_env *env)
 	tmp = env->first;
 	while (tmp)
 	{
-		if (tmp->value[0])
+		if (tmp->to_print == 1)
 		{
 			write(1, tmp->name, ft_strlen(tmp->name));
 			write(1, "=", 1);
@@ -62,7 +62,7 @@ void	get_env(char **envp, t_env *env)
 			j++;
 		env_split[0] = strndup(envp[i], j);
 		env_split[1] = strdup(envp[i] + j + 1);
-		ft_addlast(env, env_split[0], env_split[1]);
+		ft_addlast(env, env_split[0], env_split[1], 1);
 		free(env_split[0]);
 		free(env_split[1]);
 		i++;
@@ -79,7 +79,8 @@ int	env_size(t_env *env)
 	tmp_env = env->first;
 	while (tmp_env)
 	{
-		i++;
+		if (tmp_env->to_print == 1)
+			i++;
 		tmp_env = tmp_env->next;
 	}
 	return (i);
@@ -99,14 +100,17 @@ char	**env_cl_to_arr(t_env *env)
 	tmp_env = env->first;
 	while (tmp_env)
 	{
-		tmp[0] = ft_strdup(tmp_env->name);
-		tmp[1] = ft_strjoin(tmp[0], "=");
-		tmp[2] = ft_strdup(tmp_env->value);
-		env_arr[i] = ft_strjoin(tmp[1], tmp[2]);
-		free(tmp[0]);
-		free(tmp[1]);
-		free(tmp[2]);
-		i++;
+		if (tmp_env->to_print)
+		{
+			tmp[0] = ft_strdup(tmp_env->name);
+			tmp[1] = ft_strjoin(tmp[0], "=");
+			tmp[2] = ft_strdup(tmp_env->value);
+			env_arr[i] = ft_strjoin(tmp[1], tmp[2]);
+			free(tmp[0]);
+			free(tmp[1]);
+			free(tmp[2]);
+			i++;
+		}
 		tmp_env = tmp_env->next;
 	}
 	return (env_arr);

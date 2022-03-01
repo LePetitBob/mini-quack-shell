@@ -82,6 +82,7 @@ typedef struct s_env_var
 {
 	char				*name;
 	char				*value;
+	int					to_print;
 	struct s_env_var	*next;
 }				t_env_var;
 
@@ -179,7 +180,7 @@ void		ft_export(t_env *env, char **cmd);
 void		replace_var(t_env *env, char *name, char *value);
 int			existing_name(t_env *env, char *name);
 int			format_export_ok(char *var);
-void		add_env_var(t_env *env, char **var);
+void		add_env_var(t_env *env, char **var, int to_print);
 //* UNSET
 int			format_unset_ok(char *var, int *err);
 void		ft_unset(t_env *env, char **name);
@@ -223,9 +224,8 @@ void		rm_cmds(t_cmd_lst *cmd);
 void		get_here_doc(char *limiter);
 
 //			CL
-t_env_var	*ft_create_elem(char *name, char *value);
-void		ft_addfirst(t_env *env, char *name, char *value);
-void		ft_addlast(t_env *env, char *name, char *value);
+t_env_var	*ft_create_elem(char *name, char *value, int to_print);
+void		ft_addlast(t_env *env, char *name, char *value, int to_print);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 

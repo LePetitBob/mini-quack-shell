@@ -60,9 +60,9 @@ void	ft_exit(char **err, t_env *env, int is_piped)
 		else
 			clear_and_exit(err, env);
 	}
-	ft_freetab(err);
 	if (i <= 2)
 	{
+		ft_freetab(err);
 		rl_clear_history();
 		ft_clear(env);
 		exit(errcode);

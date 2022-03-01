@@ -12,7 +12,7 @@
 
 #include "mini_quack_shell.h"
 
-t_env_var	*ft_create_elem(char *name, char *value)
+t_env_var	*ft_create_elem(char *name, char *value, int to_print)
 {
 	t_env_var	*new;
 
@@ -20,27 +20,16 @@ t_env_var	*ft_create_elem(char *name, char *value)
 	new->name = ft_strdup(name);
 	new->value = ft_strdup(value);
 	new->next = NULL;
+	new->to_print = to_print;
 	return (new);
 }
 
-void	ft_addfirst(t_env *env, char *name, char *value)
-{
-	t_env_var	*a;
-
-	a = ft_create_elem(name, value);
-	if (env->first)
-		a->next = env->first;
-	else
-		a->next = NULL;
-	env->first = a;
-}
-
-void	ft_addlast(t_env *env, char *name, char *value)
+void	ft_addlast(t_env *env, char *name, char *value, int to_print)
 {
 	t_env_var	*a;
 	t_env_var	*tmp;
 
-	a = ft_create_elem(name, value);
+	a = ft_create_elem(name, value, to_print);
 	a->next = NULL;
 	tmp = env->first;
 	if (env->first)
