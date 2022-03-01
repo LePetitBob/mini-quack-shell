@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/28 18:45:16 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 01:40:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds)
 		{
 			rl_clear_history();
 			ft_clear(env);
+			rm_cmds(cmds);
 			//TODO ->PIPE g_exit_status
 			exit(g_exit_status);
 		}

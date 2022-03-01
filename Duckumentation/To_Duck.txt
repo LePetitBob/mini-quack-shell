@@ -7,9 +7,6 @@ cd -> CDPATH
 
 see expand_var.c to expand possible env var in HERE_DOC
 
-redir before check of cmd so doesn't return command not found in console
-exho 2 >> out1 > out2
-
 ------------------------
 
 Albe :

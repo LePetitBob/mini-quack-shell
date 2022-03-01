@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 18:44:15 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 01:36:27 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define ERNO_ACCESS 8
 # define ERNO_NOCMD 9
 # define ERNO_ISDIR 10
-# define ERNO_EXIT_ARGS 11
+# define ERNO_ARGS 11
 
 # define NO_TYPE -1
 # define WORD 0
@@ -207,10 +207,10 @@ int			invalid_filename(char *filename, char *FILENO, int *i);
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
 	t_cmd_lst *cmds);
-void		ft_exec(char **cmd, char **envp);
+void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);
-void		cmd_not_found(char *cmd, char **tmp_paths);
+void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds);
 int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
@@ -231,7 +231,6 @@ void		ft_addlast(t_env *env, char *name, char *value);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
-void		ft_exec(char **cmd, char **envp);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);
 int			is_num(char *s);

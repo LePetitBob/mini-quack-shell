@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/28 18:44:29 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 01:33:09 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,39 @@
 
 extern int	g_exit_status;
 
-void	cmd_not_found(char *cmd, char **tmp_paths)
+void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
 	if (errno == EACCES)
 	{
-		error_manager(ERNO_ACCESS, cmd);
+		error_manager(ERNO_ACCESS, cmd[0]);
 		g_exit_status = 1;
 	}
 	else if (errno == ENOTDIR)
 	{
-		error_manager(ERNO_ISDIR, cmd);
+		error_manager(ERNO_ISDIR, cmd[0]);
 		g_exit_status = 126;
 	}
-	else if (!cmd || cmd[0] == '\0')
+	else if (!cmd[0] || cmd[0][0] == '\0')
+	{
+		ft_freetab(env);
+		ft_freetab(cmd);
+		ft_freetab(tmp_paths);
+		rm_cmds(cmds);
 		exit(g_exit_status);
+	}
 	else
 	{
-		error_manager(ERNO_NOCMD, cmd);
+		error_manager(ERNO_NOCMD, cmd[0]);
 		g_exit_status = 127;
 	}
+	ft_freetab(env);
+	ft_freetab(cmd);
 	ft_freetab(tmp_paths);
+	rm_cmds(cmds);
 	exit(g_exit_status);
 }
 
-void	ft_exec(char **cmd, char **envp)
+void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 {
 	int		i;
 	char	**tmp_paths;
@@ -46,7 +55,7 @@ void	ft_exec(char **cmd, char **envp)
 	i = 0;
 	if (!cmd[0] || cmd[0][0] == '\0' || ft_strcmp(cmd[0], "..") == 0
 		|| ft_strcmp(cmd[0], ".") == 0)
-		cmd_not_found(cmd[0], NULL);
+		cmd_not_found(cmd, NULL, envp, cmds);
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
 	if (envp[i])
@@ -67,7 +76,7 @@ void	ft_exec(char **cmd, char **envp)
 				break ;
 		}
 	}
-	cmd_not_found(cmd[0], tmp_paths);
+	cmd_not_found(cmd, tmp_paths, envp, cmds);
 	//TODO ->PIPE g_exit_status
 }
 
@@ -134,7 +143,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
 		ft_freetab(str_cmd);
 	if (cmd->pid < 0)
 		exit(errno);
-	if (!cmd->pid)
+	if (cmd->pid == 0)
 	{
 		close_all_fds(fd, cmd);
 		if (is_builtin(str_cmd[0]))
@@ -143,7 +152,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
 		{
 			env_arr = env_cl_to_arr(env);
 			ft_clear(env);
-			ft_exec(str_cmd, env_arr);
+			ft_exec(str_cmd, env_arr, cmds);
 		}
 		ft_freetab(env_arr);
 	}

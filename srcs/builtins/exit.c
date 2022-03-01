@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/28 18:39:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 01:36:27 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 		rm_cmds(cmds);
 		exit(errcode);
 	}
-	error_manager(ERNO_EXIT_ARGS, "exit");
+	error_manager(ERNO_ARGS, "exit");
 }

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 19:02:23 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 01:36:27 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_manager(int erno, char *str)
 		|| erno == ERNO_DROUT || erno == ERNO_NEWLINE)
 		err = get_syntax_error(erno);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
-		|| erno == ERNO_EXIT_ARGS)
+		|| erno == ERNO_ARGS)
 		err = get_cmd_error(erno, str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
@@ -49,7 +49,7 @@ char	*get_cmd_error(int erno, char *cmd)
 		pb = ft_strdup(": command not found\n");
 	if (erno == ERNO_ISDIR)
 		pb = ft_strdup(": Is a directory\n");
-	if (erno == ERNO_EXIT_ARGS)
+	if (erno == ERNO_ARGS)
 		pb = ft_strdup(": too many arguments\n");
 	tmp = ft_strjoin(cmd, pb);
 	free(pb);
