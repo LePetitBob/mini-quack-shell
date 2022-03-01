@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 08:52:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 23:57:31 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,13 @@ char		*get_prompt_prefix(t_env *env);
 //			Split
 void		split_manager(char *line, t_env *env);
 int			syntax_errors(char **args);
-int			misc_errors(char *str, char pb);
+void		misc_error(char *str, char pb, int *index);
 int			pipe_error(char *str);
 
 void		split_seps(char *(**args));
 void		check_separator(char *(**args), int i_args);
 void		separate_separator(char *(**args), char *sep, int i_args);
+char		*del_sep(char *src, int index);
 
 void		split_whitespaces(char *str, char *(**args));
 int			split_skip_quotes(char *(**args), char *str, int *index,

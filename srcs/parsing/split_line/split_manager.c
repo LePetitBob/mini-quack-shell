@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 22:44:12 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 00:03:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,27 @@ int	syntax_errors(char **arr)
 	join_vars(&arr);
 	i = pipe_error(arr[0]);
 	err = ft_strnew(3);
-	if (i == -1 || (misc_errors(arr[0], ';') != -1
-			&& misc_errors(arr[0], ';') < i))
-		i = misc_errors(arr[0], ';');
-	if (i == -1 || (misc_errors(arr[0], '&') != -1
-			&& misc_errors(arr[0], '&') < i))
-		i = misc_errors(arr[0], '&');
-	if (i == -1 || (misc_errors(arr[0], '\\') != -1
-			&& misc_errors(arr[0], '\\') < i))
-		i = misc_errors(arr[0], '\\');
+	misc_error(arr[0], ';', &i);
+	misc_error(arr[0], '&', &i);
+	misc_error(arr[0], '\\', &i);
 	if (i >= 0)
 	{
 		err[0] = arr[0][i];
 		if (ft_strlen(arr[0]) > 1 && ((i <= ft_strlen(arr[0]) - 1
-				&& arr[0][i] == arr[0][i + 1])
+					&& arr[0][i] == arr[0][i + 1])
 				|| (i == ft_strlen(arr[0]) - 1 && arr[0][i] == arr[0][i - 1])))
 			err[1] = arr[0][i];
 		error_manager(ERNO_SYNTAX, err);
-		ft_freetab(arr);
-		free(err);
-		return (EXIT_FAILURE);
+		i = EXIT_FAILURE;
 	}
+	else
+		i = EXIT_SUCCESS;
 	ft_freetab(arr);
 	free(err);
-	return (EXIT_SUCCESS);
+	return (i);
 }
 
-int	misc_errors(char *str, char pb)
+void	misc_error(char *str, char pb, int *index)
 {
 	int	i;
 
@@ -81,10 +75,13 @@ int	misc_errors(char *str, char pb)
 	while (str[i] != '\0')
 	{
 		if (str[i] == pb)
-			return (i);
+			break ;
 		++i;
 	}
-	return (-1);
+	if (str[i] == '\0')
+		i = -1;
+	if (*index == -1 || (i != -1 && i < *index))
+		*index = i;
 }
 
 int	pipe_error(char *str)
