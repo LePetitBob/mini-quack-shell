@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/26 03:04:19 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:58:04 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ void	relink_parent_to_himself(t_token **parent)
 		(*parent)->prev = NULL;
 	}
 	else
-	{
-		no_link_parent(parent);
-		return ;
-	}
+		return (no_link_parent(parent));
 	free(tmp->str);
 	free(tmp);
 	tmp = NULL;

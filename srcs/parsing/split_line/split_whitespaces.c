@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 03:15:08 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:50:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ int	ret_error_quotes(char *str, int i, char *tmp, char *(**args), char quote)
 		err = ft_strnew(2);
 		err[0] = quote;
 		error_manager(ERNO_SYNTAX, err);
-		// if (quote == '\'')
-		// 	error_manager(ERNO_S_QUOTE, NULL);
-		// else
-		// 	error_manager(ERNO_D_QUOTE, NULL);
 		free(err);
 		return (EXIT_FAILURE);
 	}
