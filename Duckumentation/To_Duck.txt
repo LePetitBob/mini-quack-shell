@@ -19,4 +19,27 @@ echo "h ey" > hey| echo hey>hey
 - make syntax error for '&'
 - make syntax error for '&&'
 
+- "h ey" hey|<hey -> permission denied
+
 ----------------------------
+
+LEAKS :
+
+(dunno :
+- "readline")
+==> Normal. Comes from readline, no matter what you do.
+Just forget about it, as the subject precises that you can just ignore it.
+
+exec :
+- Invalid read of size 1
+	- get_cmd_str (execution.c:85)
+	- relink_parent_to_himself (expand_tokenize.c:64)
+- Conditional jump or move depends on uninitialised value(s)
+	-close_wait_clear (cmd_manager.c:70)
+
+parsing :
+- add_non_whitespace (expand_split_whitespace.c:49)
+- Invalid read of size 1
+	- expand_split_manager (expand_split_seps.c:24)
+- Invalid read of size 8
+	- expand_caller (expand_manager.c:29)
