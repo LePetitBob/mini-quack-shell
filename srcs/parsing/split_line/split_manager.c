@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 07:42:55 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:32:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,8 @@ void	split_manager(char *line, t_env *env)
 
 	args = NULL;
 	split_whitespaces(line, &args);
-	// if (!args || syntax_errors(line, ';') == EXIT_FAILURE
-	// 	|| syntax_errors(line, '&') == EXIT_FAILURE)
-	// {
-	// 	free(line);
-	// 	return ;
-	// }
 	split_seps(&args);
-	if (!args || pipe_error(args) == EXIT_FAILURE
-		|| syntax_errors(line, ';') == EXIT_FAILURE
-		|| syntax_errors(line, '&') == EXIT_FAILURE)
+	if (syntax_errors(ft_tabdup(args)) == EXIT_FAILURE)
 	{
 		free(line);
 		ft_freetab(args);
@@ -37,20 +29,33 @@ void	split_manager(char *line, t_env *env)
 	tokenize_manager(&args, env);
 }
 
-int	syntax_errors(char **args)
+int	syntax_errors(char **arr)
 {
-	char	**tmp;
 	char	*err;
 	int		i;
 
-	tmp = ft_tabdup(args);
-	join_vars(&tmp);
-	i = pipe_error(tmp[0]);
-	if (misc_errors(tmp[0], ';') < i)
-		i = misc_errors(tmp[0], ';');
-	if (misc_errors(tmp[0], '&') < i)
-		i = misc_errors(tmp[0], '&');
-	if (i ==)
+	join_vars(&arr);
+	i = pipe_error(arr[0]);
+	err = ft_strnew(3);
+	if (i == -1 || (misc_errors(arr[0], ';') != -1
+			&& misc_errors(arr[0], ';') < i))
+		i = misc_errors(arr[0], ';');
+	if (i == -1 || (misc_errors(arr[0], '&') != -1
+			&& misc_errors(arr[0], '&') < i))
+		i = misc_errors(arr[0], '&');
+	if (i >= 0)
+	{
+		err[0] = arr[0][i];
+		if ((i <= ft_strlen(arr[0]) - 1 && arr[0][i] == arr[0][i + 1])
+			|| (i == ft_strlen(arr[0]) - 1 && arr[0][i] == arr[0][i - 1]))
+			err[1] = arr[0][i];
+		error_manager(ERNO_SYNTAX, err);
+		ft_freetab(arr);
+		free(err);
+		return (EXIT_FAILURE);
+	}
+	ft_freetab(arr);
+	return (EXIT_SUCCESS);
 }
 
 int	misc_errors(char *str, char pb)
