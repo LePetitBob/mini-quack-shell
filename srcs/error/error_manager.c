@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 16:27:33 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 03:23:57 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,16 @@ void	error_manager(int erno, char *str)
 	if (!str)
 		(void)str;
 	prefix = ft_strdup("mini_quack_shell: ");
-	if (erno == ERNO_S_QUOTE || erno == ERNO_D_QUOTE || erno == ERNO_PIPE
-		|| erno == ERNO_RIN || erno == ERNO_HERE_DOC || erno == ERNO_ROUT
-		|| erno == ERNO_DROUT || erno == ERNO_NEWLINE)
-		err = get_syntax_error(erno);
+	if (erno == ERNO_SYNTAX)
+		err = get_syntax_error(str);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
-		|| erno == ERNO_EXIT_ARGS)
+		|| erno == ERNO_ARGS)
 		err = get_cmd_error(erno, str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
 	else
 		final = ft_strdup(err);
-	ft_putstr(final);
+	ft_putstr_fd(final, STDERR_FILENO);
 	free(prefix);
 	free(err);
 	free(final);
@@ -49,34 +47,21 @@ char	*get_cmd_error(int erno, char *cmd)
 		pb = ft_strdup(": command not found\n");
 	if (erno == ERNO_ISDIR)
 		pb = ft_strdup(": Is a directory\n");
-	if (erno == ERNO_EXIT_ARGS)
+	if (erno == ERNO_ARGS)
 		pb = ft_strdup(": too many arguments\n");
 	tmp = ft_strjoin(cmd, pb);
 	free(pb);
 	return (tmp);
 }
 
-char	*get_syntax_error(int erno)
+char	*get_syntax_error(char *str)
 {
 	char	*tmp;
 	char	*pb;
 
-	if (erno == ERNO_S_QUOTE)
-		pb = ft_strdup("\'\'\'");
-	else if (erno == ERNO_D_QUOTE)
-		pb = ft_strdup("\'\"\'");
-	else if (erno == ERNO_PIPE)
-		pb = ft_strdup("\'|\'");
-	else if (erno == ERNO_RIN)
-		pb = ft_strdup("\'<\'");
-	else if (erno == ERNO_HERE_DOC)
-		pb = ft_strdup("\'<<\'");
-	else if (erno == ERNO_ROUT)
-		pb = ft_strdup("\'>\'");
-	else if (erno == ERNO_DROUT)
-		pb = ft_strdup("\'>>\'");
-	else if (erno == ERNO_NEWLINE)
-		pb = ft_strdup("\'newline\'");
+	tmp = ft_strjoin("`", str);
+	pb = ft_strjoin(tmp, "\'");
+	free(tmp);
 	tmp = ft_strjoin("syntax error near unexpected token ", pb);
 	free(pb);
 	pb = ft_strjoin(tmp, "\n");

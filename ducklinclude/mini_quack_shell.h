@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 08:31:30 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/01 08:52:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,11 @@
 # include <errno.h>
 # include "libft.h"
 
-# define ERNO_S_QUOTE 0
-# define ERNO_D_QUOTE 1
-# define ERNO_PIPE 2
-# define ERNO_RIN 3
-# define ERNO_ROUT 4
-# define ERNO_DROUT 5
-# define ERNO_HERE_DOC 6
-# define ERNO_NEWLINE 7
-# define ERNO_ACCESS 8
-# define ERNO_NOCMD 9
-# define ERNO_ISDIR 10
-# define ERNO_EXIT_ARGS 11
+# define ERNO_SYNTAX 0
+# define ERNO_ACCESS 1
+# define ERNO_NOCMD 2
+# define ERNO_ISDIR 3
+# define ERNO_ARGS 4
 
 # define NO_TYPE -1
 # define WORD 0
@@ -97,6 +90,7 @@ t_token		*get_last_token(t_token *tokens);
 t_cmd		*ft_create_cmd(void);
 void		free_token(t_token *tokens);
 void		free_one_token(t_token *token);
+void		free_cmds(t_cmd *cmds);
 
 //			Main
 char		*get_prompt_prefix(t_env *env);
@@ -104,6 +98,9 @@ char		*get_prompt_prefix(t_env *env);
 //?			Parsing
 //			Split
 void		split_manager(char *line, t_env *env);
+int			syntax_errors(char **args);
+int			misc_errors(char *str, char pb);
+int			pipe_error(char *str);
 
 void		split_seps(char *(**args));
 void		check_separator(char *(**args), int i_args);
@@ -166,7 +163,7 @@ void		relink_node_parent(t_token **it, t_token **head);
 
 //?			Builtins
 int			is_builtin(char *cmd);
-void		ft_builtins(char **cmd, t_env *env, int is_piped);
+void		ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds);
 //* PWD
 void		ft_pwd(void);
 //* CD
@@ -192,9 +189,9 @@ int			env_size(t_env *env);
 char		**env_cl_to_arr(t_env *env);
 char		*get_env_name(t_env *env, char *name);
 //* EXIT
-void		ft_exit(char **err, t_env *env, int is_piped);
+void		ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds);
 void		ft_clear(t_env *env);
-void		clear_and_exit(char **err, t_env *env);
+void		clear_and_exit(char **err, t_env *env, t_cmd_lst *cmds);
 int			is_num(char *s);
 //?			Builtins
 
@@ -205,11 +202,13 @@ void		redirection(t_cmd *cmd, int fd[4]);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
-void		execution(t_cmd *cmd, t_env *env, int fd[6], int is_piped);
-void		ft_exec(char **cmd, char **envp);
+void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
+				t_cmd_lst *cmds);
+void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);
-void		cmd_not_found(char *cmd, char **tmp_paths);
+void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
+				t_cmd_lst *cmds);
 int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
@@ -219,7 +218,7 @@ void		init_fds(int fd[6]);
 void		closepipe(int fd[4]);
 void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
-void		rm_here_doc_tmp_file(t_env *env);
+void		rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds);
 void		rm_cmds(t_cmd_lst *cmd);
 void		get_here_doc(char *limiter);
 
@@ -229,7 +228,6 @@ void		ft_addlast(t_env *env, char *name, char *value, int to_print);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 
-void		ft_exec(char **cmd, char **envp);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);
 int			is_num(char *s);
@@ -237,7 +235,7 @@ int			is_num(char *s);
 //?			ERRORS
 void		error_manager(int erno, char *str);
 char		*get_cmd_error(int erno, char *cmd);
-char		*get_syntax_error(int erno);
+char		*get_syntax_error(char *str);
 void		get_error_redir(t_token *next);
 //?
 

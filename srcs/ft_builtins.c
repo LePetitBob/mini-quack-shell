@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtins.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/01 08:55:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/01 01:40:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	is_builtin(char *cmd)
 	return (0);
 }
 
-void	ft_builtins(char **cmd, t_env *env, int is_piped)
+void	ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds)
 {
 	if (!ft_strcmp(cmd[0], "exit"))
-		ft_exit(cmd, env, is_piped);
+		ft_exit(cmd, env, is_piped, cmds);
 	else
 	{
 		if (!ft_strcmp(cmd[0], "pwd"))
@@ -46,6 +46,7 @@ void	ft_builtins(char **cmd, t_env *env, int is_piped)
 			ft_freetab(cmd);
 			rl_clear_history();
 			ft_clear(env);
+			rm_cmds(cmds);
 			//TODO ->PIPE g_exit_status
 			exit(g_exit_status);
 		}

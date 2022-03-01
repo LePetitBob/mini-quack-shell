@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/26 03:48:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 01:36:46 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_cd(char **cmd, t_env *env)
 		i++;
 	if (i > 2)
 	{
-		write(2, "mini-quack-shell: cd: too many arguments\n", 41);
+		error_manager(ERNO_ARGS, "cd");
 		g_exit_status = 1;
 		return ;
 	}

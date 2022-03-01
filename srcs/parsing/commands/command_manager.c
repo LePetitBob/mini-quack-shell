@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/26 05:28:02 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:50:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	command_manager(t_token *tokens, t_env *env)
 				assign_token_cmd(&it_c, &it_t, 1);
 		}
 	}
-	// print_cmds(cmds);
 	cmd_manager(env, cmds);
 }
 

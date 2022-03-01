@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/26 03:02:54 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 22:13:20 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,29 @@ void	split_quotes_expand(char *(**arr), char *str, int *index)
 	ft_freetab(tmp);
 }
 
-void	split_dollar_expand(char *(**arr), char *str, int *index)
+void	split_dollar_expand(char *(**arr), char *str, int *i)
 {
-	char	**tmp;
 	char	*cpy;
 
-	++(*index);
-	if (str[*index] != '\0' && (ft_isalpha(str[*index]) == 0
-			&& str[*index] != '_' && str[*index] != '0'
-			&& str[*index] != '?' && str[*index] != '$'))
+	++(*i);
+	if (str[*i] != '\0' && (ft_isalpha(str[*i]) == 0 && str[*i] != '_'
+			&& str[*i] != '0' && str[*i] != '?' && str[*i] != '$'))
 	{
-		--(*index);
+		--(*i);
 		return ;
 	}
 	cpy = ft_strnew(ft_strlen(str));
-	cpy[0] = str[(*index) - 1];
-	while (str[*index] != '\0' && (ft_isalnum(str[*index]) == 1
-			|| str[*index] == '_'))
+	cpy[0] = str[(*i) - 1];
+	while (str[*i] != '\0' && (ft_isalnum(str[*i]) == 1 || str[*i] == '_'))
 	{
-		cpy[ft_strlen(cpy)] = str[*index];
-		++(*index);
+		cpy[ft_strlen(cpy)] = str[*i];
+		++(*i);
 	}
-	if (str[*index] == '?')
-		cpy[ft_strlen(cpy)] = str[*index];
-	if (ft_isalnum(str[*index]) == 0 && str[*index] != '_'
-		&& str[*index] != '0' && str[*index] != '?')
-		--(*index);
-	tmp = ft_add_tab(*arr, cpy);
+	if (str[*i] == '?')
+		cpy[ft_strlen(cpy)] = str[*i];
+	if (ft_isalnum(str[*i]) == 0 && str[*i] != '_' && str[*i] != '0'
+		&& str[*i] != '?')
+		--(*i);
+	*arr = ft_add_tab(*arr, cpy);
 	free(cpy);
-	*arr = ft_tabdup(tmp);
-	ft_freetab(tmp);
 }

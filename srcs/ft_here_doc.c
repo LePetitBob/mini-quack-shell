@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/25 17:56:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/01 02:05:40 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	get_here_doc(char *limiter)
 	chdir("../");
 }
 
-void	rm_here_doc_tmp_file(t_env *env)
+void	rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds)
 {
 	pid_t		pidtmp;
 	char		*tmp[3];
@@ -47,7 +47,7 @@ void	rm_here_doc_tmp_file(t_env *env)
 			tmp[1] = ft_strdup(HERE_DOC_PATH);
 			tmp[2] = NULL;
 			ft_clear(env);
-			ft_exec(tmp, tmpenv);
+			ft_exec(tmp, tmpenv, cmds);
 		}
 	}
 	ft_freetab(tmpenv);
