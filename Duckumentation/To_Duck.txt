@@ -1,10 +1,7 @@
 Vincent :
 
-<<<<<<< HEAD
-=======
 cat srcs/debug/m_alltest | valgrind  ./minishell &>srcs/debug/m_log.txt
 
->>>>>>> debugGeneral
 test tricky redir when implemented (echo lol >/dev/full)
 cd -> CDPATH
 

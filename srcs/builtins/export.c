@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 15:00:30 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/01 09:06:46 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,35 @@ void	add_env_var(t_env *env, char **var)
 		ft_addlast(env, var[0], "");
 }
 
+void	export_display(t_env *env)
+{
+	t_env_var	*tmp;
+
+	tmp = env->first;
+	while (tmp)
+	{
+		write(1, tmp->name, ft_strlen(tmp->name));
+		if (tmp->value[0])
+		{
+			write(1, "=", 1);
+			write(1, tmp->value, ft_strlen(tmp->value));
+		}
+		write(1, "\n", 1);
+		tmp = tmp->next;
+	}
+}
+
 void	ft_export(t_env *env, char **cmd)
 {
 	int		i[2];
 	char	*var[2];
 
 	i[0] = 0;
+	if (!cmd[1])
+	{
+		export_display(env);
+		return ;
+	}
 	while (cmd[i[0]])
 	{
 		if (format_export_ok(cmd[i[0]]))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/26 06:11:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:38:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	ft_env(t_env *env)
 	tmp = env->first;
 	while (tmp)
 	{
-		write(1, tmp->name, ft_strlen(tmp->name));
-		write(1, "=", 1);
-		write(1, tmp->value, ft_strlen(tmp->value));
-		write(1, "\n", 1);
+		if (tmp->value[0])
+		{
+			write(1, tmp->name, ft_strlen(tmp->name));
+			write(1, "=", 1);
+			write(1, tmp->value, ft_strlen(tmp->value));
+			write(1, "\n", 1);
+		}
 		tmp = tmp->next;
 	}
 }

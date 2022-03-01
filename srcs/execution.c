@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/28 16:54:40 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/01 08:54:34 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 {
 	if (cmd->next)
 	{
-		if (fd[0] != -1)
+		// if (fd[0] != -1)
 			close(fd[0]);
-		if (fd[1] != -1)
+		// if (fd[1] != -1)
 			close(fd[1]);
 	}
-	if (fd[2] != -1)
+	// if (fd[2] != -1)
 		close(fd[2]);
-	if (fd[3] != -1)
+	// if (fd[3] != -1)
 		close(fd[3]);
 	if (fd[4] != -1)
 		close(fd[4]);
