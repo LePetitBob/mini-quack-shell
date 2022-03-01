@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 01:36:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 02:06:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ void		init_fds(int fd[6]);
 void		closepipe(int fd[4]);
 void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
-void		rm_here_doc_tmp_file(t_env *env);
+void		rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds);
 void		rm_cmds(t_cmd_lst *cmd);
 void		get_here_doc(char *limiter);
 
