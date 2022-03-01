@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/28 23:45:45 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 02:06:20 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 		tmp = tmp->next;
 	}
 	rm_cmds(cmds);
-	rm_here_doc_tmp_file(env);
+	rm_here_doc_tmp_file(env, cmds);
 }
 
 //here: fd[0] is unset; becomes pipe(0)

@@ -78,7 +78,6 @@ cat < <
 cd ms      
 /bin/echo bonjour
 echo -n simple
-# cat | cat | cat | ls
 ifcat <f2| wc -
 unset a c
 pwd
@@ -174,7 +173,6 @@ exit 1 2 3 a
 echo >
 sleep 5 | exit
 not_cmd bonjour > salut
-# sort | ls
 export "test=ici"=coucou
 cat > >
 export "HI= hi"

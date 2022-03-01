@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 01:36:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/01 08:18:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,11 @@
 # include <errno.h>
 # include "libft.h"
 
-# define ERNO_S_QUOTE 0
-# define ERNO_D_QUOTE 1
-# define ERNO_PIPE 2
-# define ERNO_RIN 3
-# define ERNO_ROUT 4
-# define ERNO_DROUT 5
-# define ERNO_HERE_DOC 6
-# define ERNO_NEWLINE 7
-# define ERNO_ACCESS 8
-# define ERNO_NOCMD 9
-# define ERNO_ISDIR 10
-# define ERNO_ARGS 11
+# define ERNO_SYNTAX 0
+# define ERNO_ACCESS 1
+# define ERNO_NOCMD 2
+# define ERNO_ISDIR 3
+# define ERNO_ARGS 4
 
 # define NO_TYPE -1
 # define WORD 0
@@ -104,6 +97,9 @@ char		*get_prompt_prefix(t_env *env);
 //?			Parsing
 //			Split
 void		split_manager(char *line, t_env *env);
+int			syntax_errors(char **args);
+int			misc_errors(char *str, char pb);
+int			pipe_error(char *str);
 
 void		split_seps(char *(**args));
 void		check_separator(char *(**args), int i_args);
@@ -220,7 +216,7 @@ void		init_fds(int fd[6]);
 void		closepipe(int fd[4]);
 void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
-void		rm_here_doc_tmp_file(t_env *env);
+void		rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds);
 void		rm_cmds(t_cmd_lst *cmd);
 void		get_here_doc(char *limiter);
 
@@ -238,7 +234,7 @@ int			is_num(char *s);
 //?			ERRORS
 void		error_manager(int erno, char *str);
 char		*get_cmd_error(int erno, char *cmd);
-char		*get_syntax_error(int erno);
+char		*get_syntax_error(char *str);
 void		get_error_redir(t_token *next);
 //?
 
