@@ -7,8 +7,6 @@ cd -> CDPATH
 
 see expand_var.c to expand possible env var in HERE_DOC
 
-exit +10 -> should be considered a valid numeric argument
-
 ------------------------
 
 Albe :

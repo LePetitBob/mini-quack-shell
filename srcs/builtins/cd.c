@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/01 01:36:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:17:02 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,38 +52,39 @@ char	*create_path(t_env *env, char **cmd)
 	return (path);
 }
 
+void	free_tmp(char **tmp)
+{
+	free(tmp[0]);
+	free(tmp[1]);
+	free(tmp[2]);
+	free(tmp[3]);
+}
+
 void	env_change_and_error_management(t_env *env, char **cmd, int i)
 {
-	char	*path;
-	char	*pwd;
-	char	*tmp[2];
+	char	*tmp[4];
 
-	tmp[0] = NULL;
-	tmp[1] = NULL;
 	if (!cmd[1] && getenv("HOME"))
 		chdir(getenv("HOME"));
 	if (!cmd[1] && getenv("HOME"))
 		return ;
 	else if (cmd[1][0] == '~')
-		path = create_path(env, cmd);
+		tmp[2] = create_path(env, cmd);
 	else
-		path = ft_strdup(cmd[1]);
-	pwd = getcwd(NULL, 0);
-	i = chdir(path);
+		tmp[2] = ft_strdup(cmd[1]);
+	tmp[3] = getcwd(NULL, 0);
+	i = chdir(tmp[2]);
 	tmp[0] = get_in_env(env, "OLDPWD");
 	tmp[1] = get_in_env(env, "PWD");
 	if (i < 0)
 		invalid_path(cmd);
 	if (i >= 0 && tmp[0])
-		replace_var(env, "OLDPWD", pwd);
-	free(pwd);
-	pwd = getcwd(NULL, 0);
+		replace_var(env, "OLDPWD", tmp[3]);
+	free(tmp[3]);
+	tmp[3] = getcwd(NULL, 0);
 	if (i >= 0 && tmp[1])
-		replace_var(env, "PWD", pwd);
-	free(tmp[0]);
-	free(tmp[1]);
-	free(pwd);
-	free(path);
+		replace_var(env, "PWD", tmp[3]);
+	free_tmp(tmp);
 	g_exit_status = i;
 }
 

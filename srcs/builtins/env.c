@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/01 08:38:04 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/02 00:12:54 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,6 @@ void	ft_env(t_env *env)
 		}
 		tmp = tmp->next;
 	}
-}
-
-char	*get_env_name(t_env *env, char *name)
-{
-	t_env_var	*tmp;
-
-	tmp = env->first;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->name, name))
-			return (ft_strdup(tmp->value));
-		tmp = tmp->next;
-	}
-	return (NULL);
 }
 
 void	get_env(char **envp, t_env *env)
@@ -86,11 +72,25 @@ int	env_size(t_env *env)
 	return (i);
 }
 
+char	*get_env_arr(t_env_var *tmp_env)
+{
+	char	*tmp[3];
+	char	*res;
+
+	tmp[0] = ft_strdup(tmp_env->name);
+	tmp[1] = ft_strjoin(tmp[0], "=");
+	tmp[2] = ft_strdup(tmp_env->value);
+	res = ft_strjoin(tmp[1], tmp[2]);
+	free(tmp[0]);
+	free(tmp[1]);
+	free(tmp[2]);
+	return (res);
+}
+
 char	**env_cl_to_arr(t_env *env)
 {
 	int			i;
 	char		**env_arr;
-	char		*tmp[3];
 	t_env_var	*tmp_env;
 
 	i = env_size(env);
@@ -102,13 +102,7 @@ char	**env_cl_to_arr(t_env *env)
 	{
 		if (tmp_env->to_print)
 		{
-			tmp[0] = ft_strdup(tmp_env->name);
-			tmp[1] = ft_strjoin(tmp[0], "=");
-			tmp[2] = ft_strdup(tmp_env->value);
-			env_arr[i] = ft_strjoin(tmp[1], tmp[2]);
-			free(tmp[0]);
-			free(tmp[1]);
-			free(tmp[2]);
+			env_arr[i] = get_env_arr(tmp_env);
 			i++;
 		}
 		tmp_env = tmp_env->next;

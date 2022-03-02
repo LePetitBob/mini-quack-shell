@@ -6,13 +6,40 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 04:38:06 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/02 00:41:01 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
 extern int	g_exit_status;
+
+char	*get_env_name(t_env *env, char *name)
+{
+	t_env_var	*tmp;
+
+	tmp = env->first;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->name, name))
+			return (ft_strdup(tmp->value));
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+void	add_env_var(t_env *env, char **var, int to_print)
+{
+	if (existing_name(env, var[0]) && to_print == 1)
+	{
+		replace_var(env, var[0], var[1]);
+		return ;
+	}
+	if (ft_strcmp(var[1], ""))
+		ft_addlast(env, var[0], var[1], to_print);
+	else
+		ft_addlast(env, var[0], "", to_print);
+}
 
 int	format_unset_ok(char *var, int *err)
 {

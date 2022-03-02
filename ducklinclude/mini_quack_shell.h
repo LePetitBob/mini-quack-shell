@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 08:52:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:46:20 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,19 +197,19 @@ int			is_num(char *s);
 
 //* REDIR
 void		apply_redir(char *str, int type, t_cmd *cmd, int *i);
+void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
-void		redirection(t_cmd *cmd, int fd[4]);
+void		redirection(t_cmd *cmd, int fd[6]);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
-void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
-				t_cmd_lst *cmds);
+void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
-int			is_builtin(char *cmd);
+int			is_builtin(char* cmd);
 
 //* CMDS_MANAGER
 void		cmd_manager(t_env *env, t_cmd *cmd);
