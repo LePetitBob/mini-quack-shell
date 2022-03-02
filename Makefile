@@ -43,7 +43,7 @@ SRCS = builtins/pwd.c \
 		split_quotes_dollar.c \
 		expand_split_seps.c \
 		expand_split_whitespace.c \
-		expand_var.c \
+		expand_var.c expand_var_utils.c \
 		expand_join.c \
 		expand_tokenize.c \
 		expand_utils.c \

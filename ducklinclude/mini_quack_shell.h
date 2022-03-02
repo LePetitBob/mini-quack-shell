@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 04:23:31 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 06:28:00 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,9 @@ void		add_non_whitespace(char *(**arr), char *cpy);
 void		expand_skip_quotes(char *(**arr), char **cpy, int *index);
 
 void		expand_vars_manager(char *(**arr), t_env *env);
-void		expand_var(char *(*str), t_env *env);
+void		expand_var(char **str, t_env *env, int hd);
+
+int			check_quote_expand(char *str);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
 char		*get_exp_var_name(char *str, int *index);
 void		join_pre_sufix_expanded_var(char **str, int i, char **value,
