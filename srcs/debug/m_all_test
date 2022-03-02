@@ -159,7 +159,11 @@ echo $USER$var\$USER$USER\$USERtest$USER
 
 echo "\\\\$HOME"
 
+export TMPPATH=$PATH
 unset PATH
+echo $PATH
+export PATH=$TMPPATH
+unset TMPPATH
 echo $PATH
 
 sdfs > abc
@@ -170,8 +174,6 @@ sdfs > abc
 
 export test=" foo bar"
 echo """$test"""
-
-cat >file
 
 cat < <
 
@@ -426,8 +428,6 @@ exit 12 | ls
 echo >
 
 unset a1
-
-sort | ls
 
 /bin/ls -lrt
 
