@@ -1,206 +1,468 @@
 pwd
+
 e''c""h''o'' "c"'o'""u'cou'
+
 "h ey" hey|<hey
+
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
+
 echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
+
 echo asdv >/dev/stdout| ls -la -> test this
+
 echo $$$$$$
+
 echo gerigh >/dev/stdout| ls -las
+
 cat "test" >> outfilr
+
 cat Makefile > outfilr | grep $ >> outfilr
+
 cat Makefile | grep $ > outfilr
+
 echo a$a"b"'c d'
+
 >> test >test > >
+
 | >> test >test > >
+
 >> test >test >
+
 << >> test >test <
+
 >> >test >test <
+
+
+
 echo bonjour > $test
+ecport test="o1 o2"
+echo bonjour > $test
+
+mkdir a
+mkdir a/b
+cd a/b
+rm -r ../../a
+cd ..
+
 ls <> abc
+
+export loop='bonjour$loop'
+echo $loop
+
 cat<f2|wc
+
 export var="cat Makefile | grep >"
 echo $var
+
 echo $"HOME"
+
 |
+
 cat < test
-echo bonjour ||
+
+echo bonjour | |
+
 >a cat <b >>c
+
 exit 0 | exit 1
-exho 2 >> out1 > out2
+
 echo 2 >> out1 > out2
+
 <a cat <b <c
-cat Makefile | grep pr | head -n 5 | cd test /dev/bin
+
+cat Makefile | grep pe | head -n 5 | cd srcs
 echo $?
-$bla
+cd ..
+
+$blah
+
 cat Makefile | grep pr | head -n 5 | hello
 echo $?
+
 >a ls <machin >>c >d
+
 echo 2 > out1 >> out2
+
 echo bonjour > > out
+
 $
+
 exit 1 | exit 0
+
 echo 2 >> out1 > out2
-echo bonjour ||
+
 | echo
+
+touch a | touch c
 <a cat <b <c
-cat Makefile | grep pr | head -n 5 | cat test /dev/bin
+
 cat -e > test1 < test2
+
 echo $ a
+
 echo ?$
+
 unset a ""
+
 unset 1_aa
+
+unset var
+export var=coucou
+export var=test
+
+unset "" a
+
+echo ""
+
+unset LOL ROR
+
+pwd lalala
+
+export "HI =hi"
+
+echo "" bonjour
+
+cd -
+
+unset var
+export $var=test
+
+unset "" test
+echo $?
+
+export "" test=a
+echo $?
+
+pwd a b c d
+
+unset a1=10
+
+echo "$tests" "Makefile"
+
+export ""
 unset ""
+
+unset var1
+
+unset var
+export var=a
+export $var=test
+echo $var $a
+
+echo bonjour |;
+
+cd ms               
+
+echo $HOME
+
+echo $USER$var\$USER$USER\$USERtest$USER
+
+echo "\\\\$HOME"
+
+unset PATH
+echo $PATH
+
+sdfs > abc
+
+..
+
+>file
+
+export test=" foo bar"
+echo """$test"""
+
+cat >file
+
+cat < <
+
+/bin/echo bonjour
+
+echo -n simple
+
+echo "a | echo b" | echo c
+
+unset test
+export test="  foo   bar  "
+echo ab$test
+
+ifcat < f2| wc -
+
+echo coucou | ;
+
+unset a c
+
+export | env
+export
+env
+
+pwd
+
+unset var
+export var="truc  "
+echo $var | cat -e
+
+unset test
+export test=a
+echo $test
+
+echo
+
+echo bonjour > $test
+
+Makefile
+
+ls | grep t
+
+unset b
+export a=6 b=8 c=9
+
+echo $CDPATH
+export TMPCD=$CDPATH
+export CDPATH=/
+cd home/..
+export CDPATH=$TMPCD
+unset TMPCD
+echo $CDPATH
+
+export $var=s\ -la
+l$var
+
+ls | grep t
+pwd
+
+echo bonjour >>> test
+
+ls><abc
+
+echo -n -n -nnnn -nnnnm | echo a
+
+echo -n lalalala
+
+echo 'abc
+'
+
+sleep 5 | exit
+
+echo "$HOME"
+
+export LOL=lala ROR=rara
+
+export test=" foo   bar "
+echo ab"$test" | cat -e
+
+unset var
+
+export 111=222
+
+cd /
+
+echo	a
+
+ls | exit
+
+export $var
+
+;
+
+;;
+
+echo bonjour | ls
+
+unset a
+export a=5 a=7 a=8
+
+echo "$tests""Makefile"
+
+not_cmd
+
+./duckinclude/mini_quack_shell.h
+
+echo "
+"
+
+unset test
+export "test=ici"=coucou
+echo $test
+
+unset var
+echo $var bonjour
+
+export var=$HOME
+cd $var
+
+unset var
+export var=tes"st | echo $var
+"
+
+echo '$HOME'
+
+echo "\n \n \n"
+
+cd ../../../../../..
+pwd
+cd $HOME
+
 export var
 export var=test
-unset "" a
-unset LOL ROR
-pwd lalala
-export "HI=hi"
-echo "" bonjour
-cd -
-export $var=test
-unset "" test
-export "" test=abc
-pwd a b c d
-unset a1=10
-echo "$tests" "Makefile"
-export "" | unset ""
-unset var1
-echo bonjour |
-../a.out
-echo $USER$var\$USER$USER\$USERtest$USER
-echo "\\\$HOME"
-sdfs > abc
-..
->file
-cat < <
-						
-cd ms      
-/bin/echo bonjour
-echo -n simple
-ifcat <f2| wc -
-unset a c
-pwd
-echo
-ls | grep t
-export a=6 b=8 c=9
-echo bonjour >>> test
-ls><abc
-echo -n -n -nnnn -nnnnm
-echo -n lalalal
-sleep 5 | exit
-echo "$HOME"
-export LOL=lala ROR=rar
-export 111=222
-echo	a
-ls | exit
-export a=5 a=7 a=8
-echo "$tests""Makefile"
-not_cmd
-echo $var bonjour
-cd $var
-echo '$HOME'
-hello|world
-echo "\n \n \n"
-cd ../../../../../..
-cat Makefile | grep pr | head -n 5 cd file_not_exit
-sort <abc | grep test
+
+sort < abc | grep tes
+
 echo a'bcd'e
-echo "$   a"
+
+export TMPPATH=$PATH
+unset PATH
+ls
+export PATH=$TMPPATH
+unset TMPPATH
+echo $PATH
+
+echo "$    a"
 echo $?
+
 cd no_file
-env
-echo "$tests"Makefiles
-echo "$HOME"
+
+echo "$test"Makefile
+
+export test=123
 echo test > file test1
-echo ""$HOME""
+
+l^Ds
+
+echo -n -nnn hello -n | echo a
+
 ""
-export var="cat Makefile | grep >"
-export "111"="222"
-expot "" test=a
+
 env
+export
+env
+
+export var ="cat Makefile | grep >"
+
+unset 111
+export "111"="222"
+
+> test | echo blabla
+rm test
+
+unset test
+export "" test=a
+env
+
 pwd a
+
 env -i ./minishell
 echo $SHLVL
-cd a b c d
-cd ~
-echo \s
-/bin/ls
-echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME"
-ls   	 	 	   -l    	 			 	-all
-echo a"bc"d
-cat < Makefile | grep gcc > output
-eho $HO"ME"
-export a=10
-not_cmd
-echo -nABC
-cd var1 var2 var3
-echo abcd
-> a echo Hello World!
-c. ./path_not_found
-echo "12\""
-/bin/echo bonjour
-echo > a Hello Wordl!
-echo "\\\\\$HOME"
-cat Makefile | grep pr | head -n 5 | hello
-echo -n
-cd ../../../../../..
-/binn/ls
-not_cmd bonjour > salut
-cat < >
-echo test > file test1
-env -i ./minishell
-export "111=222"
-echo simple
-echo "'abc'"
-cd "minishell          "
-ort _abc=1
-ls >> abc
-cd /home/user42/
-ls qwerty
-$LESS$VAR
-echo |
-echo 2 > out1 >> out2
-sort < abc
-echo "\n \n \\n"
-echo "'$HOME'"
-$SHLVL
-$bla
-echo '$HOME'
-export ""  et unset ""
-exit 1 2 3 a
-                         
-echo >
-sleep 5 | exit
-not_cmd bonjour > salut
-export "test=ici"=coucou
-cat > >
-export "HI= hi"
-cat < test
-echo '"abc"'
-cat bla
+
+export TMPHOME=$HOME
+unset HOME
+cd
+export HOME=$TMPHOME
+unset HOME
 echo $HOME
+
+\0\0\0\0\0\0\0\0\0
+
+cd a b c d
+
+cd ~
+
+echo a | echo b | echo c
+
+/bin/ls
+
+echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME"
+
+  		ls   	 	   		     -l 		 	    -all	   
+
+cat < Makefile | grep gcc > output
+
+echo $HO"ME"
+
+unset a
+export a=10
+
+echo -nABC
+
+echo "bip | bip ; coyotte > <"
+
+cd srcs parsing commands
+pwd
+cd $HOME
+
+> a echo Hello World!
+
+cd ./path_not_found
+
+echo > a Hello World!
+
+not_cmd bonjour > salut
+
+cat < >
+
+cd echo
+cd $?
+
+env -i ./minishell
+
+export "111=222"
+
+cd "minishell         "
+
+export _abc=10
+ls >> abc
+
+ls qwerty
+
+export 1abc=123
+
+$LESS$VAR
+
+$SHLVL
+
+exit 12 | ls
+
+                     
+
+echo >
+
+unset a1
+
+sort | ls
+
 /bin/ls -lrt
-cd .
-ls > abc
-cd ../../..
+
+cat bla
+
+echo $a
 export 'a'='b'
-cat abc | grep t > pqr
+echo $a
+
+cat Makefile | grep t > pqr
+
 > log echo coucou
-> a ls > b < Makefile
+
+> a ls > v < Makefile
+
 echo hudifg d | | hugdfihd
+
 echo bonjour >>> test
+
 unset =
+
 >a ls >b >>c >d
+
 ./efwufkk
+
 cd $HOME/Documents
-echo bonjour > $test
-cd $HOME/Bureau
+
 unset a c=10
-echo ~
-export var=at
-c$var Makefile
+
 cat < input.txt | wc
+
+cd srcs srcs srcs srcs srcs srcs srcs srcs
+
+
+
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
-rm -rf '$test' a abc file out1 out2 outfilr test test1
+# rm -rf $test abc file out1 out2 outfilr output test test1
 exit
