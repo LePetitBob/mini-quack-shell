@@ -6,9 +6,10 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 06:12:08 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 06:32:54 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "mini_quack_shell.h"
 
@@ -69,14 +70,23 @@ int	syntax_errors(char **arr)
 
 void	misc_error(char *str, char pb, int *index)
 {
-	int	i;
+	char	quote;
+	int		i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == pb)
 			break ;
-		++i;
+		if (str[i] == '\'' || str[i] == '\"')
+		{
+			quote = str[i];
+			++i;
+			while (str[i] != '\0' && str[i] != quote)
+				++i;
+		}
+		else
+			++i;
 	}
 	if (str[i] == '\0')
 		i = -1;
@@ -86,7 +96,8 @@ void	misc_error(char *str, char pb, int *index)
 
 int	pipe_error(char *str)
 {
-	int	i;
+	char	quote;
+	int		i;
 
 	if (str[0] == '|')
 		return (0);
@@ -97,7 +108,15 @@ int	pipe_error(char *str)
 	{
 		if (str[i] == '|' && str[i + 1] == '|')
 			return (i);
-		++i;
+		if (str[i] == '\'' || str[i] == '\"')
+		{
+			quote = str[i];
+			++i;
+			while (str[i] != '\0' && str[i] != quote)
+				++i;
+		}
+		else
+			++i;
 	}
 	return (-1);
 }
