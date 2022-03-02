@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 02:06:20 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 00:08:00 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 		if (tmp->next)
 			pipe(fd);
 		redirection(tmp, fd);
-		execution(tmp, env, fd, fd[5], cmds);
+		execution(tmp, env, fd, cmds);
 		tmp = tmp->next;
 	}
 	close_wait_clear(cmds, fd, env);

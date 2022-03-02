@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 23:57:31 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 04:23:31 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_env_var
 {
 	char				*name;
 	char				*value;
+	int					to_print;
 	struct s_env_var	*next;
 }				t_env_var;
 
@@ -177,7 +178,7 @@ void		ft_export(t_env *env, char **cmd);
 void		replace_var(t_env *env, char *name, char *value);
 int			existing_name(t_env *env, char *name);
 int			format_export_ok(char *var);
-void		add_env_var(t_env *env, char **var);
+void		add_env_var(t_env *env, char **var, int to_print);
 //* UNSET
 int			format_unset_ok(char *var, int *err);
 void		ft_unset(t_env *env, char **name);
@@ -197,19 +198,19 @@ int			is_num(char *s);
 
 //* REDIR
 void		apply_redir(char *str, int type, t_cmd *cmd, int *i);
+void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
-void		redirection(t_cmd *cmd, int fd[4]);
+void		redirection(t_cmd *cmd, int fd[6]);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
-void		execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
-				t_cmd_lst *cmds);
+void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
-int			is_builtin(char *cmd);
+int			is_builtin(char* cmd);
 
 //* CMDS_MANAGER
 void		cmd_manager(t_env *env, t_cmd *cmd);
@@ -223,9 +224,8 @@ void		rm_cmds(t_cmd_lst *cmd);
 void		get_here_doc(char *limiter);
 
 //			CL
-t_env_var	*ft_create_elem(char *name, char *value);
-void		ft_addfirst(t_env *env, char *name, char *value);
-void		ft_addlast(t_env *env, char *name, char *value);
+t_env_var	*ft_create_elem(char *name, char *value, int to_print);
+void		ft_addlast(t_env *env, char *name, char *value, int to_print);
 void		ft_rmvar(t_env *env, char *var_name);
 //			CL
 

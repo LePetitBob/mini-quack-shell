@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/26 06:11:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 00:12:54 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,15 @@ void	ft_env(t_env *env)
 	tmp = env->first;
 	while (tmp)
 	{
-		write(1, tmp->name, ft_strlen(tmp->name));
-		write(1, "=", 1);
-		write(1, tmp->value, ft_strlen(tmp->value));
-		write(1, "\n", 1);
+		if (tmp->to_print == 1)
+		{
+			write(1, tmp->name, ft_strlen(tmp->name));
+			write(1, "=", 1);
+			write(1, tmp->value, ft_strlen(tmp->value));
+			write(1, "\n", 1);
+		}
 		tmp = tmp->next;
 	}
-}
-
-char	*get_env_name(t_env *env, char *name)
-{
-	t_env_var	*tmp;
-
-	tmp = env->first;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->name, name))
-			return (ft_strdup(tmp->value));
-		tmp = tmp->next;
-	}
-	return (NULL);
 }
 
 void	get_env(char **envp, t_env *env)
@@ -59,7 +48,7 @@ void	get_env(char **envp, t_env *env)
 			j++;
 		env_split[0] = strndup(envp[i], j);
 		env_split[1] = strdup(envp[i] + j + 1);
-		ft_addlast(env, env_split[0], env_split[1]);
+		ft_addlast(env, env_split[0], env_split[1], 1);
 		free(env_split[0]);
 		free(env_split[1]);
 		i++;
@@ -76,17 +65,32 @@ int	env_size(t_env *env)
 	tmp_env = env->first;
 	while (tmp_env)
 	{
-		i++;
+		if (tmp_env->to_print == 1)
+			i++;
 		tmp_env = tmp_env->next;
 	}
 	return (i);
+}
+
+char	*get_env_arr(t_env_var *tmp_env)
+{
+	char	*tmp[3];
+	char	*res;
+
+	tmp[0] = ft_strdup(tmp_env->name);
+	tmp[1] = ft_strjoin(tmp[0], "=");
+	tmp[2] = ft_strdup(tmp_env->value);
+	res = ft_strjoin(tmp[1], tmp[2]);
+	free(tmp[0]);
+	free(tmp[1]);
+	free(tmp[2]);
+	return (res);
 }
 
 char	**env_cl_to_arr(t_env *env)
 {
 	int			i;
 	char		**env_arr;
-	char		*tmp[3];
 	t_env_var	*tmp_env;
 
 	i = env_size(env);
@@ -96,14 +100,11 @@ char	**env_cl_to_arr(t_env *env)
 	tmp_env = env->first;
 	while (tmp_env)
 	{
-		tmp[0] = ft_strdup(tmp_env->name);
-		tmp[1] = ft_strjoin(tmp[0], "=");
-		tmp[2] = ft_strdup(tmp_env->value);
-		env_arr[i] = ft_strjoin(tmp[1], tmp[2]);
-		free(tmp[0]);
-		free(tmp[1]);
-		free(tmp[2]);
-		i++;
+		if (tmp_env->to_print)
+		{
+			env_arr[i] = get_env_arr(tmp_env);
+			i++;
+		}
 		tmp_env = tmp_env->next;
 	}
 	return (env_arr);

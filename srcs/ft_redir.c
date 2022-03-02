@@ -3,42 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/25 05:13:59 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:09:18 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
 extern int	g_exit_status;
-
-int	invalid_filename(char *filename, char *FILENO, int *i)
-{
-	if (!access(filename, F_OK))
-	{
-		if ((!ft_strcmp(FILENO, "OUT") && !access(filename, W_OK))
-			|| (!ft_strcmp(FILENO, "IN") && !access(filename, R_OK)))
-			return (0);
-		*i = 1;
-		write(2, "mini-quack-shell: ", 18);
-		write(2, filename, ft_strlen(filename));
-		write(2, ": permission denied\n", 20);
-		g_exit_status = 1;
-		return (1);
-	}
-	else if (!ft_strcmp(FILENO, "IN"))
-	{
-		*i = 1;
-		write(2, "mini-quack-shell: no such file or directory: ", 45);
-		write(2, filename, ft_strlen(filename));
-		write(2, "\n", 1);
-		g_exit_status = 1;
-		return (1);
-	}
-	return (0);
-}
 
 void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 {
@@ -90,11 +64,18 @@ void	tmp_pipe(int std)
 
 	pipe(tmppipe);
 	dup2(tmppipe[std], std);
-	close(tmppipe[std]);
-	if (std == 0)
-		close(tmppipe[1]);
-	else if (std == 1)
-		close(tmppipe[0]);
+	close(tmppipe[1]);
+	close(tmppipe[0]);
+}
+
+void	redir_pipe(t_cmd *cmd, int fd[6])
+{
+	if (cmd->prev)
+		dup2(fd[4], STDIN_FILENO);
+	if (cmd->next)
+		dup2(fd[1], STDOUT_FILENO);
+	else
+		dup2(fd[3], STDOUT_FILENO);
 }
 
 void	redirection(t_cmd *cmd, int fd[6])
@@ -111,24 +92,17 @@ void	redirection(t_cmd *cmd, int fd[6])
 			break ;
 		tmp = tmp->next;
 	}
-	if (cmd->prev)
-		dup2(fd[4], STDIN_FILENO);
-	if (cmd->next)
-		dup2(fd[1], STDOUT_FILENO);
-	else
-		dup2(fd[3], STDOUT_FILENO);
+	redir_pipe(cmd, fd);
 	if (cmd->fdin != -1 && cmd->fdin != 0)
-	{
 		dup2(cmd->fdin, STDIN_FILENO);
+	if (cmd->fdin != -1 && cmd->fdin != 0)
 		close(cmd->fdin);
-	}
 	else if (cmd->fdin == -1)
 		tmp_pipe(0);
 	if (cmd->fdout != -1 && cmd->fdout != 1)
-	{
 		dup2(cmd->fdout, STDOUT_FILENO);
+	if (cmd->fdout != -1 && cmd->fdout != 1)
 		close(cmd->fdout);
-	}
 	else if (cmd->fdout == -1)
 		tmp_pipe(1);
 }

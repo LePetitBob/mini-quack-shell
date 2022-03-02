@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/01 01:33:09 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:45:58 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 	if (envp[i])
 	{
 		if (cmd[0] && cmd[0][0] == '/' && access(cmd[0], X_OK) == 0)
-			execve(cmd[0], cmd /*+ sizeof(char *)*/, envp);
+			execve(cmd[0], cmd, envp);
 		tmp_paths = ft_split(envp[i] + 5, ':');
 		i = 0;
 		while (tmp_paths[i])
@@ -95,6 +95,8 @@ char	**get_cmd_str(t_cmd *cmd)
 	}
 	tmp = NULL;
 	str_cmd = malloc(sizeof(char *) * (i + 1));
+	if (!str_cmd)
+		return (NULL);
 	str_cmd[i] = NULL;
 	tmp = cmd->arg;
 	i = 0;
@@ -111,31 +113,26 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 {
 	if (cmd->next)
 	{
-		if (fd[0] != -1)
-			close(fd[0]);
-		if (fd[1] != -1)
-			close(fd[1]);
+		close(fd[0]);
+		close(fd[1]);
 	}
-	if (fd[2] != -1)
-		close(fd[2]);
-	if (fd[3] != -1)
-		close(fd[3]);
+	close(fd[2]);
+	close(fd[3]);
 	if (fd[4] != -1)
 		close(fd[4]);
 }
 
-void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
-	t_cmd_lst *cmds)
+void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 {
 	char	**str_cmd;
 	char	**env_arr;
 
 	str_cmd = get_cmd_str(cmd);
-	if (is_builtin(str_cmd[0]) && !is_piped)
+	if (is_builtin(str_cmd[0]) && !fd[5])
 	{
 		close(fd[2]);
 		close(fd[3]);
-		ft_builtins(str_cmd, env, is_piped, cmds);
+		ft_builtins(str_cmd, env, fd[5], cmds);
 		return ;
 	}
 	cmd->pid = fork();
@@ -147,14 +144,13 @@ void	execution(t_cmd *cmd, t_env *env, int fd[4], int is_piped,
 	{
 		close_all_fds(fd, cmd);
 		if (is_builtin(str_cmd[0]))
-			ft_builtins(str_cmd, env, is_piped, cmds);
+			ft_builtins(str_cmd, env, fd[5], cmds);
 		else
 		{
 			env_arr = env_cl_to_arr(env);
 			ft_clear(env);
 			ft_exec(str_cmd, env_arr, cmds);
 		}
-		ft_freetab(env_arr);
 	}
 	ft_freetab(str_cmd);
 }

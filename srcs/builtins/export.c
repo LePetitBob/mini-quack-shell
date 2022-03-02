@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/24 15:00:30 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/02 03:30:55 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ int	format_export_ok(char *var)
 	i = 0;
 	while (var[i] && var[i] != '=' && ((var[i] > 64 && var[i] < 91)
 			|| (var[i] > 96 && var[i] < 123) || (var[i] > 46
-				&& var[i] < 58) || var[i] == '_'))
+				&& var[i] < 58)))
 		i++;
 	if ((var[i] && var[i] != '=') || (var[0] < 65 || var[0] > 122
 			|| (var[0] > 90 && var[0] < 97)))
 	{
-		write(2, "mini-quack-shell: `", 19);
+		write(2, "mini-quack-shell: export: `", 27);
 		write(2, var, ft_strlen(var));
-		write(2, "`: not a valid identifier\n", 26);
+		write(2, "\': not a valid identifier\n", 26);
 		g_exit_status = 1;
 		return (0);
 	}
@@ -64,17 +64,23 @@ void	replace_var(t_env *env, char *name, char *value)
 		tmp->value = ft_strdup("");
 }
 
-void	add_env_var(t_env *env, char **var)
+void	export_display(t_env *env)
 {
-	if (existing_name(env, var[0]))
+	t_env_var	*tmp;
+
+	tmp = env->first;
+	while (tmp)
 	{
-		replace_var(env, var[0], var[1]);
-		return ;
+		write(1, tmp->name, ft_strlen(tmp->name));
+		if (tmp->to_print == 1)
+		{
+			write(1, "=\"", 2);
+			write(1, tmp->value, ft_strlen(tmp->value));
+			write(1, "\"", 1);
+		}
+		write(1, "\n", 1);
+		tmp = tmp->next;
 	}
-	if (ft_strcmp(var[1], ""))
-		ft_addlast(env, var[0], var[1]);
-	else
-		ft_addlast(env, var[0], "");
 }
 
 void	ft_export(t_env *env, char **cmd)
@@ -82,7 +88,12 @@ void	ft_export(t_env *env, char **cmd)
 	int		i[2];
 	char	*var[2];
 
-	i[0] = 0;
+	i[0] = 1;
+	if (!cmd[1])
+	{
+		export_display(env);
+		return ;
+	}
 	while (cmd[i[0]])
 	{
 		if (format_export_ok(cmd[i[0]]))
@@ -97,10 +108,16 @@ void	ft_export(t_env *env, char **cmd)
 					var[1] = ft_strdup("");
 				else
 					var[1] = ft_strdup(cmd[i[0]] + i[1] + 1);
-				add_env_var(env, var);
-				free(var[0]);
-				free(var[1]);
+				add_env_var(env, var, 1);
 			}
+			else if (!cmd[i[0]][i[1]])
+			{
+				var[0] = ft_strdup(cmd[i[0]]);
+				var[1] = ft_strdup("");
+				add_env_var(env, var, 0);
+			}
+			free(var[0]);
+			free(var[1]);
 		}
 		i[0]++;
 	}

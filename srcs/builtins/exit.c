@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/01 01:36:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:27:55 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_clear(t_env *env)
 	t_env_var	*tmp;
 	t_env_var	*index;
 
+	rl_clear_history();
 	if (env->first)
 	{
 		index = env->first;
