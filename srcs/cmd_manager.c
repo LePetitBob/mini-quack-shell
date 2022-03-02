@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 00:08:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/02 05:14:27 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	fd[4] = -1;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
-	//fd[4] = dup(STDIN_FILENO);
 	while (tmp)
 	{
 		if (tmp->prev)
@@ -115,7 +114,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 			closepipe(fd);
 		if (tmp->next)
 			pipe(fd);
-		redirection(tmp, fd);
+		redirection(tmp, fd, env);
 		execution(tmp, env, fd, cmds);
 		tmp = tmp->next;
 	}

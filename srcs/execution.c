@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 02:45:58 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/02 03:51:00 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	{
 		error_manager(ERNO_ISDIR, cmd[0]);
 		g_exit_status = 126;
-	}
-	else if (!cmd[0] || cmd[0][0] == '\0')
-	{
-		ft_freetab(env);
-		ft_freetab(cmd);
-		ft_freetab(tmp_paths);
-		rm_cmds(cmds);
-		exit(g_exit_status);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 01:09:18 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/02 05:45:07 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,26 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 	}
 }
 
-void	apply_redir(char *str, int type, t_cmd *cmd, int *i)
+void	apply_redir(t_token *tmp, t_cmd *cmd, int *i, t_env *env)
 {
-	if (type == HERE_DOC)
+	if (tmp->type == HERE_DOC)
 	{
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
-		get_here_doc(str);
+		get_here_doc(tmp->str, env);
 		cmd->fdin = open(HERE_DOC_PATH, O_RDONLY);
 	}
-	else if (type == RIN)
+	else if (tmp->type == RIN)
 	{
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
-		if (!invalid_filename(str, "IN", i))
-			cmd->fdin = open(str, O_RDONLY);
+		if (!invalid_filename(tmp->str, "IN", i))
+			cmd->fdin = open(tmp->str, O_RDONLY);
 		else
 			cmd->fdin = -1;
 	}
-	else if (type == ROUT || type == DROUT)
-		redir_out(cmd, str, type, i);
+	else if (tmp->type == ROUT || tmp->type == DROUT)
+		redir_out(cmd, tmp->str, tmp->type, i);
 }
 
 void	tmp_pipe(int std)
@@ -78,7 +78,7 @@ void	redir_pipe(t_cmd *cmd, int fd[6])
 		dup2(fd[3], STDOUT_FILENO);
 }
 
-void	redirection(t_cmd *cmd, int fd[6])
+void	redirection(t_cmd *cmd, int fd[6], t_env *env)
 {
 	t_token	*tmp;
 	int		i;
@@ -87,7 +87,7 @@ void	redirection(t_cmd *cmd, int fd[6])
 	tmp = cmd->redir;
 	while (tmp)
 	{
-		apply_redir(tmp->str, tmp->type, cmd, &i);
+		apply_redir(tmp, cmd, &i, env);
 		if (i != 0)
 			break ;
 		tmp = tmp->next;
