@@ -5,6 +5,9 @@ cat srcs/debug/m_alltest | valgrind  ./minishell &>srcs/debug/m_log.txt
 test tricky redir when implemented (echo lol >/dev/full)
 cd -> CDPATH
 
+ON PEUT PLUS LQNCER MINISHELL DANS MINISHELL
+Check la valeur d
+
 ------------------------
 
 Albe :

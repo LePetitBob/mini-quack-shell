@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:24:05 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 09:36:21 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 		rl_clear_history();
 		ft_clear(env);
 		rm_cmds(cmds);
-		exit(g_status.exit_status);
+		exit((unsigned char)g_status.exit_status);
 	}
 	error_manager(ERNO_ARGS, "exit");
 }
