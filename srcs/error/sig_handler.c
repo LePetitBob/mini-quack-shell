@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 05:55:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 08:37:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ extern t_status	g_status;
 
 // here : SIGINT = Ctrl-C
 // here : SIGQUIT = Ctrl-'\'
+// child is actually never alive when the signal is sent :D
 void sig_handler(int signum)
 {
-	dprintf(2, "g_status.pid-[%d]\n", g_status.pid);
-	if (g_status.pid == 0)
+	if (g_status.pid >= 0)
 		handler_child(signum);
 	else
 		handler_parent(signum);
@@ -27,7 +27,6 @@ void sig_handler(int signum)
 
 void	handler_parent(int signum)
 {
-	dprintf(2, "parent :C");
 	if (signum == SIGINT)
 	{
 		ft_putstr_fd("\n", 1);
@@ -42,7 +41,6 @@ void	handler_parent(int signum)
 
 void	handler_child(int signum)
 {
-	dprintf(2, "child :D");
 	if (signum == SIGINT)
 	{
 		ft_putstr_fd("\n", 2);

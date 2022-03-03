@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 05:04:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 08:15:32 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
+		g_status.pid = -1;
 		if (tmp->prev)
 		{
 			if (fd[4] == -1)
