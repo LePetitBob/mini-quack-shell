@@ -6,9 +6,9 @@ e''c""h''o'' "c"'o'""u'cou'
 
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
 
-echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
+echo "hello there" >outfilr| echo '$HOME' | echo "$HOME" | echo $
 
-echo asdv >/dev/stdout| ls -la -> test this
+echo asdv >/dev/stdout| ls -la
 
 echo $$$$$$
 
