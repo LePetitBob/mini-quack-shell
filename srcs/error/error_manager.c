@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 09:15:42 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 22:22:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	error_manager(int erno, char *str)
 
 	if (!str)
 		(void)str;
-	prefix = ft_strdup("mini_quack_shell: ");
+	prefix = ft_strdup("minishell: ");
 	if (erno == ERNO_SYNTAX)
 		err = get_syntax_error(str);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
