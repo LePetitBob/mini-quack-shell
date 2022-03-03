@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 06:19:28 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 06:52:58 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	apply_redir(t_token *tmp, t_cmd *cmd, int *i)
 	{
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
-		cmd->fdin = open(HERE_DOC_PATH, O_CREAT | O_TRUNC | O_RDWR, 0644);
+		cmd->fdin = open(HERE_DOC_PATH, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 		write(cmd->fdin, tmp->str, ft_strlen(tmp->str));
+		close(cmd->fdin);
+		cmd->fdin = open(HERE_DOC_PATH, O_RDONLY);
 	}
 	else if (tmp->type == RIN)
 	{

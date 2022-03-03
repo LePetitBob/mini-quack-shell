@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 06:19:28 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 06:49:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void		expand_skip_quotes(char *(**arr), char **cpy, int *index);
 
 void		expand_vars_manager(char *(**arr), t_env *env);
 void		expand_var(char **str, t_env *env, int hd);
+void		get_str(char *value, char **str);
 
 int			check_quote_expand(char *str);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);

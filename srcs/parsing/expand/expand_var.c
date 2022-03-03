@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 05:51:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 06:48:35 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,6 @@ void	expand_vars_manager(char *(**arr), t_env *env)
 	}
 }
 
-void	get_str(char *value, char **str)
-{
-	free(*str);
-	if (!value)
-		*str = ft_strdup("\0");
-	else
-		*str = ft_strdup(value);
-	free(value);
-}
-
 void	expand_var(char **str, t_env *env, int hd)
 {
 	char	*cpy;
@@ -73,4 +63,14 @@ void	expand_var(char **str, t_env *env, int hd)
 	join_pre_sufix_expanded_var(str, i, &value, cpy);
 	get_str(value, str);
 	free(var);
+}
+
+void	get_str(char *value, char **str)
+{
+	free(*str);
+	if (!value)
+		*str = ft_strdup("\0");
+	else
+		*str = ft_strdup(value);
+	free(value);
 }
