@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 01:08:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:57:00 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av, char *envp[])
 
 	(void)ac;
 	(void)av;
-	// g_exit_status = 0;
+	g_exit_status = 0;
 	get_env(envp, &env);
 	while (1)
 	{
@@ -67,23 +67,3 @@ char	*get_prompt_prefix(t_env *env)
 	free(tmp);
 	return (home);
 }
-
-// sighandler_t signal(int signum, &handler());
-
-// void handler(int signum)
-// {
-
-// }
-
-// int		waitpidfunct()
-// {
-// 	int	ret;
-
-// 	ret = 0;
-// 	while (id)
-// 	{
-// 		waitpid(pid, &ret, OPTION)
-// 		if (WIFSIGNAL)
-// 			ret = ;
-// 	}
-// }

@@ -6,39 +6,37 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 01:49:09 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:55:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-// extern int	g_exit_status;
+extern int	g_exit_status;
 
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
-	int	status;
-
 	if (errno == EACCES)
 	{
 		error_manager(ERNO_ACCESS, cmd[0]);
-		status = 1;
+		g_exit_status = 1;
 	}
 	else if (errno == ENOTDIR)
 	{
 		error_manager(ERNO_ISDIR, cmd[0]);
-		status = 126;
+		g_exit_status = 126;
 	}
 	else
 	{
 		error_manager(ERNO_NOCMD, cmd[0]);
-		status = 127;
+		g_exit_status = 127;
 	}
 	ft_freetab(env);
 	ft_freetab(cmd);
 	if (tmp_paths)
 		ft_freetab(tmp_paths);
 	rm_cmds(cmds);
-	exit(status);
+	exit(g_exit_status);
 }
 
 void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)

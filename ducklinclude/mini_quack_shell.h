@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 01:27:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 03:39:24 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
-extern int	g_exit_status;
+extern t_status	g_exit_status;
+
+typedef struct s_status
+{
+	int	exit_status;
+	int	pid;
+}				t_status;
 
 typedef struct s_token
 {
