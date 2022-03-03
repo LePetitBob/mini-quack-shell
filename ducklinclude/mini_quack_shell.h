@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 03:52:41 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 05:08:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ void		ft_unset(t_env *env, char **name);
 //* ENV
 void		get_env(char **envp, t_env *env);
 void		ft_env(t_env *env);
-char		*get_in_env(t_env *env, char *name);
 int			env_size(t_env *env);
 char		**env_cl_to_arr(t_env *env);
 char		*get_env_name(t_env *env, char *name);
@@ -203,7 +202,7 @@ void		apply_redir(t_token *tmp, t_cmd *cmd, int *i, t_env *env);
 void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		redirection(t_cmd *cmd, int fd[6], t_env *env);
-void		GET_OVER_HERE_docs(t_cmd_lst *cmds, t_env *env);
+void		get_over_here_docs(t_cmd_lst *cmds, t_env *env);
 void		here_doc_file(t_cmd *cmd, t_token *tmp);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
@@ -214,7 +213,7 @@ char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
-int			is_builtin(char* cmd);
+int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
 void		cmd_manager(t_env *env, t_cmd *cmd);

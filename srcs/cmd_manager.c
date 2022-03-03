@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 03:52:17 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:16:16 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	if (cmds->first->next)
 		fd[5] = 1;
 	tmp = cmds->first;
-	GET_OVER_HERE_docs(cmds, env);
+	get_over_here_docs(cmds, env);
 	fd[4] = -1;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 01:17:02 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 05:10:06 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,13 @@
 
 extern int	g_exit_status;
 
-char	*get_in_env(t_env *env, char *name)
-{
-	t_env_var	*tmp;
-
-	tmp = env->first;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->name, name))
-			break ;
-		tmp = tmp->next;
-	}
-	if (!tmp)
-		return (NULL);
-	return (ft_strdup(tmp->value));
-}
-
-void	invalid_path(char **cmd)
-{
-	write(2, "mini-quack-shell: cd: ", 22);
-	write(2, cmd[1], ft_strlen(cmd[1]));
-	write(2, ": No such file or directory\n", 28);
-}
-
 char	*create_path(t_env *env, char **cmd)
 {
 	char	*path;
 	char	*tmp[3];
 
 	tmp[0] = ft_strdup(cmd[1] + 1);
-	tmp[1] = get_in_env(env, "HOME");
+	tmp[1] = get_env_name(env, "HOME");
 	tmp[2] = ft_strjoin(tmp[1], "/");
 	path = ft_strjoin(tmp[2], tmp[0]);
 	free(tmp[0]);
@@ -60,13 +37,20 @@ void	free_tmp(char **tmp)
 	free(tmp[3]);
 }
 
+void	cd_home(char *home)
+{
+	chdir(home);
+	free(home);
+}
+
 void	env_change_and_error_management(t_env *env, char **cmd, int i)
 {
 	char	*tmp[4];
 
-	if (!cmd[1] && getenv("HOME"))
-		chdir(getenv("HOME"));
-	if (!cmd[1] && getenv("HOME"))
+	tmp[0] = get_env_name(env, "HOME");
+	if (!cmd[1] && tmp[0])
+		cd_home(tmp[0]);
+	if (!cmd[1] && tmp[0])
 		return ;
 	else if (cmd[1][0] == '~')
 		tmp[2] = create_path(env, cmd);
@@ -74,8 +58,8 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 		tmp[2] = ft_strdup(cmd[1]);
 	tmp[3] = getcwd(NULL, 0);
 	i = chdir(tmp[2]);
-	tmp[0] = get_in_env(env, "OLDPWD");
-	tmp[1] = get_in_env(env, "PWD");
+	tmp[0] = get_env_name(env, "OLDPWD");
+	tmp[1] = get_env_name(env, "PWD");
 	if (i < 0)
 		invalid_path(cmd);
 	if (i >= 0 && tmp[0])

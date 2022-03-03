@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 03:53:48 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:15:05 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 		{
 			path = get_path(tmp_paths[i], cmd[0]);
 			//TODO ->PIPE g_exit_status
-			// if (cmd[0] && access(path, X_OK) == 0)
-			// 	dprintf(2, "ABOUT TO EXECVE %s!\n", cmd[0]);
 			if (cmd[0] && access(path, X_OK) == 0)
 				execve(path, cmd, envp);
 			i++;

@@ -6,13 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:01:27 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:16:16 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-void	GET_OVER_HERE_docs(t_cmd_lst *cmds, t_env *env)
+void	get_over_here_docs(t_cmd_lst *cmds, t_env *env)
 {
 	t_cmd	*cmd;
 	t_token	*redir;

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:15:17 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/19 06:33:11 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:30:37 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ void	ft_rmvar(t_env *env, char *var_name)
 	free(tmp2->name);
 	free(tmp2->value);
 	free(tmp2);
+}
+
+void	replace_var(t_env *env, char *name, char *value)
+{
+	t_env_var	*tmp;
+
+	tmp = env->first;
+	while (ft_strcmp(tmp->name, name))
+		tmp = tmp->next;
+	if (tmp && tmp->value)
+		free(tmp->value);
+	if (tmp && value)
+		tmp->value = ft_strdup(value);
+	else if (tmp)
+		tmp->value = ft_strdup("");
 }
