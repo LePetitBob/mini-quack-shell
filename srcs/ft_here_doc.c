@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 05:16:48 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 06:00:44 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 char	*get_here_doc(char *limiter, t_env *env)
 {
 	char	*tmp[3];
-	int		line;;
+	int		line;
 
 	tmp[0] = readline("> ");
 	tmp[1] = NULL;
@@ -81,14 +81,6 @@ char	*get_here_doc(char *limiter, t_env *env)
 		free(tmp[0]);
 	free(limiter);
 	return (tmp[2]);
-}
-
-void	here_doc_file(t_cmd *cmd, t_token *tmp)
-{
-	if (cmd->fdin != 0)
-		close(cmd->fdin);
-	cmd->fdin = open(HERE_DOC_PATH, O_CREAT | O_TRUNC | O_RDWR, 0644);
-	write(cmd->fdin, tmp->str, ft_strlen(tmp->str));
 }
 
 void	rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds)

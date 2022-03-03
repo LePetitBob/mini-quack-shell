@@ -6,28 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 05:18:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 05:53:11 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
 extern t_status	g_status;
-
-void	clear_token_cl(t_token *lst)
-{
-	t_token	*tkn;
-	t_token	*tkn2;
-
-	tkn = lst;
-	while (tkn)
-	{
-		tkn2 = tkn->next;
-		free(tkn->str);
-		free(tkn);
-		tkn = tkn2;
-	}
-}
 
 void	rm_cmds(t_cmd_lst *cmd)
 {
@@ -72,12 +57,24 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
-		// if (err != 0 && g_exit_status != 0)
-		// 	g_exit_status = 1;
+		if (err != 0 && g_status.exit_status != 0)
+			g_status.exit_status = 1;
 		tmp = tmp->next;
 	}
 	rm_here_doc_tmp_file(env, cmds);
 	rm_cmds(cmds);
+}
+
+void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
+{
+	cmds->first = cmd;
+	fd[5] = 0;
+	if (cmds->first->next)
+		fd[5] = 1;
+	get_over_here_docs(cmds, env);
+	fd[4] = -1;
+	fd[2] = dup(STDIN_FILENO);
+	fd[3] = dup(STDOUT_FILENO);
 }
 
 //here: fd[0] is unset; becomes pipe(0)
@@ -93,15 +90,8 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	int			fd[6];
 
 	cmds = malloc(sizeof(t_cmd *));
-	cmds->first = cmd;
-	fd[5] = 0;
-	if (cmds->first->next)
-		fd[5] = 1;
+	init_values(fd, cmds, env, cmd);
 	tmp = cmds->first;
-	get_over_here_docs(cmds, env);
-	fd[4] = -1;
-	fd[2] = dup(STDIN_FILENO);
-	fd[3] = dup(STDOUT_FILENO);
 	while (tmp)
 	{
 		if (tmp->prev)

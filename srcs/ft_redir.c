@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:32:32 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 06:19:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 	}
 }
 
-void	apply_redir(t_token *tmp, t_cmd *cmd, int *i, t_env *env)
+void	apply_redir(t_token *tmp, t_cmd *cmd, int *i)
 {
-	(void)env;
 	if (tmp->type == HERE_DOC)
 	{
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
-		here_doc_file(cmd, tmp);
+		cmd->fdin = open(HERE_DOC_PATH, O_CREAT | O_TRUNC | O_RDWR, 0644);
+		write(cmd->fdin, tmp->str, ft_strlen(tmp->str));
 	}
 	else if (tmp->type == RIN)
 	{
@@ -78,7 +78,7 @@ void	redir_pipe(t_cmd *cmd, int fd[6])
 		dup2(fd[3], STDOUT_FILENO);
 }
 
-void	redirection(t_cmd *cmd, int fd[6], t_env *env)
+void	redirection(t_cmd *cmd, int fd[6])
 {
 	t_token	*tmp;
 	int		i;
@@ -87,7 +87,7 @@ void	redirection(t_cmd *cmd, int fd[6], t_env *env)
 	tmp = cmd->redir;
 	while (tmp)
 	{
-		apply_redir(tmp, cmd, &i, env);
+		apply_redir(tmp, cmd, &i);
 		if (i != 0)
 			break ;
 		tmp = tmp->next;

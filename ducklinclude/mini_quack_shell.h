@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/03 05:08:50 by vduriez          ###   ########.fr       */
-=======
-/*   Updated: 2022/03/03 04:38:18 by amarini-         ###   ########.fr       */
->>>>>>> debugGeneral
+/*   Updated: 2022/03/03 06:19:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +51,13 @@
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
-extern t_status	g_status;
-
 typedef struct s_status
 {
 	int	exit_status;
 	int	pid;
 }				t_status;
+
+extern t_status	g_status;
 
 typedef struct s_token
 {
@@ -193,6 +189,7 @@ void		invalid_path(char **cmd);
 void		ft_echo(char **s);
 //* EXPORT
 void		ft_export(t_env *env, char **cmd);
+void		export_var(int i[2], char **cmd, t_env *env);
 void		replace_var(t_env *env, char *name, char *value);
 int			existing_name(t_env *env, char *name);
 int			format_export_ok(char *var);
@@ -214,12 +211,11 @@ int			is_num(char *s);
 //?			Builtins
 
 //* REDIR
-void		apply_redir(t_token *tmp, t_cmd *cmd, int *i, t_env *env);
+void		apply_redir(t_token *tmp, t_cmd *cmd, int *i);
 void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
-void		redirection(t_cmd *cmd, int fd[6], t_env *env);
+void		redirection(t_cmd *cmd, int fd[6]);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env);
-void		here_doc_file(t_cmd *cmd, t_token *tmp);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC

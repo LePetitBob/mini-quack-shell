@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 03:44:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 05:26:38 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,28 @@ int	main(int ac, char **av, char *envp[])
 char	*get_prompt_prefix(t_env *env)
 {
 	char	*home;
-	char	*path;
+	char	*pth;
 	char	*tmp;
 
 	home = get_env_name(env, "HOME");
-	path = get_env_name(env, "PWD");
-	if (home && ft_strnstr(path, home, ft_strlen(path)) == path)
+	pth = get_env_name(env, "PWD");
+	if (home && ft_strnstr(pth, home, ft_strlen(pth)) == pth)
 	{
-		tmp = ft_substr(path, ft_strlen(home), ft_strlen(path) - ft_strlen(home));
-		free(path);
-		path = ft_strjoin("~", tmp);
+		tmp = ft_substr(pth, ft_strlen(home), ft_strlen(pth) - ft_strlen(home));
+		free(pth);
+		pth = ft_strjoin("~", tmp);
 		free(tmp);
 	}
-	tmp = ft_strjoin(path, "$ ");
-	free(path);
+	tmp = ft_strjoin(pth, "$ ");
+	free(pth);
 	free(home);
 	home = get_env_name(env, "USER");
 	if (!home)
 		home = ft_strdup("unknown");
-	path = ft_strjoin(home, ":");
+	pth = ft_strjoin(home, ":");
 	free(home);
-	home = ft_strjoin(path, tmp);
-	free(path);
+	home = ft_strjoin(pth, tmp);
+	free(pth);
 	free(tmp);
 	return (home);
 }

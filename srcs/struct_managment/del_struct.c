@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_struct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 05:44:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/24 03:46:04 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 05:42:26 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ void	free_token(t_token *tokens)
 	free(it->str);
 	free(it);
 	it = NULL;
+}
+
+void	clear_token_cl(t_token *lst)
+{
+	t_token	*tkn;
+	t_token	*tkn2;
+
+	tkn = lst;
+	while (tkn)
+	{
+		tkn2 = tkn->next;
+		free(tkn->str);
+		free(tkn);
+		tkn = tkn2;
+	}
 }
 
 void	free_one_token(t_token *token)

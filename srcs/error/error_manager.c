@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 04:14:59 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 05:23:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*get_complex_error(int erno, char *cmd)
 		pb = ft_strjoin(cmd, ": No such file or directory\n");
 		tmp = ft_strjoin("cd: ", pb);
 	}
-	else if (erno = ERNO_UNSET || erno == ERNO_EXPORT)
+	else if (erno == ERNO_UNSET || erno == ERNO_EXPORT)
 	{
 		pb = ft_strjoin(cmd, "\': not a valid identifier\n");
 		if (erno == ERNO_UNSET)
