@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 05:53:11 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 08:16:15 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
 	fd[4] = -1;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
+	g_status.pid = -1;
 }
 
 //here: fd[0] is unset; becomes pipe(0)

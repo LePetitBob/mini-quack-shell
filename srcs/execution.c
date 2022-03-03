@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 06:51:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 08:30:32 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 		return ;
 	}
 	cmd->pid = fork();
+	g_status.pid = cmd->pid;
 	if (cmd->pid < 0)
 		ft_freetab(str_cmd);
 	if (cmd->pid < 0)

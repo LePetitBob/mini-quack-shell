@@ -3,38 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 03:21:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 08:36:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
+extern t_status	g_status;
+
 // here : SIGINT = Ctrl-C
 // here : SIGQUIT = Ctrl-'\'
-void handler(int signum)
+void sig_handler(int signum)
+{
+	if (g_status.pid >= 0)
+		handler_child(signum);
+	else
+		handler_parent(signum);
+}
+
+void	handler_parent(int signum)
 {
 	if (signum == SIGINT)
 	{
-		
+		ft_putstr_fd("\n", 1);
+		rl_on_new_line();
+		rl_replace_line("", 1);
+		rl_redisplay();
+		g_status.exit_status = 130;
 	}
-	else if (signum == SIGQUIT)
-	{
-		
-	}
+	if (signum == SIGQUIT)
+		ft_putstr_fd("\b\b  \b\b", 2);
 }
 
-// int		waitpidfunct()
-// {
-// 	int	ret;
-
-// 	ret = 0;
-// 	while (id)
-// 	{
-// 		waitpid(pid, &ret, OPTION)
-// 		if (WIFSIGNAL)
-// 			ret = ;
-// 	}
-// }
+void	handler_child(int signum)
+{
+	if (signum == SIGINT)
+	{
+		ft_putstr_fd("\n", 2);
+		g_status.exit_status = 130;
+	}
+	if (signum == SIGQUIT)
+	{
+		ft_putstr_fd("Quit: (core dumped)\n", 2);
+		g_status.exit_status = 131;
+	}
+}

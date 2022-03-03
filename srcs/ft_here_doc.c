@@ -6,11 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 06:00:44 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 07:50:26 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern t_status	g_status;
 
 void	get_over_here_docs(t_cmd_lst *cmds, t_env *env)
 {
@@ -93,6 +95,7 @@ void	rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds)
 	if (access(HERE_DOC_PATH, F_OK) == 0)
 	{
 		pidtmp = fork();
+		// g_status.pid = pidtmp;
 		if (!pidtmp)
 		{
 			tmp[0] = ft_strdup("rm");

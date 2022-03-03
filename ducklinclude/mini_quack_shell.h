@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 06:49:04 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 07:51:18 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,6 @@ void		ft_pwd(void);
 //* CD
 void		ft_cd(char **cmd, t_env *env);
 void		env_change_and_error_management(t_env *env, char **cmd, int i);
-void		invalid_path(char **cmd);
 //* ECHO
 void		ft_echo(char **s);
 //* EXPORT
@@ -248,6 +247,12 @@ void		ft_rmvar(t_env *env, char *var_name);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);
 int			is_num(char *s);
+
+//?			SIGNAL HANDLER
+void		sig_handler(int signum);
+void		handler_parent(int signum);
+void		handler_child(int signum);
+//?
 
 //?			ERRORS
 void		error_manager(int erno, char *str);
