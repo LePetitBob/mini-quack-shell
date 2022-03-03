@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 01:17:02 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 01:39:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ char	*get_in_env(t_env *env, char *name)
 	if (!tmp)
 		return (NULL);
 	return (ft_strdup(tmp->value));
-}
-
-void	invalid_path(char **cmd)
-{
-	write(2, "mini-quack-shell: cd: ", 22);
-	write(2, cmd[1], ft_strlen(cmd[1]));
-	write(2, ": No such file or directory\n", 28);
 }
 
 char	*create_path(t_env *env, char **cmd)
@@ -77,7 +70,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	tmp[0] = get_in_env(env, "OLDPWD");
 	tmp[1] = get_in_env(env, "PWD");
 	if (i < 0)
-		invalid_path(cmd);
+		error_manager(ERNO_NOFILEDIR, cmd[1]);
 	if (i >= 0 && tmp[0])
 		replace_var(env, "OLDPWD", tmp[3]);
 	free(tmp[3]);
@@ -105,7 +98,7 @@ void	ft_cd(char **cmd, t_env *env)
 	{
 		if (!cmd[1] || cmd[1][0] == '~')
 		{
-			write(2, "mini-quack-shell: cd: HOME not set\n", 35);
+			error_manager(ERNO_PATH, "cd");
 			g_exit_status = 1;
 			return ;
 		}

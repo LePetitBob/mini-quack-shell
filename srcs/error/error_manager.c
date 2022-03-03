@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 03:23:57 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:37:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	error_manager(int erno, char *str)
 	if (erno == ERNO_SYNTAX)
 		err = get_syntax_error(str);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
-		|| erno == ERNO_ARGS)
+		|| erno == ERNO_ARGS || erno == ERNO_NOFILEDIR)
 		err = get_cmd_error(erno, str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
@@ -49,7 +49,15 @@ char	*get_cmd_error(int erno, char *cmd)
 		pb = ft_strdup(": Is a directory\n");
 	if (erno == ERNO_ARGS)
 		pb = ft_strdup(": too many arguments\n");
-	tmp = ft_strjoin(cmd, pb);
+	if (erno == ERNO_PATH)
+		pb = ft_strdup(": HOME not set\n");
+	if (erno == ERNO_NOFILEDIR)
+	{
+		pb = ft_strjoin(cmd, ": No such file or directory\n");
+		tmp = ft_strjoin("cd: ", pb);
+	}
+	else
+		tmp = ft_strjoin(cmd, pb);
 	free(pb);
 	return (tmp);
 }

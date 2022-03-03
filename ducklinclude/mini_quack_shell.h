@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 06:35:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 01:27:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define ERNO_NOCMD 2
 # define ERNO_ISDIR 3
 # define ERNO_ARGS 4
+# define ERNO_PATH 5
+# define ERNO_NOFILEDIR 6
 
 # define NO_TYPE -1
 # define WORD 0
