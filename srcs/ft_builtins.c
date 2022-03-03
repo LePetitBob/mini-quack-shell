@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 08:44:06 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 09:02:52 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@ extern t_status	g_status;
 
 int	is_builtin(char *cmd)
 {
-	if (!ft_strcmp(cmd, "cd") || !ft_strcmp(cmd, "pwd")
-		|| !ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset")
-		|| !ft_strcmp(cmd, "exit") || !ft_strcmp(cmd, "env")
-		|| !ft_strcmp(cmd, "echo"))
+	if (!ft_strcmp(cmd, "cd") || !ft_strcmp(cmd, "export")
+		|| !ft_strcmp(cmd, "unset") || !ft_strcmp(cmd, "exit")
+		|| !ft_strcmp(cmd, "env"))
 		return (1);
 	return (0);
 }
 
-void	ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds)
+void	ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 {
 	if (!ft_strcmp(cmd[0], "exit"))
-		ft_exit(cmd, env, is_piped, cmds);
+		ft_exit(cmd, env, fd[5], cmds);
 	else
 	{
 		if (!ft_strcmp(cmd[0], "pwd"))
@@ -43,7 +42,7 @@ void	ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds)
 		else if (!ft_strcmp(cmd[0], "cd"))
 			ft_cd(cmd, env);
 		ft_freetab(cmd);
-		if (is_piped)
+		if (fd[5])
 		{
 			rl_clear_history();
 			ft_clear(env);

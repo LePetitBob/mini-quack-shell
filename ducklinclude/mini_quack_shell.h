@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 07:51:18 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 09:02:20 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void		relink_node_parent(t_token **it, t_token **head);
 
 //?			Builtins
 int			is_builtin(char *cmd);
-void		ft_builtins(char **cmd, t_env *env, int is_piped, t_cmd_lst *cmds);
+void		ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 //* PWD
 void		ft_pwd(void);
 //* CD

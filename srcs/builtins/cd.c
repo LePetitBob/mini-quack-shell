@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 05:19:31 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 09:14:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ void	free_tmp(char **tmp)
 	free(tmp[3]);
 }
 
-void	cd_home(char *home)
+void	cd_home(char *cdarg, char *home)
 {
-	chdir(home);
-	free(home);
+	if (!cdarg && home)
+		chdir(home);
+	if (home)	
+		free(home);
 }
 
 void	env_change_and_error_management(t_env *env, char **cmd, int i)
@@ -48,8 +50,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	char	*tmp[4];
 
 	tmp[0] = get_env_name(env, "HOME");
-	if (!cmd[1] && tmp[0])
-		cd_home(tmp[0]);
+	cd_home(cmd[1], tmp[0]);
 	if (!cmd[1] && tmp[0])
 		return ;
 	else if (cmd[1][0] == '~')
@@ -87,7 +88,7 @@ void	ft_cd(char **cmd, t_env *env)
 	}
 	if (!existing_name(env, "HOME"))
 	{
-		if (!cmd[1] || cmd[1][0] == '~')
+		if (!cmd[1] || (cmd[1] && cmd[1][0] == '~'))
 		{
 			error_manager(ERNO_PATH, "cd");
 			g_status.exit_status = 1;

@@ -35,7 +35,7 @@ echo a$a"b"'c d'
 
 
 echo bonjour > $test
-ecport test="o1 o2"
+export test="o1 o2"
 echo bonjour > $test
 
 mkdir a

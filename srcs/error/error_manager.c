@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 07:50:06 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 09:15:42 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	error_manager(int erno, char *str)
 	if (erno == ERNO_SYNTAX)
 		err = get_syntax_error(str);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
-		|| erno == ERNO_ARGS || erno == ERNO_NOFILEDIR)
+		|| erno == ERNO_ARGS || erno == ERNO_NOFILEDIR || erno == ERNO_PATH)
 		err = get_cmd_error(erno, str);
 	else if (erno == ERNO_CD || erno == ERNO_UNSET || erno == ERNO_EXPORT
 		|| erno == ERNO_EX_NUM)
