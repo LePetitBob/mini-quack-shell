@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tokens_cmds.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/25 01:49:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 02:31:18 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_cmds(t_cmd *cmds)
 	t_cmd	*iterator;
 
 	iterator = cmds;
-	dprintf(2, "\n__________START");
+	dprintf(2, "\n__________START\n");
 	while (iterator)
 	{
 		dprintf(2, "cmds:\n{");
@@ -65,6 +65,7 @@ void	print_cmds(t_cmd *cmds)
 		dprintf(2, "redir:\n{");
 		print_tokens(iterator->redir);
 		dprintf(2, "}\n");
+		dprintf(2, "next:\n");
 		iterator = iterator->next;
 	}
 	if (iterator == NULL)

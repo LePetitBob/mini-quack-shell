@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:21:22 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 04:41:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 		while (tmp_paths[i])
 		{
 			path = get_path(tmp_paths[i], cmd[0]);
+			//TODO ->PIPE g_exit_status
+			// if (cmd[0] && access(path, X_OK) == 0)
+			// 	dprintf(2, "ABOUT TO EXECVE %s!\n", cmd[0]);
 			if (cmd[0] && access(path, X_OK) == 0)
 				execve(path, cmd, envp);
 			i++;
@@ -134,6 +137,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 		exit(errno);
 	if (cmd->pid == 0)
 	{
+		redirection(cmd, fd, env);
 		close_all_fds(fd, cmd);
 		if (is_builtin(str_cmd[0]))
 			ft_builtins(str_cmd, env, fd[5], cmds);
