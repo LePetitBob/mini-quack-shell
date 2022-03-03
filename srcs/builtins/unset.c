@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 00:41:01 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:11:26 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-extern int	g_exit_status;
+extern t_status	g_status;
 
 char	*get_env_name(t_env *env, char *name)
 {
@@ -53,9 +53,7 @@ int	format_unset_ok(char *var, int *err)
 	if (var[i] || (var[0] < 65 || var[0] > 122
 			|| (var[0] > 90 && var[0] < 97)))
 	{
-		write(2, "mini-quack-shell: unset: `", 26);
-		write(2, var, ft_strlen(var));
-		write(2, "\': not a valid identifier\n", 26);
+		error_manager(ERNO_UNSET, var);
 		*err = 1;
 		return (0);
 	}
@@ -85,5 +83,5 @@ void	ft_unset(t_env *env, char **name)
 		free(var);
 		i++;
 	}
-	g_exit_status = err;
+	g_status.exit_status = err;
 }

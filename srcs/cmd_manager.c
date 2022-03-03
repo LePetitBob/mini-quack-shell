@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 05:14:27 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 03:44:33 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-extern int	g_exit_status;
+extern t_status	g_status;
 
 void	clear_token_cl(t_token *lst)
 {
@@ -72,8 +72,8 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
-		if (err != 0 && g_exit_status != 0)
-			g_exit_status = 1;
+		if (err != 0 && g_status.exit_status != 0)
+			g_status.exit_status = 1;
 		tmp = tmp->next;
 	}
 	rm_cmds(cmds);

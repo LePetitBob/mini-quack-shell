@@ -6,37 +6,37 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 01:55:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 04:21:22 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-extern int	g_exit_status;
+extern t_status	g_status;
 
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
 	if (errno == EACCES)
 	{
 		error_manager(ERNO_ACCESS, cmd[0]);
-		g_exit_status = 1;
+		g_status.exit_status = 1;
 	}
 	else if (errno == ENOTDIR)
 	{
 		error_manager(ERNO_ISDIR, cmd[0]);
-		g_exit_status = 126;
+		g_status.exit_status = 126;
 	}
 	else
 	{
 		error_manager(ERNO_NOCMD, cmd[0]);
-		g_exit_status = 127;
+		g_status.exit_status = 127;
 	}
 	ft_freetab(env);
 	ft_freetab(cmd);
 	if (tmp_paths)
 		ft_freetab(tmp_paths);
 	rm_cmds(cmds);
-	exit(g_exit_status);
+	exit(g_status.exit_status);
 }
 
 void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
@@ -61,7 +61,6 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 		while (tmp_paths[i])
 		{
 			path = get_path(tmp_paths[i], cmd[0]);
-			//TODO ->PIPE g_exit_status
 			if (cmd[0] && access(path, X_OK) == 0)
 				execve(path, cmd, envp);
 			i++;
@@ -71,7 +70,6 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 		}
 	}
 	cmd_not_found(cmd, tmp_paths, envp, cmds);
-	//TODO ->PIPE g_exit_status
 }
 
 char	**get_cmd_str(t_cmd *cmd)

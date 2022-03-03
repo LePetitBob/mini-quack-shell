@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 06:20:22 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 04:18:18 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	expand_exeptions(char **str, int i, char *cpy, char *value)
 	if ((*str)[i] == '?' || (*str)[i] == '0')
 	{
 		if ((*str)[i] == '?')
-			value = ft_itoa(g_exit_status);
+			value = ft_itoa(g_status.exit_status);
 		else if ((*str)[i] == '0')
 			value = ft_strdup("mini_quack_shell");
 		if (cpy)
