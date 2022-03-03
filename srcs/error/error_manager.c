@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 03:23:57 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 04:14:59 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void	error_manager(int erno, char *str)
 	if (erno == ERNO_SYNTAX)
 		err = get_syntax_error(str);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
-		|| erno == ERNO_ARGS)
+		|| erno == ERNO_ARGS || erno == ERNO_NOFILEDIR)
 		err = get_cmd_error(erno, str);
+	else if (erno == ERNO_CD || erno == ERNO_UNSET || erno == ERNO_EXPORT
+		|| erno == ERNO_EX_NUM)
+		err = get_complex_error(erno, str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
 	else
@@ -38,18 +41,46 @@ void	error_manager(int erno, char *str)
 
 char	*get_cmd_error(int erno, char *cmd)
 {
-	char	*tmp;
 	char	*pb;
 
 	if (erno == ERNO_ACCESS)
-		pb = ft_strdup(": Permission denied\n");
-	if (erno == ERNO_NOCMD)
-		pb = ft_strdup(": command not found\n");
-	if (erno == ERNO_ISDIR)
-		pb = ft_strdup(": Is a directory\n");
-	if (erno == ERNO_ARGS)
-		pb = ft_strdup(": too many arguments\n");
-	tmp = ft_strjoin(cmd, pb);
+		pb = ft_strjoin(cmd, ": Permission denied\n");
+	else if (erno == ERNO_NOCMD)
+		pb = ft_strjoin(cmd, ": command not found\n");
+	else if (erno == ERNO_ISDIR)
+		pb = ft_strjoin(cmd, ": Is a directory\n");
+	else if (erno == ERNO_ARGS)
+		pb = ft_strjoin(cmd, ": too many arguments\n");
+	else if (erno == ERNO_PATH)
+		pb = ft_strjoin(cmd, ": HOME not set\n");
+	else if (erno == ERNO_NOFILEDIR)
+		pb = ft_strjoin(cmd, ": No such file or directory\n");
+	return (pb);
+}
+
+char	*get_complex_error(int erno, char *cmd)
+{
+	char	*tmp;
+	char	*pb;
+
+	if (erno == ERNO_CD)
+	{
+		pb = ft_strjoin(cmd, ": No such file or directory\n");
+		tmp = ft_strjoin("cd: ", pb);
+	}
+	else if (erno = ERNO_UNSET || erno == ERNO_EXPORT)
+	{
+		pb = ft_strjoin(cmd, "\': not a valid identifier\n");
+		if (erno == ERNO_UNSET)
+			tmp = ft_strjoin("unset: `", pb);
+		else
+			tmp = ft_strjoin("export: `", pb);
+	}
+	else if (erno == ERNO_EX_NUM)
+	{
+		pb = ft_strjoin(cmd, ": numeric argument required\n");
+		tmp = ft_strjoin("exit: ", pb);
+	}
 	free(pb);
 	return (tmp);
 }

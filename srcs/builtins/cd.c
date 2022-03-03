@@ -6,13 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 05:10:06 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 05:19:31 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-extern int	g_exit_status;
+extern t_status	g_status;
 
 char	*create_path(t_env *env, char **cmd)
 {
@@ -61,7 +61,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	tmp[0] = get_env_name(env, "OLDPWD");
 	tmp[1] = get_env_name(env, "PWD");
 	if (i < 0)
-		invalid_path(cmd);
+		error_manager(ERNO_CD, cmd[1]);
 	if (i >= 0 && tmp[0])
 		replace_var(env, "OLDPWD", tmp[3]);
 	free(tmp[3]);
@@ -69,7 +69,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	if (i >= 0 && tmp[1])
 		replace_var(env, "PWD", tmp[3]);
 	free_tmp(tmp);
-	g_exit_status = i;
+	g_status.exit_status = i;
 }
 
 void	ft_cd(char **cmd, t_env *env)
@@ -82,15 +82,15 @@ void	ft_cd(char **cmd, t_env *env)
 	if (i > 2)
 	{
 		error_manager(ERNO_ARGS, "cd");
-		g_exit_status = 1;
+		g_status.exit_status = 1;
 		return ;
 	}
 	if (!existing_name(env, "HOME"))
 	{
 		if (!cmd[1] || cmd[1][0] == '~')
 		{
-			write(2, "mini-quack-shell: cd: HOME not set\n", 35);
-			g_exit_status = 1;
+			error_manager(ERNO_PATH, "cd");
+			g_status.exit_status = 1;
 			return ;
 		}
 	}

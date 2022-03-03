@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 01:27:55 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:24:05 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern t_status	g_status;
 
 void	ft_clear(t_env *env)
 {
@@ -34,9 +36,7 @@ void	ft_clear(t_env *env)
 
 void	clear_and_exit(char **err, t_env *env, t_cmd_lst *cmds)
 {
-	write(2, "mini-quack-shell: exit: ", 24);
-	write(2, err[1], ft_strlen(err[1]));
-	write(2, ": numeric argument required\n", 28);
+	error_manager(ERNO_EX_NUM, err[1]);
 	ft_freetab(err);
 	rl_clear_history();
 	ft_clear(env);
@@ -46,10 +46,8 @@ void	clear_and_exit(char **err, t_env *env, t_cmd_lst *cmds)
 
 void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 {
-	int	errcode;
 	int	i;
 
-	errcode = EXIT_SUCCESS;
 	if (!is_piped)
 		write(1, "exit\n", 5);
 	i = 0;
@@ -58,7 +56,7 @@ void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 	if (err[1])
 	{
 		if (is_num(err[1]))
-			errcode = ft_atoi(err[1]);
+			g_status.exit_status = ft_atoi(err[1]);
 		else
 			clear_and_exit(err, env, cmds);
 	}
@@ -68,7 +66,7 @@ void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 		rl_clear_history();
 		ft_clear(env);
 		rm_cmds(cmds);
-		exit(errcode);
+		exit(g_status.exit_status);
 	}
 	error_manager(ERNO_ARGS, "exit");
 }

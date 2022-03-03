@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/03 05:08:50 by vduriez          ###   ########.fr       */
+=======
+/*   Updated: 2022/03/03 04:38:18 by amarini-         ###   ########.fr       */
+>>>>>>> debugGeneral
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +36,12 @@
 # define ERNO_NOCMD 2
 # define ERNO_ISDIR 3
 # define ERNO_ARGS 4
+# define ERNO_PATH 5
+# define ERNO_CD 6
+# define ERNO_UNSET 7
+# define ERNO_EXPORT 8
+# define ERNO_NOFILEDIR 9
+# define ERNO_EX_NUM 10
 
 # define NO_TYPE -1
 # define WORD 0
@@ -45,7 +55,13 @@
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
-extern int	g_exit_status;
+extern t_status	g_status;
+
+typedef struct s_status
+{
+	int	exit_status;
+	int	pid;
+}				t_status;
 
 typedef struct s_token
 {
@@ -239,6 +255,7 @@ int			is_num(char *s);
 //?			ERRORS
 void		error_manager(int erno, char *str);
 char		*get_cmd_error(int erno, char *cmd);
+char		*get_complex_error(int erno, char *cmd);
 char		*get_syntax_error(char *str);
 void		get_error_redir(t_token *next);
 //?

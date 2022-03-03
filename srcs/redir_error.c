@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:10:12 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 01:10:44 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 04:04:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,15 @@ int	invalid_filename(char *filename, char *FILENO, int *i)
 			|| (!ft_strcmp(FILENO, "IN") && !access(filename, R_OK)))
 			return (0);
 		*i = 1;
-		write(2, "mini-quack-shell: ", 18);
-		write(2, filename, ft_strlen(filename));
-		write(2, ": permission denied\n", 20);
-		g_exit_status = 1;
+		error_manager(ERNO_ACCESS, filename);
+		g_status.exit_status = 1;
 		return (1);
 	}
 	else if (!ft_strcmp(FILENO, "IN"))
 	{
 		*i = 1;
-		write(2, "mini-quack-shell: no such file or directory: ", 45);
-		write(2, filename, ft_strlen(filename));
-		write(2, "\n", 1);
-		g_exit_status = 1;
+		error_manager(ERNO_NOFILEDIR, filename);
+		g_status.exit_status = 1;
 		return (1);
 	}
 	return (0);

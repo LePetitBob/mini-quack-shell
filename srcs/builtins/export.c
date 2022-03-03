@@ -6,13 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:35:49 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 05:20:01 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-extern int	g_exit_status;
+extern t_status	g_status;
 
 int	existing_name(t_env *env, char *name)
 {
@@ -40,10 +40,8 @@ int	format_export_ok(char *var)
 	if ((var[i] && var[i] != '=') || (var[0] < 65 || var[0] > 122
 			|| (var[0] > 90 && var[0] < 97)))
 	{
-		write(2, "mini-quack-shell: export: `", 27);
-		write(2, var, ft_strlen(var));
-		write(2, "\': not a valid identifier\n", 26);
-		g_exit_status = 1;
+		error_manager(ERNO_EXPORT, var);
+		g_status.exit_status = 1;
 		return (0);
 	}
 	return (1);
