@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 01:16:40 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:49:09 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	ft_freetab(env);
 	ft_freetab(cmd);
-	ft_freetab(tmp_paths);
+	if (tmp_paths)
+		ft_freetab(tmp_paths);
 	rm_cmds(cmds);
 	exit(status);
 }
@@ -47,6 +48,7 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 	char	*path;
 
 	i = 0;
+	tmp_paths = NULL;
 	if (!cmd[0] || cmd[0][0] == '\0' || ft_strcmp(cmd[0], "..") == 0
 		|| ft_strcmp(cmd[0], ".") == 0)
 		cmd_not_found(cmd, NULL, envp, cmds);
