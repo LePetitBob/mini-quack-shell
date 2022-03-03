@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 07:03:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 03:40:01 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 
 void	apply_redir(t_token *tmp, t_cmd *cmd, int *i, t_env *env)
 {
+	(void)env;
 	if (tmp->type == HERE_DOC)
 	{
 		if (cmd->fdin != 0)
 			close(cmd->fdin);
-		get_here_doc(tmp->str, env);
-		cmd->fdin = open(HERE_DOC_PATH, O_RDONLY);
+		here_doc_file(cmd, tmp);
 	}
 	else if (tmp->type == RIN)
 	{

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 05:14:27 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 03:52:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
-		if (err != 0 && g_exit_status != 0)
-			g_exit_status = 1;
+		// if (err != 0 && g_exit_status != 0)
+		// 	g_exit_status = 1;
 		tmp = tmp->next;
 	}
-	rm_cmds(cmds);
 	rm_here_doc_tmp_file(env, cmds);
+	rm_cmds(cmds);
 }
 
 //here: fd[0] is unset; becomes pipe(0)
@@ -98,6 +98,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	if (cmds->first->next)
 		fd[5] = 1;
 	tmp = cmds->first;
+	GET_OVER_HERE_docs(cmds, env);
 	fd[4] = -1;
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
@@ -114,8 +115,8 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 			closepipe(fd);
 		if (tmp->next)
 			pipe(fd);
-		redirection(tmp, fd, env);
 		execution(tmp, env, fd, cmds);
+		rm_here_doc_tmp_file(env, cmds);
 		tmp = tmp->next;
 	}
 	close_wait_clear(cmds, fd, env);

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/02 06:35:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 03:52:41 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,8 @@ void		apply_redir(t_token *tmp, t_cmd *cmd, int *i, t_env *env);
 void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		redirection(t_cmd *cmd, int fd[6], t_env *env);
+void		GET_OVER_HERE_docs(t_cmd_lst *cmds, t_env *env);
+void		here_doc_file(t_cmd *cmd, t_token *tmp);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
@@ -223,7 +225,7 @@ void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
 void		rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds);
 void		rm_cmds(t_cmd_lst *cmd);
-void		get_here_doc(char *limiter, t_env *env);
+char		*get_here_doc(char *limiter, t_env *env);
 
 //			CL
 t_env_var	*ft_create_elem(char *name, char *value, int to_print);

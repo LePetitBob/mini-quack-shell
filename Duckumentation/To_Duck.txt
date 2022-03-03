@@ -5,8 +5,6 @@ cat srcs/debug/m_alltest | valgrind  ./minishell &>srcs/debug/m_log.txt
 test tricky redir when implemented (echo lol >/dev/full)
 cd -> CDPATH
 
-see expand_var.c to expand possible env var in HERE_DOC
-
 ------------------------
 
 Albe :
