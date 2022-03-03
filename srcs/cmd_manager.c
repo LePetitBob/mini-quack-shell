@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 08:16:15 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/03 08:42:47 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	tmp = cmds->first;
 	while (tmp)
 	{
+		g_status.pid = -1;
 		if (tmp->prev)
 		{
 			if (fd[4] == -1)
