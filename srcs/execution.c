@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:41:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 06:02:31 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 		return ;
 	}
 	cmd->pid = fork();
+	g_status.pid = cmd->pid;
+	dprintf(2, "g_status.pid-[%d]\n", g_status.pid);
 	if (cmd->pid < 0)
 		ft_freetab(str_cmd);
 	if (cmd->pid < 0)

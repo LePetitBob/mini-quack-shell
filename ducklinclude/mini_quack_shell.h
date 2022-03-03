@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 04:38:18 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 05:25:16 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 # define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
-extern t_status	g_status;
-
 typedef struct s_status
 {
 	int	exit_status;
 	int	pid;
 }				t_status;
+
+extern t_status	g_status;
 
 typedef struct s_token
 {
@@ -184,7 +184,6 @@ void		ft_pwd(void);
 //* CD
 void		ft_cd(char **cmd, t_env *env);
 void		env_change_and_error_management(t_env *env, char **cmd, int i);
-void		invalid_path(char **cmd);
 //* ECHO
 void		ft_echo(char **s);
 //* EXPORT
@@ -248,6 +247,12 @@ void		ft_rmvar(t_env *env, char *var_name);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);
 int			is_num(char *s);
+
+//?			SIGNAL HANDLER
+void		sig_handler(int signum);
+void		handler_parent(int signum);
+void		handler_child(int signum);
+//?
 
 //?			ERRORS
 void		error_manager(int erno, char *str);

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 03:44:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/03 05:38:22 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_status	g_status;
 
+// here : SIGINT = Ctrl-C
+// here : SIGQUIT = Ctrl-'\'
 int	main(int ac, char **av, char *envp[])
 {
 	char	*prompt_prefix;
@@ -23,7 +25,9 @@ int	main(int ac, char **av, char *envp[])
 	(void)ac;
 	(void)av;
 	g_status.exit_status = 0;
-	g_status.pid = 0;
+	g_status.pid = -1;
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
 	get_env(envp, &env);
 	while (1)
 	{

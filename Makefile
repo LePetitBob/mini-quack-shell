@@ -49,7 +49,7 @@ SRCS = builtins/pwd.c \
 		expand_utils.c \
 		del_struct.c \
 		command_manager.c link_fd_redir.c \
-		error_manager.c \
+		error_manager.c sig_handler.c \
 		init_struct.c del_struct.c struct_utils.c \
 		get_error_redir.c \
 		redir_error.c \
