@@ -1,35 +1,41 @@
+/sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 coucou
-bash: line 3: h ey: command not found
-bash: line 3: hey: No such file or directory
+bash: line 5: h ey: command not found
+bash: line 5: hey: No such file or directory
 $
 $
-ls: cannot access '-': No such file or directory
-ls: cannot access 'this': No such file or directory
-560785607856078
-total 557
- 15 drwxr-xr-x 9 amarini- 2020_paris     23 Mar  2 03:30 .
- 15 drwxr-xr-x 7 amarini- 2020_paris      7 Feb 28 16:10 ..
-  8 -rw-r--r-- 1 amarini- 2020_paris      8 Mar  2 03:30 $test
-  1 drwxr-xr-x 3 amarini- 2020_paris      3 Mar  2 03:24 a
-  1 -rw-r--r-- 1 amarini- 2020_paris      0 Mar  2 03:23 abc
-  1 -rw-r--r-- 1 amarini- 2020_paris      0 Mar  2 03:24 c
-  1 drwxr-xr-x 2 amarini- 2020_paris      3 Mar  1 22:47 ducklinclude
- 15 drwxr-xr-x 3 amarini- 2020_paris     10 Mar  1 22:47 Duckumentation
-  1 -rw-r--r-- 1 amarini- 2020_paris      0 Mar  2 03:24 file
- 15 drwxr-xr-x 9 amarini- 2020_paris     19 Mar  2 01:10 .git
-  8 -rw-r--r-- 1 amarini- 2020_paris     90 Feb 28 16:10 .gitmodules
-  8 -rw-r--r-- 1 amarini- 2020_paris     99 Mar  1 01:52 .ignore_readline
- 15 drwxr-xr-x 5 amarini- 2020_paris      8 Mar  2 03:25 libft_duck
-  8 -rw-r--r-- 1 amarini- 2020_paris   2526 Feb 28 16:10 Makefile
-399 -rwxr-xr-x 1 amarini- 2020_paris 350560 Mar  2 03:25 minishell
- 15 drwxr-xr-x 3 amarini- 2020_paris     31 Mar  2 03:25 objs
-  1 -rw-r--r-- 1 amarini- 2020_paris      0 Mar  2 03:23 out1
-  8 -rw-r--r-- 1 amarini- 2020_paris      2 Mar  2 03:24 out2
-  8 -rw-r--r-- 1 amarini- 2020_paris     12 Mar  2 03:31 outfilr
-  8 -rw-r--r-- 1 amarini- 2020_paris      9 Mar  2 03:24 output
- 15 drwxr-xr-x 8 amarini- 2020_paris     16 Mar  1 08:34 srcs
-  1 -rw-r--r-- 1 amarini- 2020_paris      0 Mar  2 03:24 test
-  1 -rw-r--r-- 1 amarini- 2020_paris      0 Mar  2 03:23 test1
+total 524
+drwxr-xr-x 8 amarini- 2020_paris     14 Mar  4 00:24 .
+drwxr-xr-x 3 amarini- 2020_paris      3 Mar  3 05:08 ..
+-rw-r--r-- 1 amarini- 2020_paris      8 Mar  4 00:24 $test
+drwxr-xr-x 2 amarini- 2020_paris      3 Mar  3 22:13 ducklinclude
+drwxr-xr-x 3 amarini- 2020_paris     10 Mar  3 22:13 Duckumentation
+drwxr-xr-x 9 amarini- 2020_paris     20 Mar  3 23:53 .git
+-rw-r--r-- 1 amarini- 2020_paris     90 Mar  2 22:49 .gitmodules
+-rw-r--r-- 1 amarini- 2020_paris     99 Mar  2 06:55 .ignore_readline
+drwxr-xr-x 5 amarini- 2020_paris      8 Mar  3 23:54 libft_duck
+-rw-r--r-- 1 amarini- 2020_paris   2577 Mar  3 22:12 Makefile
+-rwxr-xr-x 1 amarini- 2020_paris 371464 Mar  4 00:20 minishell
+drwxr-xr-x 3 amarini- 2020_paris     34 Mar  4 00:12 objs
+-rw-r--r-- 1 amarini- 2020_paris     12 Mar  4 00:37 outfilr
+drwxr-xr-x 8 amarini- 2020_paris     17 Mar  3 22:13 srcs
+669916699166991
+total 524
+ 15 drwxr-xr-x 8 amarini- 2020_paris     14 Mar  4 00:24 .
+  1 drwxr-xr-x 3 amarini- 2020_paris      3 Mar  3 05:08 ..
+  8 -rw-r--r-- 1 amarini- 2020_paris      8 Mar  4 00:24 $test
+  1 drwxr-xr-x 2 amarini- 2020_paris      3 Mar  3 22:13 ducklinclude
+ 15 drwxr-xr-x 3 amarini- 2020_paris     10 Mar  3 22:13 Duckumentation
+ 15 drwxr-xr-x 9 amarini- 2020_paris     20 Mar  3 23:53 .git
+  8 -rw-r--r-- 1 amarini- 2020_paris     90 Mar  2 22:49 .gitmodules
+  8 -rw-r--r-- 1 amarini- 2020_paris     99 Mar  2 06:55 .ignore_readline
+ 15 drwxr-xr-x 5 amarini- 2020_paris      8 Mar  3 23:54 libft_duck
+  8 -rw-r--r-- 1 amarini- 2020_paris   2577 Mar  3 22:12 Makefile
+399 -rwxr-xr-x 1 amarini- 2020_paris 371464 Mar  4 00:20 minishell
+ 15 drwxr-xr-x 3 amarini- 2020_paris     34 Mar  4 00:12 objs
+  8 -rw-r--r-- 1 amarini- 2020_paris     12 Mar  4 00:37 outfilr
+ 15 drwxr-xr-x 8 amarini- 2020_paris     17 Mar  3 22:13 srcs
+cat: test: No such file or directory
 abc d
-bash: line 23: syntax error near unexpected token `>'
-bash: line 23: `>> test >test > >'
+bash: line 25: syntax error near unexpected token `>'
+bash: line 25: `>> test >test > >'
