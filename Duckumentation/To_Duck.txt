@@ -39,6 +39,7 @@ echo $PATH
 "h ey" hey|<hey
 
 echo $$$$$$
+	-> not a bug, can't get pid without "getpid" (forbidden)
 
 echo gerigh >/dev/stdout| ls -las
 
@@ -53,8 +54,6 @@ rm -r ../../a
 cd ..
 
 ls <> abc
-
-echo bonjour | | -> error ?
 
 cat Makefile | grep pr | head -n 5 | hello
 echo $?
