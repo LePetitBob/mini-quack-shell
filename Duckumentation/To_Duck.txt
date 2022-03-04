@@ -92,11 +92,7 @@ export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
 
-> test | echo blabla
-
-echo $SHLVL
-
-echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME"
+echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME" ?
 
   		ls   	 	   		     -l 		 	    -all	   
 
