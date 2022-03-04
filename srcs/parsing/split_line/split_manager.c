@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 03:25:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 06:25:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	split_manager(char *line, t_env *env)
 		free(line);
 		return ;
 	}
-	// ft_print_tab(args);
 	split_seps(&args);
-	// ft_print_tab(args);
 	if (syntax_errors(ft_tabdup(args)) == EXIT_FAILURE)
 	{
 		free(line);

@@ -6,25 +6,25 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 06:54:35 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 07:09:06 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-int	check_quote_expand(char *str)
+int	check_quote_expand(char **str)
 {
 	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while ((*str)[i] != '\0')
 	{
-		if (str[i] == '$')
+		if ((*str)[i] == '$')
 			return (i);
-		if (str[i] == '\'')
+		if ((*str)[i] == '\'')
 		{
 			++i;
-			while (str[i] != '\0' && str[i] != '\'')
+			while ((*str)[i] != '\0' && (*str)[i] != '\'')
 				++i;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 22:37:40 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 04:38:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	split_whitespaces(char *str, char *(**args))
 				return ;
 		if (str[i] == ' ')
 		{
-			(*args) = ft_add_tab((*args), tmp);
+			if (tmp[0] != '\0')
+				(*args) = ft_add_tab((*args), tmp);
 			ft_bzero(tmp, ft_strlen(str));
 			while (str[i + 1] != '\0' && str[i + 1] == ' ')
 				++i;

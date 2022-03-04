@@ -43,42 +43,12 @@ echo $$$$$$
 
 ls <> abc
 
-export TMPPATH=$PATH
-unset PATH
-echo $PATH
-export PATH=$TMPPATH
-unset TMPPATH
-echo $PATH
-
 ifcat < f2| wc -
-
-export | env -> error ?
-
-export
-
-env
-
-echo $CDPATH
-export TMPCD=$CDPATH
-export CDPATH=/
-cd home/..
-export CDPATH=$TMPCD
-unset TMPCD
-echo $CDPATH
 
 ls><abc
 
-export $var
-
 cd ..
 ./duckinclude/mini_quack_shell.h
-
-export TMPPATH=$PATH
-unset PATH
-ls
-export PATH=$TMPPATH
-unset TMPPATH
-echo $PATH
 
 echo "$    a"
 
@@ -87,8 +57,6 @@ echo "$    a"
 echo $SHLVL
 
 echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME"
-
-  		ls   	 	   		     -l 		 	    -all	   
 
 env -i ./minishell
 

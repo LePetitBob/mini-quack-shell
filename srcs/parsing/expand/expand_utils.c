@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/02/22 15:44:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 04:11:21 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 
 void	convert_spaces(char *(**arr), char space)
 {
-	int	row;
-	int	col;
+	int		row;
+	int		col;
 
 	row = 0;
 	while ((*arr)[row])
 	{
 		col = 0;
-		while ((*arr)[row][col] != '\0')
+		if ((*arr)[row] && ft_strsrch((*arr)[row], '\"') > -1)
+			++row;
+		else
 		{
-			if ((*arr)[row][col] == space)
-				(*arr)[row][col] *= -1;
-			++col;
+			while ((*arr)[row][col] != '\0')
+			{
+				if ((*arr)[row][col] == space)
+					(*arr)[row][col] *= -1;
+				++col;
+			}
+			++row;
 		}
-		++row;
 	}
 	return ;
 }
