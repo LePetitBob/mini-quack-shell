@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 04:36:53 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 07:50:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	else
 	{
-		error_manager(ERNO_NOCMD, cmd[0]);
+		if (cmd[0][0] == '.' || cmd[0][0] == '/')
+			error_manager(ERNO_NOFILEDIR, cmd[0]);
+		else
+			error_manager(ERNO_NOCMD, cmd[0]);
 		g_status.exit_status = 127;
 	}
 	ft_freetab(env);
