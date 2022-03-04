@@ -307,7 +307,6 @@ echo "$    a"
 echo $?
 
 cd no_file
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo "$test"Makefile
 
@@ -362,8 +361,6 @@ echo a | echo b | echo c
 
 echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME"
 
-  		ls   	 	   		     -l 		 	    -all	   
-
 cat < Makefile | grep gcc > output
 
 echo $HO"ME"
@@ -391,14 +388,12 @@ cat < >
 
 cd echo
 cd $?
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 env -i ./minishell
 
 export "111=222"
 
 cd "minishell         "
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 export _abc=10
 ls >> abc
@@ -451,8 +446,7 @@ unset a c=10
 cat < input.txt | wc
 
 cd srcs srcs srcs srcs srcs srcs srcs srcs
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
-rm -rf '$test' abc file out1 out2 outfilr output test test1 b c d log pqr salut v
+rm -rf '$test' abc file out1 out2 outfilr output test test1 b c d log pqr salut v a
 exit

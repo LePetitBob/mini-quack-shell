@@ -38,37 +38,15 @@ echo $PATH
 
 "h ey" hey|<hey
 
-echo $$$$$$
-	-> not a bug, can't get pid without "getpid" (forbidden)
-
-echo gerigh >/dev/stdout| ls -las
-
 echo bonjour > $test
 export test="o1 o2"
 echo bonjour > $test
 
-mkdir a
-mkdir a/b
-cd a/b
-rm -r ../../a
-cd ..
+ls <> abc
 
 unset a1=10
 
-export TMPPATH=$PATH
-unset PATH
-echo $PATH
-export PATH=$TMPPATH
-unset TMPPATH
-echo $PATH
-
 ifcat < f2| wc -
-
-export | env -> error ?
-
-export
-
-env
 
 echo $CDPATH
 export TMPCD=$CDPATH
@@ -77,12 +55,8 @@ cd home/..
 export CDPATH=$TMPCD
 unset TMPCD
 echo $CDPATH
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
-ls><abc
-
-export $var
-
-cd ..
 ./duckinclude/mini_quack_shell.h
 
 export TMPPATH=$PATH
@@ -92,15 +66,15 @@ export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
 
-echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME" ?
-
+ls -l -all
   		ls   	 	   		     -l 		 	    -all	   
 
 env -i ./minishell
 
-                     
+export _abc=10
+
+unset =
 
 ./efwufkk
 
 unset a c=10
-

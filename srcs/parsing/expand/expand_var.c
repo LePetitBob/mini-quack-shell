@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 04:32:02 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 07:03:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	expand_var(char **str, t_env *env, int hd)
 	else
 		i = check_quote_expand(str);
 	if (i == -1 || (i != -1 && ((*str)[i + 1] == '\0'
-			|| (*str)[i + 1] == '\"' || ft_isalnum((*str)[i + 1]) == 0)))
+			|| (*str)[i + 1] == '\"')))
 		return ;
 	++i;
 	if ((i - 1) > 0)

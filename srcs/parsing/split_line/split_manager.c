@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 04:37:49 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 06:25:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	split_manager(char *line, t_env *env)
 {
 	char	**args;
 
-	printf("line-[%s]\n", line);
 	if (line[0] == '\0')
 	{
 		free(line);
@@ -24,7 +23,6 @@ void	split_manager(char *line, t_env *env)
 	}
 	args = NULL;
 	split_whitespaces(line, &args);
-	ft_print_tab(args);
 	if (!args)
 	{
 		free(line);
