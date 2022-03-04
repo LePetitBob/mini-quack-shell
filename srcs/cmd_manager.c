@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 08:42:47 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 02:09:54 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,8 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 				fd[4] = dup(fd[0]);
 			else
 				dup2(fd[0], fd[4]);
-		}
-		if (tmp->prev)
 			closepipe(fd);
+		}
 		if (tmp->next)
 			pipe(fd);
 		execution(tmp, env, fd, cmds);

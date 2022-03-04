@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 09:02:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 04:13:00 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	is_builtin(char *cmd)
 {
 	if (!ft_strcmp(cmd, "cd") || !ft_strcmp(cmd, "export")
 		|| !ft_strcmp(cmd, "unset") || !ft_strcmp(cmd, "exit")
-		|| !ft_strcmp(cmd, "env"))
+		|| !ft_strcmp(cmd, "env") || !ft_strcmp(cmd, "pwd"))
 		return (1);
 	return (0);
 }
@@ -41,6 +41,14 @@ void	ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 			ft_unset(env, cmd);
 		else if (!ft_strcmp(cmd[0], "cd"))
 			ft_cd(cmd, env);
+		if (!ft_strcmp(cmd[0], "echo"))
+		{
+			ft_freetab(cmd);
+			rl_clear_history();
+			ft_clear(env);
+			rm_cmds(cmds);
+			exit(g_status.exit_status);
+		}
 		ft_freetab(cmd);
 		if (fd[5])
 		{

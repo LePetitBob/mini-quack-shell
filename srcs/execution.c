@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 09:00:01 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 03:57:31 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 	{
 		redirection(cmd, fd);
 		close_all_fds(fd, cmd);
-		if (is_builtin(str_cmd[0]))
+		if (is_builtin(str_cmd[0]) || !ft_strcmp(str_cmd[0], "echo"))
 			ft_builtins(str_cmd, env, fd, cmds);
 		else
 		{

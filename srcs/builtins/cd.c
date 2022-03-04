@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 04:22:43 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 04:27:29 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	cd_home(char *cdarg, char *home)
 {
 	if (!cdarg && home)
 		chdir(home);
-	if (home)	
+	if (home)
 		free(home);
 }
 

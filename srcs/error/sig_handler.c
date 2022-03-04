@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 08:43:02 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 02:05:15 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ extern t_status	g_status;
 // here : SIGINT = Ctrl-C
 // here : SIGQUIT = Ctrl-'\'
 // child is actually never alive when the signal is sent :D
-void sig_handler(int signum)
+void	sig_handler(int signum)
 {
 	if (g_status.pid >= 0)
 		handler_child(signum);
