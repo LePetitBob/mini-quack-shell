@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:11:26 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 02:44:56 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	add_env_var(t_env *env, char **var, int to_print)
 		ft_addlast(env, var[0], "", to_print);
 }
 
+// ! pb here with "unset a1=10" -> it should be invalid but it is not
 int	format_unset_ok(char *var, int *err)
 {
 	int		i;

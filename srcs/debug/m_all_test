@@ -6,9 +6,9 @@ e''c""h''o'' "c"'o'""u'cou'
 
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
 
-echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
+echo "hello there" >outfilr| echo '$HOME' | echo "$HOME" | echo $
 
-echo asdv >/dev/stdout| ls -la -> test this
+echo asdv >/dev/stdout| ls -la
 
 echo $$$$$$
 
@@ -149,8 +149,6 @@ export var=a
 export $var=test
 echo $var $a
 
-echo bonjour |;
-
 cd ms               
 
 echo $HOME
@@ -188,8 +186,6 @@ export test="  foo   bar  "
 echo ab$test
 
 ifcat < f2| wc -
-
-echo coucou | ;
 
 unset a c
 
@@ -240,9 +236,6 @@ echo -n -n -nnnn -nnnnm | echo a
 
 echo -n lalalala
 
-echo 'abc
-'
-
 sleep 5 | exit
 
 echo "$HOME"
@@ -264,10 +257,6 @@ ls | exit
 
 export $var
 
-;
-
-;;
-
 echo bonjour | ls
 
 unset a
@@ -279,9 +268,6 @@ not_cmd
 
 ./duckinclude/mini_quack_shell.h
 
-echo "
-"
-
 unset test
 export "test=ici"=coucou
 echo $test
@@ -291,10 +277,6 @@ echo $var bonjour
 
 export var=$HOME
 cd $var
-
-unset var
-export var=tes"st | echo $var
-"
 
 echo '$HOME'
 
@@ -385,8 +367,6 @@ export a=10
 
 echo -nABC
 
-echo "bip | bip ; coyotte > <"
-
 cd srcs parsing commands
 pwd
 cd $HOME
@@ -461,8 +441,6 @@ cat < input.txt | wc
 
 cd srcs srcs srcs srcs srcs srcs srcs srcs
 
-
-
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
-# rm -rf $test abc file out1 out2 outfilr output test test1
+rm -rf $test abc file out1 out2 outfilr output test test1
 exit

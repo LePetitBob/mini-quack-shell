@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 02:09:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 04:35:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
-		if (err != 0 && g_status.exit_status != 0)
-			g_status.exit_status = 1;
+		if (WIFEXITED(err))
+			g_status.exit_status = WEXITSTATUS(err);
 		tmp = tmp->next;
 	}
 	rm_here_doc_tmp_file(env, cmds);

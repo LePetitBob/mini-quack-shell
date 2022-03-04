@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 04:18:18 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 02:14:17 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ char	*get_exp_var_name(char *str, int *index)
 		++i;
 		++(*index);
 	}
+	if (str[*index] == '$')
+		var[i] = str[*index];
+	printf("var-[%s]\n", var);
 	return (var);
 }
 

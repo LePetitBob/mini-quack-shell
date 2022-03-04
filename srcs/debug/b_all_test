@@ -1,12 +1,14 @@
+pwd
+
 e''c""h''o'' "c"'o'""u'cou'
 
 "h ey" hey|<hey
 
 echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
 
-echo "hello there" > outfilr | echo '$HOME' | echo "$HOME" | echo $
+echo "hello there" >outfilr| echo '$HOME' | echo "$HOME" | echo $
 
-echo asdv >/dev/stdout| ls -la -> test this
+echo asdv >/dev/stdout| ls -la
 
 echo $$$$$$
 
@@ -33,7 +35,7 @@ echo a$a"b"'c d'
 
 
 echo bonjour > $test
-ecport test="o1 o2"
+export test="o1 o2"
 echo bonjour > $test
 
 mkdir a
@@ -41,6 +43,7 @@ mkdir a/b
 cd a/b
 rm -r ../../a
 cd ..
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 ls <> abc
 
@@ -71,6 +74,7 @@ echo 2 >> out1 > out2
 cat Makefile | grep pe | head -n 5 | cd srcs
 echo $?
 cd ..
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 $blah
 
@@ -121,6 +125,7 @@ export "HI =hi"
 echo "" bonjour
 
 cd -
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 unset var
 export $var=test
@@ -147,17 +152,18 @@ export var=a
 export $var=test
 echo $var $a
 
-echo bonjour |;
-
 cd ms               
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo $HOME
 
-echo $USER$var\$USER$USER\$USERtest$USER
-
 echo "\\\\$HOME"
 
+export TMPPATH=$PATH
 unset PATH
+echo $PATH
+export PATH=$TMPPATH
+unset TMPPATH
 echo $PATH
 
 sdfs > abc
@@ -168,8 +174,6 @@ sdfs > abc
 
 export test=" foo bar"
 echo """$test"""
-
-cat >file
 
 cat < <
 
@@ -184,8 +188,6 @@ export test="  foo   bar  "
 echo ab$test
 
 ifcat < f2| wc -
-
-echo coucou | ;
 
 unset a c
 
@@ -221,9 +223,7 @@ cd home/..
 export CDPATH=$TMPCD
 unset TMPCD
 echo $CDPATH
-
-export $var=s\ -la
-l$var
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 ls | grep t
 pwd
@@ -235,9 +235,6 @@ ls><abc
 echo -n -n -nnnn -nnnnm | echo a
 
 echo -n lalalala
-
-echo 'abc
-'
 
 sleep 5 | exit
 
@@ -253,16 +250,13 @@ unset var
 export 111=222
 
 cd /
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo	a
 
 ls | exit
 
 export $var
-
-;
-
-;;
 
 echo bonjour | ls
 
@@ -275,9 +269,6 @@ not_cmd
 
 ./duckinclude/mini_quack_shell.h
 
-echo "
-"
-
 unset test
 export "test=ici"=coucou
 echo $test
@@ -287,10 +278,7 @@ echo $var bonjour
 
 export var=$HOME
 cd $var
-
-unset var
-export var=tes"st | echo $var
-"
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo '$HOME'
 
@@ -299,6 +287,7 @@ echo "\n \n \n"
 cd ../../../../../..
 pwd
 cd $HOME
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 export var
 export var=test
@@ -318,6 +307,7 @@ echo "$    a"
 echo $?
 
 cd no_file
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo "$test"Makefile
 
@@ -355,14 +345,16 @@ export TMPHOME=$HOME
 unset HOME
 cd
 export HOME=$TMPHOME
-unset HOME
+unset TMPHOME
 echo $HOME
 
 \0\0\0\0\0\0\0\0\0
 
 cd a b c d
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 cd ~
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell/
 
 echo a | echo b | echo c
 
@@ -381,15 +373,15 @@ export a=10
 
 echo -nABC
 
-echo "bip | bip ; coyotte > <"
-
 cd srcs parsing commands
 pwd
 cd $HOME
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell/
 
 > a echo Hello World!
 
 cd ./path_not_found
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo > a Hello World!
 
@@ -399,12 +391,14 @@ cat < >
 
 cd echo
 cd $?
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 env -i ./minishell
 
 export "111=222"
 
 cd "minishell         "
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 export _abc=10
 ls >> abc
@@ -424,8 +418,6 @@ exit 12 | ls
 echo >
 
 unset a1
-
-sort | ls
 
 /bin/ls -lrt
 
@@ -452,15 +444,15 @@ unset =
 ./efwufkk
 
 cd $HOME/Documents
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 unset a c=10
 
 cat < input.txt | wc
 
 cd srcs srcs srcs srcs srcs srcs srcs srcs
-
-
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
-rm -rf 
+rm -rf '$test' abc file out1 out2 outfilr output test test1 b c d log pqr salut v
 exit
