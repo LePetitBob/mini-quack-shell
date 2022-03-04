@@ -55,14 +55,7 @@ cd ..
 
 ls <> abc
 
-cat Makefile | grep pr | head -n 5 | hello
-echo $?
-
-pwd lalala
-
 cd -
-
-pwd a b c d
 
 unset a1=10
 
@@ -72,8 +65,6 @@ echo $PATH
 export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
-
->file
 
 ifcat < f2| wc -
 

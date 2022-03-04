@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 02:46:22 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 03:28:45 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ char	**get_cmd_str(t_cmd *cmd)
 	char	**str_cmd;
 	t_token	*tmp;
 
+	if(!cmd->arg)
+		return (NULL);
 	i = 0;
 	tmp = cmd->arg;
 	while (tmp)
@@ -121,6 +123,8 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 	char	**env_arr;
 
 	str_cmd = get_cmd_str(cmd);
+	if (!str_cmd || !str_cmd[0])
+		return ;
 	if (is_builtin(str_cmd[0]) && !fd[5])
 	{
 		close(fd[2]);

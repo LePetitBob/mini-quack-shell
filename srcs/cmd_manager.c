@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 02:55:11 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 03:24:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	closepipe(int fd[3])
 		close(fd[1]);
 }
 
-// ! implement the thing with options in waitpid
 void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 {
 	t_cmd	*tmp;
@@ -60,8 +59,6 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 		waitpid(tmp->pid, &err, 0);
 		if (WIFEXITED(err))
 			g_status.exit_status = WEXITSTATUS(err);
-		// if (err != 0 && g_status.exit_status != 0)
-		// 	g_status.exit_status = 1;
 		tmp = tmp->next;
 	}
 	rm_here_doc_tmp_file(env, cmds);
