@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 22:13:20 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 04:31:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	split_dollar_expand(char *(**arr), char *str, int *i)
 	if (str[*i] != '\0' && (ft_isalpha(str[*i]) == 0 && str[*i] != '_'
 			&& str[*i] != '0' && str[*i] != '?' && str[*i] != '$'))
 	{
-		--(*i);
+		if (ft_isdigit(str[*i]) == 0)
+			--(*i);
 		return ;
 	}
 	cpy = ft_strnew(ft_strlen(str));

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 14:50:22 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/01 23:44:49 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 03:55:43 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_separator(char *(**args), int i_args)
 		else
 			separate_separator(args, "<", i_args);
 	}
-	else if (ft_strsrch((*args)[i_args], '>') != -1
+	if (ft_strsrch((*args)[i_args], '>') != -1
 		&& ft_strcmp((*args)[i_args], ">") != 0
 		&& ft_strcmp((*args)[i_args], ">>") != 0)
 	{

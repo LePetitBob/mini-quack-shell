@@ -53,10 +53,6 @@ cd a/b
 rm -r ../../a
 cd ..
 
-ls <> abc
-
-cd -
-
 unset a1=10
 
 export TMPPATH=$PATH
@@ -95,8 +91,6 @@ ls
 export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
-
-echo "$    a"
 
 > test | echo blabla
 
