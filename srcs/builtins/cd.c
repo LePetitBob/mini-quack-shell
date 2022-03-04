@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 09:14:09 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 04:22:43 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	if (i >= 0 && tmp[1])
 		replace_var(env, "PWD", tmp[3]);
 	free_tmp(tmp);
-	g_status.exit_status = i;
+	g_status.exit_status = -i;
 }
 
 void	ft_cd(char **cmd, t_env *env)
