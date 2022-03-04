@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 02:44:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 06:52:55 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	add_env_var(t_env *env, char **var, int to_print)
 		ft_addlast(env, var[0], "", to_print);
 }
 
-// ! pb here with "unset a1=10" -> it should be invalid but it is not
 int	format_unset_ok(char *var, int *err)
 {
 	int		i;
@@ -64,7 +63,6 @@ int	format_unset_ok(char *var, int *err)
 void	ft_unset(t_env *env, char **name)
 {
 	int			i;
-	int			j;
 	int			err;
 	char		*var;
 
@@ -72,10 +70,7 @@ void	ft_unset(t_env *env, char **name)
 	err = 0;
 	while (name[i])
 	{
-		j = 0;
-		while (name[i][j] && name[i][j] != '=')
-			j++;
-		var = ft_strndup(name[i], j);
+		var = ft_strdup(name[i]);
 		if (format_unset_ok(var, &err))
 		{
 			if (existing_name(env, var))

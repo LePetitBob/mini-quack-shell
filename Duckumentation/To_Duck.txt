@@ -41,23 +41,7 @@ echo $PATH
 echo $$$$$$
 	-> not a bug, can't get pid without "getpid" (forbidden)
 
-echo gerigh >/dev/stdout| ls -las
-
-echo bonjour > $test
-export test="o1 o2"
-echo bonjour > $test
-
-mkdir a
-mkdir a/b
-cd a/b
-rm -r ../../a
-cd ..
-
 ls <> abc
-
-cd -
-
-unset a1=10
 
 export TMPPATH=$PATH
 unset PATH
