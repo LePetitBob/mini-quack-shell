@@ -6,11 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/02/23 04:00:11 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/04 04:41:37 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern t_status	g_status;
 
 void	ft_echo(char **s)
 {
@@ -38,4 +40,5 @@ void	ft_echo(char **s)
 	}
 	if (nl == 1)
 		write(1, "\n", 1);
+	g_status.exit_status = 0;
 }

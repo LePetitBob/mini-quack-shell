@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtins.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 03:23:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 04:34:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ void	ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 			ft_unset(env, cmd);
 		else if (!ft_strcmp(cmd[0], "cd"))
 			ft_cd(cmd, env);
+		if (!ft_strcmp(cmd[0], "echo"))
+		{
+			ft_freetab(cmd);
+			rl_clear_history();
+			ft_clear(env);
+			rm_cmds(cmds);
+			exit(g_status.exit_status);
+		}
 		ft_freetab(cmd);
 		if (fd[5])
 		{
