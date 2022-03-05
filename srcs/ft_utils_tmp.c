@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:25:38 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 02:05:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 04:26:29 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	is_bigger(char *nb, int neg)
 	if (neg == 1)
 		max = max + 1;
 	nbr = ft_atoull(nb);
+	free(nb);
 	if (nbr > max)
 		return (1);
 	return (0);

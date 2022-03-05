@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 06:52:55 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 03:50:05 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	add_env_var(t_env *env, char **var, int to_print)
 		ft_addlast(env, var[0], "", to_print);
 }
 
-int	format_unset_ok(char *var, int *err)
+int	format_unset_ok(char *var)
 {
 	int		i;
 
@@ -54,7 +54,7 @@ int	format_unset_ok(char *var, int *err)
 			|| (var[0] > 90 && var[0] < 97)))
 	{
 		error_manager(ERNO_UNSET, var);
-		*err = 1;
+		g_status.exit_status = 1;
 		return (0);
 	}
 	return (1);
@@ -63,15 +63,13 @@ int	format_unset_ok(char *var, int *err)
 void	ft_unset(t_env *env, char **name)
 {
 	int			i;
-	int			err;
 	char		*var;
 
 	i = 1;
-	err = 0;
 	while (name[i])
 	{
 		var = ft_strdup(name[i]);
-		if (format_unset_ok(var, &err))
+		if (format_unset_ok(var))
 		{
 			if (existing_name(env, var))
 				ft_rmvar(env, var);
@@ -79,5 +77,4 @@ void	ft_unset(t_env *env, char **name)
 		free(var);
 		i++;
 	}
-	g_status.exit_status = err;
 }
