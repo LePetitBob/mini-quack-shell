@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 00:39:33 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:55:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	main(int ac, char **av, char *envp[])
 	(void)ac;
 	(void)av;
 	g_status.exit_status = 0;
-	g_status.pid = -1;
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
 	get_env(envp, &env);
 	while (1)
 	{
+		g_status.pid = -1;
 		prompt_prefix = get_prompt_prefix(&env);
 		line = readline(prompt_prefix);
 		free(prompt_prefix);

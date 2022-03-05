@@ -42,22 +42,7 @@ echo bonjour > $test
 export test="o1 o2"
 echo bonjour > $test
 
-ls <> abc
-
-unset a1=10
-
-ifcat < f2| wc -
-
-echo $CDPATH
-export TMPCD=$CDPATH
-export CDPATH=/
-cd home/..
-export CDPATH=$TMPCD
-unset TMPCD
-echo $CDPATH
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
-
-./duckinclude/mini_quack_shell.h
+blacat < f2| wc -
 
 export TMPPATH=$PATH
 unset PATH
@@ -66,15 +51,7 @@ export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
 
-ls -l -all
-  		ls   	 	   		     -l 		 	    -all	   
-
-env -i ./minishell
-
 export _abc=10
 
-unset =
-
-./efwufkk
-
-unset a c=10
+if pathname is not file but directory, send error ERNO_ISDIR
+using open, erno will return : "EISDIR"

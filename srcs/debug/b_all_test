@@ -216,13 +216,13 @@ ls | grep t
 unset b
 export a=6 b=8 c=9
 
-echo $CDPATH
-export TMPCD=$CDPATH
-export CDPATH=/
+echo $TEST
+export TMPCD=$TEST
+export TEST=/
 cd home/..
-export CDPATH=$TMPCD
+export TEST=$TMPCD
 unset TMPCD
-echo $CDPATH
+echo $TEST
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 ls | grep t

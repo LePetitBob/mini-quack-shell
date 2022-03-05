@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 07:50:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:43:53 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	{
 		error_manager(ERNO_ACCESS, cmd[0]);
 		g_status.exit_status = 1;
-	}
-	else if (errno == ENOTDIR)
-	{
-		error_manager(ERNO_ISDIR, cmd[0]);
-		g_status.exit_status = 126;
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:56:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 03:58:05 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/04 07:55:04 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ int	get_arg_type(char *arg, int prev_type)
 	else if (ft_strcmp(arg, ">>") == 0)
 		type = DROUT;
 	else if (prev_type == RIN || prev_type == ROUT || prev_type == DROUT)
+	{
+		
 		type = FD;
+	}
 	else if (prev_type == HERE_DOC)
 		type = LIMITER;
 	else
