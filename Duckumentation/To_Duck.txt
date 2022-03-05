@@ -65,14 +65,3 @@ ls > lol < test
 
 << s
 ctrc c in heredoc
-
-
-echo -nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
-
-echo -n -n
-
-exit werwer
-// leak return 2
-
-exit 1 2 3
-code $? = 1

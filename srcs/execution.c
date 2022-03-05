@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 05:56:11 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 06:56:19 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,19 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 	if (cmd->pid == 0)
 	{
 		redirection(cmd, fd);
-		abort_exec(str_cmd, cmd, cmds, env);
+		// abort_exec(cmd, cmds, env, fd);
+		if (cmd->fdin == -1 || cmd->fdout == -1
+			|| cmd->fdin == -2 || cmd->fdout == -2)
+		{
+			close(fd[2]);
+			close(fd[3]);
+			ft_freetab(str_cmd);
+			rl_clear_history();
+			ft_clear(env);
+			rm_cmds(cmds);
+			exit(g_status.exit_status);
+		}
+		// abort_exec(cmd, cmds, env, fd);
 		close_all_fds(fd, cmd);
 		if (is_builtin(str_cmd[0]) || !ft_strcmp(str_cmd[0], "echo"))
 			ft_builtins(str_cmd, env, fd, cmds);
