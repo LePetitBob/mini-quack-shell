@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 05:39:46 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 06:35:37 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	ft_echo(char **s)
 	int	i;
 	int	nl;
 
-	nl = 0;
-	if (s[1] && !ft_strcmp("-n", s[1]))
+	nl = 1;
+	if (s[1] && !ft_strncmp("-n", s[1], 2))
 	{
-		i = 1;
-		while (s[1][i] && s[1][i] == 'n')
+		i = 2;
+		while (s[1][i] == 'n')
 			i++;
-		if (s[1][i])
-			nl = 1;
+		if (!s[1][i])
+			nl = 0;
 	}
 	i = 1;
 	if (nl == 0)

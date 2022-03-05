@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 04:36:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 06:21:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ERNO_EXPORT 8
 # define ERNO_NOFILEDIR 9
 # define ERNO_EX_NUM 10
+# define ERNO_NOEXEC 11
 
 # define NO_TYPE -1
 # define WORD 0
@@ -215,7 +216,7 @@ int			is_num(char *s);
 void		apply_redir(t_token *tmp, t_cmd *cmd, int *i);
 void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
-void		abort_exec(char **str_cmd, t_cmd *cmd, t_cmd_lst *cmds, t_env *env);
+void		abort_exec(t_cmd *cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
 void		redirection(t_cmd *cmd, int fd[6]);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env);
 int			invalid_filename(char *filename, char *FILENO, int *i);

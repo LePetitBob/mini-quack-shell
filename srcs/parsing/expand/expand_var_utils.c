@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 05:13:24 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 05:52:43 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	check_quote_expand(char **str)
 {
 	int		i;
+	int		tmp;
 
 	i = 0;
 	while ((*str)[i] != '\0')
@@ -24,8 +25,11 @@ int	check_quote_expand(char **str)
 		if ((*str)[i] == '\'')
 		{
 			++i;
-			while ((*str)[i] != '\0' && (*str)[i] != '\'')
-				++i;
+			tmp = i;
+			while ((*str)[tmp] != '\0' && (*str)[tmp] != '\'')
+				++tmp;
+			if ((*str)[tmp] == '\'')
+				i += tmp;
 		}
 		else
 			++i;
