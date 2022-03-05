@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 03:15:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 04:36:54 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ int			existing_name(t_env *env, char *name);
 int			format_export_ok(char *var);
 void		add_env_var(t_env *env, char **var, int to_print);
 //* UNSET
-int			format_unset_ok(char *var, int *err);
+int			format_unset_ok(char *var);
 void		ft_unset(t_env *env, char **name);
 //* ENV
 void		get_env(char **envp, t_env *env);

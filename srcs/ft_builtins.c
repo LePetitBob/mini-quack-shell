@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 06:42:55 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 03:43:19 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ int	is_builtin(char *cmd)
 		|| !ft_strcmp(cmd, "env") || !ft_strcmp(cmd, "pwd"))
 		return (1);
 	return (0);
+}
+
+int	check_echo_free(char **cmd)
+{
+	int	ret;
+
+	ret = 0;
+	if (!ft_strcmp(cmd[0], "echo"))
+		ret = 1;
+	ft_freetab(cmd);
+	return (ret);
 }
 
 void	ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
@@ -41,14 +52,12 @@ void	ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 			ft_unset(env, cmd);
 		else if (!ft_strcmp(cmd[0], "cd"))
 			ft_cd(cmd, env);
-		if (fd[5] || !ft_strcmp(cmd[0], "echo"))
+		if (fd[5] || check_echo_free(cmd))
 		{
-			ft_freetab(cmd);
 			rl_clear_history();
 			ft_clear(env);
 			rm_cmds(cmds);
 			exit(g_status.exit_status);
 		}
-		ft_freetab(cmd);
 	}
 }

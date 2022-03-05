@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 03:32:07 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 05:14:03 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	redirection(t_cmd *cmd, int fd[6])
 		close(cmd->fdin);
 	else if (cmd->fdin == -2)
 		tmp_pipe(0);
-	if (cmd->fdout != -2 && cmd->fdout != -1  && cmd->fdout != 1)
+	if (cmd->fdout != -2 && cmd->fdout != -1 && cmd->fdout != 1)
 		dup2(cmd->fdout, STDOUT_FILENO);
 	if (cmd->fdout != -2 && cmd->fdout != -1 && cmd->fdout != 1)
 		close(cmd->fdout);

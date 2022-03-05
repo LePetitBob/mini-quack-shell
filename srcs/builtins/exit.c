@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:39:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 09:36:21 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 05:20:42 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	ft_exit(char **err, t_env *env, int is_piped, t_cmd_lst *cmds)
 		rm_cmds(cmds);
 		exit((unsigned char)g_status.exit_status);
 	}
+	g_status.exit_status = 2;
 	error_manager(ERNO_ARGS, "exit");
 }

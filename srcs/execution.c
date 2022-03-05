@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 03:32:22 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 05:14:12 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**get_cmd_str(t_cmd *cmd)
 	char	**str_cmd;
 	t_token	*tmp;
 
-	if(!cmd->arg)
+	if (!cmd->arg)
 		return (NULL);
 	i = 0;
 	tmp = cmd->arg;
@@ -86,18 +86,16 @@ char	**get_cmd_str(t_cmd *cmd)
 		i++;
 		tmp = tmp->next;
 	}
-	tmp = NULL;
 	str_cmd = malloc(sizeof(char *) * (i + 1));
 	if (!str_cmd)
 		return (NULL);
 	str_cmd[i] = NULL;
 	tmp = cmd->arg;
-	i = 0;
+	i = -1;
 	while (tmp)
 	{
-		str_cmd[i] = ft_strdup(tmp->str);
+		str_cmd[++i] = ft_strdup(tmp->str);
 		tmp = tmp->next;
-		i++;
 	}
 	return (str_cmd);
 }
