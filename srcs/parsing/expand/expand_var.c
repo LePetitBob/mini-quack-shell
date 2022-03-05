@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 04:37:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 05:30:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	expand_var(char **str, t_env *env, int hd)
 	value = get_env_name(env, var);
 	join_pre_sufix_expanded_var(str, i, &value, cpy);
 	get_str(value, str);
+	if (hd == 0 && check_quote_expand(str) != -1)
+		expand_var(str, env, 0);
 	free(var);
 }
 
