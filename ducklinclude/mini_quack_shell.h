@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 12:29:11 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 14:11:13 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,7 @@ void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
 void		rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds);
 void		rm_cmds(t_cmd_lst *cmd);
-char		*get_here_doc(char *limiter, t_env *env);
+char		*get_here_doc(char *limiter, t_cmd_lst *cmds, t_env *env);
 
 //			CL
 t_env_var	*ft_create_elem(char *name, char *value, int to_print);

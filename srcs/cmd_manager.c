@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 07:52:28 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 14:36:16 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 
 void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
 {
+	cmds = malloc(sizeof(t_cmd *));
 	cmds->first = cmd;
 	fd[5] = 0;
 	if (cmds->first->next)
@@ -90,10 +91,10 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	t_cmd		*tmp;
 	int			fd[6];
 
-	cmds = malloc(sizeof(t_cmd *));
+	cmds = NULL;
 	init_values(fd, cmds, env, cmd);
 	tmp = cmds->first;
-	while (tmp)
+	while (tmp)//TODO PLACE A CONDITION HERE SO THAT IT DOESNT EXECUTE AT ALL AND GOES RIGHT TO CLOSE WAIT
 	{
 		g_status.pid = -1;
 		if (tmp->prev)
