@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 11:42:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 12:52:55 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,32 @@ char	*get_here_doc(char *limiter, t_env *env)
 	int		line;
 
 	tmp[0] = NULL;
-	write(STDOUT_FILENO, "> ", 2);
-	get_next_line(STDIN_FILENO, &tmp[0]);
+	g_status.hd_fd = STDIN_FILENO;
 	tmp[1] = NULL;
 	tmp[2] = NULL;
 	line = 0;
 	while (ft_strcmp(limiter, tmp[0]))
 	{
-		if (STDIN_FILENO == -1)
-			break ;
-		while (ft_strsrch(tmp[0], '$') != -1)
-			expand_var(&tmp[0], env, 1);
-		tmp[1] = ft_strjoin(tmp[0], "\n");
-		tmp[2] = ft_strjoin_free(tmp[2], tmp[1]);
+		if (tmp[0])
+		{
+			while (ft_strsrch(tmp[0], '$') != -1)
+				expand_var(&tmp[0], env, 1);
+			tmp[1] = ft_strjoin(tmp[0], "\n");
+			tmp[2] = ft_strjoin_free(tmp[2], tmp[1]);
+		}
 		free(tmp[0]);
 		free(tmp[1]);
-		write(STDOUT_FILENO, "> ", 2);
-		get_next_line(STDIN_FILENO, &tmp[0]);
+		// write(STDOUT_FILENO, "> ", 2);
+		tmp[0] = readline("> ");
+		if (tmp[0] == NULL)
+			break ;
 		line++;
 	}
 	if (tmp[0])
 		free(tmp[0]);
 	free(limiter);
+	if (g_status.hd_fd > 2)
+		dup2(g_status.hd_fd, STDIN_FILENO);
 	return (tmp[2]);
 }
 

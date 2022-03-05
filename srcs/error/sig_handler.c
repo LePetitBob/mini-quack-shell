@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 11:36:23 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 12:44:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,24 @@ void	sig_handler(int signum)
 
 void	handler_parent(int signum)
 {
-	// int	tmp;
+	int	tmp;
 
 	if (signum == SIGINT)
 	{
-		dup2(STDIN_FILENO, -1);
-		// STDIN_FILENO = -1;
-		// tmp = dup(STDIN_FILENO);
-		// close(STDIN_FILENO);
-		// dup2(tmp, STDIN_FILENO);
-		ft_putstr_fd("\n", STDOUT_FILENO);
-		rl_replace_line("", STDOUT_FILENO);
-		rl_on_new_line();
-		rl_redisplay();
+		if (g_status.hd_fd == STDIN_FILENO)
+		{
+			tmp = dup(STDIN_FILENO);
+			close(STDIN_FILENO);
+			g_status.hd_fd = tmp;
+			ft_putstr_fd("\n", STDOUT_FILENO);
+		}
+		else
+		{
+			ft_putstr_fd("\n", STDOUT_FILENO);
+			rl_replace_line("", STDOUT_FILENO);
+			rl_on_new_line();
+			rl_redisplay();
+		}
 		g_status.exit_status = 130;
 	}
 	if (signum == SIGQUIT)
