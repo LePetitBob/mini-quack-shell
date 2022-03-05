@@ -48,13 +48,6 @@ echo $?
 export "" test=a
 echo $?
 
-.
-
-..
-
-| |
-error syntax 2
-
 increment shlvl
 
 coucou < $TEST

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 03:15:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 05:42:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ERNO_EXPORT 8
 # define ERNO_NOFILEDIR 9
 # define ERNO_EX_NUM 10
+# define ERNO_NOEXEC 11
 
 # define NO_TYPE -1
 # define WORD 0
