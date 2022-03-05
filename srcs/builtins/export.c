@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 06:53:31 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 02:29:14 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,16 @@ int	format_export_ok(char *var)
 	int		i;
 
 	i = 0;
-	while (var[i] && var[i] != '=' && ((var[i] > 64 && var[i] < 91)
-			|| (var[i] > 96 && var[i] < 123) || (var[i] > 46
-				&& var[i] < 58)))
+	if (ft_isalpha((int)var[0]) == 0 && var[0] != '_')
+	{
+		error_manager(ERNO_EXPORT, var);
+		g_status.exit_status = 1;
+		return (0);
+	}
+	while (var[i] && var[i] != '=' && (ft_isalnum((int)var[i]) == 1
+		|| var[i] == '_'))
 		i++;
-	if ((var[i] && var[i] != '=') || (var[0] < 65 || var[0] > 122
-			|| (var[0] > 90 && var[0] < 97)))
+	if (var[i] && var[i] != '=')
 	{
 		error_manager(ERNO_EXPORT, var);
 		g_status.exit_status = 1;

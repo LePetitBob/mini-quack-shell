@@ -52,6 +52,3 @@ unset TMPPATH
 echo $PATH
 
 export _abc=10
-
-if pathname is not file but directory, send error ERNO_ISDIR
-using open, erno will return : "EISDIR"
