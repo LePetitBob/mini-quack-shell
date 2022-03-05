@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 04:36:22 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 11:36:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,35 @@ void	sig_handler(int signum)
 
 void	handler_parent(int signum)
 {
+	// int	tmp;
+
 	if (signum == SIGINT)
 	{
-		ft_putstr_fd("\n", 1);
+		dup2(STDIN_FILENO, -1);
+		// STDIN_FILENO = -1;
+		// tmp = dup(STDIN_FILENO);
+		// close(STDIN_FILENO);
+		// dup2(tmp, STDIN_FILENO);
+		ft_putstr_fd("\n", STDOUT_FILENO);
+		rl_replace_line("", STDOUT_FILENO);
 		rl_on_new_line();
-		rl_replace_line("", 1);
 		rl_redisplay();
 		g_status.exit_status = 130;
 	}
 	if (signum == SIGQUIT)
-		ft_putstr_fd("\b\b  \b\b", 2);
+		ft_putstr_fd("\b\b  \b\b", STDERR_FILENO);
 }
 
 void	handler_child(int signum)
 {
 	if (signum == SIGINT)
 	{
-		ft_putstr_fd("\n", 2);
+		ft_putstr_fd("\n", STDERR_FILENO);
 		g_status.exit_status = 130;
 	}
 	if (signum == SIGQUIT)
 	{
-		ft_putstr_fd("Quit: (core dumped)\n", 2);
+		ft_putstr_fd("Quit: (core dumped)\n", STDERR_FILENO);
 		g_status.exit_status = 131;
 	}
 }

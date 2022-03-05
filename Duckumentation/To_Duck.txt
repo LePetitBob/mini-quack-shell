@@ -40,20 +40,11 @@ echo $PATH
 
 ls <> abc
 
-unset "" test
-echo $?
-
-export "" test=a
-echo $?
-
 increment shlvl
 
 coucou < $TEST
 // leak FD
 
-
-ls | exit sdfsaf
-// leak
 
 << s cat
 // leak fd
