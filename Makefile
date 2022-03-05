@@ -53,6 +53,7 @@ SRCS = builtins/pwd.c \
 		init_struct.c del_struct.c struct_utils.c \
 		get_error_redir.c \
 		redir_error.c \
+		failed_redir.c \
 		print_tokens_cmds.c
 
 A_SRCS = main.c \

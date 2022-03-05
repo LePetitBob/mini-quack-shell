@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 02:03:27 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 03:32:07 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 		if (!invalid_filename(str, "OUT", i))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		else
-			cmd->fdout = -1;
+			cmd->fdout = -2;
 	}
 	else if (type == DROUT)
 	{
@@ -32,7 +32,7 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 		if (!invalid_filename(str, "OUT", i))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		else
-			cmd->fdout = -1;
+			cmd->fdout = -2;
 	}
 	if (cmd->fdout == -1 && errno == EISDIR)
 		error_manager(ERNO_ISDIR, str);
@@ -56,7 +56,7 @@ void	apply_redir(t_token *tmp, t_cmd *cmd, int *i)
 		if (!invalid_filename(tmp->str, "IN", i))
 			cmd->fdin = open(tmp->str, O_RDONLY);
 		else
-			cmd->fdin = -1;
+			cmd->fdin = -2;
 	}
 	else if (tmp->type == ROUT || tmp->type == DROUT)
 		redir_out(cmd, tmp->str, tmp->type, i);
@@ -97,16 +97,16 @@ void	redirection(t_cmd *cmd, int fd[6])
 		tmp = tmp->next;
 	}
 	redir_pipe(cmd, fd);
-	if (cmd->fdin != -1 && cmd->fdin != 0)
+	if (cmd->fdin > 0)
 		dup2(cmd->fdin, STDIN_FILENO);
-	if (cmd->fdin != -1 && cmd->fdin != 0)
+	if (cmd->fdin > 0)
 		close(cmd->fdin);
-	else if (cmd->fdin == -1)
+	else if (cmd->fdin == -2)
 		tmp_pipe(0);
-	if (cmd->fdout != -1 && cmd->fdout != 1)
+	if (cmd->fdout != -2 && cmd->fdout != -1  && cmd->fdout != 1)
 		dup2(cmd->fdout, STDOUT_FILENO);
-	if (cmd->fdout != -1 && cmd->fdout != 1)
+	if (cmd->fdout != -2 && cmd->fdout != -1 && cmd->fdout != 1)
 		close(cmd->fdout);
-	else if (cmd->fdout == -1)
+	else if (cmd->fdout == -2)
 		tmp_pipe(1);
 }
