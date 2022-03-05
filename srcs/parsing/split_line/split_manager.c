@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 06:25:36 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 03:23:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ int	syntax_errors(char **arr)
 	{
 		err[0] = arr[0][i];
 		if (ft_strlen(arr[0]) > 1 && ((i <= ft_strlen(arr[0]) - 1
-				&& arr[0][i] == arr[0][i + 1]) || (i == ft_strlen(arr[0]) - 1
-				&& arr[0][i] == arr[0][i - 1])))
+					&& arr[0][i] == arr[0][i + 1])
+					|| (i == ft_strlen(arr[0]) - 1
+					&& arr[0][i] == arr[0][i - 1])))
 			err[1] = arr[0][i];
 		error_manager(ERNO_SYNTAX, err);
 		i = EXIT_FAILURE;

@@ -36,19 +36,9 @@ echo $PATH
 
 ----------------------------------------------------
 
-"h ey" hey|<hey
-
-echo bonjour > $test
-export test="o1 o2"
-echo bonjour > $test
-
-blacat < f2| wc -
-
 export TMPPATH=$PATH
 unset PATH
 ls
 export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
-
-export _abc=10
