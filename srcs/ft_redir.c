@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 06:52:58 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 02:03:27 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 		else
 			cmd->fdout = -1;
 	}
+	if (cmd->fdout == -1 && errno == EISDIR)
+		error_manager(ERNO_ISDIR, str);
 }
 
 void	apply_redir(t_token *tmp, t_cmd *cmd, int *i)
