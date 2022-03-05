@@ -10,8 +10,6 @@ echo "hello there" >outfilr| echo '$HOME' | echo "$HOME" | echo $
 
 echo asdv >/dev/stdout| ls -la
 
-echo $$$$$$
-
 echo gerigh >/dev/stdout| ls -las
 
 cat "test" >> outfilr
@@ -123,9 +121,6 @@ pwd lalala
 export "HI =hi"
 
 echo "" bonjour
-
-cd -
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 unset var
 export $var=test

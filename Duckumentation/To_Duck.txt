@@ -36,9 +36,55 @@ echo $PATH
 
 ----------------------------------------------------
 
-export TMPPATH=$PATH
-unset PATH
-ls
-export PATH=$TMPPATH
-unset TMPPATH
-echo $PATH
+"h ey" hey|<hey
+
+echo asdv >/dev/stdout| ls -la
+
+ls <> abc
+
+unset "" test
+echo $?
+
+export "" test=a
+echo $?
+
+.
+
+..
+
+export A=1 B=2 C=3 D=4 E=5 F=6
+echo "$A'$B"$C'$E"$F'
+
+| |
+error syntax 2
+
+increment shlvl
+
+coucou < $TEST
+// leak FD
+
+
+ls | exit sdfsaf
+// leak
+
+<< s cat
+// leak fd
+
+
+ls > lol < test
+// leak de fd
+
+
+<< s
+ctrc c in heredoc
+
+
+echo -nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+echo -n -n
+
+exit werwer
+// leak return 2
+
+exit 1 2 3
+code $? = 1

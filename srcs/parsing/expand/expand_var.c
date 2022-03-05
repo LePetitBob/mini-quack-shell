@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 07:03:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 04:37:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	expand_var(char **str, t_env *env, int hd)
 {
 	char	*cpy;
 	char	*var;
-	char	*value;
+	char	*value = NULL;
 	int		i;
 
 	cpy = NULL;
