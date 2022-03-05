@@ -42,12 +42,6 @@ echo asdv >/dev/stdout| ls -la
 
 ls <> abc
 
-unset "" test
-echo $?
-
-export "" test=a
-echo $?
-
 increment shlvl
 
 coucou < $TEST
