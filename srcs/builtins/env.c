@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/02 00:12:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 08:36:33 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	ft_env(t_env *env)
 {
 	t_env_var	*tmp;
+	char		*shlvl;
+	int			k;
 
 	tmp = env->first;
 	while (tmp)
@@ -23,7 +25,14 @@ void	ft_env(t_env *env)
 		{
 			write(1, tmp->name, ft_strlen(tmp->name));
 			write(1, "=", 1);
-			write(1, tmp->value, ft_strlen(tmp->value));
+			if (!ft_strcmp(tmp->name, "SHLVL"))
+			{
+				k = ft_atoi(tmp->value);
+				shlvl = ft_itoa(k - 1);
+				write(1, shlvl, ft_strlen(shlvl));
+			}
+			else
+				write(1, tmp->value, ft_strlen(tmp->value));
 			write(1, "\n", 1);
 		}
 		tmp = tmp->next;
@@ -34,10 +43,11 @@ void	get_env(char **envp, t_env *env)
 {
 	int		i;
 	int		j;
+	int		k;
 	char	**env_split;
 
 	i = 0;
-	env_split = malloc(sizeof(char *) * 2);
+	env_split = malloc(sizeof(char *) * 3);
 	if (!env_split)
 		return ;
 	env->first = NULL;
@@ -47,7 +57,13 @@ void	get_env(char **envp, t_env *env)
 		while (envp[i][j] != '=')
 			j++;
 		env_split[0] = strndup(envp[i], j);
-		env_split[1] = strdup(envp[i] + j + 1);
+		if (!ft_strcmp(env_split[0], "SHLVL"))
+		{
+			k = ft_atoi(envp[i] + j + 1);
+			env_split[1] = ft_itoa(k + 1);
+		}
+		else
+			env_split[1] = strdup(envp[i] + j + 1);
 		ft_addlast(env, env_split[0], env_split[1], 1);
 		free(env_split[0]);
 		free(env_split[1]);

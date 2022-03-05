@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 07:28:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 07:52:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
-		if (WIFEXITED(err) && !is_builtin(tmp->arg->str))
+		if (WIFEXITED(err) && tmp->arg && !is_builtin(tmp->arg->str))
 			g_status.exit_status = WEXITSTATUS(err);
 		tmp = tmp->next;
 	}

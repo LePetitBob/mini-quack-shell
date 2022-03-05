@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 07:48:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 08:36:38 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	format_export_ok(char *var)
 void	export_display(t_env *env)
 {
 	t_env_var	*tmp;
+	char		*shlvl;
+	int			k;
 
 	tmp = env->first;
 	while (tmp)
@@ -62,7 +64,14 @@ void	export_display(t_env *env)
 		if (tmp->to_print == 1)
 		{
 			write(1, "=\"", 2);
-			write(1, tmp->value, ft_strlen(tmp->value));
+			if (!ft_strcmp(tmp->name, "SHLVL"))
+			{
+				k = ft_atoi(tmp->value);
+				shlvl = ft_itoa(k - 1);
+				write(1, shlvl, ft_strlen(shlvl));
+			}
+			else
+				write(1, tmp->value, ft_strlen(tmp->value));
 			write(1, "\"", 1);
 		}
 		write(1, "\n", 1);

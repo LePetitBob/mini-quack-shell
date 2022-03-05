@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 05:52:50 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 07:48:32 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 extern t_status	g_status;
 
-void	expand_vars_manager(char *(**arr), t_env *env)
+void	expand_vars_manager(t_token *it, char *(**arr), t_env *env)
 {
 	char	**tmp;
+	char	*cpy;
 	int		i;
 
 	i = 0;
@@ -24,7 +25,17 @@ void	expand_vars_manager(char *(**arr), t_env *env)
 	{
 		if (ft_strsrch((*arr)[i], '$') != -1)
 		{
-			expand_var(&(*arr)[i], env, 0);
+			cpy = ft_strdup((*arr)[i]);
+			expand_var(&cpy, env, 0);
+			if ((it->type == FD || it->type == LIMITER)
+				&& (!cpy || cpy[0] == '\0'))
+				free(cpy);
+			else
+			{
+				free((*arr)[i]);
+				(*arr)[i] = ft_strdup(cpy);
+				free(cpy);
+			}
 			if (!(*arr)[i] || (*arr)[i][0] == '\0')
 			{
 				tmp = ft_erase(*arr, i, 1);

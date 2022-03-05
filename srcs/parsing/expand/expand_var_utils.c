@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_var_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 05:52:43 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 06:57:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	expand_exeptions(char **str, int i, char *cpy, char *value)
 		if ((*str)[i] == '?')
 			value = ft_itoa(g_status.exit_status);
 		else if ((*str)[i] == '0')
-			value = ft_strdup("mini_quack_shell");
+			value = ft_strdup("minishell");
 		if (cpy)
 		{
 			tmp = ft_strjoin(cpy, value);
