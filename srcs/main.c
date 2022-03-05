@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 08:58:00 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 12:44:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int ac, char **av, char *envp[])
 	(void)ac;
 	(void)av;
 	g_status.exit_status = 0;
+	g_status.hd_fd = -1;
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
 	get_env(envp, &env);
