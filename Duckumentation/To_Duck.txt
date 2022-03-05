@@ -38,8 +38,6 @@ echo $PATH
 
 "h ey" hey|<hey
 
-echo asdv >/dev/stdout| ls -la
-
 ls <> abc
 
 unset "" test
