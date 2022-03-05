@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 07:41:38 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 11:06:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <errno.h>
 # include <limits.h>
 # include "libft.h"
+# include "ft_get_file.h"
 
 # define ERNO_SYNTAX 0
 # define ERNO_ACCESS 1

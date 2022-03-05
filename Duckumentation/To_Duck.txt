@@ -46,9 +46,6 @@ coucou < $TEST
 // leak FD
 
 
-ls | exit sdfsaf
-// leak
-
 << s cat
 // leak fd
 

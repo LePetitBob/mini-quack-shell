@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 04:34:31 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/05 11:42:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,15 @@ char	*get_here_doc(char *limiter, t_env *env)
 	char	*tmp[3];
 	int		line;
 
-	tmp[0] = readline("> ");
+	tmp[0] = NULL;
+	write(STDOUT_FILENO, "> ", 2);
+	get_next_line(STDIN_FILENO, &tmp[0]);
 	tmp[1] = NULL;
 	tmp[2] = NULL;
 	line = 0;
 	while (ft_strcmp(limiter, tmp[0]))
 	{
-		if (!tmp[0])
+		if (STDIN_FILENO == -1)
 			break ;
 		while (ft_strsrch(tmp[0], '$') != -1)
 			expand_var(&tmp[0], env, 1);
@@ -76,7 +78,8 @@ char	*get_here_doc(char *limiter, t_env *env)
 		tmp[2] = ft_strjoin_free(tmp[2], tmp[1]);
 		free(tmp[0]);
 		free(tmp[1]);
-		tmp[0] = readline("> ");
+		write(STDOUT_FILENO, "> ", 2);
+		get_next_line(STDIN_FILENO, &tmp[0]);
 		line++;
 	}
 	if (tmp[0])
