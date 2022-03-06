@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 13:22:10 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 03:48:33 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
 t_status	g_status;
+
+static void	launch_signal_global(void);
+static char	*get_prompt_prefix(t_env *env);
 
 // here : SIGINT = Ctrl-C
 // here : SIGQUIT = Ctrl-'\'
@@ -24,10 +27,7 @@ int	main(int ac, char **av, char *envp[])
 
 	(void)ac;
 	(void)av;
-	g_status.exit_status = 0;
-	g_status.hd_fd = -1;
-	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, sig_handler);
+	launch_signal_global();
 	get_env(envp, &env);
 	while (1)
 	{
@@ -46,7 +46,15 @@ int	main(int ac, char **av, char *envp[])
 	}
 }
 
-char	*get_prompt_prefix(t_env *env)
+static void	launch_signal_global(void)
+{
+	g_status.exit_status = 0;
+	g_status.hd_fd = -1;
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
+}
+
+static char	*get_prompt_prefix(t_env *env)
 {
 	char	*home;
 	char	*pth;

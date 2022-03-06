@@ -6,11 +6,13 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 05:44:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:32:37 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern t_status	g_status;
 
 void	error_manager(int erno, char *str)
 {
@@ -100,5 +102,6 @@ char	*get_syntax_error(char *str)
 	free(pb);
 	pb = ft_strjoin(tmp, "\n");
 	free(tmp);
+	g_status.exit_status = 2;
 	return (pb);
 }

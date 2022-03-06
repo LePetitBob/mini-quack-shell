@@ -6,13 +6,11 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:54:27 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 06:58:17 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:34:24 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-extern t_status	g_status;
 
 void	split_manager(char *line, t_env *env)
 {
@@ -61,7 +59,6 @@ int	syntax_errors(char **arr)
 					&& arr[0][i] == arr[0][i - 1])))
 			err[1] = arr[0][i];
 		error_manager(ERNO_SYNTAX, err);
-		g_status.exit_status = 2;
 		i = EXIT_FAILURE;
 	}
 	else

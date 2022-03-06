@@ -14,10 +14,9 @@ SRCS_DIR = $(shell find srcs -type d)
 OBJS_DIR = objs
 INC_DIR = ./ducklinclude/
 LIBFT_DIR = ./libft_duck
-GETFILE_DIR = ./Lib_get_file
 
-LIBS = -L$(LIBFT_DIR) -lft -L$(GETFILE_DIR) -lgetfile -lreadline
-INCLUDES = -I$(LIBFT_DIR)/Includes -I$(GETFILE_DIR)/Includes -I$(INC_DIR)
+LIBS = -L$(LIBFT_DIR) -lft -lreadline
+INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
 vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
@@ -90,17 +89,14 @@ OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 A_OBJS = $(addprefix $(OBJS_DIR)/,$(A_SRCS:.c=.o))
 V_OBJS = $(addprefix $(OBJS_DIR)/,$(V_SRCS:.c=.o))
 
-all: $(LIBFT_DIR)/libft.a $(GETFILE_DIR)/libgetfile.a $(NAME)
+all: $(LIBFT_DIR)/libft.a $(NAME)
 
-albe: $(LIBFT_DIR)/libft.a $(GETFILE_DIR)/libgetfile.a $(ALBE)
+albe: $(LIBFT_DIR)/libft.a $(ALBE)
 
-vinc: $(LIBFT_DIR)/libft.a $(GETFILE_DIR)/libgetfile.a $(VINC)
+vinc: $(LIBFT_DIR)/libft.a $(VINC)
 
 $(LIBFT_DIR)/libft.a:
 	make -C $(LIBFT_DIR) all
-
-$(GETFILE_DIR)/libgetfile.a:
-	make -C $(GETFILE_DIR) all
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $(NAME) $(LIBS)
@@ -125,7 +121,6 @@ fclean: clean
 
 cleanall: fclean
 	make -C $(LIBFT_DIR) fclean
-	make -C $(GETFILE_DIR) fclean
 
 re: fclean all
 

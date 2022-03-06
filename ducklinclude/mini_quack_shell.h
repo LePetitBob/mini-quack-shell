@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 07:02:21 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 07:12:53 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # include <errno.h>
 # include <limits.h>
 # include "libft.h"
-# include "ft_get_file.h"
 
 # define ERNO_SYNTAX 0
 # define ERNO_ACCESS 1
@@ -108,9 +107,6 @@ void		free_token(t_token *tokens);
 void		free_one_token(t_token *token);
 void		free_cmds(t_cmd *cmds);
 
-//			Main
-char		*get_prompt_prefix(t_env *env);
-//
 //?			Parsing
 //			Split
 void		split_manager(char *line, t_env *env);
@@ -152,6 +148,7 @@ void		expand_skip_quotes(char *(**arr), char **cpy, int *index);
 void		expand_vars_manager(t_token *it, char *(**arr), t_env *env);
 void		expand_var(char **str, t_env *env, int hd);
 void		get_str(char *value, char **str);
+void		delete_null_var(char *(**arr), int *index);
 
 int			check_quote_expand(char **str);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
@@ -220,7 +217,7 @@ void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		abort_exec(char **cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
 void		redirection(t_cmd *cmd, int fd[6]);
-char		*here_doc_read(char *str);
+char		*here_doc_read(char *str, char *stock);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
