@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 03:52:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:27:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	else
 	{
-		if (cmd[0][0] == '/')
+		if (cmd[0][0] == '.' || cmd[0][0] == '/')
 			error_manager(ERNO_NOFILEDIR, cmd[0]);
 		else
-			error_manager(ERNO_NOCMD, cmd[0]);
+		error_manager(ERNO_NOCMD, cmd[0]);
 		g_status.exit_status = 127;
 	}
 	ft_freetab(env);
@@ -55,7 +55,8 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 		i++;
 	if (!envp[i])
 		cmd_not_found(cmd, tmp_paths, envp, cmds);
-	if (cmd[0] && cmd[0][0] == '.' && access(cmd[0], X_OK) == 0)
+	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/')
+		&& access(cmd[0], X_OK) == 0)
 		execve(cmd[0], cmd, envp);
 	tmp_paths = ft_split(envp[i] + 5, ':');
 	i = -1;
