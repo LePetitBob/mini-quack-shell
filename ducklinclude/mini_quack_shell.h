@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 18:52:08 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 20:05:26 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int			check_tokens_type(t_token *tokens);
 //			Expand
 void		expand_caller(t_token *tokens, t_env *env);
 void		expand_manager(t_token **it, t_env *env);
+void		ret_empty_expand(char *(**arr), t_token **it);
 
 char		**expand_split_manager(char *str);
 char		**split_expand_prefix(char *str, int *i);

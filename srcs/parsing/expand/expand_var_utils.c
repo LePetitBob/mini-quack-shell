@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 18:54:13 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 20:03:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	check_quote_expand(char *str)
 		}
 		if (str[i] == '\'')
 		{
-			++i;
-			tmp = i;
+			tmp = ++i;
 			while (str[tmp] != '\0' && str[tmp] != '\'')
 				++tmp;
 			if (str[tmp] == '\'')
