@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 03:32:37 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 20:54:15 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	error_manager(int erno, char *str)
 		|| erno == ERNO_NOEXEC)
 		err = get_cmd_error(erno, str);
 	else if (erno == ERNO_CD || erno == ERNO_UNSET || erno == ERNO_EXPORT
-		|| erno == ERNO_EX_NUM)
+		|| erno == ERNO_EX_NUM || erno == ERNO_HD_CTRLD
+		|| erno == ERNO_HD_CTRLD)
 		err = get_complex_error(erno, str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
@@ -85,6 +86,12 @@ char	*get_complex_error(int erno, char *cmd)
 	{
 		pb = ft_strjoin(cmd, ": numeric argument required\n");
 		tmp = ft_strjoin("exit: ", pb);
+	}
+	else if (erno == ERNO_HD_CTRLD)
+	{
+		pb = ft_strjoin("warning: here-document at line 3 delimited by "
+				"end-of-file (wanted `", cmd);
+		tmp = ft_strjoin(pb, "\')\n");
 	}
 	free(pb);
 	return (tmp);
