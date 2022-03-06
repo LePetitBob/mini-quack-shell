@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 03:29:15 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 07:32:06 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,6 @@ void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
 	g_status.pid = -1;
 }
 
-	// int		nb_hd;
-
-	// nb_hd = here_docs(cmds);
-	// if (nb_hd > 16)
-	// 	ft_exit() //! 16+ hd --> quit (exit(2))
 //here: fd[0] is unset; becomes pipe(0)
 //here: fd[1] is unset; becomes pipe(1)
 //here: fd[2]=STDIN

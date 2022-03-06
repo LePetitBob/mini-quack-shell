@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 03:52:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:24:12 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,24 @@
 
 extern t_status	g_status;
 
-void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
+void	redirection(t_cmd *cmd, int fd[6])
 {
-	if (errno == EACCES)
+	t_token	*tmp;
+	int		i;
+	int		pipe_hd[2];
+
+	i = 0;
+	pipe(pipe_hd);
+	tmp = cmd->redir;
+	while (tmp)
 	{
-		error_manager(ERNO_ACCESS, cmd[0]);
-		g_status.exit_status = 1;
+		apply_redir(tmp, cmd, &i, pipe_hd);
+		if (i != 0)
+			break ;
+		tmp = tmp->next;
 	}
-	else if (ft_strcmp(cmd[0], ".") == 0)
-	{
-		error_manager(ERNO_NOEXEC, cmd[0]);
-		g_status.exit_status = 2;
-	}
-	else
-	{
-		if (cmd[0][0] == '/')
-			error_manager(ERNO_NOFILEDIR, cmd[0]);
-		else
-			error_manager(ERNO_NOCMD, cmd[0]);
-		g_status.exit_status = 127;
-	}
-	ft_freetab(env);
-	ft_freetab(cmd);
-	if (tmp_paths)
-		ft_freetab(tmp_paths);
-	rm_cmds(cmds);
-	exit(g_status.exit_status);
+	redir_pipe(cmd, fd);
+	check_all_redirs(cmd, pipe_hd);
 }
 
 void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
@@ -112,17 +104,6 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 	if (fd[4] != -1)
 		close(fd[4]);
 }
-
-// int	here_docs(t_cmd_lst *cmds)
-// {
-// 	t_cmd	*cmd_tmp;
-// 	t_token	*tkn_tmp;
-// 	int		nb_hd;
-
-// 	nb_hd = 0;
-// 	cmd_tmp = cmds->first
-// 	return (nb_hd);
-// }
 
 void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 {

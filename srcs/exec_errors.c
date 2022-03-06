@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 03:42:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 10:23:58 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,32 @@ void	failed_fork(t_cmd *cmd, char **str_cmd)
 		ft_freetab(str_cmd);
 	if (cmd->pid < 0)
 		exit(errno);
+}
+
+void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
+{
+	if (errno == EACCES)
+	{
+		error_manager(ERNO_ACCESS, cmd[0]);
+		g_status.exit_status = 1;
+	}
+	else if (ft_strcmp(cmd[0], ".") == 0)
+	{
+		error_manager(ERNO_NOEXEC, cmd[0]);
+		g_status.exit_status = 2;
+	}
+	else
+	{
+		if (cmd[0][0] == '/')
+			error_manager(ERNO_NOFILEDIR, cmd[0]);
+		else
+			error_manager(ERNO_NOCMD, cmd[0]);
+		g_status.exit_status = 127;
+	}
+	ft_freetab(env);
+	ft_freetab(cmd);
+	if (tmp_paths)
+		ft_freetab(tmp_paths);
+	rm_cmds(cmds);
+	exit(g_status.exit_status);
 }

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 07:12:53 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 10:24:32 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define DROUT 6
 # define HERE_DOC 7
 # define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
-# define HERE_DOC_PATH "objs/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
+# define HERE_DOC_PATH "/tmpfiles/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
 typedef struct s_status
 {
@@ -212,7 +212,8 @@ int			is_num(char *s);
 //?			Builtins
 
 //* REDIR
-void		apply_redir(t_token *tmp, t_cmd *cmd, int *i);
+void		apply_redir(t_token *tmp, t_cmd *cmd, int *i, int pipe_hd[2]);
+void		check_all_redirs(t_cmd *cmd, int pipe_hd[2]);
 void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		abort_exec(char **cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
@@ -272,16 +273,5 @@ void		get_error_redir(t_token *next);
 void		print_tokens(t_token *tokens);
 void		print_cmds(t_cmd *cmds);
 //!
-
-//!				TO REMOVE WHEN LIBFT IMPLANTED
-// int			ft_strlen(char *s);
-// int			ft_strncmp(const char *s1, const char *s2, size_t n);
-// char		*ft_strdup(const char *s1);
-char		*ft_strndup(const char *s1, int n);
-// char		**ft_split(char const *str, char c);
-// char		*ft_strjoin(char *s1, char *s2);
-// int			ft_atoi(const char *str);
-// int			ft_strcmp(const char *s1, const char *s2);
-//!				TO REMOVE WHEN LIBFT IMPLANTED
 
 #endif
