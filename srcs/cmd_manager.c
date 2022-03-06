@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 07:32:06 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 10:46:46 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	closepipe(int fd[3])
 		close(fd[1]);
 }
 
-void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
+void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 {
 	t_cmd	*tmp;
 	int		err;
@@ -61,7 +61,6 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 			g_status.exit_status = WEXITSTATUS(err);
 		tmp = tmp->next;
 	}
-	rm_here_doc_tmp_file(env, cmds);
 	rm_cmds(cmds);
 }
 
@@ -107,8 +106,7 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 		if (tmp->next)
 			pipe(fd);
 		execution(tmp, env, fd, cmds);
-		rm_here_doc_tmp_file(env, cmds);
 		tmp = tmp->next;
 	}
-	close_wait_clear(cmds, fd, env);
+	close_wait_clear(cmds, fd);
 }

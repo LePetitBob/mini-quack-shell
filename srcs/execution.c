@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 10:24:12 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 10:52:36 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 		i++;
 	if (!envp[i])
 		cmd_not_found(cmd, tmp_paths, envp, cmds);
-	if (cmd[0] && cmd[0][0] == '.' && access(cmd[0], X_OK) == 0)
+	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/')
+		&& access(cmd[0], X_OK) == 0)
 		execve(cmd[0], cmd, envp);
 	tmp_paths = ft_split(envp[i] + 5, ':');
 	i = -1;
 	while (tmp_paths[++i])
 	{
 		path = get_path(tmp_paths[i], cmd[0]);
-		if (cmd[0] && access(path, X_OK) == 0)
-			execve(path, cmd, envp);
+		access_exec(cmd, path, envp);
 		free(path);
 		if (errno == EACCES)
 			break ;
@@ -90,19 +90,6 @@ char	**get_cmd_str(t_cmd *cmd)
 		tmp = tmp->next;
 	}
 	return (str_cmd);
-}
-
-void	close_all_fds(int fd[6], t_cmd *cmd)
-{
-	if (cmd->next)
-	{
-		close(fd[0]);
-		close(fd[1]);
-	}
-	close(fd[2]);
-	close(fd[3]);
-	if (fd[4] != -1)
-		close(fd[4]);
 }
 
 void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)

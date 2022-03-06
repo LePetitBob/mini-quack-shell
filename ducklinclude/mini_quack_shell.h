@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 10:24:32 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 10:52:24 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@
 # define ROUT 5
 # define DROUT 6
 # define HERE_DOC 7
-# define HERE_DOC_NAME ".tmprry_mini_QUACK_shell_ull_never_guess_its_name"
-# define HERE_DOC_PATH "/tmpfiles/.tmprry_mini_QUACK_shell_ull_never_guess_its_name"
 
 typedef struct s_status
 {
@@ -147,14 +145,14 @@ void		expand_skip_quotes(char *(**arr), char **cpy, int *index);
 
 void		expand_vars_manager(t_token *it, char *(**arr), t_env *env);
 void		expand_var(char **str, t_env *env, int hd);
+char		*check_sufix_expand(t_env *env, char **str, char *value, int i);
 void		get_str(char *value, char **str);
 void		delete_null_var(char *(**arr), int *index);
 
 int			check_quote_expand(char **str);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
 char		*get_exp_var_name(char *str, int *index);
-void		join_pre_sufix_expanded_var(char **str, int i, char **value,
-				char *cpy);
+void		join_prefix_to_var(char **str, char **value, char *cpy);
 
 void		join_vars(char *(**arr));
 
@@ -232,16 +230,16 @@ char		*get_path(char *path, char *cmd);
 void		failed_fork(t_cmd *cmd, char **str_cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
+void		access_exec(char **cmd, char *path, char **envp);
 int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
 void		cmd_manager(t_env *env, t_cmd *cmd);
-void		close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env);
+void		close_wait_clear(t_cmd_lst *cmds, int fd[6]);
 void		init_fds(int fd[6]);
 void		closepipe(int fd[4]);
 void		close_all_fds(int fd[6], t_cmd *cmd);
 void		clear_token_cl(t_token *lst);
-void		rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds);
 void		rm_cmds(t_cmd_lst *cmd);
 char		*get_here_doc(char *limiter, t_env *env, int *sig);
 

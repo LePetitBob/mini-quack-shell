@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 07:13:25 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 10:45:34 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,27 +97,4 @@ char	*get_here_doc(char *limiter, t_env *env, int *sig)
 	if (g_status.hd_fd > 2)
 		*sig = -2;
 	return (tmp[1]);
-}
-
-void	rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds)
-{
-	pid_t		pidtmp;
-	char		*tmp[4];
-	char		**tmpenv;
-
-	tmpenv = env_cl_to_arr(env);
-	if (access(HERE_DOC_PATH, F_OK) == 0)
-	{
-		pidtmp = fork();
-		if (!pidtmp)
-		{
-			tmp[0] = ft_strdup("rm");
-			tmp[1] = ft_strdup("-f");
-			tmp[2] = ft_strdup(HERE_DOC_PATH);
-			tmp[3] = NULL;
-			ft_clear(env);
-			ft_exec(tmp, tmpenv, cmds);
-		}
-	}
-	ft_freetab(tmpenv);
 }

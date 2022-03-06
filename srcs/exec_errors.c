@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 10:23:58 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 11:34:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	else
 	{
-		if (cmd[0][0] == '/')
+		if (access(cmd[0], F_OK))
 			error_manager(ERNO_NOFILEDIR, cmd[0]);
 		else
 			error_manager(ERNO_NOCMD, cmd[0]);

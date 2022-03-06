@@ -54,6 +54,7 @@ SRCS = builtins/pwd.c \
 		get_error_redir.c \
 		redir_error.c \
 		exec_errors.c \
+		exec_utils.c \
 		print_tokens_cmds.c
 
 A_SRCS = main.c \

@@ -30,7 +30,11 @@ echo a$a"b"'c d'
 
 >> >test >test <
 
+export loop='bonjour $loop'
+echo $loop
 
+export a=1 b=2 c=3 d=4 e=5
+echo "$a '$b"$c'$d $e'
 
 echo bonjour > $test
 export test="o1 o2"
@@ -43,10 +47,7 @@ rm -r ../../a
 cd ..
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
-ls <> abc
 
-export loop='bonjour$loop'
-echo $loop
 
 cat<f2|wc
 
@@ -162,6 +163,8 @@ unset TMPPATH
 echo $PATH
 
 sdfs > abc
+
+.
 
 ..
 
@@ -445,5 +448,5 @@ cat < input.txt | wc
 cd srcs srcs srcs srcs srcs srcs srcs srcs
 
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
-rm -rf '$test' abc file out1 out2 outfilr output test test1 b c d log pqr salut v a
+rm -rf '$test' abc file out1 out2 outfilr output test test1 b c d log pqr salut v a o1
 exit
