@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 02:21:14 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:23:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_status	g_status;
 
-void	get_over_here_docs(t_cmd_lst *cmds, t_env *env)
+void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 {
 	t_cmd	*cmd;
 	t_token	*redir;
@@ -26,7 +26,7 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env)
 		while (redir)
 		{
 			if (redir->type == HERE_DOC)
-				redir->str = get_here_doc(redir->str, cmds,  env);
+				redir->str = get_here_doc(redir->str,  env, sig);
 			redir = redir->next;
 		}
 		cmd = cmd->next;
@@ -57,13 +57,13 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-char	*get_here_doc(char *limiter, t_cmd_lst *cmds, t_env *env)
+char	*get_here_doc(char *limiter, t_env *env, int *sig)
 {
 	char		*tmp[3];
 	int			line;
 
-	tmp[0] = NULL;
 	g_status.hd_fd = STDIN_FILENO;
+	tmp[0] = NULL;
 	tmp[1] = NULL;
 	tmp[2] = NULL;
 	line = 0;
@@ -75,9 +75,9 @@ char	*get_here_doc(char *limiter, t_cmd_lst *cmds, t_env *env)
 				expand_var(&tmp[0], env, 1);
 			tmp[1] = ft_strjoin(tmp[0], "\n");
 			tmp[2] = ft_strjoin_free(tmp[2], tmp[1]);
+			free(tmp[0]);
+			free(tmp[1]);
 		}
-		free(tmp[0]);
-		free(tmp[1]);
 		tmp[0] = readline("> ");
 		if (tmp[0] == NULL)
 			break ;
@@ -89,8 +89,8 @@ char	*get_here_doc(char *limiter, t_cmd_lst *cmds, t_env *env)
 		dup2(g_status.hd_fd, STDIN_FILENO);
 	if (g_status.hd_fd > 2)
 	{
-		free(tmp[2]);
-		cmds->first->arg->type = -42;
+		// free(tmp[2]);
+		*sig = -2;
 		// g_status.exit_status = 130;
 	}
 	free(limiter);

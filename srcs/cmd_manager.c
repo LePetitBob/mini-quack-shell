@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 14:36:16 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 02:15:33 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 	dup2(fd[3], STDOUT_FILENO);
 	close(fd[2]);
 	close(fd[3]);
-	if (fd[4] != -1)
+	if (fd[4] > -1)
 		close(fd[4]);
 	tmp = cmds->first;
 	while (tmp)
@@ -67,13 +67,12 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6], t_env *env)
 
 void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
 {
-	cmds = malloc(sizeof(t_cmd *));
 	cmds->first = cmd;
 	fd[5] = 0;
 	if (cmds->first->next)
 		fd[5] = 1;
-	get_over_here_docs(cmds, env);
 	fd[4] = -1;
+	get_over_here_docs(cmds, env, &fd[4]);
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
 	g_status.pid = -1;
@@ -91,10 +90,10 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	t_cmd		*tmp;
 	int			fd[6];
 
-	cmds = NULL;
+	cmds = malloc(sizeof(t_cmd *));
 	init_values(fd, cmds, env, cmd);
 	tmp = cmds->first;
-	while (tmp)//TODO PLACE A CONDITION HERE SO THAT IT DOESNT EXECUTE AT ALL AND GOES RIGHT TO CLOSE WAIT
+	while (tmp && fd[4] != -2)
 	{
 		g_status.pid = -1;
 		if (tmp->prev)
