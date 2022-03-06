@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 20:01:18 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 20:07:14 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,8 @@ char		*get_path(char *path, char *cmd);
 void		failed_fork(t_cmd *cmd, char **str_cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
-void		free_exit(char **env, char **cmd, char **tmp_paths, t_cmd_lst *cmds);
+void		free_exit(char **env, char **cmd, char **tmp_paths,
+				t_cmd_lst *cmds);
 void		access_exec(char **cmd, char *path, char **envp);
 int			find_in_env_arr(char **envp);
 int			is_builtin(char *cmd);
