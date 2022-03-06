@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 02:23:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:41:24 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 		while (redir)
 		{
 			if (redir->type == HERE_DOC)
-				redir->str = get_here_doc(redir->str,  env, sig);
+				redir->str = get_here_doc(redir->str, env, sig);
 			redir = redir->next;
 		}
 		cmd = cmd->next;
@@ -60,13 +60,11 @@ char	*ft_strjoin_free(char *s1, char *s2)
 char	*get_here_doc(char *limiter, t_env *env, int *sig)
 {
 	char		*tmp[3];
-	int			line;
 
 	g_status.hd_fd = STDIN_FILENO;
 	tmp[0] = NULL;
 	tmp[1] = NULL;
 	tmp[2] = NULL;
-	line = 0;
 	while (ft_strcmp(limiter, tmp[0]))
 	{
 		if (tmp[0])
@@ -81,18 +79,13 @@ char	*get_here_doc(char *limiter, t_env *env, int *sig)
 		tmp[0] = readline("> ");
 		if (tmp[0] == NULL)
 			break ;
-		line++;
 	}
 	if (tmp[0])
 		free(tmp[0]);
 	if (g_status.hd_fd > 2)
 		dup2(g_status.hd_fd, STDIN_FILENO);
 	if (g_status.hd_fd > 2)
-	{
-		// free(tmp[2]);
 		*sig = -2;
-		// g_status.exit_status = 130;
-	}
 	free(limiter);
 	return (tmp[2]);
 }

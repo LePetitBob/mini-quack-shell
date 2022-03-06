@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 08:36:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 03:16:40 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,28 @@ void	ft_env(t_env *env)
 
 void	get_env(char **envp, t_env *env)
 {
-	int		i;
-	int		j;
-	int		k;
+	int		i[2];
 	char	**env_split;
 
-	i = 0;
+	i[0] = 0;
 	env_split = malloc(sizeof(char *) * 3);
 	if (!env_split)
 		return ;
 	env->first = NULL;
-	while (envp[i])
+	while (envp[i[0]])
 	{
-		j = 0;
-		while (envp[i][j] != '=')
-			j++;
-		env_split[0] = strndup(envp[i], j);
+		i[1] = 0;
+		while (envp[i[0]][i[1]] != '=')
+			++i[1];
+		env_split[0] = strndup(envp[i[0]], i[1]);
 		if (!ft_strcmp(env_split[0], "SHLVL"))
-		{
-			k = ft_atoi(envp[i] + j + 1);
-			env_split[1] = ft_itoa(k + 1);
-		}
+			env_split[1] = ft_itoa(ft_atoi(envp[i[0]] + i[1] + 1) + 1);
 		else
-			env_split[1] = strdup(envp[i] + j + 1);
+			env_split[1] = strdup(envp[i[0]] + i[1] + 1);
 		ft_addlast(env, env_split[0], env_split[1], 1);
 		free(env_split[0]);
 		free(env_split[1]);
-		i++;
+		++i[0];
 	}
 	free(env_split);
 }
