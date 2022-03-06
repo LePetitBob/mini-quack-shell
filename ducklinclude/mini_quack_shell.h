@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 03:23:14 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:48:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,6 @@ void		free_token(t_token *tokens);
 void		free_one_token(t_token *token);
 void		free_cmds(t_cmd *cmds);
 
-//			Main
-char		*get_prompt_prefix(t_env *env);
-//
 //?			Parsing
 //			Split
 void		split_manager(char *line, t_env *env);
