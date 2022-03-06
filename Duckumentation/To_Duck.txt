@@ -36,8 +36,4 @@ echo $PATH
 
 ----------------------------------------------------
 
-Do not expand limiters in here documents
-
 In a mini-quack-shellception, ctrlC prints as many newline as there are instances of mini-quack-shell
-
-Add error message in here document in case of CtrlD

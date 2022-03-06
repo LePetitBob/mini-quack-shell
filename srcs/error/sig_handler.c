@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 13:25:49 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 21:21:58 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ extern t_status	g_status;
 // child is actually never alive when the signal is sent :D
 void	sig_handler(int signum)
 {
+	// printf("SHLVL-[%d]\n", g_status.shlvl);
 	if (g_status.pid >= 0)
 		handler_child(signum);
 	else
@@ -40,8 +41,11 @@ void	handler_parent(int signum)
 		}
 		else
 		{
-			ft_putstr_fd("\n", STDOUT_FILENO);
-			rl_replace_line("", STDOUT_FILENO);
+			if (g_status.shlvl == 2)
+			{
+				ft_putstr_fd("\n", STDOUT_FILENO);
+				rl_replace_line("", STDOUT_FILENO);
+			}
 			rl_on_new_line();
 			rl_redisplay();
 		}

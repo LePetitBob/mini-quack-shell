@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 20:44:25 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 21:03:33 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 typedef struct s_status
 {
 	int	exit_status;
+	int	shlvl;
 	int	pid;
 	int	hd_fd;
 }				t_status;
