@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 14:08:15 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 15:19:18 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int	format_unset_ok(char *var)
 	i = 0;
 	if (ft_isalpha((int)var[0]) == 0 && var[0] != '_')
 	{
-		error_manager(ERNO_EXPORT, var);
+		error_manager(ERNO_UNSET, var);
 		g_status.exit_status = 1;
 		return (0);
 	}
-	while (var[i] && (ft_isalnum(var[i]) || var[0] != '_'))
+	while (var[i] && (ft_isalnum(var[i]) == 1 || var[0] == '_'))
 		i++;
-	if (var[i] && ft_isalnum(var[i]) && var[0] != '_')
+	if (var[i] && ft_isalnum(var[i]) == 0 && var[0] != '_')
 	{
 		error_manager(ERNO_UNSET, var);
 		g_status.exit_status = 1;
