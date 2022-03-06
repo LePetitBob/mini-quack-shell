@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 09:32:54 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:25:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	check_quote_expand(char **str)
 	while ((*str)[i] != '\0')
 	{
 		if ((*str)[i] == '$')
+		{
+			if (ft_isalnum((*str)[i + 1]) == 0)
+				return (-1);
 			return (i);
+		}
 		if ((*str)[i] == '\'')
 		{
 			++i;

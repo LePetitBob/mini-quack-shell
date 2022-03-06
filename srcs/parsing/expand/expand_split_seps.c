@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:45:53 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 04:32:24 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:32:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	**expand_split_manager(char *str)
 	i = 0;
 	cpy = ft_strnew(ft_strlen(str));
 	res = split_expand_prefix(str, &i);
+	ft_print_tab(res);
 	while (str[i])
 	{
 		if (cpy[0] != '\0' && (str[i] == '\'' || str[i] == '\"'

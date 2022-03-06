@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 07:16:53 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:35:29 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	expand_manager(t_token **it, t_env *env)
 
 	i = 0;
 	arr = expand_split_manager((*it)->str);
+	if (!arr)
+	{
+		tokenize_expanded_vars(arr, it);
+		return ;
+	}
 	convert_spaces(&arr, ' ');
 	expand_vars_manager(*it, &arr, env);
 	if (!arr)
