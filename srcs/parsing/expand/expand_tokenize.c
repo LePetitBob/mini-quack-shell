@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 07:02:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 09:36:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,25 @@ void	tokenize_expanded_vars(char **arr, t_token **parent)
 	t_token	*it;
 
 	if (!arr && (*parent)->type != FD)
-	{
-		relink_parent_to_himself(parent);
-		return ;
-	}
+		return (relink_parent_to_himself(parent));
 	new_token = make_new_tokens(arr);
 	it = get_last_token(new_token);
-	if ((*parent)->next)
+	new_token->type = (*parent)->type;
+	if ((*parent)->prev)
 	{
-		it->next = (*parent)->next;
-		(*parent)->next->prev = it;
+		new_token->prev = (*parent)->prev;
+		(*parent)->prev->next = new_token;
 	}
 	free((*parent)->str);
-	(*parent)->str = ft_strdup(new_token->str);
-	if (new_token->next)
+	(*parent)->str = ft_strdup(it->str);
+	(*parent)->type = it->type;
+	if (it->prev)
 	{
-		(*parent)->next = new_token->next;
-		new_token->next->prev = (*parent);
+		(*parent)->prev = it->prev;
+		it->prev->next = (*parent);
 	}
-	free(new_token->str);
-	free(new_token);
+	free(it->str);
+	free(it);
 }
 
 void	relink_parent_to_himself(t_token **parent)

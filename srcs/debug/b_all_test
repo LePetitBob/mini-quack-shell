@@ -30,7 +30,11 @@ echo a$a"b"'c d'
 
 >> >test >test <
 
+export loop='bonjour $loop'
+echo $loop
 
+export a=1 b=2 c=3 d=4 e=5
+echo "$a '$b"$c'$d $e'
 
 echo bonjour > $test
 export test="o1 o2"
@@ -45,8 +49,7 @@ cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 ls <> abc
 
-export loop='bonjour$loop'
-echo $loop
+
 
 cat<f2|wc
 

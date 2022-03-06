@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 06:57:50 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 09:32:54 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*get_exp_var_name(char *str, int *index)
 	return (var);
 }
 
-void	join_pre_sufix_expanded_var(char **str, int i, char **value, char *cpy)
+void	join_prefix_to_var(char **str, char **value, char *cpy)
 {
 	char	*tmp;
 
@@ -96,14 +96,5 @@ void	join_pre_sufix_expanded_var(char **str, int i, char **value, char *cpy)
 		free(cpy);
 		*value = ft_strdup(tmp);
 		free(tmp);
-	}
-	if ((*str)[i] != '\0')
-	{
-		tmp = ft_substr(*str, i, ft_strlen(*str) - i);
-		cpy = ft_strjoin(*value, tmp);
-		free(tmp);
-		free(*value);
-		*value = ft_strdup(cpy);
-		free(cpy);
 	}
 }

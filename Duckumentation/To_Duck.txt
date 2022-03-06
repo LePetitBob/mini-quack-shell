@@ -36,23 +36,3 @@ echo $PATH
 
 ----------------------------------------------------
 
-"h ey" hey|<hey
-
-ls <> abc
-
-increment shlvl
-
-coucou < $TEST
-// leak FD
-
-
-<< s cat
-// leak fd
-
-
-ls > lol < test
-// leak de fd
-
-
-<< s
-ctrc c in heredoc
