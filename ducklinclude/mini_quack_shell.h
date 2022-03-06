@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 03:43:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 07:02:21 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
 void		abort_exec(char **cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
 void		redirection(t_cmd *cmd, int fd[6]);
+char		*here_doc_read(char *str);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
