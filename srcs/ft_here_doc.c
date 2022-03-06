@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 10:45:34 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 12:13:35 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ char	*get_here_doc(char *limiter, t_env *env, int *sig)
 	{
 		if (tmp[0])
 		{
-			while (ft_strsrch(tmp[0], '$') != -1)
+			while (ft_strsrch(tmp[0], '\'') == -1
+				&& ft_strsrch(tmp[0], '\"') == -1
+				&& ft_strsrch(tmp[0], '$') != -1)
 				expand_var(&tmp[0], env, 1);
 			tmp[1] = here_doc_read(tmp[0], tmp[1]);
 		}
