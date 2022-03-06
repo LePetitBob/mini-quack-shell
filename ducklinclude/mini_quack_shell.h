@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 09:42:50 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 09:56:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void		expand_skip_quotes(char *(**arr), char **cpy, int *index);
 
 void		expand_vars_manager(t_token *it, char *(**arr), t_env *env);
 void		expand_var(char **str, t_env *env, int hd);
+char		*check_sufix_expand(t_env *env, char **str, char *value, int i);
 void		get_str(char *value, char **str);
 void		delete_null_var(char *(**arr), int *index);
 
