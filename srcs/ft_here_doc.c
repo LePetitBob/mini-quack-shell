@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 02:41:24 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:13:25 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 	t_token	*redir;
 
 	cmd = cmds->first;
+	g_status.hd_fd = STDIN_FILENO;
 	while (cmd)
 	{
 		redir = cmd->redir;
-		while (redir)
+		while (redir && g_status.hd_fd < 2)
 		{
 			if (redir->type == HERE_DOC)
 				redir->str = get_here_doc(redir->str, env, sig);
@@ -31,6 +32,8 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 		}
 		cmd = cmd->next;
 	}
+	if (g_status.hd_fd > 2)
+		dup2(g_status.hd_fd, STDIN_FILENO);
 }
 
 char	*ft_strjoin_free(char *s1, char *s2)
@@ -57,24 +60,32 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
+char	*here_doc_read(char *str, char *stock)
+{
+	char	*tmp[2];
+
+	tmp[1] = NULL;
+	tmp[0] = ft_strjoin(str, "\n");
+	tmp[1] = ft_strjoin(stock, tmp[0]);
+	free(tmp[0]);
+	free(str);
+	free(stock);
+	return (tmp[1]);
+}
+
 char	*get_here_doc(char *limiter, t_env *env, int *sig)
 {
-	char		*tmp[3];
+	char		*tmp[2];
 
-	g_status.hd_fd = STDIN_FILENO;
 	tmp[0] = NULL;
 	tmp[1] = NULL;
-	tmp[2] = NULL;
 	while (ft_strcmp(limiter, tmp[0]))
 	{
 		if (tmp[0])
 		{
 			while (ft_strsrch(tmp[0], '$') != -1)
 				expand_var(&tmp[0], env, 1);
-			tmp[1] = ft_strjoin(tmp[0], "\n");
-			tmp[2] = ft_strjoin_free(tmp[2], tmp[1]);
-			free(tmp[0]);
-			free(tmp[1]);
+			tmp[1] = here_doc_read(tmp[0], tmp[1]);
 		}
 		tmp[0] = readline("> ");
 		if (tmp[0] == NULL)
@@ -82,12 +93,10 @@ char	*get_here_doc(char *limiter, t_env *env, int *sig)
 	}
 	if (tmp[0])
 		free(tmp[0]);
-	if (g_status.hd_fd > 2)
-		dup2(g_status.hd_fd, STDIN_FILENO);
+	free(limiter);
 	if (g_status.hd_fd > 2)
 		*sig = -2;
-	free(limiter);
-	return (tmp[2]);
+	return (tmp[1]);
 }
 
 void	rm_here_doc_tmp_file(t_env *env, t_cmd_lst *cmds)
