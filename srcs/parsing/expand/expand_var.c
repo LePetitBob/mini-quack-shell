@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 02:03:44 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:26:09 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ extern t_status	g_status;
 
 void	expand_vars_manager(t_token *it, char *(**arr), t_env *env)
 {
-	char	**tmp;
 	char	*cpy;
 	int		i;
 
@@ -37,13 +36,7 @@ void	expand_vars_manager(t_token *it, char *(**arr), t_env *env)
 				free(cpy);
 			}
 			if (!(*arr)[i] || (*arr)[i][0] == '\0')
-			{
-				tmp = ft_erase(*arr, i, 1);
-				ft_freetab(*arr);
-				*arr = ft_tabdup(tmp);
-				ft_freetab(tmp);
-				--i;
-			}
+				delete_null_var(arr, &i);
 		}
 		++i;
 	}
@@ -83,4 +76,15 @@ void	get_str(char *value, char **str)
 	else
 		*str = ft_strdup(value);
 	free(value);
+}
+
+void	delete_null_var(char *(**arr), int *index)
+{
+	char	**tmp;
+
+	tmp = ft_erase(*arr, *index, 1);
+	ft_freetab(*arr);
+	*arr = ft_tabdup(tmp);
+	ft_freetab(tmp);
+	--(*index);
 }
