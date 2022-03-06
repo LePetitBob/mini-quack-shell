@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 02:07:18 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:21:20 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,26 @@ void	close_all_fds(int fd[6], t_cmd *cmd)
 		close(fd[4]);
 }
 
+// int	here_docs(t_cmd_lst *cmds)
+// {
+// 	t_cmd	*cmd_tmp;
+// 	t_token	*tkn_tmp;
+// 	int		nb_hd;
+
+// 	nb_hd = 0;
+// 	cmd_tmp = cmds->first
+// 	return (nb_hd);
+// }
+
 void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 {
 	char	**str_cmd;
 	char	**env_arr;
+	// int		nb_hd;
 
+	// nb_hd = here_docs(cmds);
+	// if (nb_hd > 16)
+	// 	ft_exit() //! 16+ hd --> quit (exit(2))
 	str_cmd = get_cmd_str(cmd);
 	if (!str_cmd || !str_cmd[0])
 		return ;
