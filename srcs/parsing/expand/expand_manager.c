@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 20:06:06 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 20:15:26 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	expand_manager(t_token **it, t_env *env)
 	i = 0;
 	arr = expand_split_manager((*it)->str);
 	if (!arr)
-		return (ret_empty_expand(arr, it));
+		return (ret_empty_expand(&arr, it));
 	convert_spaces(&arr, ' ');
 	expand_vars_manager(*it, &arr, env);
 	if (!arr)
-		return (ret_empty_expand(arr, it));
+		return (ret_empty_expand(&arr, it));
 	join_vars(&arr);
 	expand_split_whitespaces(&arr);
 	i = 0;
@@ -59,8 +59,8 @@ void	expand_manager(t_token **it, t_env *env)
 }
 
 void	ret_empty_expand(char *(**arr), t_token **it)
-{
-	tokenize_expanded_vars(arr, it);
-	ft_freetab(arr);
+{ 
+	tokenize_expanded_vars(*arr, it);
+	ft_freetab(*arr);
 	return ;
 }
