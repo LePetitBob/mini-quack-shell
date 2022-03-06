@@ -6,33 +6,34 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 18:25:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:54:13 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
-int	check_quote_expand(char **str)
+int	check_quote_expand(char *str)
 {
 	int		i;
 	int		tmp;
 
 	i = 0;
-	while ((*str)[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if ((*str)[i] == '$')
+		if (str[i] == '$')
 		{
-			if (ft_isalnum((*str)[i + 1]) == 0)
+			if (ft_isalnum(str[i + 1]) == 0 && str[i + 1] != '$'
+				&& str[i + 1] != '?')
 				return (-1);
 			return (i);
 		}
-		if ((*str)[i] == '\'')
+		if (str[i] == '\'')
 		{
 			++i;
 			tmp = i;
-			while ((*str)[tmp] != '\0' && (*str)[tmp] != '\'')
+			while (str[tmp] != '\0' && str[tmp] != '\'')
 				++tmp;
-			if ((*str)[tmp] == '\'')
+			if (str[tmp] == '\'')
 				i += tmp;
 		}
 		else

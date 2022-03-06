@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 14:29:15 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 18:52:08 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ char		*check_sufix_expand(t_env *env, char **str, char *value, int i);
 void		get_str(char *value, char **str);
 void		delete_null_var(char *(**arr), int *index);
 
-int			check_quote_expand(char **str);
+int			check_quote_expand(char *str);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
 char		*get_exp_var_name(char *str, int *index);
 void		join_prefix_to_var(char **str, char **value, char *cpy);

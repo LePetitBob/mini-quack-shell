@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 18:23:21 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:54:20 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	expand_var(char **str, t_env *env, int hd)
 	if (hd == 1)
 		i = ft_strsrch(*str, '$');
 	else
-		i = check_quote_expand(str);
+		i = check_quote_expand(*str);
 	if (i == -1 || (i != -1 && ((*str)[i + 1] == '\0'
 			|| (*str)[i + 1] == '\"')))
 		return ;
@@ -77,7 +77,7 @@ char	*check_sufix_expand(t_env *env, char **str, char *value, int i)
 	char	*cpy;
 
 	tmp = ft_substr(*str, i, ft_strlen(*str) - i);
-	if (check_quote_expand(&tmp) != -1)
+	if (check_quote_expand(tmp) != -1)
 		expand_var(&tmp, env, 0);
 	cpy = ft_strjoin(value, tmp);
 	free(value);
