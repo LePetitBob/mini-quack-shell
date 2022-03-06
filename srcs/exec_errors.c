@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 14:28:03 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 15:48:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 			error_manager(ERNO_NOCMD, cmd[0]);
 		g_status.exit_status = 127;
 	}
-	free_exit(env, cmd, cmds, tmp_paths);
+	free_exit(env, cmd, tmp_paths, cmds);
 }
