@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 03:48:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:53:19 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,16 +215,19 @@ int			is_num(char *s);
 void		apply_redir(t_token *tmp, t_cmd *cmd, int *i);
 void		redir_pipe(t_cmd *cmd, int fd[6]);
 void		redir_out(t_cmd *cmd, char *str, int type, int *i);
-void		abort_exec(t_cmd *cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
+void		abort_exec(char **cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
 void		redirection(t_cmd *cmd, int fd[6]);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
+void		apply_exec(char **str_cmd, int fd[6], t_env *env, t_cmd_lst *cmds);
 void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
+void		no_cmd(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
 char		*get_path(char *path, char *cmd);
+void		failed_fork(t_cmd *cmd, char **str_cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
 int			is_builtin(char *cmd);
