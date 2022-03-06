@@ -6,7 +6,11 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/06 20:07:14 by vduriez          ###   ########.fr       */
+=======
+/*   Updated: 2022/03/06 20:10:18 by vduriez          ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +135,7 @@ int			check_tokens_type(t_token *tokens);
 //			Expand
 void		expand_caller(t_token *tokens, t_env *env);
 void		expand_manager(t_token **it, t_env *env);
+void		ret_empty_expand(char *(**arr), t_token **it);
 
 char		**expand_split_manager(char *str);
 char		**split_expand_prefix(char *str, int *i);
@@ -232,7 +237,7 @@ void		failed_fork(t_cmd *cmd, char **str_cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
 void		free_exit(char **env, char **cmd, char **tmp_paths,
-				t_cmd_lst *cmds);
+				 t_cmd_lst *cmds);
 void		access_exec(char **cmd, char *path, char **envp);
 int			find_in_env_arr(char **envp);
 int			is_builtin(char *cmd);
