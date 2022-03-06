@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:39:31 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 14:29:02 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 20:00:41 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,16 @@ void	free_exit(char **env, char **cmd, char **tmp_paths, t_cmd_lst *cmds)
 		ft_freetab(tmp_paths);
 	rm_cmds(cmds);
 	exit(g_status.exit_status);
+}
+
+int	find_in_env_arr(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp[i] && ft_strncmp("PATH=", envp[i], 5))
+		i++;
+	if (!envp[i])
+		return (0);
+	return (1);
 }
