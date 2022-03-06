@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 15:48:57 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 18:29:40 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,20 @@ void	failed_fork(t_cmd *cmd, char **str_cmd)
 		exit(errno);
 }
 
+
+int	find_in_env_arr(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp[i] && ft_strncmp("PATH=", envp[i], 5))
+		i++;
+	dprintf(2, "PATH IS MAYBE HERE MAYBE NOT : %s\n", envp[i]);
+	if (!envp[i])
+		return (0);
+	return (1);
+}
+
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
 	if (ft_strcmp(cmd[0], "/") == 0)
@@ -72,7 +86,7 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	else
 	{
-		if (access(cmd[0], F_OK) && ft_strcmp(cmd[0], "$") == 1)
+		if (!find_in_env_arr(env) || (!access(cmd[0], F_OK) && ft_strcmp(cmd[0], "$") == 1))
 			error_manager(ERNO_NOFILEDIR, cmd[0]);
 		else
 			error_manager(ERNO_NOCMD, cmd[0]);
@@ -80,3 +94,4 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	free_exit(env, cmd, tmp_paths, cmds);
 }
+//		if (!find_in_env_arr(env) && ft_strcmp(cmd[0], "$") == 1)
