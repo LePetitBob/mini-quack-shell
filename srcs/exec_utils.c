@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:39:31 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 10:52:47 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 14:29:02 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,14 @@ void	access_exec(char **cmd, char *path, char **envp)
 {
 	if (cmd[0] && access(path, X_OK) == 0)
 		execve(path, cmd, envp);
+}
+
+void	free_exit(char **env, char **cmd, char **tmp_paths, t_cmd_lst *cmds)
+{
+	ft_freetab(env);
+	ft_freetab(cmd);
+	if (tmp_paths)
+		ft_freetab(tmp_paths);
+	rm_cmds(cmds);
+	exit(g_status.exit_status);
 }

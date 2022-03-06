@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 13:36:44 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 14:28:03 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ void	failed_fork(t_cmd *cmd, char **str_cmd)
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
 	if (ft_strcmp(cmd[0], "/") == 0)
-	{
 		error_manager(ERNO_ISDIR, cmd[0]);
+	if (ft_strcmp(cmd[0], "/") == 0)
 		g_status.exit_status = 126;
-	}
 	else if (errno == EACCES)
 	{
 		error_manager(ERNO_ACCESS, cmd[0]);
@@ -79,10 +78,5 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 			error_manager(ERNO_NOCMD, cmd[0]);
 		g_status.exit_status = 127;
 	}
-	ft_freetab(env);
-	ft_freetab(cmd);
-	if (tmp_paths)
-		ft_freetab(tmp_paths);
-	rm_cmds(cmds);
-	exit(g_status.exit_status);
+	free_exit(env, cmd, cmds, tmp_paths);
 }
