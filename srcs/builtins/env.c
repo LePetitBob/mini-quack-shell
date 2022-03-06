@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 03:16:40 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:05:33 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_env(t_env *env)
 				k = ft_atoi(tmp->value);
 				shlvl = ft_itoa(k - 1);
 				write(1, shlvl, ft_strlen(shlvl));
+				free(shlvl);
 			}
 			else
 				write(1, tmp->value, ft_strlen(tmp->value));

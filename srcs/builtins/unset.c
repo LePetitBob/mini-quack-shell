@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:43:19 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 03:50:05 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 12:26:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,15 @@ int	format_unset_ok(char *var)
 	int		i;
 
 	i = 0;
-	while (var[i] && ((var[i] > 64 && var[i] < 91)
-			|| (var[i] > 96 && var[i] < 123) || (var[i] > 46
-				&& var[i] < 58)))
+	if (ft_isalpha((int)var[0]) == 0 && var[0] != '_')
+	{
+		error_manager(ERNO_EXPORT, var);
+		g_status.exit_status = 1;
+		return (0);
+	}
+	while (var[i] && (ft_isalnum(var[i]) || var[0] != '_'))
 		i++;
-	if (var[i] || (var[0] < 65 || var[0] > 122
-			|| (var[0] > 90 && var[0] < 97)))
+	if (var[i] && ft_isalnum(var[i]) && var[0] != '_')
 	{
 		error_manager(ERNO_UNSET, var);
 		g_status.exit_status = 1;

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 10:52:24 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 13:19:29 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int			invalid_filename(char *filename, char *FILENO, int *i);
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 void		apply_exec(char **str_cmd, int fd[6], t_env *env, t_cmd_lst *cmds);
+int			check_echo_free(char **cmd, int k);
 void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
 void		no_cmd(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
