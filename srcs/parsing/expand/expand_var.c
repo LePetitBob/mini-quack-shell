@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 07:48:32 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:03:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	expand_vars_manager(t_token *it, char *(**arr), t_env *env)
 void	expand_var(char **str, t_env *env, int hd)
 {
 	char	*cpy;
-	char	*var;
-	char	*value = NULL;
+	char	*value;
 	int		i;
 
 	cpy = NULL;
@@ -67,15 +66,13 @@ void	expand_var(char **str, t_env *env, int hd)
 	++i;
 	if ((i - 1) > 0)
 		cpy = ft_strndup((*str), i - 1);
-	if (expand_exeptions(str, i, cpy, value) == EXIT_FAILURE)
+	if (expand_exeptions(str, i, cpy, NULL) == EXIT_FAILURE)
 		return ;
-	var = get_exp_var_name(*str, &i);
-	value = get_env_name(env, var);
+	value = get_env_name(env, get_exp_var_name(*str, &i));
 	join_pre_sufix_expanded_var(str, i, &value, cpy);
 	get_str(value, str);
 	if (hd == 0 && check_quote_expand(str) != -1)
 		expand_var(str, env, 0);
-	free(var);
 }
 
 void	get_str(char *value, char **str)

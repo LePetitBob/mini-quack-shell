@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 05:17:12 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 02:07:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	format_export_ok(char *var)
 		return (0);
 	}
 	while (var[i] && var[i] != '=' && (ft_isalnum((int)var[i]) == 1
-		|| var[i] == '_'))
+			|| var[i] == '_'))
 		i++;
 	if (var[i] && var[i] != '=')
 	{

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 12:52:55 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/05 13:00:59 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char	*get_here_doc(char *limiter, t_env *env)
 		}
 		free(tmp[0]);
 		free(tmp[1]);
-		// write(STDOUT_FILENO, "> ", 2);
 		tmp[0] = readline("> ");
 		if (tmp[0] == NULL)
 			break ;
