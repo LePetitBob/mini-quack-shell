@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 10:24:21 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 13:24:35 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 {
 	if (type == ROUT)
 	{
-		if (cmd->fdout != 1)
+		if (cmd->fdout > 1)
 			close(cmd->fdout);
 		if (!invalid_filename(str, "OUT", i))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -27,7 +27,7 @@ void	redir_out(t_cmd *cmd, char *str, int type, int *i)
 	}
 	else if (type == DROUT)
 	{
-		if (cmd->fdout != 1)
+		if (cmd->fdout > 1)
 			close(cmd->fdout);
 		if (!invalid_filename(str, "OUT", i))
 			cmd->fdout = open(str, O_WRONLY | O_CREAT | O_APPEND, 0644);
@@ -42,14 +42,14 @@ void	apply_redir(t_token *tmp, t_cmd *cmd, int *i, int pipe_hd[2])
 {
 	if (tmp->type == HERE_DOC)
 	{
-		if (cmd->fdin != 0)
+		if (cmd->fdin > 0)
 			close(cmd->fdin);
 		write(pipe_hd[1], tmp->str, ft_strlen(tmp->str));
 		cmd->fdin = -42;
 	}
 	else if (tmp->type == RIN)
 	{
-		if (cmd->fdin != 0)
+		if (cmd->fdin > 0)
 			close(cmd->fdin);
 		if (!invalid_filename(tmp->str, "IN", i))
 			cmd->fdin = open(tmp->str, O_RDONLY);
@@ -92,9 +92,9 @@ void	check_all_redirs(t_cmd *cmd, int pipe_hd[2])
 		tmp_pipe(0);
 	close(pipe_hd[0]);
 	close(pipe_hd[1]);
-	if (cmd->fdout != -2 && cmd->fdout != -1 && cmd->fdout != 1)
+	if (cmd->fdout > 1)
 		dup2(cmd->fdout, STDOUT_FILENO);
-	if (cmd->fdout != -2 && cmd->fdout != -1 && cmd->fdout != 1)
+	if (cmd->fdout > 1)
 		close(cmd->fdout);
 	else if (cmd->fdout == -2)
 		tmp_pipe(1);

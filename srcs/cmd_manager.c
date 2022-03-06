@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 10:46:46 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 13:27:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	rm_cmds(t_cmd_lst *cmd)
 
 void	closepipe(int fd[3])
 {
-	if (fd[0] != -1)
+	if (fd[0] >-1)
 		close(fd[0]);
-	if (fd[1] != -1)
+	if (fd[1] > -1)
 		close(fd[1]);
 }
 

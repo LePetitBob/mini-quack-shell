@@ -36,3 +36,4 @@ echo $PATH
 
 ----------------------------------------------------
 
+ls | exit | ls << "ko" << "" << "" >> ko >> raph < lala >> raph > raph > raph
