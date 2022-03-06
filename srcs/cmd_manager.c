@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 16:12:50 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 17:46:26 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
-		if (WIFEXITED(err) && tmp->arg && is_builtin(tmp->arg->str) == 0
-			&& !tmp->next)
+		if (WIFEXITED(err) && (cmds->first->next))//&& (ft_strcmp(tmp->arg->str, "export") && ft_strcmp(tmp->arg->str, "unset")))
 		{
 			g_status.exit_status = WEXITSTATUS(err);
 		}
