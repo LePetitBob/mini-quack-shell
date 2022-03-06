@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 11:34:09 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/06 13:36:44 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,12 @@ void	failed_fork(t_cmd *cmd, char **str_cmd)
 
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
-	if (errno == EACCES)
+	if (ft_strcmp(cmd[0], "/") == 0)
+	{
+		error_manager(ERNO_ISDIR, cmd[0]);
+		g_status.exit_status = 126;
+	}
+	else if (errno == EACCES)
 	{
 		error_manager(ERNO_ACCESS, cmd[0]);
 		g_status.exit_status = 1;
@@ -68,7 +73,7 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 	}
 	else
 	{
-		if (access(cmd[0], F_OK))
+		if (access(cmd[0], F_OK) && ft_strcmp(cmd[0], "$") == 1)
 			error_manager(ERNO_NOFILEDIR, cmd[0]);
 		else
 			error_manager(ERNO_NOCMD, cmd[0]);
