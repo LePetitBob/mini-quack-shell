@@ -36,10 +36,8 @@ echo $PATH
 
 ----------------------------------------------------
 
-ls | exit | ls << "ko" << "" << "" >> ko >> raph < lala >> raph > raph > raph
+Do not expand limiters in here documents
 
-echo "$    a"
-echo $?
+In a mini-quack-shellception, ctrlC prints as many newline as there are instances of mini-quack-shell
 
-l^Ds
-
+Add error message in here document in case of CtrlD
