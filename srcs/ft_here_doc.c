@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 20:58:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:45:03 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 	t_token	*redir;
 
 	cmd = cmds->first;
-	g_status.hd_fd = STDIN_FILENO;
+	
 	while (cmd)
 	{
 		redir = cmd->redir;
 		while (redir && g_status.hd_fd < 2)
 		{
 			if (redir->type == HERE_DOC)
+			{
+				g_status.hd_fd = STDIN_FILENO;
 				redir->str = get_here_doc(redir->str, env, sig);
+			}
 			redir = redir->next;
 		}
 		cmd = cmd->next;
