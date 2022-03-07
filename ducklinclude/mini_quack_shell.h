@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 14:20:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:48:23 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ char		*here_doc_read(char *str, char *stock);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig);
 void		free_set_sign_fd(char *tmp, char *limiter, int *sig);
 int			invalid_filename(char *filename, char *FILENO, int *i);
+int			last_hd(t_token *redir);
 
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 13:24:35 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:48:44 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	apply_redir(t_token *tmp, t_cmd *cmd, int *i, int pipe_hd[2])
 	{
 		if (cmd->fdin > 0)
 			close(cmd->fdin);
-		write(pipe_hd[1], tmp->str, ft_strlen(tmp->str));
+		if (last_hd(tmp))
+			write(pipe_hd[1], tmp->str, ft_strlen(tmp->str));
 		cmd->fdin = -42;
 	}
 	else if (tmp->type == RIN)
