@@ -6,13 +6,27 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 10:56:25 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:10:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
 
 extern t_status	g_status;
+
+void	cut_signals(int condition)
+{
+	if (condition == 0)
+	{
+		signal(SIGINT, sig_handler);
+		signal(SIGQUIT, sig_handler);
+	}
+	else if (condition == 1)
+	{
+		signal(SIGINT, SIG_IGN);
+		signal(SIGQUIT, SIG_IGN);
+	}
+}
 
 // here : SIGINT = Ctrl-C
 // here : SIGQUIT = Ctrl-'\'
@@ -42,10 +56,7 @@ void	handler_parent(int signum)
 		}
 		else
 		{
-			if (g_status.shlvl == 2)
-			{
-				ft_putstr_fd("\n", STDOUT_FILENO);
-			}
+			ft_putstr_fd("\n", STDOUT_FILENO);
 			rl_on_new_line();
 			rl_replace_line("", STDOUT_FILENO);
 			rl_redisplay();
@@ -60,8 +71,7 @@ void	handler_child(int signum)
 {
 	if (signum == SIGINT)
 	{
-		if (g_status.shlvl == 2)
-			ft_putstr_fd("\n", STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
 		g_status.exit_status = 130;
 	}
 	if (signum == SIGQUIT)
