@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 12:44:50 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:19:34 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 
 void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
 {
+	if (!cmds)
+		ft_clear(env);
+	if (!cmds)
+		return ;
 	cmds->first = cmd;
 	fd[5] = 0;
 	if (cmds->first->next)

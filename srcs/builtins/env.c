@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 13:05:33 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:20:21 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ char	**env_cl_to_arr(t_env *env)
 
 	i = env_size(env);
 	env_arr = malloc(sizeof(char *) * (i + 1));
+	if (!env_arr)
+		return (NULL);
 	env_arr[i] = NULL;
 	i = 0;
 	tmp_env = env->first;
