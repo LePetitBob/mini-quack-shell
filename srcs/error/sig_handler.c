@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 21:21:58 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 10:56:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ extern t_status	g_status;
 // child is actually never alive when the signal is sent :D
 void	sig_handler(int signum)
 {
-	// printf("SHLVL-[%d]\n", g_status.shlvl);
+	// printf("SHLVL-[%d]", g_status.shlvl);
+	// printf("pid-[%d]", g_status.pid);
 	if (g_status.pid >= 0)
 		handler_child(signum);
 	else
@@ -44,9 +45,9 @@ void	handler_parent(int signum)
 			if (g_status.shlvl == 2)
 			{
 				ft_putstr_fd("\n", STDOUT_FILENO);
-				rl_replace_line("", STDOUT_FILENO);
 			}
 			rl_on_new_line();
+			rl_replace_line("", STDOUT_FILENO);
 			rl_redisplay();
 		}
 		g_status.exit_status = 130;
@@ -59,7 +60,8 @@ void	handler_child(int signum)
 {
 	if (signum == SIGINT)
 	{
-		ft_putstr_fd("\n", STDERR_FILENO);
+		if (g_status.shlvl == 2)
+			ft_putstr_fd("\n", STDERR_FILENO);
 		g_status.exit_status = 130;
 	}
 	if (signum == SIGQUIT)
