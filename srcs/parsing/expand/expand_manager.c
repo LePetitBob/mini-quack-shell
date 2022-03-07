@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 21:00:51 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:35:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	expand_manager(t_token **it, t_env *env)
 }
 
 void	ret_empty_expand(char *(**arr), t_token **it)
-{ 
+{
 	tokenize_expanded_vars(*arr, it);
 	ft_freetab(*arr);
 	return ;

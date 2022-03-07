@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 20:54:15 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:41:53 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	error_manager(int erno, char *str)
 	char	*err;
 	char	*final;
 
-	if (!str)
-		(void)str;
 	prefix = ft_strdup("minishell: ");
 	if (erno == ERNO_SYNTAX)
 		err = get_syntax_error(str);
@@ -30,9 +28,10 @@ void	error_manager(int erno, char *str)
 		|| erno == ERNO_NOEXEC)
 		err = get_cmd_error(erno, str);
 	else if (erno == ERNO_CD || erno == ERNO_UNSET || erno == ERNO_EXPORT
-		|| erno == ERNO_EX_NUM || erno == ERNO_HD_CTRLD
-		|| erno == ERNO_HD_CTRLD)
+		|| erno == ERNO_EX_NUM)
 		err = get_complex_error(erno, str);
+	else if (erno == ERNO_HD_CTRLD)
+		err = waning_heredoc(str);
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
 	else
@@ -87,12 +86,18 @@ char	*get_complex_error(int erno, char *cmd)
 		pb = ft_strjoin(cmd, ": numeric argument required\n");
 		tmp = ft_strjoin("exit: ", pb);
 	}
-	else if (erno == ERNO_HD_CTRLD)
-	{
-		pb = ft_strjoin("warning: here-document at line 3 delimited by "
-				"end-of-file (wanted `", cmd);
-		tmp = ft_strjoin(pb, "\')\n");
-	}
+	free(pb);
+	return (tmp);
+}
+
+char	*waning_heredoc(char *cmd)
+{
+	char	*tmp;
+	char	*pb;
+
+	pb = ft_strjoin("warning: here-document at line 3 delimited by "
+			"end-of-file (wanted `", cmd);
+	tmp = ft_strjoin(pb, "\')\n");
 	free(pb);
 	return (tmp);
 }

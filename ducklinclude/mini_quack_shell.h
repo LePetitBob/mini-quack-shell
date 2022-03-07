@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 11:57:34 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:39:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ void		failed_fork(t_cmd *cmd, char **str_cmd);
 void		cmd_not_found(char **cmd, char **tmp_paths, char **env,
 				t_cmd_lst *cmds);
 void		free_exit(char **env, char **cmd, char **tmp_paths,
-				 t_cmd_lst *cmds);
+				t_cmd_lst *cmds);
 void		access_exec(char **cmd, char *path, char **envp);
 int			find_in_env_arr(char **envp);
 int			is_builtin(char *cmd);
@@ -270,6 +270,7 @@ void		handler_child(int signum);
 void		error_manager(int erno, char *str);
 char		*get_cmd_error(int erno, char *cmd);
 char		*get_complex_error(int erno, char *cmd);
+char		*waning_heredoc(char *cmd);
 char		*get_syntax_error(char *str);
 void		get_error_redir(t_token *next);
 //?
