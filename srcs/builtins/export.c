@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:00:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 02:21:29 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:33:12 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	export_display(t_env *env)
 				k = ft_atoi(tmp->value);
 				shlvl = ft_itoa(k - 1);
 				write(1, shlvl, ft_strlen(shlvl));
+				free(shlvl);
 			}
 			else
 				write(1, tmp->value, ft_strlen(tmp->value));
