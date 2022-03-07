@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:29:33 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 20:01:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:58:25 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,14 @@ int	is_builtin(char *cmd)
 	return (0);
 }
 
-int	check_echo_free(char **cmd, int k)
+int	check_echo_free(char **cmd)
 {
 	int	ret;
 
 	ret = 0;
-	if (k == 1)
-	{
-		if (!ft_strcmp(cmd[0], "echo"))
-			ret = 1;
-	}
-	else
-		ft_freetab(cmd);
+	if (!ft_strcmp(cmd[0], "echo"))
+		ret = 1;
+	ft_freetab(cmd);
 	return (ret);
 }
 
@@ -56,9 +52,8 @@ void	ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 			ft_unset(env, cmd);
 		else if (!ft_strcmp(cmd[0], "cd"))
 			ft_cd(cmd, env);
-		if (fd[5] || check_echo_free(cmd, 1))
+		if (check_echo_free(cmd) || fd[5])
 		{
-			check_echo_free(cmd, 0);
 			rl_clear_history();
 			ft_clear(env);
 			rm_cmds(cmds);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 11:12:18 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:57:34 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ void		ft_cd(char **cmd, t_env *env);
 void		env_change_and_error_management(t_env *env, char **cmd, int i);
 //* ECHO
 void		ft_echo(char **s);
+int			check_echo_free(char **cmd);
 //* EXPORT
 void		ft_export(t_env *env, char **cmd);
 void		export_var(int i[2], char **cmd, t_env *env);
@@ -225,7 +226,6 @@ int			invalid_filename(char *filename, char *FILENO, int *i);
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 void		apply_exec(char **str_cmd, int fd[6], t_env *env, t_cmd_lst *cmds);
-int			check_echo_free(char **cmd, int k);
 void		ft_exec(char **cmd, char **envp, t_cmd_lst *cmds);
 void		no_cmd(char **cmd, char **envp, t_cmd_lst *cmds);
 char		**get_cmd_str(t_cmd *cmd);
