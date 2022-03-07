@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/04 04:35:25 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 16:21:36 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	i = chdir(tmp[2]);
 	tmp[0] = get_env_name(env, "OLDPWD");
 	tmp[1] = get_env_name(env, "PWD");
-	if (i < 0)
+	if (i < 0 && errno != EACCES)
 		error_manager(ERNO_CD, cmd[1]);
 	if (i >= 0 && tmp[0])
 		replace_var(env, "OLDPWD", tmp[3]);
@@ -70,7 +70,7 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 	if (i >= 0 && tmp[1])
 		replace_var(env, "PWD", tmp[3]);
 	free_tmp(tmp);
-	g_status.exit_status = -i;
+	cd_error_status(cmd, i);
 }
 
 void	ft_cd(char **cmd, t_env *env)

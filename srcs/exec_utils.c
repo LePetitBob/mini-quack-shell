@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:39:31 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 20:00:41 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:48:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,20 @@ int	find_in_env_arr(char **envp)
 	if (!envp[i])
 		return (0);
 	return (1);
+}
+
+int	last_hd(t_token *redir)
+{
+	t_token	*tmp;
+	int		i;
+
+	tmp = redir;
+	i = 1;
+	while (tmp)
+	{
+		if (tmp->next && tmp->next->type == HERE_DOC)
+			i = 0;
+		tmp = tmp->next;
+	}
+	return (i);
 }

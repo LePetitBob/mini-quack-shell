@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 16:27:06 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:29:46 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ void		ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 void		ft_pwd(void);
 //* CD
 void		ft_cd(char **cmd, t_env *env);
+void		cd_error_status(char **cmd, int i);
 void		env_change_and_error_management(t_env *env, char **cmd, int i);
 //* ECHO
 void		ft_echo(char **s);
@@ -227,6 +228,7 @@ char		*here_doc_read(char *str, char *stock);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig);
 void		free_set_sign_fd(char *tmp, char *limiter, int *sig);
 int			invalid_filename(char *filename, char *FILENO, int *i);
+int			last_hd(t_token *redir);
 
 //* EXEC
 void		execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
