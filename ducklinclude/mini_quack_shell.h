@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 12:39:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:48:49 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,7 @@ void		abort_exec(char **cmd, t_cmd_lst *cmds, t_env *env, int fd[6]);
 void		redirection(t_cmd *cmd, int fd[6]);
 char		*here_doc_read(char *str, char *stock);
 void		get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig);
+void		free_set_sign_fd(char *tmp, char *limiter, int *sig);
 int			invalid_filename(char *filename, char *FILENO, int *i);
 
 //* EXEC
@@ -237,6 +238,7 @@ void		free_exit(char **env, char **cmd, char **tmp_paths,
 				t_cmd_lst *cmds);
 void		access_exec(char **cmd, char *path, char **envp);
 int			find_in_env_arr(char **envp);
+void		signals_pid(t_cmd *cmd);
 int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER

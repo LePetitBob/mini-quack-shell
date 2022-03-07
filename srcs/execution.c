@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 11:22:07 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:55:23 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,13 @@ char	**get_cmd_str(t_cmd *cmd)
 	return (str_cmd);
 }
 
+void	signals_pid(t_cmd *cmd)
+{
+	if (cmd->pid > 0)
+		cut_signals(1);
+	g_status.pid = cmd->pid;
+}
+
 void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 {
 	char	**str_cmd;
@@ -107,9 +114,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 		return ;
 	}
 	cmd->pid = fork();
-	if (cmd->pid > 0)
-		cut_signals(1);
-	g_status.pid = cmd->pid;
+	signals_pid(cmd);
 	failed_fork(cmd, str_cmd);
 	if (cmd->pid == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 12:32:28 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:53:21 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 		while (redir && g_status.hd_fd < 2)
 		{
 			if (redir->type == HERE_DOC)
-			{
 				g_status.hd_fd = STDIN_FILENO;
+			if (redir->type == HERE_DOC)
 				redir->str = get_here_doc(redir->str, env, sig);
-			}
 			redir = redir->next;
 		}
 		cmd = cmd->next;
@@ -75,6 +74,15 @@ char	*here_doc_read(char *str, char *stock)
 	return (tmp[1]);
 }
 
+void	free_set_sign_fd(char *tmp, char *limiter, int *sig)
+{
+	if (tmp)
+		free(tmp);
+	free(limiter);
+	if (g_status.hd_fd > 2)
+		*sig = -2;
+}
+
 char	*get_here_doc(char *limiter, t_env *env, int *sig)
 {
 	char		*tmp[2];
@@ -99,10 +107,6 @@ char	*get_here_doc(char *limiter, t_env *env, int *sig)
 			break ;
 		}
 	}
-	if (tmp[0])
-		free(tmp[0]);
-	free(limiter);
-	if (g_status.hd_fd > 2)
-		*sig = -2;
+	free_set_sign_fd(tmp[0], limiter, sig);
 	return (tmp[1]);
 }

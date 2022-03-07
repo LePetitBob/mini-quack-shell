@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 11:40:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:44:50 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 	{
 		waitpid(tmp->pid, &err, 0);
 		if (WIFEXITED(err) && tmp->arg && ((cmds->first->next
-				|| !is_builtin(tmp->arg->str))
+					|| !is_builtin(tmp->arg->str))
 				|| !ft_strcmp(tmp->arg->str, "echo")))
 			g_status.exit_status = WEXITSTATUS(err);
 		tmp = tmp->next;
