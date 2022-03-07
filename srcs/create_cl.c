@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:15:17 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 14:19:28 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:19:59 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_env_var	*ft_create_elem(char *name, char *value, int to_print)
 	t_env_var	*new;
 
 	new = malloc(sizeof(t_env_var));
+	if (!new)
+		return (NULL);
 	new->name = ft_strdup(name);
 	new->value = ft_strdup(value);
 	new->next = NULL;
