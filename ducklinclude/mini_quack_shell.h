@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 14:20:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:27:06 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,10 @@ char		*get_cmd_error(int erno, char *cmd);
 char		*get_complex_error(int erno, char *cmd);
 char		*waning_heredoc(char *cmd);
 char		*get_syntax_error(char *str);
+
 void		get_error_redir(t_token *next);
+void		send_error_msg(char *str, int err, int exit_value);
+int			check_for_directory(char *str);
 //?
 
 //!				DEBUG

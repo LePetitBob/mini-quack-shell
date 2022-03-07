@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 20:00:00 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 16:27:32 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,19 @@ void	failed_fork(t_cmd *cmd, char **str_cmd)
 
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
-	if (ft_strcmp(cmd[0], "/") == 0)
-		error_manager(ERNO_ISDIR, cmd[0]);
-	if (ft_strcmp(cmd[0], "/") == 0)
-		g_status.exit_status = 126;
+	if (ft_strcmp(cmd[0], "/") == 0 || check_for_directory(cmd[0]) == 0)
+		send_error_msg(cmd[0], ERNO_ISDIR, 126);
 	else if (errno == EACCES)
-	{
-		error_manager(ERNO_ACCESS, cmd[0]);
-		g_status.exit_status = 1;
-	}
+		send_error_msg(cmd[0], ERNO_ACCESS, 1);
 	else if (ft_strcmp(cmd[0], ".") == 0)
-	{
-		error_manager(ERNO_NOEXEC, cmd[0]);
-		g_status.exit_status = 2;
-	}
+		send_error_msg(cmd[0], ERNO_NOEXEC, 2);
 	else
 	{
-		if (!find_in_env_arr(env) || (!access(cmd[0], F_OK)
-				&& ft_strcmp(cmd[0], "$") == 1))
-			error_manager(ERNO_NOFILEDIR, cmd[0]);
+		if (!find_in_env_arr(env) || (cmd[0][0] == '.' && cmd[0][1] == '/')
+			|| (!access(cmd[0], F_OK) && ft_strcmp(cmd[0], "$") == 1))
+			send_error_msg(cmd[0], ERNO_NOFILEDIR, 127);
 		else
-			error_manager(ERNO_NOCMD, cmd[0]);
-		g_status.exit_status = 127;
+			send_error_msg(cmd[0], ERNO_NOCMD, 127);
 	}
 	free_exit(env, cmd, tmp_paths, cmds);
 }
