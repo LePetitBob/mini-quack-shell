@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 11:11:37 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:40:56 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 	if (fd[4] > -1)
 		close(fd[4]);
 	tmp = cmds->first;
+	cut_signals(0);
 	while (tmp)
 	{
 		waitpid(tmp->pid, &err, 0);
@@ -64,7 +65,6 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 		tmp = tmp->next;
 	}
 	g_status.pid = -1;
-	cut_signals(0);
 	rm_cmds(cmds);
 }
 
