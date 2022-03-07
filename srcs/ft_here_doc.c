@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 11:45:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:32:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 	t_token	*redir;
 
 	cmd = cmds->first;
-	
 	while (cmd)
 	{
 		redir = cmd->redir;

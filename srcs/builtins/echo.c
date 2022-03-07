@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:12:04 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/06 19:51:54 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:32:35 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,32 @@ extern t_status	g_status;
 
 void	ft_echo(char **s)
 {
-	int	i;
 	int	nl;
+	int	i;
+	int	j;
 
 	nl = 1;
-	if (s[1] && !ft_strncmp("-n", s[1], 2))
+	j = 1;
+	while (s[j] && !ft_strncmp("-n", s[j], 2))
 	{
 		i = 2;
-		while (s[1][i] == 'n')
+		while (s[j][i] == 'n')
 			i++;
-		if (!s[1][i])
+		if (!s[j][i])
+		{
 			nl = 0;
+			j++;
+		}
+		else
+			break ;
 	}
-	i = 1;
-	if (nl == 0)
-		i++;
+	i = j;
 	while (s[i])
 	{
-		if ((nl == 0 && i != 2) || (nl == 1 && i != 1))
-			write(1, " ", 1);
 		write(1, s[i], ft_strlen(s[i]));
 		i++;
+		if (s[i])
+			write(1, " ", 1);
 	}
 	if (nl == 1)
 		write(1, "\n", 1);
