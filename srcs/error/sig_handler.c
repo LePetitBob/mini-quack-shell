@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 11:45:26 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:32:08 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	handler_child(int signum)
 {
 	if (signum == SIGINT)
 	{
-		ft_putstr_fd("\n", STDERR_FILENO);
+		if (g_status.exec_minishell == 0)
+			ft_putstr_fd("\n", STDERR_FILENO);
 		g_status.exit_status = 130;
 	}
 	if (signum == SIGQUIT)

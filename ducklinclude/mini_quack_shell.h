@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 16:29:46 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:30:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_status
 	int	exit_status;
 	int	pid;
 	int	hd_fd;
+	int	exec_minishell;
 }				t_status;
 
 extern t_status	g_status;
@@ -244,7 +245,7 @@ void		free_exit(char **env, char **cmd, char **tmp_paths,
 				t_cmd_lst *cmds);
 void		access_exec(char **cmd, char *path, char **envp);
 int			find_in_env_arr(char **envp);
-void		signals_pid(t_cmd *cmd);
+void		signals_pid(t_cmd *cmd, char **str_cmd);
 int			is_builtin(char *cmd);
 
 //* CMDS_MANAGER
