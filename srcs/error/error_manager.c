@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 12:41:53 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:22:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*waning_heredoc(char *cmd)
 	char	*tmp;
 	char	*pb;
 
-	pb = ft_strjoin("warning: here-document at line 3 delimited by "
+	pb = ft_strjoin("warning: here-document delimited by "
 			"end-of-file (wanted `", cmd);
 	tmp = ft_strjoin(pb, "\')\n");
 	free(pb);

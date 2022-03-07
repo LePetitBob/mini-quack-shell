@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 12:48:49 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:20:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,15 @@ typedef struct s_env
 
 //			Structs
 t_token		*ft_create_empty_token(void);
-t_token		*get_last_token(t_token *tokens);
 t_cmd		*ft_create_cmd(void);
+
 void		free_token(t_token *tokens);
 void		free_one_token(t_token *token);
 void		free_cmds(t_cmd *cmds);
+
+t_token		*get_first_token(t_token *tokens);
+t_token		*get_last_token(t_token *tokens);
+//
 
 //?			Parsing
 //			Split
