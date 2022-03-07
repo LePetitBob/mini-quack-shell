@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 18:54:20 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:14:11 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char	*check_sufix_expand(t_env *env, char **str, char *value, int i)
 		expand_var(&tmp, env, 0);
 	cpy = ft_strjoin(value, tmp);
 	free(value);
+	free(tmp);
 	return (cpy);
 }
 

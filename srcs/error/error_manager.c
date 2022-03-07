@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 16:12:39 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:36:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	error_manager(int erno, char *str)
 		err = get_complex_error(erno, str);
 	else if (erno == ERNO_HD_CTRLD)
 		err = waning_heredoc(str);
+	else
+		return ;
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
 	else
@@ -46,6 +48,7 @@ char	*get_cmd_error(int erno, char *cmd)
 {
 	char	*pb;
 
+	pb = NULL;
 	if (erno == ERNO_ACCESS)
 		pb = ft_strjoin(cmd, ": Permission denied\n");
 	else if (erno == ERNO_NOCMD)
@@ -68,6 +71,8 @@ char	*get_complex_error(int erno, char *cmd)
 	char	*tmp;
 	char	*pb;
 
+	tmp = NULL;
+	pb = NULL;
 	if (erno == ERNO_CD)
 	{
 		pb = ft_strjoin(cmd, ": No such file or directory\n");

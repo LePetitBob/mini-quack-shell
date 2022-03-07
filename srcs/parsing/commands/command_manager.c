@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/05 04:36:34 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 22:34:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign)
 
 	if (assign == 0)
 		tmp = (*it_c)->redir;
-	else if (assign == 1)
+	else
 		tmp = (*it_c)->arg;
 	if (tmp)
 	{

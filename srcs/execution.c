@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 17:30:17 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:12:16 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 	no_cmd(cmd, envp, cmds);
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
-	if (!envp[i])
-		cmd_not_found(cmd, tmp_paths, envp, cmds);
 	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/')
 		&& access(cmd[0], X_OK) == 0)
 		execve(cmd[0], cmd, envp);
+	if (!envp[i])
+		cmd_not_found(cmd, tmp_paths, envp, cmds);
 	tmp_paths = ft_split(envp[i] + 5, ':');
 	i = -1;
 	while (tmp_paths[++i])

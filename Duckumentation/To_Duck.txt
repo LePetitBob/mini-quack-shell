@@ -36,4 +36,9 @@ echo $PATH
 
 ----------------------------------------------------
 
-In a mini-quack-shellception, ctrlC prints as many newline as there are instances of mini-quack-shell
+leak export display
+	"export tr="
+	"export"
+
+(use signaction)
+ctrl-/
