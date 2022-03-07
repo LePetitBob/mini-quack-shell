@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:10:12 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/05 03:20:22 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/07 16:22:19 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,15 @@ int	invalid_filename(char *filename, char *FILENO, int *i)
 		return (1);
 	}
 	return (0);
+}
+
+void	cd_error_status(char **cmd, int i)
+{
+	if (errno == EACCES)
+	{
+		error_manager(ERNO_ACCESS, cmd[1]);
+		g_status.exit_status = 126;
+	}
+	else
+		g_status.exit_status = -i;
 }
