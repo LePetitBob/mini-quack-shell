@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:56:16 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 11:10:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:23:25 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	cut_signals(int condition)
 // child is actually never alive when the signal is sent :D
 void	sig_handler(int signum)
 {
-	// printf("SHLVL-[%d]", g_status.shlvl);
-	// printf("pid-[%d]", g_status.pid);
 	if (g_status.pid >= 0)
 		handler_child(signum);
 	else
@@ -57,8 +55,8 @@ void	handler_parent(int signum)
 		else
 		{
 			ft_putstr_fd("\n", STDOUT_FILENO);
-			rl_on_new_line();
 			rl_replace_line("", STDOUT_FILENO);
+			rl_on_new_line();
 			rl_redisplay();
 		}
 		g_status.exit_status = 130;
