@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 23:09:24 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:42:47 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	execution(t_cmd *cmd, t_env *env, int fd[6], t_cmd_lst *cmds)
 
 	str_cmd = get_cmd_str(cmd);
 	if (!str_cmd || !str_cmd[0])
-		return ;
+		return (redirection(cmd, fd));
 	if (is_builtin(str_cmd[0]) && !fd[5])
 	{
 		close(fd[2]);
