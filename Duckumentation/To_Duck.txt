@@ -36,9 +36,24 @@ echo $PATH
 
 ----------------------------------------------------
 
-leak export display
-	"export tr="
-	"export"
+echo bonjour > $test
+	- ambigous redirect
+	- wrong echo $? value
 
-(use signaction)
-ctrl-/
+redir wont be executed if no cmd
+
+echo bonjour | |
+	- should i do this ?
+
+.
+	- wrong error message
+	- wrong error
+
+..
+	- wrong error message
+	- wrong error
+
+echo	a
+	- wrong output
+
+last : 311->cd no_file

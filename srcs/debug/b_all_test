@@ -158,6 +158,7 @@ echo "\\\\$HOME"
 export TMPPATH=$PATH
 unset PATH
 echo $PATH
+/bin/ls
 export PATH=$TMPPATH
 unset TMPPATH
 echo $PATH
@@ -169,6 +170,7 @@ sdfs > abc
 ..
 
 >file
+rm file
 
 export test=" foo bar"
 echo """$test"""
