@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 17:26:03 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:09:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int ac, char **av, char *envp[])
 		prompt_prefix = get_prompt_prefix(&env);
 		line = readline(prompt_prefix);
 		free(prompt_prefix);
-		add_history(line);
+		if (line[0] != '\0')
+			add_history(line);
 		if (!line)
 		{
 			ft_clear(&env);

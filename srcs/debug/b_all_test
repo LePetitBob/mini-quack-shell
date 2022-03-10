@@ -39,11 +39,13 @@ echo "$a '$b"$c'$d $e'
 echo bonjour > $test
 export test="o1 o2"
 echo bonjour > $test
+export test="o1"
+echo bonjour > $test
 
-mkdir a
-mkdir a/b
-cd a/b
-rm -r ../../a
+mkdir ar
+mkdir ar/b
+cd ar/b
+rm -r ../../ar
 cd ..
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
