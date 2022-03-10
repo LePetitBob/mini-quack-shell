@@ -42,8 +42,3 @@ echo $?
 
 echo bonjour | |
 	- should i do this ?
-
-""
-	- wrong error message
-	- wrong echo $? value
-

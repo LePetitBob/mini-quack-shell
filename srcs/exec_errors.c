@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/10 11:01:56 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:39:40 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	failed_fork(t_cmd *cmd, char **str_cmd)
 
 void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 {
-	if (ft_strcmp(cmd[0], "/") == 0 || check_for_directory(cmd[0]) == 0)
+	if (cmd[0] && cmd[0][0] != '\0' && (ft_strcmp(cmd[0], "/") == 0
+			|| check_for_directory(cmd[0]) == 0))
 		send_error_msg(cmd[0], ERNO_ISDIR, 126);
 	else if (errno == EACCES)
 		send_error_msg(cmd[0], ERNO_ACCESS, 1);
