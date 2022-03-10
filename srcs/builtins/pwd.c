@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 14:44:46 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 03:48:01 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:04:37 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_pwd(void)
 {
 	char	*path;
 
+	g_status.exit_status = 0;
 	path = getcwd(NULL, 0);
 	if (!path)
 		g_status.exit_status = 1;

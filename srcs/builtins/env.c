@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 14:20:21 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:02:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_env(t_env *env)
 	char		*shlvl;
 	int			k;
 
+	g_status.exit_status = 0;
 	tmp = env->first;
 	while (tmp)
 	{
