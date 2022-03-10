@@ -14,3 +14,9 @@ make "ambigous redirect" error for env var not defined
 
 echo bonjour | |
 	- should i do this ?
+
+..
+	- wrong error message
+
+""
+	- wrong error message
