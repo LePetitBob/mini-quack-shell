@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 22:14:11 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 11:32:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	expand_vars_manager(t_token *it, char *(**arr), t_env *env)
 		{
 			cpy = ft_strdup((*arr)[i]);
 			expand_var(&cpy, env, 0);
-			if ((it->type == FD || it->type == LIMITER)
-				&& (!cpy || cpy[0] == '\0'))
+			if (it->type == LIMITER && (!cpy || cpy[0] == '\0'))
 				free(cpy);
 			else
 			{
+				if (it->type == FD && (!cpy || cpy[0] == '\0'))
+					send_error_msg(it->str, ERNO_AMBIG_REDIR, 1);
 				free((*arr)[i]);
 				(*arr)[i] = ft_strdup(cpy);
 				free(cpy);

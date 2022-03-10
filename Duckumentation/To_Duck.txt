@@ -40,10 +40,6 @@ echo $PATH
 echo $?
 	- wrong echo $? value
 
-echo bonjour > $test
-	- ambigous redirect
-	- wrong echo $? value
-
 echo bonjour | |
 	- should i do this ?
 

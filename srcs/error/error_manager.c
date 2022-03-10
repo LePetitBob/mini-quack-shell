@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 22:36:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 11:28:45 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	error_manager(int erno, char *str)
 		err = get_syntax_error(str);
 	else if (erno == ERNO_ISDIR || erno == ERNO_ACCESS || erno == ERNO_NOCMD
 		|| erno == ERNO_ARGS || erno == ERNO_NOFILEDIR || erno == ERNO_PATH
-		|| erno == ERNO_NOEXEC)
+		|| erno == ERNO_NOEXEC || erno == ERNO_AMBIG_REDIR)
 		err = get_cmd_error(erno, str);
 	else if (erno == ERNO_CD || erno == ERNO_UNSET || erno == ERNO_EXPORT
 		|| erno == ERNO_EX_NUM)
@@ -63,6 +63,8 @@ char	*get_cmd_error(int erno, char *cmd)
 		pb = ft_strjoin(cmd, ": No such file or directory\n");
 	else if (erno == ERNO_NOEXEC)
 		pb = ft_strjoin(cmd, ": filename argument required\n");
+	else if (erno == ERNO_AMBIG_REDIR)
+		pb = ft_strjoin(cmd, ": ambigous redirect\n");
 	return (pb);
 }
 

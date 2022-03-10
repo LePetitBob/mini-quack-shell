@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 17:30:36 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 11:27:45 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define ERNO_EX_NUM 10
 # define ERNO_NOEXEC 11
 # define ERNO_HD_CTRLD 12
+# define ERNO_AMBIG_REDIR 13
 
 # define NO_TYPE -1
 # define WORD 0
