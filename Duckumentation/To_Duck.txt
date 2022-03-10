@@ -1,15 +1,3 @@
-Vincent :
-
-cat srcs/debug/m_alltest | valgrind  ./minishell &>srcs/debug/m_log.txt
-
-test tricky redir when implemented (echo lol >/dev/full)
-cd -> CDPATH
-
-ON PEUT PLUS LQNCER MINISHELL DANS MINISHELL
-Check la valeur d
-
-------------------------
-
 Albe :
 
 ENV VAR IN HERE_DOC MUST BE EXPANDED
@@ -21,18 +9,6 @@ echo "h ey" > hey| echo hey>hey
 - make syntax error for '&&'
 
 make "ambigous redirect" error for env var not defined
-
-----------------------------
-
-<< a cat | << b cat | cat << c
-<< a a | << b a | a << c
-
-export TMPPATH=$PATH
-unset PATH
-echo $PATH
-export PATH=$TMPPATH
-unset TMPPATH
-echo $PATH
 
 ----------------------------------------------------
 
