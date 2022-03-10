@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 14:43:19 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:16:34 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	check_ambigous(char *str)
 
 	i = 0;
 	tmp = 0;
-	if (!str)
+	if (!str || str[0] == '\0')
 		return (1);
 	while (str[i] != '\0')
 	{
