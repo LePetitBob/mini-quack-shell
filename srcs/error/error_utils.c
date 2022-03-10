@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 06:00:18 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 16:26:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 10:49:22 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	check_for_directory(char *str)
 	int	i;
 
 	i = 0;
+	if (ft_strcmp(str, ".") == 0)
+		return (1);
 	while (str[i] != '\0')
 	{
 		if (str[i] != '/' && str[i] != '.')

@@ -339,7 +339,7 @@ env
 
 pwd a
 
-env -i ./minishell
+./minishell
 echo $SHLVL
 
 export TMPHOME=$HOME
@@ -349,10 +349,7 @@ export HOME=$TMPHOME
 unset TMPHOME
 echo $HOME
 
-\0\0\0\0\0\0\0\0\0
-
 cd a b c d
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 cd ~
 cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell/
@@ -380,7 +377,6 @@ cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell/
 > a echo Hello World!
 
 cd ./path_not_found
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo > a Hello World!
 
@@ -390,8 +386,6 @@ cat < >
 
 cd echo
 cd $?
-
-env -i ./minishell
 
 export "111=222"
 
