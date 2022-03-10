@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:07:57 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 15:16:26 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:51:22 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	expand_vars_manager(t_token *it, char *(**arr), t_env *env)
 			else
 			{
 				if (it->type == FD && check_ambigous(cpy) == 1)
+				{
+					free(cpy);
+					cpy = NULL;
 					send_error_msg(it->str, ERNO_AMBIG_REDIR, 1);
+				}
 				free((*arr)[i]);
 				(*arr)[i] = ft_strdup(cpy);
 				free(cpy);
