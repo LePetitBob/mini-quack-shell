@@ -47,13 +47,6 @@ echo bonjour > $test
 echo bonjour | |
 	- should i do this ?
 
-..
-	- wrong error message
-	- wrong echo $? value
-
-Makefile
-	- wrong error message
-
 ./Makefile
 	- should execute Makefile
 	- should not send error
