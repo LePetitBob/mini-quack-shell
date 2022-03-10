@@ -39,25 +39,8 @@ echo $PATH
 echo bonjour | |
 	- should i do this ?
 
-if cmd does not have arg, only redir
-&& redir is last cmd
-&& redir was bad
-	exit status is = 0
-
-echo bonjour > $test
-	-if var == NULL -> ambigous
-	-if var has WHITESPACE -> ambigous
-	-if var has value -> nothing
-
 rm file
 export test=" foo bar"
 echo $?
 	- wrong echo $? value
 
-export TMPPATH=$PATH
-unset PATH
-ls
-	-wrong error message
-
-upon finding WHITESPACE
-if there is NON whitespace before && a NON whitespace after -> ambigous
