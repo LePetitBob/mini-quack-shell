@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:49:46 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 04:38:44 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:28:49 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ void	split_whitespaces(char *str, char *(**args))
 		if (str[i] == '\'' || str[i] == '\"')
 			if (split_skip_quotes(args, str, &i, &tmp) == EXIT_FAILURE)
 				return ;
-		if (str[i] == ' ')
+		if (check_wsp(str[i]) == IS_WHITESPACE)
 		{
 			if (tmp[0] != '\0')
 				(*args) = ft_add_tab((*args), tmp);
 			ft_bzero(tmp, ft_strlen(str));
-			while (str[i + 1] != '\0' && str[i + 1] == ' ')
+			while (str[i + 1] != '\0'
+				&& check_wsp(str[i + 1]) == IS_WHITESPACE)
 				++i;
 		}
 		else
@@ -39,6 +40,14 @@ void	split_whitespaces(char *str, char *(**args))
 	if (tmp[0] != '\0')
 		(*args) = ft_add_tab((*args), tmp);
 	free(tmp);
+}
+
+int	check_wsp(char c)
+{
+	if (c != ' ' && c != '\t' && c != '\n' && c != '\v' && c != '\f'
+		&& c != '\r')
+		return (1);
+	return (0);
 }
 
 int	split_skip_quotes(char *(**args), char *str, int *index, char **tmp)

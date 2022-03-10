@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:08:57 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/08 14:42:47 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/10 12:04:23 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_exec(char **cmd, char **envp, t_cmd_lst *cmds)
 	no_cmd(cmd, envp, cmds);
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
-	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/')
+	if (cmd[0] && ((cmd[0][0] == '.' && cmd[0][1] == '/') || cmd[0][0] == '/')
 		&& access(cmd[0], X_OK) == 0)
 		execve(cmd[0], cmd, envp);
 	if (!envp[i])

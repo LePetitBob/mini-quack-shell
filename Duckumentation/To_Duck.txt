@@ -43,16 +43,6 @@ echo $?
 echo bonjour | |
 	- should i do this ?
 
-./Makefile
-	- should execute Makefile
-	- should not send error
-
-echo	a
-	- \t is tab
-	- split ALL whitespaces
-	- not recognised as a command :c
-	- wrong output
-
 ""
 	- wrong error message
 	- wrong echo $? value

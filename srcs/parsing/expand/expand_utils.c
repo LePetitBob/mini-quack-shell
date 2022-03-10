@@ -6,11 +6,21 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/04 04:11:21 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:27:05 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+void	convert_all_wsp(char *(**arr), int conv)
+{
+	convert_spaces(arr, ' ' * conv);
+	convert_spaces(arr, '\t' * conv);
+	convert_spaces(arr, '\n' * conv);
+	convert_spaces(arr, '\v' * conv);
+	convert_spaces(arr, '\f' * conv);
+	convert_spaces(arr, '\r' * conv);
+}
 
 void	convert_spaces(char *(**arr), char space)
 {

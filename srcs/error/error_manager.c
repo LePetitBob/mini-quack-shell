@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 11:28:45 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:15:01 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*get_cmd_error(int erno, char *cmd)
 	else if (erno == ERNO_NOEXEC)
 		pb = ft_strjoin(cmd, ": filename argument required\n");
 	else if (erno == ERNO_AMBIG_REDIR)
-		pb = ft_strjoin(cmd, ": ambigous redirect\n");
+		pb = ft_strjoin(cmd, ": ambiguous redirect\n");
 	return (pb);
 }
 

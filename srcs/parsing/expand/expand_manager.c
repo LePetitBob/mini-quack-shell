@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 11:29:26 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:31:38 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	expand_manager(t_token **it, t_env *env)
 	arr = expand_split_manager((*it)->str);
 	if (!arr)
 		return (ret_empty_expand(&arr, it));
-	convert_spaces(&arr, ' ');
+	convert_all_wsp(&arr, 1);
 	expand_vars_manager(*it, &arr, env);
 	if (!arr)
 		return (ret_empty_expand(&arr, it));
@@ -54,7 +54,7 @@ void	expand_manager(t_token **it, t_env *env)
 			del_quotes(&arr[i]);
 		++i;
 	}
-	convert_spaces(&arr, ' ' * -1);
+	convert_all_wsp(&arr, -1);
 	tokenize_expanded_vars(arr, it);
 	ft_freetab(arr);
 }

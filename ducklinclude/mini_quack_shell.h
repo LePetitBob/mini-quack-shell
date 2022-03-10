@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 11:27:45 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:27:22 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 # define ROUT 5
 # define DROUT 6
 # define HERE_DOC 7
+
+# define IS_WHITESPACE 0
+# define NOT_WHITESPACE 1
 
 typedef struct s_status
 {
@@ -125,6 +128,7 @@ void		separate_separator(char *(**args), char *sep, int i_args);
 char		*del_sep(char *src, int index);
 
 void		split_whitespaces(char *str, char *(**args));
+int			check_wsp(char c);
 int			split_skip_quotes(char *(**args), char *str, int *index,
 				char **tmp);
 int			ret_error_quotes(char *str, int i, char *tmp, char *(**args),
@@ -169,6 +173,7 @@ void		relink_parent_to_himself(t_token **parent);
 void		no_link_parent(t_token **parent);
 t_token		*make_new_tokens(char **arr);
 
+void		convert_all_wsp(char *(**arr), int conv);
 void		convert_spaces(char *(**arr), char space);
 void		del_quotes(char *(*str));
 void		copy_str_without_quotes(char *(*str), int *i, char quote);
