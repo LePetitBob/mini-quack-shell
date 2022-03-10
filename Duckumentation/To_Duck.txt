@@ -39,8 +39,12 @@ echo $PATH
 echo bonjour | |
 	- should i do this ?
 
-rm file
-export test=" foo bar"
-echo $?
-	- wrong echo $? value
+echo bonjour > $test
+export test="o1 o2"
+echo bonjour > $test
+export test="o1"
+echo bonjour > $test
 
+""
+	- wrong error message
+	- should be cmd not found. NOT no such file or directory
