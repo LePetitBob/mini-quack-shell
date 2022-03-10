@@ -36,9 +36,10 @@ echo $PATH
 
 ----------------------------------------------------
 
-"h ey" hey|<hey
-echo $?
-	- wrong echo $? value
-
 echo bonjour | |
 	- should i do this ?
+
+if cmd does not have arg, only redir
+&& redir is last cmd
+&& redir was bad
+	exit status is = 0
