@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 12:27:22 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:42:30 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@
 # define DROUT 6
 # define HERE_DOC 7
 
-# define IS_WHITESPACE 0
-# define NOT_WHITESPACE 1
+# define IS_WSP 0
+# define NOT_WSP 1
 
 typedef struct s_status
 {
@@ -165,6 +165,7 @@ int			check_quote_expand(char *str);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
 char		*get_exp_var_name(char *str, int *index);
 void		join_prefix_to_var(char **str, char **value, char *cpy);
+int			check_ambigous(char *str);
 
 void		join_vars(char *(**arr));
 

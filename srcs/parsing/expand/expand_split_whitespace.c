@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 04:09:47 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 12:20:25 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:40:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	expand_split_whitespaces(char *(**arr))
 	cpy = ft_strnew(ft_strlen((*arr)[0]));
 	while ((*arr)[0][i] != '\0')
 	{
-		if (check_wsp((*arr)[0][i]) == IS_WHITESPACE && cpy[0] != '\0')
+		if (check_wsp((*arr)[0][i]) == IS_WSP && cpy[0] != '\0')
 			add_non_whitespace(arr, cpy);
 		if ((*arr)[0][i] == '\'' || (*arr)[0][i] == '\"')
 			expand_skip_quotes(arr, &cpy, &i);
-		if (check_wsp((*arr)[0][i]) == NOT_WHITESPACE)
+		if (check_wsp((*arr)[0][i]) == NOT_WSP)
 			cpy[ft_strlen(cpy)] = (*arr)[0][i];
 		++i;
 	}

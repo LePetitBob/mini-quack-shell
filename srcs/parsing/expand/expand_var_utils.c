@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 20:03:25 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:43:19 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,29 @@ void	join_prefix_to_var(char **str, char **value, char *cpy)
 		*value = ft_strdup(tmp);
 		free(tmp);
 	}
+}
+
+int	check_ambigous(char *str)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	tmp = 0;
+	if (!str)
+		return (1);
+	while (str[i] != '\0')
+	{
+		if (check_wsp(str[i]) == IS_WSP)
+		{
+			tmp = i;
+			while (str[tmp] != '\0' && check_wsp(str[tmp]) == IS_WSP)
+				++tmp;
+			if (i != 0 && str[tmp] != '\0' && check_wsp(str[tmp]) == NOT_WSP)
+				return (1);
+			i += tmp;
+		}
+		++i;
+	}
+	return (0);
 }

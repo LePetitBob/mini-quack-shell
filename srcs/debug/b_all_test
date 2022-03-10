@@ -72,8 +72,6 @@ echo 2 >> out1 > out2
 
 cat Makefile | grep pe | head -n 5 | cd srcs
 echo $?
-cd ..
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 $blah
 
@@ -149,7 +147,6 @@ export $var=test
 echo $var $a
 
 cd ms               
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 echo $HOME
 
@@ -223,7 +220,6 @@ cd home/..
 export TEST=$TMPCD
 unset TMPCD
 echo $TEST
-cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
 
 ls | grep t
 pwd
