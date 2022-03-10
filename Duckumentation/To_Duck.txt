@@ -15,8 +15,8 @@ make "ambigous redirect" error for env var not defined
 echo bonjour | |
 	- should i do this ?
 
-rm file
-export test=" foo bar"
-echo $?
-	- wrong echo $? value
+..
+	- wrong error message
 
+""
+	- wrong error message

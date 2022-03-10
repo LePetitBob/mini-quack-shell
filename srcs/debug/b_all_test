@@ -109,7 +109,9 @@ unset 1_aa
 
 unset var
 export var=coucou
+echo $var
 export var=test
+echo $var
 
 unset "" a
 
@@ -262,6 +264,7 @@ echo bonjour | ls
 
 unset a
 export a=5 a=7 a=8
+echo $a
 
 echo "$tests""Makefile"
 
@@ -339,6 +342,7 @@ pwd a
 
 ./minishell
 echo $SHLVL
+exit
 
 export TMPHOME=$HOME
 unset HOME
