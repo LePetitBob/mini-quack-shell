@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 12:15:01 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:31:15 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ char	*get_cmd_error(int erno, char *cmd)
 	if (erno == ERNO_ACCESS)
 		pb = ft_strjoin(cmd, ": Permission denied\n");
 	else if (erno == ERNO_NOCMD)
+	{
+		if (cmd[0] == '\0')
+		{
+			free(cmd);
+			cmd = ft_strdup("\'\'");
+		}
 		pb = ft_strjoin(cmd, ": command not found\n");
+	}
 	else if (erno == ERNO_ISDIR)
 		pb = ft_strjoin(cmd, ": Is a directory\n");
 	else if (erno == ERNO_ARGS)

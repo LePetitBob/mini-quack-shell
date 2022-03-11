@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/10 19:39:23 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:28:06 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ void	cmd_not_found(char **cmd, char **tmp_paths, char **env, t_cmd_lst *cmds)
 		send_error_msg(cmd[0], ERNO_NOEXEC, 2);
 	else
 	{
-		if ((!tmp_paths && cmd) || (cmd[0][0] == '.' && cmd[0][1] == '/'))
+		if ((!tmp_paths && cmd && cmd[0][0] != '\0'
+			&& ft_strcmp(cmd[0], "..") == 1)
+			|| (cmd[0][0] == '.' && cmd[0][1] == '/'))
 			send_error_msg(cmd[0], ERNO_NOFILEDIR, 127);
 		else
 			send_error_msg(cmd[0], ERNO_NOCMD, 127);
