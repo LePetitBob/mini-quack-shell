@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 07:54:48 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/11 11:28:06 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:34:37 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ extern t_status	g_status;
 
 void	abort_exec(char **cmd, t_cmd_lst *cmds, t_env *env, int fd[6])
 {
-	close(fd[2]);
-	close(fd[3]);
+	close_all_fds(fd, cmds->first);
 	ft_freetab(cmd);
 	rl_clear_history();
 	ft_clear(env);

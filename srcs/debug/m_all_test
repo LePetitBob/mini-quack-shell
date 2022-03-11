@@ -1,0 +1,448 @@
+pwd
+
+e''c""h''o'' "c"'o'""u'cou'
+
+"h ey" hey|<hey
+
+echo "hello there" > outfilr | echo $PAGE | echo '$HOME' | echo "$HOME" | echo $
+
+echo "hello there" >outfilr| echo '$HOME' | echo "$HOME" | echo $
+
+echo asdv >/dev/stdout| ls -la
+
+echo gerigh >/dev/stdout| ls -las
+
+cat "test" >> outfilr
+
+cat Makefile > outfilr | grep $ >> outfilr
+
+cat Makefile | grep $ > outfilr
+
+echo a$a"b"'c d'
+
+>> test >test > >
+
+| >> test >test > >
+
+>> test >test >
+
+<< >> test >test <
+
+>> >test >test <
+
+export loop='bonjour $loop'
+echo $loop
+
+export a=1 b=2 c=3 d=4 e=5
+echo "$a '$b"$c'$d $e'
+
+echo bonjour > $test
+export test="o1 o2"
+echo bonjour > $test
+export test="o1"
+echo bonjour > $test
+
+mkdir ar
+mkdir ar/b
+cd ar/b
+rm -r ../../ar
+cd ..
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+
+
+
+cat<f2|wc
+
+export var="cat Makefile | grep >"
+echo $var
+
+echo $"HOME"
+
+|
+
+cat < test
+
+echo bonjour | |
+
+>a cat <b >>c
+
+exit 0 | exit 1
+
+echo 2 >> out1 > out2
+
+<a cat <b <c
+
+cat Makefile | grep pe | head -n 5 | cd srcs
+echo $?
+
+$blah
+
+cat Makefile | grep pr | head -n 5 | hello
+echo $?
+
+>a ls <machin >>c >d
+
+echo 2 > out1 >> out2
+
+echo bonjour > > out
+
+$
+
+exit 1 | exit 0
+
+echo 2 >> out1 > out2
+
+| echo
+
+touch a | touch c
+<a cat <b <c
+
+cat -e > test1 < test2
+
+echo $ a
+
+echo ?$
+
+unset a ""
+
+unset 1_aa
+
+unset var
+export var=coucou
+echo $var
+export var=test
+echo $var
+
+unset "" a
+
+echo ""
+
+unset LOL ROR
+
+pwd lalala
+
+export "HI =hi"
+
+echo "" bonjour
+
+unset var
+export $var=test
+
+unset "" test
+echo $?
+
+export "" test=a
+echo $?
+
+pwd a b c d
+
+unset a1=10
+
+echo "$tests" "Makefile"
+
+export ""
+unset ""
+
+unset var1
+
+unset var
+export var=a
+export $var=test
+echo $var $a
+
+cd ms               
+
+echo $HOME
+
+echo "\\\\$HOME"
+
+export TMPPATH=$PATH
+unset PATH
+echo $PATH
+/bin/ls
+export PATH=$TMPPATH
+unset TMPPATH
+echo $PATH
+
+sdfs > abc
+
+.
+
+..
+
+>file
+rm file
+
+export test=" foo bar"
+echo """$test"""
+
+cat < <
+
+/bin/echo bonjour
+
+echo -n simple
+
+echo "a | echo b" | echo c
+
+unset test
+export test="  foo   bar  "
+echo ab$test
+
+ifcat < f2| wc -
+
+unset a c
+
+export | env
+export
+env
+
+pwd
+
+unset var
+export var="truc  "
+echo $var | cat -e
+
+unset test
+export test=a
+echo $test
+
+echo
+
+echo bonjour > $test
+
+Makefile
+
+ls | grep t
+
+unset b
+export a=6 b=8 c=9
+
+echo $TEST
+export TMPCD=$TEST
+export TEST=/
+cd home/..
+export TEST=$TMPCD
+unset TMPCD
+echo $TEST
+
+ls | grep t
+pwd
+
+echo bonjour >>> test
+
+ls><abc
+
+echo -n -n -nnnn -nnnnm | echo a
+
+echo -n lalalala
+
+sleep 5 | exit
+
+echo "$HOME"
+
+export LOL=lala ROR=rara
+
+export test=" foo   bar "
+echo ab"$test" | cat -e
+
+unset var
+
+export 111=222
+
+cd /
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+
+echo	a
+
+ls | exit
+
+export $var
+
+echo bonjour | ls
+
+unset a
+export a=5 a=7 a=8
+echo $a
+
+echo "$tests""Makefile"
+
+not_cmd
+
+./duckinclude/mini_quack_shell.h
+
+unset test
+export "test=ici"=coucou
+echo $test
+
+unset var
+echo $var bonjour
+
+export var=$HOME
+cd $var
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+
+echo '$HOME'
+
+echo "\n \n \n"
+
+cd ../../../../../..
+pwd
+cd $HOME
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+
+export var
+export var=test
+
+sort < abc | grep tes
+
+echo a'bcd'e
+
+export TMPPATH=$PATH
+unset PATH
+ls
+export PATH=$TMPPATH
+unset TMPPATH
+echo $PATH
+
+echo "$    a"
+echo $?
+
+cd no_file
+
+echo "$test"Makefile
+
+export test=123
+echo test > file test1
+
+l^Ds
+
+echo -n -nnn hello -n | echo a
+
+""
+
+env
+export
+env
+
+export var ="cat Makefile | grep >"
+
+unset 111
+export "111"="222"
+
+> test | echo blabla
+rm test
+
+unset test
+export "" test=a
+env
+
+pwd a
+
+./minishell
+echo $SHLVL
+exit
+
+export TMPHOME=$HOME
+unset HOME
+cd
+export HOME=$TMPHOME
+unset TMPHOME
+echo $HOME
+
+cd a b c d
+
+cd ~
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell/
+
+echo a | echo b | echo c
+
+/bin/ls
+
+echo "\\$HOME \\\$HOME \\\\$HOME $HOME $HOME $HOME"
+
+cat < Makefile | grep gcc > output
+
+echo $HO"ME"
+
+unset a
+export a=10
+
+echo -nABC
+
+cd srcs parsing commands
+pwd
+cd $HOME
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell/
+
+> a echo Hello World!
+
+cd ./path_not_found
+
+echo > a Hello World!
+
+not_cmd bonjour > salut
+
+cat < >
+
+cd echo
+cd $?
+
+export "111=222"
+
+cd "minishell         "
+
+export _abc=10
+ls >> abc
+
+ls qwerty
+
+export 1abc=123
+
+$LESS$VAR
+
+$SHLVL
+
+exit 12 | ls
+
+                     
+
+echo >
+
+unset a1
+
+/bin/ls -lrt
+
+cat bla
+
+echo $a
+export 'a'='b'
+echo $a
+
+cat Makefile | grep t > pqr
+
+> log echo coucou
+
+> a ls > v < Makefile
+
+echo hudifg d | | hugdfihd
+
+echo bonjour >>> test
+
+unset =
+
+>a ls >b >>c >d
+
+./efwufkk
+
+cd $HOME/Documents
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+
+unset a c=10
+
+cat < input.txt | wc
+
+cd srcs srcs srcs srcs srcs srcs srcs srcs
+
+cd /sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+rm -rf '$test' abc file out1 out2 outfilr output test test1 b c d log pqr salut v a o1
+exit
