@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 19:40:04 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/11 20:16:41 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	main(int ac, char **av, char *envp[])
 		prompt_prefix = get_prompt_prefix(&env);
 		line = readline(prompt_prefix);
 		free(prompt_prefix);
-		if (line[0] != '\0')
-			add_history(line);
 		if (!line)
 		{
 			ft_clear(&env);
-			ft_putstr_fd("\n", 1);
+			ft_putstr_fd("exit\n", 1);
 			return (0);
 		}
+		if (line[0] != '\0')
+			add_history(line);
 		split_manager(line, &env);
 	}
 }
