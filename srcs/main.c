@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 19:03:29 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/10 19:40:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av, char *envp[])
 		prompt_prefix = get_prompt_prefix(&env);
 		line = readline(prompt_prefix);
 		free(prompt_prefix);
-		if (!is_empty(line))
+		if (line[0] != '\0')
 			add_history(line);
 		if (!line)
 		{
@@ -83,18 +83,4 @@ static char	*get_prompt_prefix(t_env *env)
 	free(pth);
 	free(tmp);
 	return (home);
-}
-
-int	is_empty(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (s[i] == '\0')
-		return (1);
-	while (s[i] == 32 || s[i] == '\t')
-		i++;
-	if (s[i] == '\0')
-		return (1);
-	return (0);
 }
