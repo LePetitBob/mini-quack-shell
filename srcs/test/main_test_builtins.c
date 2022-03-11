@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 15:46:42 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/03 04:25:25 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:45:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ int	main(int ac, char **av, char **envp)
 
 	(void)av;
 	(void)ac;
-	//TODO 			if (!env) -> create PWD=le pwd, _=usr/bin/env, SHLVL=1
 	get_env(envp, &env);
 	while (1)
 	{
 		term = readline("mini-quack-shell$ ");
 		add_history(term);
-		if(!term)
+		if (!term)
 		{
 			ft_clear(&env);
 			exit(0);
@@ -59,7 +58,6 @@ int	main(int ac, char **av, char **envp)
 					{
 						if (env.first)
 							ft_clear(&env);
-						//TODO if (not_builtin) --> exec
 						ft_exec(cmd, envp);
 					}
 					waitpid(pid, NULL, 0);
@@ -72,4 +70,3 @@ int	main(int ac, char **av, char **envp)
 	}
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 12:27:05 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:04:45 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,33 @@ void	copy_str_without_quotes(char *(*str), int *i, char quote)
 	free(tmp);
 	free(sufix);
 	*i = diff - 1;
+}
+
+int	expand_exeptions(char **str, int i, char *cpy, char *value)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if ((*str)[i] == '?' || (*str)[i] == '0')
+	{
+		if ((*str)[i] == '?')
+			value = ft_itoa(g_status.exit_status);
+		else if ((*str)[i] == '0')
+			value = ft_strdup("minishell");
+		if (cpy)
+		{
+			tmp = ft_strjoin(cpy, value);
+			free(cpy);
+			free(value);
+			cpy = ft_strdup(tmp);
+		}
+		if ((*str)[i + 1] != '\0')
+			value = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
+		free(*str);
+		*str = ft_strjoin(value, cpy);
+		free(tmp);
+		free(value);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }

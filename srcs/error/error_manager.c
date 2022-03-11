@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:47:29 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/11 11:31:15 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:40:56 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	error_manager(int erno, char *str)
 		err = get_complex_error(erno, str);
 	else if (erno == ERNO_HD_CTRLD)
 		err = waning_heredoc(str);
-	else
-		return ;
 	if (erno != ERNO_NOCMD)
 		final = ft_strjoin(prefix, err);
 	else
@@ -54,11 +52,9 @@ char	*get_cmd_error(int erno, char *cmd)
 	else if (erno == ERNO_NOCMD)
 	{
 		if (cmd[0] == '\0')
-		{
-			free(cmd);
-			cmd = ft_strdup("\'\'");
-		}
-		pb = ft_strjoin(cmd, ": command not found\n");
+			pb = ft_strjoin("\'\'", ": command not found\n");
+		else
+			pb = ft_strjoin(cmd, ": command not found\n");
 	}
 	else if (erno == ERNO_ISDIR)
 		pb = ft_strjoin(cmd, ": Is a directory\n");

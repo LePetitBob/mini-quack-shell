@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tokens_cmds.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:47:00 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/03 02:31:18 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/11 11:38:28 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,29 @@ void	print_tokens(t_token *tokens)
 	t_token	*iterator;
 
 	if (!tokens)
-	{
-		ft_putstr("[NO_TOKEN]");
-		return ;
-	}
+		return (ft_putstr("[NO_TOKEN]"));
 	iterator = tokens;
 	while (iterator)
 	{
-		dprintf(2, "[");
 		if (iterator->type == NO_TYPE)
-			dprintf(2, "NO_TYPE");
+			dprintf(2, "[NO_TYPE");
 		else if (iterator->type == WORD)
-			dprintf(2, "WORD");
+			dprintf(2, "[WORD");
 		else if (iterator->type == PIPE)
-			dprintf(2, "PIPE");
+			dprintf(2, "[PIPE");
 		else if (iterator->type == FD)
-			dprintf(2, "FD");
+			dprintf(2, "[FD");
 		else if (iterator->type == LIMITER)
-			dprintf(2, "LIMITER");
+			dprintf(2, "[LIMITER");
 		else if (iterator->type == RIN)
-			dprintf(2, "RIN");
+			dprintf(2, "[RIN");
 		else if (iterator->type == ROUT)
-			dprintf(2, "ROUT");
+			dprintf(2, "[ROUT");
 		else if (iterator->type == DROUT)
-			dprintf(2, "DROUT");
+			dprintf(2, "[DROUT");
 		else if (iterator->type == HERE_DOC)
-			dprintf(2, "HERE_DOC");
-		dprintf(2, "]");
-		dprintf(2,"[%s]", iterator->str);
+			dprintf(2, "[HERE_DOC");
+		dprintf(2, "][%s]", iterator->str);
 		iterator = iterator->next;
 	}
 	if (!iterator)

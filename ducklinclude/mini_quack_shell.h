@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 19:40:08 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/11 12:07:42 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,10 @@ void		get_str(char *value, char **str);
 void		delete_null_var(char *(**arr), int *index);
 
 int			check_quote_expand(char *str);
-int			expand_exeptions(char **str, int i, char *cpy, char *value);
 char		*get_exp_var_name(char *str, int *index);
 void		join_prefix_to_var(char **str, char **value, char *cpy);
-int			check_ambigous(char *str);
+int			check_ambigous(char **str);
+int			free_ambigous(char **str);
 
 void		join_vars(char *(**arr));
 
@@ -178,6 +178,7 @@ void		convert_all_wsp(char *(**arr), int conv);
 void		convert_spaces(char *(**arr), char space);
 void		del_quotes(char *(*str));
 void		copy_str_without_quotes(char *(*str), int *i, char quote);
+int			expand_exeptions(char **str, int i, char *cpy, char *value);
 //
 //			Commands
 void		command_manager(t_token *tokens, t_env *env);

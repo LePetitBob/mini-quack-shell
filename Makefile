@@ -1,7 +1,6 @@
 NAME = minishell
 
-CC = clang
-# CC = gcc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 SRCS_DIR = $(shell find srcs -type d)

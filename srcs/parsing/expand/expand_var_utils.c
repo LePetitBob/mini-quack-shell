@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 05:53:26 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 15:16:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:06:39 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,35 +39,6 @@ int	check_quote_expand(char *str)
 			++i;
 	}
 	return (-1);
-}
-
-int	expand_exeptions(char **str, int i, char *cpy, char *value)
-{
-	char	*tmp;
-
-	tmp = NULL;
-	if ((*str)[i] == '?' || (*str)[i] == '0')
-	{
-		if ((*str)[i] == '?')
-			value = ft_itoa(g_status.exit_status);
-		else if ((*str)[i] == '0')
-			value = ft_strdup("minishell");
-		if (cpy)
-		{
-			tmp = ft_strjoin(cpy, value);
-			free(cpy);
-			free(value);
-			cpy = ft_strdup(tmp);
-		}
-		if ((*str)[i + 1] != '\0')
-			value = ft_substr(*str, i + 1, ft_strlen(*str) - i + 1);
-		free(*str);
-		*str = ft_strjoin(value, cpy);
-		free(tmp);
-		free(value);
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
 }
 
 char	*get_exp_var_name(char *str, int *index)
@@ -103,27 +74,35 @@ void	join_prefix_to_var(char **str, char **value, char *cpy)
 	}
 }
 
-int	check_ambigous(char *str)
+int	check_ambigous(char **str)
 {
 	int	i;
 	int	tmp;
 
 	i = 0;
 	tmp = 0;
-	if (!str || str[0] == '\0')
-		return (1);
-	while (str[i] != '\0')
+	if (!(*str) || (*str)[0] == '\0')
+		return (free_ambigous(str));
+	while ((*str)[i] != '\0')
 	{
-		if (check_wsp(str[i]) == IS_WSP)
+		if (check_wsp((*str)[i]) == IS_WSP)
 		{
 			tmp = i;
-			while (str[tmp] != '\0' && check_wsp(str[tmp]) == IS_WSP)
+			while ((*str)[tmp] != '\0' && check_wsp((*str)[tmp]) == IS_WSP)
 				++tmp;
-			if (i != 0 && str[tmp] != '\0' && check_wsp(str[tmp]) == NOT_WSP)
-				return (1);
+			if (i != 0 && (*str)[tmp] != '\0'
+				&& check_wsp((*str)[tmp]) == NOT_WSP)
+				return (free_ambigous(str));
 			i += tmp;
 		}
 		++i;
 	}
 	return (0);
+}
+
+int	free_ambigous(char **str)
+{
+	free(*str);
+	*str = NULL;
+	return (1);
 }
