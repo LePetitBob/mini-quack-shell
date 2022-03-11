@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/11 12:07:42 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 17:10:50 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,6 @@ typedef struct s_env
 {
 	t_env_var	*first;
 }				t_env;
-
-//			Structs
-t_token		*ft_create_empty_token(void);
-t_cmd		*ft_create_cmd(void);
-
-void		free_token(t_token *tokens);
-void		free_one_token(t_token *token);
-void		free_cmds(t_cmd *cmds);
-
-t_token		*get_first_token(t_token *tokens);
-t_token		*get_last_token(t_token *tokens);
-//
 
 //?			Parsing
 //			Split
@@ -262,8 +250,8 @@ void		close_wait_clear(t_cmd_lst *cmds, int fd[6]);
 void		init_fds(int fd[6]);
 void		closepipe(int fd[4]);
 void		close_all_fds(int fd[6], t_cmd *cmd);
-void		clear_token_cl(t_token *lst);
 void		rm_cmds(t_cmd_lst *cmd);
+void		clear_token_cl(t_token *lst);
 char		*get_here_doc(char *limiter, t_env *env, int *sig);
 
 //			CL
@@ -275,6 +263,18 @@ void		ft_rmvar(t_env *env, char *var_name);
 void		ft_clear(t_env *env);
 void		ft_free(char **s);
 int			is_num(char *s);
+
+//			Structs
+t_token		*ft_create_empty_token(void);
+t_cmd		*ft_create_cmd(void);
+
+void		free_token(t_token *tokens);
+void		free_one_token(t_token *token);
+void		free_cmds(t_cmd *cmds);
+
+t_token		*get_first_token(t_token *tokens);
+t_token		*get_last_token(t_token *tokens);
+//
 
 //?			SIGNAL HANDLER
 void		cut_signals(int condition);
