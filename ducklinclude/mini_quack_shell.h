@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/11 17:10:50 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/11 20:55:52 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define IS_WSP 0
 # define NOT_WSP 1
 
+//?			Structs
 typedef struct s_status
 {
 	int	exit_status;
@@ -102,9 +103,22 @@ typedef struct s_env
 {
 	t_env_var	*first;
 }				t_env;
+//?			Structs
+
+//?			Structs Managment
+t_token		*ft_create_empty_token(void);
+t_cmd		*ft_create_cmd(void);
+
+void		free_token(t_token *tokens);
+void		free_one_token(t_token *token);
+void		free_cmds(t_cmd *cmds);
+
+t_token		*get_first_token(t_token *tokens);
+t_token		*get_last_token(t_token *tokens);
+//?			Structs Managment
 
 //?			Parsing
-//			Split
+//* SPLIT
 void		split_manager(char *line, t_env *env);
 int			syntax_errors(char **args);
 void		misc_error(char *str, char pb, int *index);
@@ -121,13 +135,12 @@ int			split_skip_quotes(char *(**args), char *str, int *index,
 				char **tmp);
 int			ret_error_quotes(char *str, int i, char *tmp, char *(**args),
 				char quote);
-//
-//			Tokenize
+//* TOKENIZE
 void		tokenize_manager(char *(**args), t_env *env);
 int			get_arg_type(char *arg, int prev_type);
 int			check_tokens_type(t_token *tokens);
-//
-//			Expand
+
+//* EXPAND
 void		expand_caller(t_token *tokens, t_env *env);
 void		expand_manager(t_token **it, t_env *env);
 void		ret_empty_expand(char *(**arr), t_token **it);
@@ -167,8 +180,8 @@ void		convert_spaces(char *(**arr), char space);
 void		del_quotes(char *(*str));
 void		copy_str_without_quotes(char *(*str), int *i, char quote);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
-//
-//			Commands
+
+//* COMMANDS
 void		command_manager(t_token *tokens, t_env *env);
 void		free_pipe_make_cmd(t_cmd **it_c, t_token **it_t);
 void		assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign);
@@ -176,8 +189,7 @@ void		unlink_cmd_token(t_token *cmd_t, t_token **it_t);
 
 void		link_fd_redir(t_token **tokens);
 void		relink_node_parent(t_token **it, t_token **head);
-
-//
+//?			Parsing
 
 //?			Builtins
 int			is_builtin(char *cmd);
@@ -264,26 +276,14 @@ void		ft_clear(t_env *env);
 void		ft_free(char **s);
 int			is_num(char *s);
 
-//			Structs
-t_token		*ft_create_empty_token(void);
-t_cmd		*ft_create_cmd(void);
-
-void		free_token(t_token *tokens);
-void		free_one_token(t_token *token);
-void		free_cmds(t_cmd *cmds);
-
-t_token		*get_first_token(t_token *tokens);
-t_token		*get_last_token(t_token *tokens);
-//
-
-//?			SIGNAL HANDLER
+//?			Signal Handler
 void		cut_signals(int condition);
 void		sig_handler(int signum);
 void		handler_parent(int signum);
 void		handler_child(int signum);
-//?
+//?			Signal Handler
 
-//?			ERRORS
+//?			Errors
 void		error_manager(int erno, char *str);
 char		*get_cmd_error(int erno, char *cmd);
 char		*get_complex_error(int erno, char *cmd);
@@ -293,11 +293,11 @@ char		*get_syntax_error(char *str);
 void		get_error_redir(t_token *next);
 void		send_error_msg(char *str, int err, int exit_value);
 int			check_for_directory(char *str);
-//?
+//?			Errors
 
-//!				DEBUG
+//!			Debug
 void		print_tokens(t_token *tokens);
 void		print_cmds(t_cmd *cmds);
-//!
+//!			Debug
 
 #endif
