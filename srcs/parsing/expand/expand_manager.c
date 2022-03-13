@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:03:12 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 12:31:38 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/13 20:30:27 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	expand_caller(t_token *tokens, t_env *env)
 	it = tokens;
 	while (it)
 	{
-		if ((it->type == WORD || it->type == FD)
+		if ((it->type == WORD || it->type == FD || it->type == LIMITER)
 			&& (ft_strsrch(it->str, '\'') != -1
 				|| ft_strsrch(it->str, '\"') != -1
 				|| ft_strsrch(it->str, '$') != -1))
@@ -42,7 +42,8 @@ void	expand_manager(t_token **it, t_env *env)
 	if (!arr)
 		return (ret_empty_expand(&arr, it));
 	convert_all_wsp(&arr, 1);
-	expand_vars_manager(*it, &arr, env);
+	if ((*it)->type != LIMITER)
+		expand_vars_manager(*it, &arr, env);
 	if (!arr)
 		return (ret_empty_expand(&arr, it));
 	join_vars(&arr);

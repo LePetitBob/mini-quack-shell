@@ -26,7 +26,8 @@ SRCS = cd.c echo.c env.c exit.c export.c pwd.c unset.c \
 	cmd_manager.c create_cl.c redir_error.c \
 	exec_errors.c exec_utils.c execution.c \
 	ft_builtins.c ft_here_doc.c ft_redir.c ft_utils_tmp.c \
-	main.c
+	main.c \
+	print_tokens_cmds.c
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 

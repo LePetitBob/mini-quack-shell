@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
+/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 16:16:30 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/11 17:12:18 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/13 20:30:04 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ void	apply_redir(t_token *tmp, t_cmd *cmd, int *i, int pipe_hd[2])
 			cmd->fdin = -2;
 	}
 	else if ((tmp->type == ROUT || tmp->type == DROUT)
-		&& ((ft_strcmp(tmp->str, "/dev/stdout") && ft_strcmp(tmp->str, "/dev/fd/1"))
-			|| ((!ft_strcmp(tmp->str, "/dev/stdout") || !ft_strcmp(tmp->str, "/dev/fd/1"))
+		&& ((ft_strcmp(tmp->str, "/dev/stdout")
+				&& ft_strcmp(tmp->str, "/dev/fd/1"))
+			|| ((!ft_strcmp(tmp->str, "/dev/stdout")
+					|| !ft_strcmp(tmp->str, "/dev/fd/1"))
 				&& !tmp->next && !cmd->next)))
 		redir_out(cmd, tmp->str, tmp->type, i);
 }
