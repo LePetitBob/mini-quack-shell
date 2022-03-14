@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_quack_shell.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/11 20:55:52 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:33:07 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,8 +198,11 @@ void		ft_builtins(char **cmd, t_env *env, int fd[6], t_cmd_lst *cmds);
 void		ft_pwd(void);
 //* CD
 void		ft_cd(char **cmd, t_env *env);
-void		cd_error_status(char **cmd, int i);
+void		cd_error_status(char **cmd, int i, t_env *env);
 void		env_change_and_error_management(t_env *env, char **cmd, int i);
+char		*create_cdpath(t_env *env, char **cmd);
+int			cdpath(char **cmd, t_env *env);
+void		free_tmp(char **tmp);
 //* ECHO
 void		ft_echo(char **s);
 int			check_echo_free(char **cmd);
