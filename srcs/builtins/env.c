@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 17:25:51 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/10 17:02:09 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:30:04 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	get_env(char **envp, t_env *env)
 		i[1] = 0;
 		while (envp[i[0]][i[1]] != '=')
 			++i[1];
-		env_split[0] = strndup(envp[i[0]], i[1]);
+		env_split[0] = ft_strndup(envp[i[0]], i[1]);
 		if (!ft_strcmp(env_split[0], "SHLVL"))
 			env_split[1] = ft_itoa(ft_atoi(envp[i[0]] + i[1] + 1) + 1);
 		else
-			env_split[1] = strdup(envp[i[0]] + i[1] + 1);
+			env_split[1] = ft_strdup(envp[i[0]] + i[1] + 1);
 		ft_addlast(env, env_split[0], env_split[1], 1);
 		free(env_split[0]);
 		free(env_split[1]);

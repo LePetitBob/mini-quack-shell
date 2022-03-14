@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_manager.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 22:34:39 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:10:30 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ void	command_manager(t_token *tokens, t_env *env)
 	while (it_t)
 	{
 		if (it_t->type == PIPE)
-			free_pipe_make_cmd(&it_c, &it_t);
+		{
+			if (free_pipe_make_cmd(&it_c, &it_t) == EXIT_FAILURE)
+			{
+				free_cmds(cmds);
+				return (free_token(tokens));
+			}
+		}
 		while (it_t && it_t->type != PIPE)
 		{
 			if (it_t->type == RIN || it_t->type == ROUT || it_t->type == DROUT
@@ -38,14 +44,17 @@ void	command_manager(t_token *tokens, t_env *env)
 	cmd_manager(env, cmds);
 }
 
-void	free_pipe_make_cmd(t_cmd **it_c, t_token **it_t)
+int	free_pipe_make_cmd(t_cmd **it_c, t_token **it_t)
 {
 	(*it_c)->next = ft_create_cmd();
+	if ((*it_c)->next == NULL)
+		return (EXIT_FAILURE);
 	(*it_c)->next->prev = *it_c;
 	*it_c = (*it_c)->next;
 	*it_t = (*it_t)->next;
 	free_one_token((*it_t)->prev);
 	(*it_t)->prev = NULL;
+	return (EXIT_SUCCESS);
 }
 
 void	assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign)
