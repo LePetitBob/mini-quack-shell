@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 19:29:44 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 19:33:32 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ int			expand_exeptions(char **str, int i, char *cpy, char *value);
 //* COMMANDS
 t_cmd_lst	*init_values(int fd[6], t_env *env, t_cmd *cmd);
 void		command_manager(t_token *tokens, t_env *env);
-int			free_pipe_make_cmd(t_cmd **c, t_cmd **it_c, t_token *t,
+int			free_pipe_make_cmd(t_cmd *c, t_cmd **it_c, t_token *t,
 				t_token **it_t);
 void		assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign);
 void		unlink_cmd_token(t_token *cmd_t, t_token **it_t);

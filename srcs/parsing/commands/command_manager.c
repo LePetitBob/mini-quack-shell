@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:41:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 19:29:49 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 19:33:26 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	command_manager(t_token *tokens, t_env *env)
 	cmd_manager(env, cmds);
 }
 
-int	free_pipe_make_cmd(t_cmd **c, t_cmd **it_c, t_token *t, t_token **it_t)
+int	free_pipe_make_cmd(t_cmd *c, t_cmd **it_c, t_token *t, t_token **it_t)
 {
 	(*it_c)->next = ft_create_cmd();
 	if ((*it_c)->next == NULL)
