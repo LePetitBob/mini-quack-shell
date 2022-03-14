@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 18:17:35 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:24:55 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,8 @@ void	split_dollar_expand(char *(**arr), char *str, int *i)
 	char	*cpy;
 
 	++(*i);
-<<<<<<< HEAD
-	if (ft_isdigit(str[*i]) == 1 || str[*i] == '\'' || str[*i] == '\"')
-=======
 	if (str[*i] != '\0' && (ft_isdigit(str[*i]) == 1 || str[*i] == '\''
 			|| str[*i] == '\"'))
->>>>>>> debugvinc
 		return ;
 	cpy = ft_strnew(ft_strlen(str));
 	cpy[0] = str[(*i) - 1];
