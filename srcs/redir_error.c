@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:10:12 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/14 15:03:40 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 15:50:57 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,13 @@ void	cd_error_status(char **cmd, int i, t_env *env)
 
 	env_cdpath = get_env_name(env, "CDPATH");
 	if (env_cdpath && i < 0)
-	{
 		g_status.exit_status = cdpath(cmd, env);
-	}
-	free(env_cdpath);
-	if (errno == EACCES)
+	else if (errno == EACCES && !env_cdpath)
 	{
 		error_manager(ERNO_ACCESS, cmd[1]);
 		g_status.exit_status = 126;
 	}
 	else
 		g_status.exit_status = -i;
+	free(env_cdpath);
 }
