@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 14:37:05 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:29:47 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	get_over_here_docs(t_cmd_lst *cmds, t_env *env, int *sig)
 	if (g_status.hd_fd > 2)
 	{
 		dup2(g_status.hd_fd, STDIN_FILENO);
-		g_status.hd_fd = -1;
+		close(g_status.hd_fd);
 	}
+	g_status.hd_fd = -1;
 }
 
 char	*ft_strjoin_free(char *s1, char *s2)

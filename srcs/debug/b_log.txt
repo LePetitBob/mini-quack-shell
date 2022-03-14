@@ -1,0 +1,52 @@
+pwd
+/sgoinfre/goinfre/Perso/amarini-/repo/mini-quack-shell
+e''ch''o'' c'o'u'cou'
+coucou
+h ey hey|<hey
+bash: line 8: h ey: command not found
+bash: line 8: hey: No such file or directory
+echo hello there > outfilr | echo  | echo '/mnt/nfs/homes/amarini-' | echo /mnt/nfs/homes/amarini- | echo $
+$
+echo hello there >outfilr| echo '/mnt/nfs/homes/amarini-' | echo /mnt/nfs/homes/amarini- | echo $
+$
+echo asdv >/dev/stdout| ls -la
+total 247
+drwxr-xr-x 9 amarini- 2020_paris     14 Mar 13 20:37 .
+drwxr-xr-x 4 amarini- 2020_paris      4 Mar 13 16:28 ..
+drwxr-xr-x 2 amarini- 2020_paris      3 Mar 13 20:32 ducklinclude
+drwxr-xr-x 3 amarini- 2020_paris     10 Mar 13 20:32 Duckumentation
+drwxr-xr-x 9 amarini- 2020_paris     20 Mar 13 20:39 .git
+-rw-r--r-- 1 amarini- 2020_paris     90 Mar  5 12:56 .gitmodules
+-rw-r--r-- 1 amarini- 2020_paris     99 Mar 10 12:35 .ignore_readline
+drwxr-xr-x 5 amarini- 2020_paris      8 Mar 13 20:34 libft_duck
+-rwxr-xr-x 1 amarini- 2020_paris   1336 Mar 13 20:32 Makefile
+-rwxr-xr-x 1 amarini- 2020_paris 129072 Mar 13 20:34 minishell
+drwxr-xr-x 2 amarini- 2020_paris     42 Mar 13 20:34 objs
+-rw-r--r-- 1 amarini- 2020_paris     12 Mar 13 20:55 outfilr
+drwxr-xr-x 8 amarini- 2020_paris     19 Mar 13 20:32 srcs
+drwxr-xr-x 2 amarini- 2020_paris      3 Mar  5 08:58 .vscode
+echo gerigh >/dev/stdout| ls -las
+total 247
+ 15 drwxr-xr-x 9 amarini- 2020_paris     14 Mar 13 20:37 .
+  1 drwxr-xr-x 4 amarini- 2020_paris      4 Mar 13 16:28 ..
+  1 drwxr-xr-x 2 amarini- 2020_paris      3 Mar 13 20:32 ducklinclude
+ 15 drwxr-xr-x 3 amarini- 2020_paris     10 Mar 13 20:32 Duckumentation
+ 15 drwxr-xr-x 9 amarini- 2020_paris     20 Mar 13 20:39 .git
+  8 -rw-r--r-- 1 amarini- 2020_paris     90 Mar  5 12:56 .gitmodules
+  8 -rw-r--r-- 1 amarini- 2020_paris     99 Mar 10 12:35 .ignore_readline
+ 15 drwxr-xr-x 5 amarini- 2020_paris      8 Mar 13 20:34 libft_duck
+  8 -rwxr-xr-x 1 amarini- 2020_paris   1336 Mar 13 20:32 Makefile
+129 -rwxr-xr-x 1 amarini- 2020_paris 129072 Mar 13 20:34 minishell
+ 15 drwxr-xr-x 2 amarini- 2020_paris     42 Mar 13 20:34 objs
+  8 -rw-r--r-- 1 amarini- 2020_paris     12 Mar 13 20:55 outfilr
+ 15 drwxr-xr-x 8 amarini- 2020_paris     19 Mar 13 20:32 srcs
+  1 drwxr-xr-x 2 amarini- 2020_paris      3 Mar  5 08:58 .vscode
+cat test >> outfilr
+cat: test: No such file or directory
+cat Makefile > outfilr | grep $ >> outfilr
+cat Makefile | grep $ > outfilr
+echo ab'c d'
+abc d
+>> test >test > >
+bash: line 35: syntax error near unexpected token `>'
+bash: line 35: `>> test >test > >'

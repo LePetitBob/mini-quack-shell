@@ -12,8 +12,7 @@ make "ambigous redirect" error for env var not defined
 
 ----------------------------------------------------
 
-echo bonjour | |
-	- should i do this ?
+exit -
+	- needs error of "numeric argument"
+	- should echo $? = 2
 
-echo gerigh >/dev/stdout| ls -las
-	- normal ?
