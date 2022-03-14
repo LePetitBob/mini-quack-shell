@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 07:22:11 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 14:33:07 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:09:18 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,9 @@ void		copy_str_without_quotes(char *(*str), int *i, char quote);
 int			expand_exeptions(char **str, int i, char *cpy, char *value);
 
 //* COMMANDS
+t_cmd_lst	*init_values(int fd[6], t_env *env, t_cmd *cmd);
 void		command_manager(t_token *tokens, t_env *env);
-void		free_pipe_make_cmd(t_cmd **it_c, t_token **it_t);
+int			free_pipe_make_cmd(t_cmd **it_c, t_token **it_t);
 void		assign_token_cmd(t_cmd **it_c, t_token **it_t, int assign);
 void		unlink_cmd_token(t_token *cmd_t, t_token **it_t);
 

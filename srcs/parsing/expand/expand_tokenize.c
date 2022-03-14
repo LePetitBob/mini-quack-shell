@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_tokenize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/06 09:36:34 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:04:52 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	tokenize_expanded_vars(char **arr, t_token **parent)
 	if (!arr && (*parent)->type != FD)
 		return (relink_parent_to_himself(parent));
 	new_token = make_new_tokens(arr);
+	if (!new_token)
+		return (ft_free_tab(arr));
 	it = get_last_token(new_token);
 	new_token->type = (*parent)->type;
 	if ((*parent)->prev)
@@ -82,7 +84,7 @@ t_token	*make_new_tokens(char **arr)
 	int		i;
 
 	new_token = ft_create_empty_token();
-	if (!arr)
+	if (!arr || !new_token)
 		return (new_token);
 	new_token->str = ft_strdup(arr[0]);
 	it = new_token;
@@ -90,6 +92,8 @@ t_token	*make_new_tokens(char **arr)
 	while (arr[i])
 	{
 		it->next = ft_create_empty_token();
+		if (!it->next)
+			return (free_token(new_token));
 		it->next->str = ft_strdup(arr[i]);
 		it->next->type = WORD;
 		it->next->prev = it;

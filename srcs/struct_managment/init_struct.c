@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 11:38:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/07 14:20:44 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:36:59 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_cmd	*ft_create_cmd(void)
 	t_cmd	*new;
 
 	new = malloc(sizeof(t_cmd));
+	if (!new)
+		return (NULL);
 	new->arg = NULL;
 	new->redir = NULL;
 	new->fdin = 0;

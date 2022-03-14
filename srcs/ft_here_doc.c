@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:26:55 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/14 12:29:47 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:58:17 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char	*here_doc_read(char *str, char *stock)
 {
 	char	*tmp[2];
 
-	tmp[1] = NULL;
 	tmp[0] = ft_strjoin(str, "\n");
 	tmp[1] = ft_strjoin(stock, tmp[0]);
 	free(tmp[0]);

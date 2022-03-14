@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:37:04 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 16:22:28 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:42:11 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ void	close_wait_clear(t_cmd_lst *cmds, int fd[6])
 	rm_cmds(cmds);
 }
 
-void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
+t_cmd_lst	*init_values(int fd[6], t_env *env, t_cmd *cmd)
 {
+	t_cmd_lst	*cmds;
+
+	cmds = malloc(sizeof(t_cmd *));
 	if (!cmds)
-		ft_clear(env);
-	if (!cmds)
-		return ;
+		return (NULL);
 	cmds->first = cmd;
 	fd[5] = 0;
 	if (cmds->first->next)
@@ -85,6 +86,7 @@ void	init_values(int fd[6], t_cmd_lst *cmds, t_env *env, t_cmd *cmd)
 	fd[2] = dup(STDIN_FILENO);
 	fd[3] = dup(STDOUT_FILENO);
 	g_status.pid = -1;
+	return (cmds);
 }
 
 //here: fd[0] is unset; becomes pipe(0)
@@ -99,9 +101,10 @@ void	cmd_manager(t_env *env, t_cmd *cmd)
 	t_cmd		*tmp;
 	int			fd[6];
 
-	cmds = malloc(sizeof(t_cmd *));
-	init_values(fd, cmds, env, cmd);
-	tmp = cmds->first;
+	cmds = init_values(fd, env, cmd);
+	tmp = NULL;
+	if (cmds)
+		tmp = cmds->first;
 	while (tmp && fd[4] != -2)
 	{
 		g_status.pid = -1;
