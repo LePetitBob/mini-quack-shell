@@ -6,11 +6,13 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:10:12 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 16:22:19 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 15:03:40 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
+
+extern t_status	g_status;
 
 int	invalid_filename(char *filename, char *FILENO, int *i)
 {
@@ -34,8 +36,16 @@ int	invalid_filename(char *filename, char *FILENO, int *i)
 	return (0);
 }
 
-void	cd_error_status(char **cmd, int i)
+void	cd_error_status(char **cmd, int i, t_env *env)
 {
+	char	*env_cdpath;
+
+	env_cdpath = get_env_name(env, "CDPATH");
+	if (env_cdpath && i < 0)
+	{
+		g_status.exit_status = cdpath(cmd, env);
+	}
+	free(env_cdpath);
 	if (errno == EACCES)
 	{
 		error_manager(ERNO_ACCESS, cmd[1]);

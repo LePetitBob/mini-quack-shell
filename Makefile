@@ -13,7 +13,7 @@ INCLUDES = -I$(LIBFT_DIR)/Includes -I$(INC_DIR)
 
 vpath %.c $(foreach dir, $(SRCS_DIR), $(dir):)
 
-SRCS = cd.c echo.c env.c exit.c export.c pwd.c unset.c \
+SRCS = cd.c echo.c env.c exit.c export.c pwd.c unset.c cdpath.c \
 	error_manager.c error_utils.c sig_handler.c \
 	command_manager.c link_fd_redir.c \
 	expand_join.c expand_manager.c expand_split_seps.c \
