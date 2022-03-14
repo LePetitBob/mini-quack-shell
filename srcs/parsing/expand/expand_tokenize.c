@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:18:30 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 18:04:52 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:14:09 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	tokenize_expanded_vars(char **arr, t_token **parent)
 		return (relink_parent_to_himself(parent));
 	new_token = make_new_tokens(arr);
 	if (!new_token)
-		return (ft_free_tab(arr));
+		return (ft_freetab(arr));
 	it = get_last_token(new_token);
 	new_token->type = (*parent)->type;
 	if ((*parent)->prev)
@@ -93,7 +93,10 @@ t_token	*make_new_tokens(char **arr)
 	{
 		it->next = ft_create_empty_token();
 		if (!it->next)
-			return (free_token(new_token));
+		{
+			free_token(new_token);
+			return (NULL);
+		}
 		it->next->str = ft_strdup(arr[i]);
 		it->next->type = WORD;
 		it->next->prev = it;
