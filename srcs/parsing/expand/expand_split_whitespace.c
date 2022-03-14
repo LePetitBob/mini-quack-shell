@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 04:09:47 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/10 14:40:50 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:36:16 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	expand_split_whitespaces(char *(**arr))
 	int		i;
 
 	i = 0;
+	if (ft_strlen((*arr)[0]) < 2)
+		return ;
 	cpy = ft_strnew(ft_strlen((*arr)[0]));
 	while ((*arr)[0][i] != '\0')
 	{
@@ -56,13 +58,15 @@ void	add_non_whitespace(char *(**arr), char *cpy)
 void	expand_skip_quotes(char *(**arr), char **cpy, int *index)
 {
 	char	quote;
+	int		tmp;
 
 	(*cpy)[ft_strlen(*cpy)] = (*arr)[0][*index];
 	quote = (*arr)[0][*index];
-	++*index;
-	while ((*arr)[0][*index] != '\0' && (*arr)[0][*index] != quote)
+	tmp = (*index) + 1;
+	while ((*arr)[0][tmp] != '\0' && (*arr)[0][tmp] != quote)
 	{
-		(*cpy)[ft_strlen(*cpy)] = (*arr)[0][*index];
-		++*index;
+		(*cpy)[ft_strlen(*cpy)] = (*arr)[0][tmp];
+		++tmp;
 	}
+	(*index) = tmp;
 }

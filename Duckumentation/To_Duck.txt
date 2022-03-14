@@ -15,7 +15,3 @@ make "ambigous redirect" error for env var not defined
 exit -
 	- needs error of "numeric argument"
 	- should echo $? = 2
-
-export test='"'
-echo $test
-	- bad return value

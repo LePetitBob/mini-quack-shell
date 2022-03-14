@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/11 12:04:45 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:42:36 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	del_quotes(char *(*str))
 	i = 0;
 	while ((*str)[i] != '\0')
 	{
-		if ((*str)[i] == '\'' || (*str)[i] == '\"')
+		if ((*str)[i + 1] != '\0' && ((*str)[i] == '\'' || (*str)[i] == '\"'))
 		{
 			quote = (*str)[i];
 			if ((*str)[i + 1] == quote)
@@ -83,13 +83,18 @@ void	copy_str_without_quotes(char *(*str), int *i, char quote)
 	int		diff;
 
 	diff = (*i) + 1;
+	if ((*str)[diff] == '\0')
+		return ;
 	prefix = ft_substr(*str, 0, *i);
 	while ((*str)[diff] != '\0' && (*str)[diff] != quote)
 		++diff;
 	cpy = ft_substr(*str, (*i) + 1, diff - (*i) - 1);
 	tmp = ft_strjoin(prefix, cpy);
 	if ((*str)[diff] == '\0')
-		sufix = ft_substr(*str, diff, ft_strlen(*str) - (diff + 1));
+	{
+		*i = diff - 1;
+		return ;
+	}
 	else
 		sufix = ft_substr(*str, diff + 1, ft_strlen(*str) - (diff + 1));
 	free(*str);
