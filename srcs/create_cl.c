@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 11:15:17 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 14:19:59 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 19:13:06 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_addlast(t_env *env, char *name, char *value, int to_print)
 	t_env_var	*tmp;
 
 	a = ft_create_elem(name, value, to_print);
+	if (!a)
+		return ;
 	a->next = NULL;
 	tmp = env->first;
 	if (env->first)
