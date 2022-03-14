@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 11:38:25 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 12:27:41 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:58:30 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*get_prompt_prefix(t_env *env)
 	char	*tmp;
 
 	home = get_env_name(env, "HOME");
-	pth = get_env_name(env, "PWD");
+	pth = getcwd(NULL, 0);
 	if (home && ft_strnstr(pth, home, ft_strlen(pth)) == pth)
 	{
 		tmp = ft_substr(pth, ft_strlen(home), ft_strlen(pth) - ft_strlen(home));

@@ -6,7 +6,7 @@
 /*   By: vduriez <vduriez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 15:43:15 by vduriez           #+#    #+#             */
-/*   Updated: 2022/03/07 16:21:36 by vduriez          ###   ########.fr       */
+/*   Updated: 2022/03/14 15:01:28 by vduriez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_tmp(char **tmp)
 
 void	cd_home(char *cdarg, char *home)
 {
-	if (!cdarg && home)
+	if (cdarg == NULL && home)
 		chdir(home);
 	if (home)
 		free(home);
@@ -59,18 +59,19 @@ void	env_change_and_error_management(t_env *env, char **cmd, int i)
 		tmp[2] = ft_strdup(cmd[1]);
 	tmp[3] = getcwd(NULL, 0);
 	i = chdir(tmp[2]);
+	free(tmp[2]);
+	tmp[2] = get_env_name(env, "CDPATH");
 	tmp[0] = get_env_name(env, "OLDPWD");
 	tmp[1] = get_env_name(env, "PWD");
-	if (i < 0 && errno != EACCES)
+	if (i < 0 && errno != EACCES && !tmp[2])
 		error_manager(ERNO_CD, cmd[1]);
 	if (i >= 0 && tmp[0])
 		replace_var(env, "OLDPWD", tmp[3]);
-	free(tmp[3]);
-	tmp[3] = getcwd(NULL, 0);
+	tmp[3] = (free(tmp[3]), getcwd(NULL, 0));
 	if (i >= 0 && tmp[1])
 		replace_var(env, "PWD", tmp[3]);
 	free_tmp(tmp);
-	cd_error_status(cmd, i);
+	cd_error_status(cmd, i, env);
 }
 
 void	ft_cd(char **cmd, t_env *env)
