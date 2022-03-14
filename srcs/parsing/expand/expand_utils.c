@@ -6,46 +6,11 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 12:02:59 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 14:42:36 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:02:00 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_quack_shell.h"
-
-void	convert_all_wsp(char *(**arr), int conv)
-{
-	convert_spaces(arr, ' ' * conv);
-	convert_spaces(arr, '\t' * conv);
-	convert_spaces(arr, '\n' * conv);
-	convert_spaces(arr, '\v' * conv);
-	convert_spaces(arr, '\f' * conv);
-	convert_spaces(arr, '\r' * conv);
-}
-
-void	convert_spaces(char *(**arr), char space)
-{
-	int		row;
-	int		col;
-
-	row = 0;
-	while ((*arr)[row])
-	{
-		col = 0;
-		if ((*arr)[row] && ft_strsrch((*arr)[row], '\"') > -1)
-			++row;
-		else
-		{
-			while ((*arr)[row][col] != '\0')
-			{
-				if ((*arr)[row][col] == space)
-					(*arr)[row][col] *= -1;
-				++col;
-			}
-			++row;
-		}
-	}
-	return ;
-}
 
 void	del_quotes(char *(*str))
 {
@@ -88,21 +53,22 @@ void	copy_str_without_quotes(char *(*str), int *i, char quote)
 	prefix = ft_substr(*str, 0, *i);
 	while ((*str)[diff] != '\0' && (*str)[diff] != quote)
 		++diff;
+	if ((*str)[diff] == '\0')
+		return (exit_str_without_quotes(prefix, diff, i));
 	cpy = ft_substr(*str, (*i) + 1, diff - (*i) - 1);
 	tmp = ft_strjoin(prefix, cpy);
-	if ((*str)[diff] == '\0')
-	{
-		*i = diff - 1;
-		return ;
-	}
-	else
-		sufix = ft_substr(*str, diff + 1, ft_strlen(*str) - (diff + 1));
+	sufix = ft_substr(*str, diff + 1, ft_strlen(*str) - (diff + 1));
 	free(*str);
 	*str = ft_strjoin(tmp, sufix);
-	free(prefix);
 	free(cpy);
 	free(tmp);
 	free(sufix);
+	exit_str_without_quotes(prefix, diff, i);
+}
+
+void	exit_str_without_quotes(char *prefix, int diff, int *i)
+{
+	free(prefix);
 	*i = diff - 1;
 }
 

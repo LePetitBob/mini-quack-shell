@@ -6,7 +6,7 @@
 /*   By: amarini- <amarini-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:04:23 by amarini-          #+#    #+#             */
-/*   Updated: 2022/03/14 13:46:30 by amarini-         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:27:58 by amarini-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,19 @@ void	split_dollar_expand(char *(**arr), char *str, int *i)
 	char	*cpy;
 
 	++(*i);
-	if (str[*i] != '\0' && (ft_isdigit(str[*i]) == 1 || str[*i] == '\''
-		|| str[*i] == '\"'))
+	if (ft_isdigit(str[*i]) == 1 || str[*i] == '\'' || str[*i] == '\"')
 		return ;
 	cpy = ft_strnew(ft_strlen(str));
 	cpy[0] = str[(*i) - 1];
-	if (str[*i] != '\0' && (ft_isalpha(str[*i]) == 0 && str[*i] != '_'
-			&& str[*i] != '0' && str[*i] != '?' && str[*i] != '$'))
+	if (ft_isalpha(str[*i]) == 0 && str[*i] != '_' && str[*i] != '0'
+		&& str[*i] != '?' && str[*i] != '$')
 	{
 		cpy[1] = str[*i];
 		*arr = ft_add_tab(*arr, cpy);
 		return (free(cpy));
 	}
 	while (str[*i] != '\0' && (ft_isalnum(str[*i]) == 1 || str[*i] == '_'))
-	{
-		cpy[ft_strlen(cpy)] = str[*i];
-		++(*i);
-	}
+		cpy[ft_strlen(cpy)] = str[(*i)++];
 	if (str[*i] == '?')
 		cpy[ft_strlen(cpy)] = str[*i];
 	if (ft_isalnum(str[*i]) == 0 && str[*i] != '_' && str[*i] != '0'

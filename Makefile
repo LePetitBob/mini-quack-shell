@@ -17,9 +17,9 @@ SRCS = cd.c echo.c env.c exit.c export.c pwd.c unset.c cdpath.c \
 	error_manager.c error_utils.c sig_handler.c \
 	command_manager.c link_fd_redir.c \
 	expand_join.c expand_manager.c expand_split_seps.c \
-	expand_split_whitespace.c expand_tokenize.c \
-	expand_utils.c expand_var_utils.c expand_var.c \
-	split_quotes_dollar.c \
+	expand_convert_spaces.c expand_split_whitespace.c \
+	expand_tokenize.c expand_utils.c expand_var_utils.c \
+	expand_var.c split_quotes_dollar.c \
 	split_manager.c split_separators.c split_whitespaces.c \
 	tokenize.c \
 	del_struct.c init_struct.c struct_utils.c \
