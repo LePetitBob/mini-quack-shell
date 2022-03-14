@@ -15,4 +15,3 @@ make "ambigous redirect" error for env var not defined
 exit -
 	- needs error of "numeric argument"
 	- should echo $? = 2
-
